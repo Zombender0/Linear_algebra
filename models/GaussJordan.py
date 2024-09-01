@@ -1,4 +1,7 @@
-from models.Matrix import Matrix
+if __name__ !='__main__':
+    from models.Matrix import Matrix
+else:
+    from Matrix import Matrix
 from sys import argv
 
 class GaussJordan(Matrix):
@@ -41,11 +44,13 @@ class GaussJordan(Matrix):
         '''
         #La logica se podria mejorar
         if col == self.width: return True
+
         for i in range(col+1, self.width):
             if self.matrix[i][row] == -1: self.operate_in_row(i,print_)
             if self.matrix[i][row] != 1: continue
             self.swap(col,i,print_)
             return True
+        
         for i in range(col+1,self.width):
             if self.matrix[i][row] == 0: continue
             self.swap(col,i,print_)
@@ -55,7 +60,7 @@ class GaussJordan(Matrix):
         self.operate_in_row(col,print_)
         return True
 
-    def operate_in_row(self,col: int,print_ = True):
+    def operate_in_row(self,row: int,print_ = True):
         '''
         Opera sobre una fila con el propósito de transformar el "pivote" de esa fila en 1.
 
@@ -66,10 +71,10 @@ class GaussJordan(Matrix):
         col (int) : Es la columna sobre la que se va a operar
         print_ (bool) : Determina si se debe imprimir el cambio realizado con la matriz. Por defecto es verdadero
         '''
-        divide_number = self.matrix[col][col]
-        self.matrix[col] = list(map(lambda number: number/divide_number,self.matrix[col]))
+        divide_number = self.matrix[row][row]
+        self.matrix[row] = list(map(lambda number: number/divide_number,self.matrix[row]))
         if print_:
-            print(f'f{col+1} -> {divide_number}f{col+1}')
+            print(f'f{row+1} -> {divide_number}f{row+1}')
             print(self)
 
     def reduce_row(self, diagonal_col : int, operate_row : int,print_ = True) ->None:

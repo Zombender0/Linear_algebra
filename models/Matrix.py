@@ -1,12 +1,15 @@
 from csv import reader
 from sys import argv
 
-def error_wrapper(f):
+def matrix_error_handler(f):
     def wrapper(*args,**kwargs):
         try:
             result = f(*args,**kwargs)
         except ValueError:
             print('Tipo de dato invalido')
+            return []
+        except Exception as e:
+            print(f'Error: {e}')
             return []
         else:
             return result
@@ -63,7 +66,7 @@ class Matrix():
             print(self)
 
     @staticmethod
-    def gcd(a: int,b: int) -> int: 
+    def __gcd(a: int,b: int) -> int: 
         '''
         Retorna el máximo común divisor entre dos números enteros
 
@@ -76,7 +79,7 @@ class Matrix():
         return Matrix.gcd(b%a,a)
 
     @staticmethod
-    def lcd(a: int, b:int) ->int:
+    def __lcd(a: int, b:int) ->int:
         '''
         Retorna el mínimo común múltiplo entre dos números enteros
 
@@ -87,20 +90,20 @@ class Matrix():
         return a*b // Matrix.gcd(a,b)
     
     @staticmethod
-    @error_wrapper
-    def create_matrix(file_path: str):
+    @matrix_error_handler
+    def create_matrix(file_path: str) ->list[list[int]]:
         with open(file_path,mode='r',encoding='utf-8') as f:
             content = list(reader(f,delimiter=';'))
             content = [list(map(int, row)) for row in content]
             return content
         
     def __str__(self) -> str:
-        rep = ''
+        matrix :str= ''
         for row in range(self.width):
             for col in range(self.length):
-                rep+=f'{self.matrix[row][col]} '
-            rep +='\n'
-        return rep
+                matrix+=f'{round(self.matrix[row][col],3)} '
+            matrix +='\n'
+        return matrix
     
 if __name__ == '__main__':
     if len(argv)<2:
