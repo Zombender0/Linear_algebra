@@ -1,4 +1,4 @@
-from Matrix import Matrix
+from models.Matrix import Matrix
 from sys import argv
 
 class GaussJordan(Matrix):
