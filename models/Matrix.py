@@ -1,3 +1,17 @@
+from csv import reader
+from sys import argv
+
+def error_wrapper(f):
+    def wrapper(*args,**kwargs):
+        try:
+            result = f(*args,**kwargs)
+        except ValueError:
+            print('Tipo de dato invalido')
+            return []
+        else:
+            return result
+    return wrapper
+
 class Matrix():
 
     def __init__(self,matrix: list[list]) -> None:
@@ -7,6 +21,9 @@ class Matrix():
     
     @staticmethod
     def _valid_matrix(matrix: list[list]) -> bool:
+        if matrix == []: 
+            print('Matriz invalida')
+            return False
         width = len(matrix)
         length = len(matrix[0])
         zero_row = True
@@ -69,10 +86,29 @@ class Matrix():
         '''
         return a*b // Matrix.gcd(a,b)
     
+    @staticmethod
+    @error_wrapper
+    def create_matrix(file_path: str):
+        with open(file_path,mode='r',encoding='utf-8') as f:
+            content = list(reader(f,delimiter=';'))
+            content = [list(map(int, row)) for row in content]
+            return content
+        
     def __str__(self) -> str:
         rep = ''
         for row in range(self.width):
             for col in range(self.length):
-                rep+=f'{int(self.matrix[row][col])} '
+                rep+=f'{self.matrix[row][col]} '
             rep +='\n'
         return rep
+    
+if __name__ == '__main__':
+    if len(argv)<2:
+        print(f"Uso: {argv[0]} matrix.csv")
+        exit(0)
+    file_path = argv[1]
+    matrix = Matrix.create_matrix(file_path)
+    if not Matrix._valid_matrix(matrix):
+        exit(0)
+    m = Matrix(matrix)
+    print(m.matrix)

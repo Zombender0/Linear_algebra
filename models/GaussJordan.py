@@ -1,24 +1,26 @@
-from models.Matrix import Matrix
+from Matrix import Matrix
+from sys import argv
 
 class GaussJordan(Matrix):
     def __init__(self, matrix: list[list]) -> None:
         super().__init__(matrix)
     
-    def gauss_jordan(self) ->None:
+    def gauss_jordan(self,print_=True) ->None:
         '''
         Transforma la matriz de la instancia en una matriz identidad con los valores de las incógnitas, siempre y cuando la matriz sea consistente.
 
         Itera sobre la matriz de manera vertical para determinar que el "pivote" o número en la diagonal sea 1, y proceder a reducir cada término a 0, excepto los de la diagonal.
+        print_ (bool) : Determina si se debe imprimir el cambio realizado con la matriz. Por defecto es verdadero
         '''
         for col in range(self.length):
             for row in range(col,self.width):
                 if self.matrix[col][col] != 1: #Estos bloques if se pueden mejorar, tienen mucha profundidad y se ve feo
-                    if not self.diagonal_number_to_1(col,row):
+                    if not self.diagonal_number_to_1(col,row,print_):
                         print('Matriz inconsistente')
                         return
-                self.reduce_col(col)
+                self.reduce_col(col,print_)
                 
-    def diagonal_number_to_1(self,col: int,row: int) -> bool:
+    def diagonal_number_to_1(self,col: int,row: int,print_=True) -> bool:
         '''
         Intenta tranformar un "pivote" de la matriz en 1.
 
@@ -33,21 +35,24 @@ class GaussJordan(Matrix):
         Parámetros:
         col (int): Es la columna en la que se encuentra ubicado el "pivote"
         row (int): Es la fila en la que se encuentra ubicado el "pivote"
+        print_ (bool) : Determina si se debe imprimir el cambio realizado con la matriz. Por defecto es verdadero
 
         Retorna verdadero si la transformacion fue valida, retorna falso si la matriz es inconsistente
         '''
-        if col == self.width: return
+        #La logica se podria mejorar
+        if col == self.width: return True
         for i in range(col+1, self.width):
+            if self.matrix[i][row] == -1: self.operate_in_row(i,print_)
             if self.matrix[i][row] != 1: continue
-            if self.matrix[i][row] == -1: self.operate_in_row(i)
-            self.swap(col,i)
+            self.swap(col,i,print_)
             return True
         for i in range(col+1,self.width):
             if self.matrix[i][row] == 0: continue
-            self.swap(col,i)
+            self.swap(col,i,print_)
+            self.operate_in_row(col,print_)
             return True
         if self.matrix[col][row] == 0: return False
-        self.operate_in_row(col)
+        self.operate_in_row(col,print_)
         return True
 
     def operate_in_row(self,col: int,print_ = True):
@@ -62,7 +67,7 @@ class GaussJordan(Matrix):
         print_ (bool) : Determina si se debe imprimir el cambio realizado con la matriz. Por defecto es verdadero
         '''
         divide_number = self.matrix[col][col]
-        self.matrix[col] = [self.matrix[col][i] / divide_number if self.matrix[col][i] != 0 else self.matrix[col][i] for i in range(self.length)]
+        self.matrix[col] = list(map(lambda number: number/divide_number,self.matrix[col]))
         if print_:
             print(f'f{col+1} -> {divide_number}f{col+1}')
             print(self)
@@ -80,22 +85,24 @@ class GaussJordan(Matrix):
         print_ (bool) : Determina si se debe imprimir el cambio realizado con la matriz. Por defecto es verdadero
         '''
         number_to_operate = self.matrix[operate_row][diagonal_col] * -1
+
         self.matrix[operate_row] = [self.matrix[operate_row][i]+self.matrix[diagonal_col][i]*
                                     number_to_operate for i in range(self.length)]
         if print_:
             print(f'f{operate_row+1} -> f{operate_row+1} {'+' if number_to_operate > 0 else '-'} {number_to_operate if number_to_operate >0 else number_to_operate*-1}f{diagonal_col+1}\n')
             print(self)
-    def reduce_col(self,col: int):
+    def reduce_col(self,col: int,print_=True):
         '''
         Reduce una columna en 0 caundo el pivote es 1
 
         Parámetros:
         col (int): Es la columna que se desea reducir
+        print_ (bool) : Determina si se debe imprimir el cambio realizado con la matriz. Por defecto es verdadero
         '''
         for row in range(self.width):
             if row == col: continue
             if self.matrix[row][col] == 0: continue
-            self.reduce_row(col,row)
+            self.reduce_row(col,row,print_)
 
     def is_inconsistent(self,row: int) ->bool:
         '''
@@ -105,9 +112,21 @@ class GaussJordan(Matrix):
         row (int): es la fila que se desea verficiar
         '''
         for col in range(self.length):
-            if self.matrix[row][col] !=0:
-                return False
+            if self.matrix[row][col] !=0: return False
         return True
 
     def __str__(self) -> str:
         return super().__str__()
+    
+
+if __name__ == '__main__':
+    if len(argv)<2:
+        print(f"Uso: {argv[0]} matrix.csv")
+        exit(0)
+    file_path = argv[1]
+    matrix = GaussJordan.create_matrix(file_path)
+    if not GaussJordan._valid_matrix(matrix):
+        exit(0)
+    m = GaussJordan(matrix)
+    m.gauss_jordan()
+    print(m)
