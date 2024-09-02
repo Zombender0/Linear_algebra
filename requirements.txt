@@ -1,1 +1,2 @@
 PySide6
+auto-py-to-exe
