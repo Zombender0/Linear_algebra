@@ -1,0 +1,5 @@
+Champagne pink: #E8D6CB
+Tea Rose: #D0ADA7
+Ash Gray: #C7CCB9
+Dim Gray: #636564
+Taupe: #4C443C
