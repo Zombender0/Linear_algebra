@@ -118,9 +118,9 @@ QScrollBar {
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QTabWidget" name="tab_widget">
+    <widget class="QTabWidget" name="vector_tab">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="vector_x_vector_widget">
       <attribute name="title">
@@ -445,7 +445,7 @@ max-width:10px;
            <number>0</number>
           </property>
           <item>
-           <widget class="QWidget" name="mxm_matrix_vector_widget" native="true">
+           <widget class="QWidget" name="mxm_a_matrixr_widget" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_13" stretch="10,100">
              <property name="leftMargin">
               <number>0</number>
@@ -494,7 +494,7 @@ max-width:10px;
               </widget>
              </item>
              <item>
-              <widget class="QWidget" name="mxm_a_widget" native="true">
+              <widget class="QWidget" name="mxm_a_matrix_widget" native="true">
                <property name="styleSheet">
                 <string notr="true">QTabBar:tab{
 max-width:10px;
@@ -600,7 +600,7 @@ max-width:10px;
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="mxm_column_vector_widget" native="true">
+           <widget class="QWidget" name="mxm_b_matrix_widget" native="true">
             <layout class="QVBoxLayout" name="verticalLayout_16">
              <property name="spacing">
               <number>4</number>
@@ -618,7 +618,7 @@ max-width:10px;
               <number>0</number>
              </property>
              <item>
-              <widget class="QWidget" name="mmv_column_vector_options_widget" native="true">
+              <widget class="QWidget" name="mmv_b_matrix_options_widget" native="true">
                <layout class="QHBoxLayout" name="horizontalLayout_9">
                 <property name="spacing">
                  <number>0</number>
@@ -636,7 +636,7 @@ max-width:10px;
                  <number>0</number>
                 </property>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-                 <widget class="QLabel" name="mxm_column_vector_label">
+                 <widget class="QLabel" name="mxm_b_matrix_label">
                   <property name="font">
                    <font>
                     <family>Calibri</family>
@@ -865,7 +865,7 @@ max-width:10px;
            </widget>
           </item>
           <item>
-           <widget class="QTableWidget" name="mxm_c_matrix"/>
+           <widget class="QTableWidget" name="mxm_c_table"/>
           </item>
          </layout>
         </widget>
@@ -894,7 +894,7 @@ max-width:10px;
           </property>
           <item>
            <widget class="QWidget" name="mxv_matrix_vector_widget" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_8" stretch="10,100">
+            <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,0">
              <property name="leftMargin">
               <number>0</number>
              </property>
@@ -936,7 +936,7 @@ max-width:10px;
               </widget>
              </item>
              <item>
-              <widget class="QWidget" name="mxv_row_vector_widget" native="true">
+              <widget class="QWidget" name="mxv_matrix_widget" native="true">
                <property name="styleSheet">
                 <string notr="true">QTabBar:tab{
 max-width:10px;
@@ -956,7 +956,7 @@ max-width:10px;
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QTableWidget" name="mxv_row_vector">
+                 <widget class="QTableWidget" name="mxv_matrix">
                   <property name="minimumSize">
                    <size>
                     <width>230</width>

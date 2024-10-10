@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowAdKMnN.ui'
+## Form generated from reading UI file 'main_windowYauwGb.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -10,7 +10,7 @@
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt,Slot)
+    QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
@@ -19,12 +19,9 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QHBoxLayout, QHeaderView, QLabel, QMainWindow,
     QPushButton, QSizePolicy, QSpinBox, QTableWidget,
     QTableWidgetItem, QVBoxLayout, QWidget)
-from views.message_box import warning_box
-from random import randint
-from views.QtFiles.qrc_files import resources_rc
+from views.qt_files.qrc_files import resources_rc
+
 class Ui_MainWindow(object):
-    def __init__(self,Mainwindow):
-        self.setupUi(Mainwindow)
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -235,8 +232,6 @@ class Ui_MainWindow(object):
         self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.addItem("")
-        self.table_solution_matrix_combobox.setItemData(1,"reduccion")
-        self.table_solution_matrix_combobox.setItemData(2,"vxv")
         self.table_solution_matrix_combobox.setObjectName(u"table_solution_matrix_combobox")
         self.table_solution_matrix_combobox.setStyleSheet(u"")
 
@@ -288,8 +283,7 @@ class Ui_MainWindow(object):
         self.centralwidget_layout.addWidget(self.table_widget)
 
         MainWindow.setCentralWidget(self.centralwidget)
-        self.row_spinbox.setValue(3)
-        self.column_spinbox.setValue(3)
+
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -305,7 +299,7 @@ class Ui_MainWindow(object):
         self.table_random_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Matriz aleatoria", None))
         self.table_solution_matrix_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Resolver por", None))
         self.table_solution_matrix_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Reducci\u00f3n", None))
-        self.table_solution_matrix_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Vectores", None))
+        self.table_solution_matrix_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Aplicar vector por vector", None))
 
         self.table_transposition_button.setText(QCoreApplication.translate("MainWindow", u"Transponer Matriz", None))
         self.table_solve_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Resolver", None))
@@ -321,97 +315,4 @@ class Ui_MainWindow(object):
         self.input_table.setSortingEnabled(__sortingEnabled)
 
     # retranslateUi
-
-
-    @Slot()
-    def resize_matrix(self,columns,rows):
-        columns = self.column_spinbox.value()
-        rows = self.row_spinbox.value()
-        if rows <=0 or columns <=0:
-            warning_box('No es posible redimensionar esta matriz.')
-            return
-        self.input_table.setRowCount(rows)
-        self.input_table.setColumnCount(columns)
-        for row in range(rows):
-            table_header = self.input_table.verticalHeaderItem(row)
-            if table_header is None:
-                table_header = QTableWidgetItem()
-                self.input_table.setVerticalHeaderItem(row,table_header)
-            table_header.setText(str(row+1))
-        for col in range(columns-1):
-            table_header = self.input_table.horizontalHeaderItem(col)
-            if table_header is None:
-                table_header = QTableWidgetItem()
-                self.input_table.setHorizontalHeaderItem(col, table_header)
-            table_header.setText(f'X{col+1}')
-
-        last_column_header = self.input_table.horizontalHeaderItem(columns - 1)
-        if last_column_header is None:
-            last_column_header = QTableWidgetItem()
-            self.input_table.setHorizontalHeaderItem(columns - 1, last_column_header)
-        last_column_header.setText('b')
-        self.fill_table_widgets()
-        self.input_table.resizeColumnsToContents()
-
-    @Slot()
-    def clean_matrix(self):
-        for row in range(self.input_table.rowCount()):
-            for col in range(self.input_table.columnCount()):
-                table_widget = self.input_table.item(row,col)
-                if table_widget is None:
-                    table_widget = QTableWidgetItem("")  # Crear nuevo item si no existe
-                    self.input_table.setItem(row, col, table_widget)
-                table_widget.setText("")
-    @Slot()
-    def fill_matrix_0(self):
-        for row in range(self.input_table.rowCount()):
-            for col in range(self.input_table.columnCount()):
-                table_widget:QTableWidgetItem = self.input_table.item(row,col)
-                if table_widget.text() !='':continue
-                table_widget.setText('0')
-
-    @Slot()
-    def random_matrix(self):
-        for row in range(self.input_table.rowCount()):
-            for col in range(self.input_table.columnCount()):
-                table_widget:QTableWidgetItem = self.input_table.item(row,col)
-                if table_widget.text() != '':continue
-                table_widget.setText(str(randint(-99,99)))
-
-    @Slot()
-    def fill_table_widgets(self):
-        for row in range(self.input_table.rowCount()):
-            for col in range(self.input_table.columnCount()):
-                table_widget = self.input_table.item(row,col)
-                if table_widget is None: 
-                    table_widget =QTableWidgetItem()
-                    self.input_table.setItem(row,col,table_widget)
-
-    def generate_matrix(self) ->list[list] | None:
-        matriz = []
-        for row in range(self.input_table.rowCount()):
-            row_ = []
-            for col in range(self.input_table.columnCount()):
-                table_widget = self.input_table.item(row,col)
-                if table_widget is None: return None
-                try:
-                    num = float(table_widget.text())
-                except ValueError:
-                    return None
-                row_.append(num)
-            matriz.append(row_)
-        return matriz
-    
-    def insertar_matriz(self,matriz) ->None:
-        if len(matriz) != self.row_spinbox.value() or len(matriz[0]) != self.column_spinbox.value():
-            warning_box("Error inesperado")
-            return
-        for row in range(self.input_table.rowCount()):
-            for col in range(self.input_table.columnCount()):
-                table_widget = self.input_table.item(row,col)
-                if table_widget is None: 
-                    table_widget =QTableWidgetItem()
-                    self.input_table.setItem(row,col,table_widget)
-                table_widget.setText(str(matriz[row][col]))
-                
 

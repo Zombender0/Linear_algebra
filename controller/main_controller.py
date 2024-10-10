@@ -1,13 +1,14 @@
-from views.message_box import warning_box
-from views.ui_main_window import Ui_MainWindow 
-from views.ui_solution_window import Ui_main_widget as Ui_solution
-from views.ui_vector_window import Ui_main_widget as Ui_vector
+from helpers.box_helper import *
+from helpers.matrix_helper import *
+from views.generated_python_files.ui_main_window import Ui_MainWindow 
+from views.generated_python_files.ui_solution_window import Ui_main_widget as Ui_solution
+from views.generated_python_files.ui_vector_window import Ui_main_widget as Ui_vector
 from models.GaussJordan import GaussJordan
-from PySide6.QtCore import Slot,Qt
+from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QTableWidgetItem,QMainWindow,QWidget
 from random import randint
 
-class MatrixController():
+class MainController():
     def __init__(self,MainWindow):
         self.main_window = Ui_MainWindow(MainWindow)
         self.connect_main_window_buttons()
@@ -31,7 +32,7 @@ class MatrixController():
         if matriz == None:
             warning_box("No se pudo generar esta tabla")
             return
-        if not MatrixController.__valid_matriz(matriz):
+        if not MainController.__valid_matriz(matriz):
             return
         op_solution = self.main_window.table_solution_matrix_combobox.currentData()
         match op_solution:
@@ -39,7 +40,6 @@ class MatrixController():
                 self.open_solution_window(GaussJordan(matriz))
             case 'vxv':
                 self.open_vector_window(GaussJordan(matriz))
-                pass
             case _:
                 warning_box("Seleccione una opcion para resolver")
 
@@ -174,7 +174,7 @@ class MatrixController():
         if matriz == None:
             warning_box("No se pudo generar esta tabla")
             return
-        if not MatrixController.__valid_matriz(matriz):
+        if not MainController.__valid_matriz(matriz):
             return
         matriz_transpuesta = GaussJordan.obtener_matriz_transpuesta(matriz)
         self.main_window.column_spinbox.setValue(len(matriz_transpuesta[0]))

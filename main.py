@@ -1,4 +1,4 @@
-from controller.controller import MatrixController
+from controller.main_controller import MatrixController
 from PySide6.QtWidgets import QMainWindow, QApplication
 from sys import argv, exit
 

@@ -4,7 +4,7 @@ def warning_box(message):
     box = QMessageBox()
     box.setIcon(QMessageBox.Critical)
     box.setText(message)
-    box.setWindowTitle('Error al ingresar datos.')
+    box.setWindowTitle('Error.')
     box.setStandardButtons(QMessageBox.Ok)
     return box.exec()
     
