@@ -69,7 +69,7 @@ class MatrixController():
         self.vector_window.vxv_row_spinbox.valueChanged.connect(self.vxv_change_row_vector)
         self.vector_window.vxv_solve_scalar_button.clicked.connect(self.vxv_show_scalar)
         self.vector_window.mxv_solution_button.clicked.connect(self.mxv_show_scalar)
-
+        self.vector_window.mxm_solution_button.clicked.connect(lambda: self.mxm_generate_matrix_c_button())
     @Slot()
     def vxv_change_row_vector(self):
         row_number = self.vector_window.vxv_row_spinbox.value()
@@ -183,6 +183,44 @@ class MatrixController():
         self.main_window.insertar_matriz(matriz_transpuesta)
         self.main_window.input_table.resizeColumnsToContents()
 
+    def get_matrix_a(self) ->list[list] | None:
+        matriz = []
+        for row in range(self.vector_window.mxm_a_table.rowCount()):
+            row_ = []
+            for col in range(self.vector_window.mxm_a_table.columnCount()):
+                table_widget = self.vector_window.mxm_a_table.item(row,col)
+                if table_widget is None: return None
+                try:
+                    num = float(table_widget.text())
+                except ValueError:
+                    return None
+                row_.append(num)
+            matriz.append(row_)
+        return matriz
+    
+    def get_matrix_b(self) ->list[list] | None:
+        matriz = []
+        for row in range(self.vector_window.mxm_b_table.rowCount()):
+            row_ = []
+            for col in range(self.vector_window.mxm_b_table.columnCount()):
+                table_widget = self.vector_window.mxm_b_table.item(row,col)
+                if table_widget is None: return None
+                try:
+                    num = float(table_widget.text())
+                except ValueError:
+                    return None
+                row_.append(num)
+            matriz.append(row_)
+        return matriz
+    @Slot()
+    def mxm_generate_matrix_c_button(self):
+        matrix_a = self.get_matrix_a()
+        matrix_b = self.get_matrix_b()
+        if matrix_a is None or matrix_b is None:
+            warning_box('No se pudo generar la Matriz C')
+            return
+        matrix_c =  GaussJordan.obtener_matriz_multiplicada(matrix_a,matrix_b)
+        self.vector_window.mxm_set_matrix_c(matrix_c)
     @staticmethod
     def __valid_matriz(matriz: list[list],transposition=False) ->bool:
         if matriz == []:

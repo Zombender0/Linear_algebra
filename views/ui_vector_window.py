@@ -697,8 +697,9 @@ class Ui_main_widget(object):
         self.vxv_row_spinbox.setValue(1)
         self.mxv_column_add_vector_button.clicked.connect(lambda: self.add_vector)
         self.mxv_column_substact_vector_button.clicked.connect(lambda: self.delete_vector)
-        self.mxm_add_column_button.clicked.connect(lambda: self.mxm_add_column_table_b)
-        self.mxm_substract_column_button.clicked.connect(lambda: self.mxm_substract_column_table_b)
+        self.mxm_add_column_button.clicked.connect(lambda: self.mxm_add_column_table_b())
+        self.mxm_substract_column_button.clicked.connect(lambda: self.mxm_substract_column_table_b())
+        self.mxm_b_table.setRowCount(self.mxm_a_table.rowCount())
         self.retranslateUi(main_widget)
 
         self.tab_widget.setCurrentIndex(1)
@@ -880,4 +881,14 @@ class Ui_main_widget(object):
         self.mxm_b_table.setColumnCount(column_count-1)
 
     def mxm_set_matrix_c(self,matrix_c):
-        pass
+        filas = len(matrix_c)
+        columnas = len(matrix_c[0])
+        self.mxm_c_matrix.setRowCount(filas)
+        self.mxm_c_matrix.setColumnCount(columnas)
+        for i in range(filas):
+            for j in range(columnas):
+                item = self.mxm_c_matrix.item(i,j)
+                if item is None:
+                    item = QTableWidgetItem()
+                    self.mxm_c_matrix.setItem(i,j,item)
+                item.setText(str(matrix_c[i][j]))
