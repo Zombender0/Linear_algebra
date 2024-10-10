@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>390</width>
-    <height>382</height>
+    <width>472</width>
+    <height>474</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,11 +25,8 @@ font: 700 9pt &quot;Calibri&quot;;
 QTabWidget:pane{
 background-color: #d3d3d3
 }
-#vector_x_vector_widget{
+#vector_x_vector_widget,#matrix_x_matrix_widget,#matrix_x_vector_widget{
 background-color: #d3d3d3;
-}
-#matrix_x_vector_widget{
-background-color:#d3d3d3;
 }
 QTabBar::tab{
 background-color: #80857C;
@@ -123,7 +120,7 @@ QScrollBar {
    <item>
     <widget class="QTabWidget" name="tab_widget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="vector_x_vector_widget">
       <attribute name="title">
@@ -208,6 +205,12 @@ max-width:10px;
                 </property>
                 <item alignment="Qt::AlignmentFlag::AlignTop">
                  <widget class="QTableWidget" name="vxv_row_vector">
+                  <property name="minimumSize">
+                   <size>
+                    <width>230</width>
+                    <height>0</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
@@ -428,35 +431,62 @@ max-width:10px;
       <layout class="QVBoxLayout" name="verticalLayout_18">
        <item>
         <widget class="QWidget" name="mxm_options_widget" native="true">
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="0,0">
+          <property name="spacing">
+           <number>10</number>
+          </property>
           <property name="leftMargin">
            <number>0</number>
           </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QWidget" name="mxv_matrix_vector_widget_2" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_14" stretch="10,100">
+           <widget class="QWidget" name="mxm_matrix_vector_widget" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_13" stretch="10,100">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
              <item>
-              <widget class="QWidget" name="mxv_spinbox_widget_2" native="true">
-               <layout class="QVBoxLayout" name="verticalLayout_15">
+              <widget class="QWidget" name="mxm_spinbox_widget" native="true">
+               <layout class="QVBoxLayout" name="verticalLayout_14">
                 <property name="spacing">
                  <number>6</number>
                 </property>
                 <property name="leftMargin">
-                 <number>9</number>
+                 <number>0</number>
                 </property>
                 <property name="topMargin">
-                 <number>9</number>
+                 <number>0</number>
                 </property>
                 <property name="rightMargin">
-                 <number>9</number>
+                 <number>0</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>9</number>
+                 <number>0</number>
                 </property>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="mxv_row_label_2">
+                 <widget class="QLabel" name="mxm_row_label">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>28</height>
+                   </size>
+                  </property>
                   <property name="text">
-                   <string>Matriz</string>
+                   <string>Matriz A</string>
                   </property>
                  </widget>
                 </item>
@@ -464,13 +494,13 @@ max-width:10px;
               </widget>
              </item>
              <item>
-              <widget class="QWidget" name="mxv_row_vector_widget_2" native="true">
+              <widget class="QWidget" name="mxm_a_widget" native="true">
                <property name="styleSheet">
                 <string notr="true">QTabBar:tab{
 max-width:10px;
 }</string>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_16">
+               <layout class="QVBoxLayout" name="verticalLayout_15">
                 <property name="leftMargin">
                  <number>0</number>
                 </property>
@@ -484,7 +514,19 @@ max-width:10px;
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QTableWidget" name="mxv_row_vector_2">
+                 <widget class="QTableWidget" name="mxm_a_table">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>230</width>
+                    <height>0</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
@@ -545,6 +587,9 @@ max-width:10px;
                    <property name="text">
                     <string/>
                    </property>
+                   <property name="flags">
+                    <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+                   </property>
                   </item>
                  </widget>
                 </item>
@@ -556,7 +601,7 @@ max-width:10px;
           </item>
           <item>
            <widget class="QWidget" name="mxm_column_vector_widget" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_17">
+            <layout class="QVBoxLayout" name="verticalLayout_16">
              <property name="spacing">
               <number>4</number>
              </property>
@@ -572,18 +617,136 @@ max-width:10px;
              <property name="bottomMargin">
               <number>0</number>
              </property>
-             <item alignment="Qt::AlignmentFlag::AlignLeft">
-              <widget class="QLabel" name="label_2">
-               <property name="text">
-                <string>Vector</string>
-               </property>
+             <item>
+              <widget class="QWidget" name="mmv_column_vector_options_widget" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_9">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
+                 <widget class="QLabel" name="mxm_column_vector_label">
+                  <property name="font">
+                   <font>
+                    <family>Calibri</family>
+                    <pointsize>9</pointsize>
+                    <italic>false</italic>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Matriz B</string>
+                  </property>
+                 </widget>
+                </item>
+                <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter">
+                 <widget class="QWidget" name="mxm_column_widget" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_19">
+                   <property name="spacing">
+                    <number>5</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item alignment="Qt::AlignmentFlag::AlignTop">
+                    <widget class="QLabel" name="mxm_column_label">
+                     <property name="text">
+                      <string>Cantidad de columnas</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="mxm_column_buttons_widget" native="true">
+                     <layout class="QHBoxLayout" name="horizontalLayout_10">
+                      <property name="spacing">
+                       <number>7</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QPushButton" name="mxm_add_column_button">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="qrc_files/resources.qrc">
+                          <normaloff>:/icon/Images/plus.png</normaloff>:/icon/Images/plus.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>12</width>
+                          <height>16</height>
+                         </size>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="mxm_substract_column_button">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="qrc_files/resources.qrc">
+                          <normaloff>:/icon/Images/substract.png</normaloff>:/icon/Images/substract.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>12</width>
+                          <height>16</height>
+                         </size>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
              <item>
-              <widget class="QTableWidget" name="mxv_column_vector_2">
+              <widget class="QTableWidget" name="mxm_b_table">
                <property name="maximumSize">
                 <size>
-                 <width>50</width>
+                 <width>16777215</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -649,80 +812,60 @@ max-width:10px;
        </item>
        <item>
         <widget class="QWidget" name="mxm_solution_widget" native="true">
-         <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="100,25">
+         <layout class="QVBoxLayout" name="verticalLayout_17">
+          <property name="spacing">
+           <number>3</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
           <property name="topMargin">
            <number>0</number>
           </property>
-          <item>
-           <widget class="QWidget" name="mxm_solution_options" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_13">
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item alignment="Qt::AlignmentFlag::AlignLeft">
+           <widget class="QWidget" name="mxm_solution_button_widget" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_20">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
              <property name="topMargin">
               <number>0</number>
              </property>
-             <item alignment="Qt::AlignmentFlag::AlignHCenter">
-              <widget class="QPushButton" name="mxm_solve_scalar_button">
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="mxm_solution_button">
+               <property name="font">
+                <font>
+                 <family>Calibri</family>
+                 <pointsize>9</pointsize>
+                 <italic>false</italic>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
-                <string>Obtener vector escalar</string>
+                <string>Matriz C</string>
                </property>
-              </widget>
-             </item>
-             <item alignment="Qt::AlignmentFlag::AlignHCenter">
-              <widget class="QTableWidget" name="mxm_table_scalar">
-               <property name="styleSheet">
-                <string notr="true">max-width: 4em;</string>
-               </property>
-               <attribute name="horizontalHeaderVisible">
-                <bool>true</bool>
-               </attribute>
-               <attribute name="horizontalHeaderCascadingSectionResizes">
-                <bool>false</bool>
-               </attribute>
-               <attribute name="horizontalHeaderDefaultSectionSize">
-                <number>45</number>
-               </attribute>
-               <attribute name="verticalHeaderVisible">
-                <bool>false</bool>
-               </attribute>
-               <attribute name="verticalHeaderCascadingSectionResizes">
-                <bool>false</bool>
-               </attribute>
-               <row>
-                <property name="text">
-                 <string>Nueva fila</string>
-                </property>
-               </row>
-               <row>
-                <property name="text">
-                 <string>Nueva fila</string>
-                </property>
-               </row>
-               <row>
-                <property name="text">
-                 <string>Nueva fila</string>
-                </property>
-               </row>
-               <column>
-                <property name="text">
-                 <string>Escalar</string>
-                </property>
-               </column>
               </widget>
              </item>
             </layout>
            </widget>
           </item>
           <item>
-           <spacer name="mxm_horizontal_spacer">
-            <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
+           <widget class="QTableWidget" name="mxm_c_matrix"/>
           </item>
          </layout>
         </widget>
@@ -814,6 +957,12 @@ max-width:10px;
                 </property>
                 <item>
                  <widget class="QTableWidget" name="mxv_row_vector">
+                  <property name="minimumSize">
+                   <size>
+                    <width>230</width>
+                    <height>0</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>

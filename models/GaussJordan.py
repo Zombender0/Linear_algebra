@@ -259,6 +259,16 @@ class GaussJordan():
     def obtener_matriz_transpuesta(normal_matrix) ->list[list]:
         matriz_transpuesta = [[normal_matrix[fila][col] for fila in range(len(normal_matrix))] 
                       for col in range(len(normal_matrix[0]))]
-
         return matriz_transpuesta
+    
+    @staticmethod
+    def obtener_matriz_multiplicada(matrix_a, matrix_b)->list[list]:
+        if len(matrix_a[0]) != len(matrix_b):
+            return None
+        matrix_c = [[0 for i in range(len(matrix_b[0]))] for i in range(len(matrix_a))]
+        for i in range(len(matrix_a)):
+            for j in range(len(matrix_b[0])): 
+                for k in range(len(matrix_b)):
+                    matrix_c[i][j] += matrix_a[i][k] * matrix_b[k][j]
+        return matrix_c
                 

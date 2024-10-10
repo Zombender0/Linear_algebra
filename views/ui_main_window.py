@@ -305,7 +305,7 @@ class Ui_MainWindow(object):
         self.table_random_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Matriz aleatoria", None))
         self.table_solution_matrix_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Resolver por", None))
         self.table_solution_matrix_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Reducci\u00f3n", None))
-        self.table_solution_matrix_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Aplicar vector por vector", None))
+        self.table_solution_matrix_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Vectores", None))
 
         self.table_transposition_button.setText(QCoreApplication.translate("MainWindow", u"Transponer Matriz", None))
         self.table_solve_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Resolver", None))

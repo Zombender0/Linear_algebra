@@ -184,16 +184,17 @@ class MatrixController():
         self.main_window.input_table.resizeColumnsToContents()
 
     @staticmethod
-    def __valid_matriz(matriz: list[list]) ->bool:
+    def __valid_matriz(matriz: list[list],transposition=False) ->bool:
         if matriz == []:
             warning_box('La matriz ingresada es invalida')
             return False
         width = len(matriz)
         length = len(matriz[0])
         for row in range(width):
-            if all(matriz[row][col] == 0 for col in range(length-1)) and matriz[row][-1] !=0:
-                warning_box("La matriz ingresada no tiene solucion")
-                return False
+            if transposition:
+                if all(matriz[row][col] == 0 for col in range(length-1)) and matriz[row][-1] !=0:
+                    warning_box("La matriz ingresada no tiene solucion")
+                    return False
             if len(matriz[row]) != length:
                 warning_box('La matriz ingresada esta incompleta')
                 return False
