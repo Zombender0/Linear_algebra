@@ -19,11 +19,12 @@ from PySide6.QtWidgets import (QApplication, QHBoxLayout, QHeaderView, QLabel,
     QPushButton, QSizePolicy, QTabWidget, QTableWidget,
     QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
 from views.qt_files.qrc_files import resources_rc
+
 class Ui_main_widget(object):
-    def setupUi(self, main_widget):
+    def setupUi(self, main_widget:QWidget):
         if not main_widget.objectName():
             main_widget.setObjectName(u"main_widget")
-        main_widget.resize(472, 362)
+        main_widget.resize(600, 450)
         icon = QIcon()
         icon.addFile(u":/icon/Images/grid.ico", QSize(), QIcon.Normal, QIcon.Off)
         main_widget.setWindowIcon(icon)
@@ -59,6 +60,7 @@ class Ui_main_widget(object):
 "QTableWidget{\n"
 "background-color: #819299; \n"
 "gridline-color: #fff;  \n"
+"color: #fff;\n"
 "}\n"
 "\n"
 "QHeaderView{\n"
@@ -122,12 +124,12 @@ class Ui_main_widget(object):
 
         self.options_tab_horizontal_layout.addWidget(self.back_tab_button, 0, Qt.AlignmentFlag.AlignLeft)
 
-        self.step_label = QLabel(self.options_tab_widget)
-        self.step_label.setObjectName(u"step_label")
-        self.step_label.setStyleSheet(u"border-radius:6px;\n"
+        self.label = QLabel(self.options_tab_widget)
+        self.label.setObjectName(u"label")
+        self.label.setStyleSheet(u"border-radius:6px;\n"
 "font: 700 9pt \"Calibri\";")
 
-        self.options_tab_horizontal_layout.addWidget(self.step_label, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.options_tab_horizontal_layout.addWidget(self.label, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.next_tab_button = QPushButton(self.options_tab_widget)
         self.next_tab_button.setObjectName(u"next_tab_button")
@@ -136,102 +138,25 @@ class Ui_main_widget(object):
 "height:30px;\n"
 "padding:0\n"
 "")
-
         self.options_tab_horizontal_layout.addWidget(self.next_tab_button, 0, Qt.AlignmentFlag.AlignRight)
 
 
         self.main_widget_vertical_layout.addWidget(self.options_tab_widget)
 
-        self.tabWidget = QTabWidget(main_widget)
-        self.tabWidget.setObjectName(u"tabWidget")
-        self.p1 = QWidget()
-        self.p1.setObjectName(u"p1")
-        self.verticalLayout = QVBoxLayout(self.p1)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.s_table = QTableWidget(self.p1)
-        if (self.s_table.columnCount() < 3):
-            self.s_table.setColumnCount(3)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.s_table.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.s_table.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.s_table.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        if (self.s_table.rowCount() < 3):
-            self.s_table.setRowCount(3)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.s_table.setVerticalHeaderItem(0, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.s_table.setVerticalHeaderItem(1, __qtablewidgetitem4)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        self.s_table.setVerticalHeaderItem(2, __qtablewidgetitem5)
-        __qtablewidgetitem6 = QTableWidgetItem()
-        self.s_table.setItem(0, 0, __qtablewidgetitem6)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        self.s_table.setItem(1, 1, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.s_table.setItem(2, 2, __qtablewidgetitem8)
-        self.s_table.setObjectName(u"s_table")
+        self.tab_widget = QTabWidget(main_widget)
+        self.tab_widget.setObjectName(u"tabWidget")
 
-        self.verticalLayout.addWidget(self.s_table)
-
-        self.solution_list = QTextEdit(self.p1)
-        self.solution_list.setObjectName(u"solution_list")
-
-        self.verticalLayout.addWidget(self.solution_list)
-
-        self.tabWidget.addTab(self.p1, "")
-
-        self.main_widget_vertical_layout.addWidget(self.tabWidget)
+        self.main_widget_vertical_layout.addWidget(self.tab_widget)
 
         self.main_widget_vertical_layout.setStretch(0, 1)
         self.main_widget_vertical_layout.setStretch(1, 10)
 
         self.retranslateUi(main_widget)
 
-        self.tabWidget.setCurrentIndex(0)
-
-
         QMetaObject.connectSlotsByName(main_widget)
-    # setupUi
 
     def retranslateUi(self, main_widget):
-        main_widget.setWindowTitle(QCoreApplication.translate("main_widget", u"Soluci\u00f3n", None))
+        main_widget.setWindowTitle(QCoreApplication.translate("main_widget", u"Solucion por reduccion", None))
         self.back_tab_button.setText("")
-        self.step_label.setText(QCoreApplication.translate("main_widget", u"Procedimiento", None))
+        self.label.setText(QCoreApplication.translate("main_widget", u"Procedimiento", None))
         self.next_tab_button.setText("")
-        ___qtablewidgetitem = self.s_table.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("main_widget", u"Nueva columna", None));
-        ___qtablewidgetitem1 = self.s_table.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("main_widget", u"Nueva columna", None));
-        ___qtablewidgetitem2 = self.s_table.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("main_widget", u"Nueva columna", None));
-        ___qtablewidgetitem3 = self.s_table.verticalHeaderItem(0)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
-        ___qtablewidgetitem4 = self.s_table.verticalHeaderItem(1)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
-        ___qtablewidgetitem5 = self.s_table.verticalHeaderItem(2)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
-
-        __sortingEnabled = self.s_table.isSortingEnabled()
-        self.s_table.setSortingEnabled(False)
-        ___qtablewidgetitem6 = self.s_table.item(0, 0)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("main_widget", u"magic", None));
-        ___qtablewidgetitem7 = self.s_table.item(1, 1)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("main_widget", u"is", None));
-        ___qtablewidgetitem8 = self.s_table.item(2, 2)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("main_widget", u"awesome", None));
-        self.s_table.setSortingEnabled(__sortingEnabled)
-
-        self.solution_list.setHtml(QCoreApplication.translate("main_widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.p1), QCoreApplication.translate("main_widget", u"p1", None))
-    # retranslateUi
-

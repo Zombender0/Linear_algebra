@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'vector_windowzRRCvp.ui'
+## Form generated from reading UI file 'vector_windowNTUIuL.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -25,13 +25,13 @@ class Ui_main_widget(object):
     def setupUi(self, main_widget):
         if not main_widget.objectName():
             main_widget.setObjectName(u"main_widget")
-        main_widget.resize(472, 474)
+        main_widget.resize(492, 408)
         icon = QIcon()
         icon.addFile(u":/icon/Images/math.ico", QSize(), QIcon.Normal, QIcon.Off)
         main_widget.setWindowIcon(icon)
         main_widget.setStyleSheet(u"#main_widget{\n"
 "background-color: #d3d3d3;\n"
-"font: 700 9pt \"Calibri\";\n"
+"font: 700 11pt \"Calibri\";\n"
 "}\n"
 "QTabWidget:pane{\n"
 "background-color: #d3d3d3\n"
@@ -75,15 +75,15 @@ class Ui_main_widget(object):
 "}\n"
 "QSpinBox:down-button:hover{\n"
 "background-color: #5c636f;\n"
-"}\n"
-""
-                        "QPushButton{\n"
+"}"
+                        "\n"
+"QPushButton{\n"
 "border: 2px solid #404040;\n"
 "border-radius: 8px;\n"
 "padding: 1px 5px;\n"
 "color: #fff;\n"
 "background-color: #6c757d;\n"
-"font: 700 9pt \"Calibri\";\n"
+"font: 700 10pt \"Calibri\";\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -98,7 +98,7 @@ class Ui_main_widget(object):
 "    border:2px solid #404040;        \n"
 "    border-radius: 4px;           \n"
 "    padding: 2.5px 5px;            \n"
-"font: 700 9pt \"Calibri\";\n"
+"font: 700 10pt \"Calibri\";\n"
 "}\n"
 "\n"
 "QTableWidget{\n"
@@ -125,9 +125,9 @@ class Ui_main_widget(object):
 "background-color: #B6BEC2\n"
 "}\n"
 "QScrollBar {\n"
-"	background: #a9a9a9;\n"
-""
-                        "}")
+"	background: #a9a"
+                        "9a9;\n"
+"}")
         self.verticalLayout = QVBoxLayout(main_widget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.vector_tab = QTabWidget(main_widget)
@@ -140,12 +140,15 @@ class Ui_main_widget(object):
         self.vxv_options_widget = QWidget(self.vector_x_vector_widget)
         self.vxv_options_widget.setObjectName(u"vxv_options_widget")
         self.horizontalLayout = QHBoxLayout(self.vxv_options_widget)
+        self.horizontalLayout.setSpacing(10)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, -1, -1, -1)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.vxv_matrix_vector_widget = QWidget(self.vxv_options_widget)
         self.vxv_matrix_vector_widget.setObjectName(u"vxv_matrix_vector_widget")
         self.verticalLayout_3 = QVBoxLayout(self.vxv_matrix_vector_widget)
+        self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.vxv_spinbox_widget = QWidget(self.vxv_matrix_vector_widget)
         self.vxv_spinbox_widget.setObjectName(u"vxv_spinbox_widget")
         self.verticalLayout_4 = QVBoxLayout(self.vxv_spinbox_widget)
@@ -173,7 +176,6 @@ class Ui_main_widget(object):
 "}")
         self.verticalLayout_5 = QVBoxLayout(self.vxv_row_vector_widget)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.vxv_row_vector = QTableWidget(self.vxv_row_vector_widget)
         if (self.vxv_row_vector.columnCount() < 4):
             self.vxv_row_vector.setColumnCount(4)
@@ -202,7 +204,34 @@ class Ui_main_widget(object):
         self.vxv_row_vector.verticalHeader().setDefaultSectionSize(22)
         self.vxv_row_vector.verticalHeader().setProperty("showSortIndicator", False)
 
-        self.verticalLayout_5.addWidget(self.vxv_row_vector, 0, Qt.AlignmentFlag.AlignTop)
+        self.verticalLayout_5.addWidget(self.vxv_row_vector)
+
+        self.vxv_solution_options = QWidget(self.vxv_row_vector_widget)
+        self.vxv_solution_options.setObjectName(u"vxv_solution_options")
+        self.horizontalLayout_3 = QHBoxLayout(self.vxv_solution_options)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.vxv_solve_scalar_button = QPushButton(self.vxv_solution_options)
+        self.vxv_solve_scalar_button.setObjectName(u"vxv_solve_scalar_button")
+
+        self.horizontalLayout_3.addWidget(self.vxv_solve_scalar_button, 0, Qt.AlignmentFlag.AlignLeft)
+
+        self.vxv_scalar_label = QLabel(self.vxv_solution_options)
+        self.vxv_scalar_label.setObjectName(u"vxv_scalar_label")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.vxv_scalar_label.sizePolicy().hasHeightForWidth())
+        self.vxv_scalar_label.setSizePolicy(sizePolicy)
+        self.vxv_scalar_label.setMaximumSize(QSize(16777215, 24))
+        self.vxv_scalar_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_3.addWidget(self.vxv_scalar_label, 0, Qt.AlignmentFlag.AlignLeft)
+
+        self.horizontalLayout_3.setStretch(0, 1)
+        self.horizontalLayout_3.setStretch(1, 100)
+
+        self.verticalLayout_5.addWidget(self.vxv_solution_options)
 
 
         self.verticalLayout_3.addWidget(self.vxv_row_vector_widget)
@@ -219,8 +248,13 @@ class Ui_main_widget(object):
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.vxv_column_vector_label = QLabel(self.vxv_column_vector_widget)
         self.vxv_column_vector_label.setObjectName(u"vxv_column_vector_label")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.vxv_column_vector_label.sizePolicy().hasHeightForWidth())
+        self.vxv_column_vector_label.setSizePolicy(sizePolicy1)
 
-        self.verticalLayout_6.addWidget(self.vxv_column_vector_label, 0, Qt.AlignmentFlag.AlignLeft)
+        self.verticalLayout_6.addWidget(self.vxv_column_vector_label, 0, Qt.AlignmentFlag.AlignTop)
 
         self.vxv_column_vector = QTableWidget(self.vxv_column_vector_widget)
         if (self.vxv_column_vector.columnCount() < 1):
@@ -238,7 +272,13 @@ class Ui_main_widget(object):
         __qtablewidgetitem9 = QTableWidgetItem()
         self.vxv_column_vector.setVerticalHeaderItem(3, __qtablewidgetitem9)
         self.vxv_column_vector.setObjectName(u"vxv_column_vector")
-        self.vxv_column_vector.setMaximumSize(QSize(50, 16777215))
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.vxv_column_vector.sizePolicy().hasHeightForWidth())
+        self.vxv_column_vector.setSizePolicy(sizePolicy2)
+        self.vxv_column_vector.setMinimumSize(QSize(50, 0))
+        self.vxv_column_vector.setMaximumSize(QSize(50, 1000))
         self.vxv_column_vector.horizontalHeader().setVisible(True)
         self.vxv_column_vector.horizontalHeader().setMinimumSectionSize(10)
         self.vxv_column_vector.horizontalHeader().setDefaultSectionSize(35)
@@ -251,48 +291,18 @@ class Ui_main_widget(object):
 
         self.verticalLayout_6.addWidget(self.vxv_column_vector)
 
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.horizontalLayout.addWidget(self.vxv_column_vector_widget)
+        self.verticalLayout_6.addItem(self.verticalSpacer)
+
+        self.verticalLayout_6.setStretch(1, 100)
+
+        self.horizontalLayout.addWidget(self.vxv_column_vector_widget, 0, Qt.AlignmentFlag.AlignRight)
 
 
         self.verticalLayout_2.addWidget(self.vxv_options_widget)
 
-        self.vxv_solution_widget = QWidget(self.vector_x_vector_widget)
-        self.vxv_solution_widget.setObjectName(u"vxv_solution_widget")
-        self.horizontalLayout_2 = QHBoxLayout(self.vxv_solution_widget)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(-1, 0, -1, -1)
-        self.vxv_solution_options = QWidget(self.vxv_solution_widget)
-        self.vxv_solution_options.setObjectName(u"vxv_solution_options")
-        self.horizontalLayout_3 = QHBoxLayout(self.vxv_solution_options)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(-1, 0, -1, -1)
-        self.vxv_solve_scalar_button = QPushButton(self.vxv_solution_options)
-        self.vxv_solve_scalar_button.setObjectName(u"vxv_solve_scalar_button")
-
-        self.horizontalLayout_3.addWidget(self.vxv_solve_scalar_button, 0, Qt.AlignmentFlag.AlignLeft)
-
-        self.vxv_scalar_label = QLabel(self.vxv_solution_options)
-        self.vxv_scalar_label.setObjectName(u"vxv_scalar_label")
-        self.vxv_scalar_label.setMaximumSize(QSize(16777215, 24))
-        self.vxv_scalar_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.horizontalLayout_3.addWidget(self.vxv_scalar_label, 0, Qt.AlignmentFlag.AlignLeft)
-
-
-        self.horizontalLayout_2.addWidget(self.vxv_solution_options)
-
-        self.vxv_horizontal_spacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.horizontalLayout_2.addItem(self.vxv_horizontal_spacer)
-
-        self.horizontalLayout_2.setStretch(0, 5)
-        self.horizontalLayout_2.setStretch(1, 100)
-
-        self.verticalLayout_2.addWidget(self.vxv_solution_widget)
-
         self.verticalLayout_2.setStretch(0, 5)
-        self.verticalLayout_2.setStretch(1, 1)
         self.vector_tab.addTab(self.vector_x_vector_widget, "")
         self.matrix_x_matrix_widget = QWidget()
         self.matrix_x_matrix_widget.setObjectName(u"matrix_x_matrix_widget")
@@ -349,11 +359,8 @@ class Ui_main_widget(object):
         __qtablewidgetitem14.setFlags(Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
         self.mxm_a_table.setItem(0, 0, __qtablewidgetitem14)
         self.mxm_a_table.setObjectName(u"mxm_a_table")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.mxm_a_table.sizePolicy().hasHeightForWidth())
-        self.mxm_a_table.setSizePolicy(sizePolicy)
+        sizePolicy2.setHeightForWidth(self.mxm_a_table.sizePolicy().hasHeightForWidth())
+        self.mxm_a_table.setSizePolicy(sizePolicy2)
         self.mxm_a_table.setMinimumSize(QSize(230, 0))
         self.mxm_a_table.setMaximumSize(QSize(16777215, 16777215))
         self.mxm_a_table.setStyleSheet(u"QTableWidget:item{\n"
@@ -387,24 +394,24 @@ class Ui_main_widget(object):
         self.mmv_b_matrix_options_widget = QWidget(self.mxm_b_matrix_widget)
         self.mmv_b_matrix_options_widget.setObjectName(u"mmv_b_matrix_options_widget")
         self.horizontalLayout_9 = QHBoxLayout(self.mmv_b_matrix_options_widget)
-        self.horizontalLayout_9.setSpacing(0)
+        self.horizontalLayout_9.setSpacing(6)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.mxm_b_matrix_label = QLabel(self.mmv_b_matrix_options_widget)
         self.mxm_b_matrix_label.setObjectName(u"mxm_b_matrix_label")
         font = QFont()
         font.setFamilies([u"Calibri"])
-        font.setPointSize(9)
+        font.setPointSize(10)
         font.setBold(True)
         font.setItalic(False)
         self.mxm_b_matrix_label.setFont(font)
 
-        self.horizontalLayout_9.addWidget(self.mxm_b_matrix_label, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+        self.horizontalLayout_9.addWidget(self.mxm_b_matrix_label, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.mxm_column_widget = QWidget(self.mmv_b_matrix_options_widget)
         self.mxm_column_widget.setObjectName(u"mxm_column_widget")
-        sizePolicy.setHeightForWidth(self.mxm_column_widget.sizePolicy().hasHeightForWidth())
-        self.mxm_column_widget.setSizePolicy(sizePolicy)
+        sizePolicy2.setHeightForWidth(self.mxm_column_widget.sizePolicy().hasHeightForWidth())
+        self.mxm_column_widget.setSizePolicy(sizePolicy2)
         self.verticalLayout_19 = QVBoxLayout(self.mxm_column_widget)
         self.verticalLayout_19.setSpacing(5)
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
@@ -417,7 +424,7 @@ class Ui_main_widget(object):
         self.mxm_column_buttons_widget = QWidget(self.mxm_column_widget)
         self.mxm_column_buttons_widget.setObjectName(u"mxm_column_buttons_widget")
         self.horizontalLayout_10 = QHBoxLayout(self.mxm_column_buttons_widget)
-        self.horizontalLayout_10.setSpacing(7)
+        self.horizontalLayout_10.setSpacing(10)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.mxm_add_column_button = QPushButton(self.mxm_column_buttons_widget)
@@ -452,23 +459,19 @@ class Ui_main_widget(object):
             self.mxm_b_table.setColumnCount(1)
         __qtablewidgetitem15 = QTableWidgetItem()
         self.mxm_b_table.setHorizontalHeaderItem(0, __qtablewidgetitem15)
-        if (self.mxm_b_table.rowCount() < 4):
-            self.mxm_b_table.setRowCount(4)
+        if (self.mxm_b_table.rowCount() < 2):
+            self.mxm_b_table.setRowCount(2)
         __qtablewidgetitem16 = QTableWidgetItem()
         self.mxm_b_table.setVerticalHeaderItem(0, __qtablewidgetitem16)
         __qtablewidgetitem17 = QTableWidgetItem()
         self.mxm_b_table.setVerticalHeaderItem(1, __qtablewidgetitem17)
-        __qtablewidgetitem18 = QTableWidgetItem()
-        self.mxm_b_table.setVerticalHeaderItem(2, __qtablewidgetitem18)
-        __qtablewidgetitem19 = QTableWidgetItem()
-        self.mxm_b_table.setVerticalHeaderItem(3, __qtablewidgetitem19)
         self.mxm_b_table.setObjectName(u"mxm_b_table")
         self.mxm_b_table.setMaximumSize(QSize(16777215, 16777215))
         self.mxm_b_table.horizontalHeader().setVisible(True)
         self.mxm_b_table.horizontalHeader().setMinimumSectionSize(10)
         self.mxm_b_table.horizontalHeader().setDefaultSectionSize(35)
         self.mxm_b_table.horizontalHeader().setHighlightSections(True)
-        self.mxm_b_table.verticalHeader().setVisible(False)
+        self.mxm_b_table.verticalHeader().setVisible(True)
         self.mxm_b_table.verticalHeader().setCascadingSectionResizes(False)
         self.mxm_b_table.verticalHeader().setMinimumSectionSize(35)
         self.mxm_b_table.verticalHeader().setDefaultSectionSize(35)
@@ -521,7 +524,7 @@ class Ui_main_widget(object):
         self.horizontalLayout_6 = QHBoxLayout(self.mxv_options_widget)
         self.horizontalLayout_6.setSpacing(20)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.horizontalLayout_6.setContentsMargins(0, -1, 0, -1)
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.mxv_matrix_vector_widget = QWidget(self.mxv_options_widget)
         self.mxv_matrix_vector_widget.setObjectName(u"mxv_matrix_vector_widget")
         self.verticalLayout_8 = QVBoxLayout(self.mxv_matrix_vector_widget)
@@ -552,19 +555,19 @@ class Ui_main_widget(object):
         self.mxv_matrix = QTableWidget(self.mxv_matrix_widget)
         if (self.mxv_matrix.columnCount() < 4):
             self.mxv_matrix.setColumnCount(4)
+        __qtablewidgetitem18 = QTableWidgetItem()
+        self.mxv_matrix.setHorizontalHeaderItem(0, __qtablewidgetitem18)
+        __qtablewidgetitem19 = QTableWidgetItem()
+        self.mxv_matrix.setHorizontalHeaderItem(1, __qtablewidgetitem19)
         __qtablewidgetitem20 = QTableWidgetItem()
-        self.mxv_matrix.setHorizontalHeaderItem(0, __qtablewidgetitem20)
+        self.mxv_matrix.setHorizontalHeaderItem(2, __qtablewidgetitem20)
         __qtablewidgetitem21 = QTableWidgetItem()
-        self.mxv_matrix.setHorizontalHeaderItem(1, __qtablewidgetitem21)
-        __qtablewidgetitem22 = QTableWidgetItem()
-        self.mxv_matrix.setHorizontalHeaderItem(2, __qtablewidgetitem22)
-        __qtablewidgetitem23 = QTableWidgetItem()
-        self.mxv_matrix.setHorizontalHeaderItem(3, __qtablewidgetitem23)
+        self.mxv_matrix.setHorizontalHeaderItem(3, __qtablewidgetitem21)
         if (self.mxv_matrix.rowCount() < 1):
             self.mxv_matrix.setRowCount(1)
-        __qtablewidgetitem24 = QTableWidgetItem()
-        __qtablewidgetitem24.setFlags(Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
-        self.mxv_matrix.setItem(0, 0, __qtablewidgetitem24)
+        __qtablewidgetitem22 = QTableWidgetItem()
+        __qtablewidgetitem22.setFlags(Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.mxv_matrix.setItem(0, 0, __qtablewidgetitem22)
         self.mxv_matrix.setObjectName(u"mxv_matrix")
         self.mxv_matrix.setMinimumSize(QSize(230, 0))
         self.mxv_matrix.setMaximumSize(QSize(16777215, 16777215))
@@ -607,6 +610,7 @@ class Ui_main_widget(object):
 
         self.mxv_column_vector_label = QLabel(self.mxv_column_vector_options_widget)
         self.mxv_column_vector_label.setObjectName(u"mxv_column_vector_label")
+        self.mxv_column_vector_label.setStyleSheet(u"text-align:center;")
 
         self.horizontalLayout_8.addWidget(self.mxv_column_vector_label)
 
@@ -622,18 +626,18 @@ class Ui_main_widget(object):
         self.mxv_column_vector_table = QTableWidget(self.mxv_column_vector_widget)
         if (self.mxv_column_vector_table.columnCount() < 1):
             self.mxv_column_vector_table.setColumnCount(1)
-        __qtablewidgetitem25 = QTableWidgetItem()
-        self.mxv_column_vector_table.setHorizontalHeaderItem(0, __qtablewidgetitem25)
+        __qtablewidgetitem23 = QTableWidgetItem()
+        self.mxv_column_vector_table.setHorizontalHeaderItem(0, __qtablewidgetitem23)
         if (self.mxv_column_vector_table.rowCount() < 4):
             self.mxv_column_vector_table.setRowCount(4)
+        __qtablewidgetitem24 = QTableWidgetItem()
+        self.mxv_column_vector_table.setVerticalHeaderItem(0, __qtablewidgetitem24)
+        __qtablewidgetitem25 = QTableWidgetItem()
+        self.mxv_column_vector_table.setVerticalHeaderItem(1, __qtablewidgetitem25)
         __qtablewidgetitem26 = QTableWidgetItem()
-        self.mxv_column_vector_table.setVerticalHeaderItem(0, __qtablewidgetitem26)
+        self.mxv_column_vector_table.setVerticalHeaderItem(2, __qtablewidgetitem26)
         __qtablewidgetitem27 = QTableWidgetItem()
-        self.mxv_column_vector_table.setVerticalHeaderItem(1, __qtablewidgetitem27)
-        __qtablewidgetitem28 = QTableWidgetItem()
-        self.mxv_column_vector_table.setVerticalHeaderItem(2, __qtablewidgetitem28)
-        __qtablewidgetitem29 = QTableWidgetItem()
-        self.mxv_column_vector_table.setVerticalHeaderItem(3, __qtablewidgetitem29)
+        self.mxv_column_vector_table.setVerticalHeaderItem(3, __qtablewidgetitem27)
         self.mxv_column_vector_table.setObjectName(u"mxv_column_vector_table")
         self.mxv_column_vector_table.setMaximumSize(QSize(16777215, 16777215))
         self.mxv_column_vector_table.horizontalHeader().setVisible(True)
@@ -660,7 +664,7 @@ class Ui_main_widget(object):
         self.mxv_solution_widget.setObjectName(u"mxv_solution_widget")
         self.horizontalLayout_4 = QHBoxLayout(self.mxv_solution_widget)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.mxv_solution_button_widget = QWidget(self.mxv_solution_widget)
         self.mxv_solution_button_widget.setObjectName(u"mxv_solution_button_widget")
         self.verticalLayout_12 = QVBoxLayout(self.mxv_solution_button_widget)
@@ -669,7 +673,12 @@ class Ui_main_widget(object):
         self.mxv_solution_button = QPushButton(self.mxv_solution_button_widget)
         self.mxv_solution_button.setObjectName(u"mxv_solution_button")
 
-        self.verticalLayout_12.addWidget(self.mxv_solution_button, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.verticalLayout_12.addWidget(self.mxv_solution_button, 0, Qt.AlignmentFlag.AlignLeft)
+
+        self.tableWidget = QTableWidget(self.mxv_solution_button_widget)
+        self.tableWidget.setObjectName(u"tableWidget")
+
+        self.verticalLayout_12.addWidget(self.tableWidget)
 
 
         self.horizontalLayout_4.addWidget(self.mxv_solution_button_widget)
@@ -677,8 +686,8 @@ class Ui_main_widget(object):
 
         self.verticalLayout_7.addWidget(self.mxv_solution_widget)
 
-        self.verticalLayout_7.setStretch(0, 100)
-        self.verticalLayout_7.setStretch(1, 5)
+        self.verticalLayout_7.setStretch(0, 10)
+        self.verticalLayout_7.setStretch(1, 8)
         self.vector_tab.addTab(self.matrix_x_vector_widget, "")
 
         self.verticalLayout.addWidget(self.vector_tab)
@@ -686,7 +695,7 @@ class Ui_main_widget(object):
 
         self.retranslateUi(main_widget)
 
-        self.vector_tab.setCurrentIndex(2)
+        self.vector_tab.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(main_widget)
@@ -700,6 +709,8 @@ class Ui_main_widget(object):
         self.vxv_row_vector.setSortingEnabled(False)
         self.vxv_row_vector.setSortingEnabled(__sortingEnabled)
 
+        self.vxv_solve_scalar_button.setText(QCoreApplication.translate("main_widget", u"Obtener escalar", None))
+        self.vxv_scalar_label.setText(QCoreApplication.translate("main_widget", u"Valor", None))
         self.vxv_column_vector_label.setText(QCoreApplication.translate("main_widget", u"Vector", None))
         ___qtablewidgetitem = self.vxv_column_vector.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("main_widget", u"b", None));
@@ -711,8 +722,6 @@ class Ui_main_widget(object):
         ___qtablewidgetitem3.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
         ___qtablewidgetitem4 = self.vxv_column_vector.verticalHeaderItem(3)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
-        self.vxv_solve_scalar_button.setText(QCoreApplication.translate("main_widget", u"Obtener escalar", None))
-        self.vxv_scalar_label.setText(QCoreApplication.translate("main_widget", u"Valor", None))
         self.vector_tab.setTabText(self.vector_tab.indexOf(self.vector_x_vector_widget), QCoreApplication.translate("main_widget", u"Vector por vector", None))
         self.mxm_row_label.setText(QCoreApplication.translate("main_widget", u"Matriz A", None))
 
@@ -730,10 +739,6 @@ class Ui_main_widget(object):
         ___qtablewidgetitem6.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
         ___qtablewidgetitem7 = self.mxm_b_table.verticalHeaderItem(1)
         ___qtablewidgetitem7.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
-        ___qtablewidgetitem8 = self.mxm_b_table.verticalHeaderItem(2)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
-        ___qtablewidgetitem9 = self.mxm_b_table.verticalHeaderItem(3)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
         self.mxm_solution_button.setText(QCoreApplication.translate("main_widget", u"Matriz C", None))
         self.vector_tab.setTabText(self.vector_tab.indexOf(self.matrix_x_matrix_widget), QCoreApplication.translate("main_widget", u"Matriz por matriz", None))
 #if QT_CONFIG(accessibility)
@@ -748,16 +753,16 @@ class Ui_main_widget(object):
         self.mxv_column_substact_vector_button.setText("")
         self.mxv_column_vector_label.setText(QCoreApplication.translate("main_widget", u"Vectores", None))
         self.mxv_column_add_vector_button.setText("")
-        ___qtablewidgetitem10 = self.mxv_column_vector_table.horizontalHeaderItem(0)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("main_widget", u"b", None));
-        ___qtablewidgetitem11 = self.mxv_column_vector_table.verticalHeaderItem(0)
+        ___qtablewidgetitem8 = self.mxv_column_vector_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("main_widget", u"b", None));
+        ___qtablewidgetitem9 = self.mxv_column_vector_table.verticalHeaderItem(0)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
+        ___qtablewidgetitem10 = self.mxv_column_vector_table.verticalHeaderItem(1)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
+        ___qtablewidgetitem11 = self.mxv_column_vector_table.verticalHeaderItem(2)
         ___qtablewidgetitem11.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
-        ___qtablewidgetitem12 = self.mxv_column_vector_table.verticalHeaderItem(1)
+        ___qtablewidgetitem12 = self.mxv_column_vector_table.verticalHeaderItem(3)
         ___qtablewidgetitem12.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
-        ___qtablewidgetitem13 = self.mxv_column_vector_table.verticalHeaderItem(2)
-        ___qtablewidgetitem13.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
-        ___qtablewidgetitem14 = self.mxv_column_vector_table.verticalHeaderItem(3)
-        ___qtablewidgetitem14.setText(QCoreApplication.translate("main_widget", u"Nueva fila", None));
         self.mxv_solution_button.setText(QCoreApplication.translate("main_widget", u"Escalares", None))
         self.vector_tab.setTabText(self.vector_tab.indexOf(self.matrix_x_vector_widget), QCoreApplication.translate("main_widget", u"Matriz por vector", None))
     # retranslateUi

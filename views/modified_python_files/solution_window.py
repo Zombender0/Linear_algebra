@@ -2,16 +2,13 @@ from views.generated_python_files.ui_solution_window import Ui_main_widget as Ge
 from PySide6.QtWidgets import (QHBoxLayout, QLabel,QListWidget, QPushButton,
     QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,QTextEdit,
     QWidget)
+
 from PySide6.QtCore import Slot
 from helpers.matrix_helper import insert_data_to_table
-
-class SolutionWindow(QWidget,Generated_SolutionWindow):
-    def __init__(self):
-        super.__init__()
-        self.setupUi(self)
-
-    def setupUi(self, main_widget):
-        super().setupUi(main_widget)
+class SolutionWindow(QWidget,Generated_SolutionWindow):  
+    def __init__(self,parent:QWidget=None):
+        super().__init__(parent)
+        self.setupUi(self)  
 
     def create_tab_solutions(self,config: dict):
         for i,(step,matrix) in enumerate(config.items()):
@@ -36,12 +33,12 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
                     self.solution_list.hide()
             else:
                 insert_data_to_table(self.s_table,config[step],editable=False)
-            self.s_table.resizeColumnsToContents()
-            self.tabWidget.addTab(self.p,f'p{i+1}')
-
+            self.tab_widget.addTab(self.p,f'p{i+1}')
+        first_step = self.tab_widget.currentWidget().property('step_data')
+        self.label.setText(first_step)
 
     def show_step_property(self):
-        step = self.tabWidget.currentWidget().property('step_data')
+        step = self.tab_widget.currentWidget().property('step_data')
         if step is not None:
             self.label.setText(step)
             return
@@ -49,11 +46,11 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
 
     @Slot()
     def previous_tab(self):
-        current_index = self.tabWidget.currentIndex()
+        current_index = self.tab_widget.currentIndex()
         if current_index > 0:
-            self.tabWidget.setCurrentIndex(current_index-1)
+            self.tab_widget.setCurrentIndex(current_index-1)
     @Slot()
     def next_tab(self):
-        current_index = self.tabWidget.currentIndex()
-        if current_index < self.tabWidget.count()-1:
-            self.tabWidget.setCurrentIndex(current_index+1)
+        current_index = self.tab_widget.currentIndex()
+        if current_index < self.tab_widget.count()-1:
+            self.tab_widget.setCurrentIndex(current_index+1)

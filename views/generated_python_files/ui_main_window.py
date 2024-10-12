@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowYauwGb.ui'
+## Form generated from reading UI file 'main_windowXlqIXV.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -41,7 +41,7 @@ class Ui_MainWindow(object):
 "padding: 1px 5px;\n"
 "color: #fff;\n"
 "background-color: #6c757d;\n"
-"font: 700 9pt \"Calibri\";\n"
+"font: 700 10pt \"Calibri\";\n"
 "}\n"
 "\n"
 "#MainWindow QPushButton:hover{\n"
@@ -54,20 +54,21 @@ class Ui_MainWindow(object):
 "QSpinBox{\n"
 "color: white;\n"
 "background-color: #6c757d;\n"
+"font: 12pt\n"
 "}\n"
 "QSpinBox:up-button{\n"
 "image:url(:/icon/Images/arrow_upwards.png);\n"
 "border-left:0.5px solid #fff;\n"
 "subcontrol-position:right;\n"
-"width: 15px;\n"
-"height: 15px;\n"
+"width: 18px;\n"
+"height: 18px;\n"
 "}\n"
 "QSpinBox:down-button{\n"
 "image:url(:/icon/Images/arrow_downwards.png);\n"
 "border-right:0.5px solid #fff;\n"
 "subcontrol-position:left;\n"
-"width:15px;\n"
-"height:15px\n"
+"width:18px;\n"
+"height:18px\n"
 "}\n"
 "QSpinBox:up-button:hover{\n"
 "background-color: #5c636f;\n"
@@ -77,15 +78,15 @@ class Ui_MainWindow(object):
 "}\n"
 "QLabel {\n"
 "    color: #fff;\n"
-" background-c"
-                        "olor: #6a858d; \n"
+""
+                        " background-color: #6a858d; \n"
 "    border:2px solid #404040;        \n"
 "    border-radius: 4px;           \n"
 "    padding: 2.5px 5px;            \n"
-"font: 700 9pt \"Calibri\";\n"
+"font: 700 11pt \"Calibri\";\n"
 "}\n"
 "QComboBox{\n"
-"font: 700 9pt \"Calibri\";\n"
+"font: 700 10pt \"Calibri\";\n"
 "color: white;\n"
 "background-color: #6c757d;\n"
 "border: 1.5px solid #404040;\n"
@@ -118,6 +119,7 @@ class Ui_MainWindow(object):
 "QTableWidget{\n"
 "background-color: #819299; \n"
 "gridline-color: #fff;  \n"
+"\n"
 "}\n"
 "\n"
 "QHeaderView{\n"
@@ -126,15 +128,16 @@ class Ui_MainWindow(object):
 "font: 700 9pt \"Calibri\";\n"
 "}\n"
 "\n"
-"QHeaderView::section "
-                        "{\n"
+"Q"
+                        "HeaderView::section {\n"
 "background-color: #85939a;\n"
 "}\n"
 "QTableCornerButton::section {\n"
 "background-color: #85939a;\n"
 "}\n"
 "QTableWidget::item{\n"
-"color:#fff\n"
+"color:#fff;\n"
+"\n"
 "}\n"
 "QTableWidget::item::hover{\n"
 "background-color: #B6BEC2\n"
@@ -233,6 +236,9 @@ class Ui_MainWindow(object):
         self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.setObjectName(u"table_solution_matrix_combobox")
+        self.table_solution_matrix_combobox.setCursor(QCursor(Qt.ArrowCursor))
+        self.table_solution_matrix_combobox.setFocusPolicy(Qt.FocusPolicy.WheelFocus)
+        self.table_solution_matrix_combobox.setAcceptDrops(False)
         self.table_solution_matrix_combobox.setStyleSheet(u"")
 
         self.table_grid_options.addWidget(self.table_solution_matrix_combobox, 1, 2, 1, 1)
@@ -246,7 +252,17 @@ class Ui_MainWindow(object):
         self.table_solve_matrix_button.setObjectName(u"table_solve_matrix_button")
         self.table_solve_matrix_button.setStyleSheet(u"")
 
-        self.table_grid_options.addWidget(self.table_solve_matrix_button, 2, 0, 1, 3)
+        self.table_grid_options.addWidget(self.table_solve_matrix_button, 2, 2, 1, 1)
+
+        self.table_adjust_size_button = QPushButton(self.table_buttons_frame)
+        self.table_adjust_size_button.setObjectName(u"table_adjust_size_button")
+
+        self.table_grid_options.addWidget(self.table_adjust_size_button, 2, 1, 1, 1)
+
+        self.table_import_from_csv_button = QPushButton(self.table_buttons_frame)
+        self.table_import_from_csv_button.setObjectName(u"table_import_from_csv_button")
+
+        self.table_grid_options.addWidget(self.table_import_from_csv_button, 2, 0, 1, 1)
 
 
         self.table_buttons_horizontal_layout.addLayout(self.table_grid_options)
@@ -268,7 +284,11 @@ class Ui_MainWindow(object):
         self.input_table.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         if (self.input_table.rowCount() < 3):
             self.input_table.setRowCount(3)
+        font = QFont()
+        font.setFamilies([u"Calibri"])
+        font.setPointSize(9)
         __qtablewidgetitem3 = QTableWidgetItem()
+        __qtablewidgetitem3.setFont(font);
         __qtablewidgetitem3.setFlags(Qt.ItemIsSelectable|Qt.ItemIsEditable|Qt.ItemIsEnabled);
         self.input_table.setItem(0, 0, __qtablewidgetitem3)
         self.input_table.setObjectName(u"input_table")
@@ -303,6 +323,8 @@ class Ui_MainWindow(object):
 
         self.table_transposition_button.setText(QCoreApplication.translate("MainWindow", u"Transponer Matriz", None))
         self.table_solve_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Resolver", None))
+        self.table_adjust_size_button.setText(QCoreApplication.translate("MainWindow", u"Ajustar tama\u00f1o", None))
+        self.table_import_from_csv_button.setText(QCoreApplication.translate("MainWindow", u"Importar csv", None))
         ___qtablewidgetitem = self.input_table.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"X1", None));
         ___qtablewidgetitem1 = self.input_table.horizontalHeaderItem(1)
