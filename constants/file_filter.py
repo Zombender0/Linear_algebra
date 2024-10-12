@@ -1,0 +1,5 @@
+CSV_FILTER = "Archivos CSV (*.csv)"
+TEXT_FILTER = "Archivos de texto (*.txt)"
+IMAGE_FILTER = "Imágenes (*.png *.jpg *.bmp)"
+ALL_FILES = "Todos los archivos (*.*)"
+ALL_FILTERS = f"{CSV_FILTER};;{TEXT_FILTER};;{IMAGE_FILTER};;{ALL_FILES}"
