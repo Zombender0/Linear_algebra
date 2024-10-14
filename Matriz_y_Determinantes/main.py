@@ -1,10 +1,12 @@
 from models.GaussJordan import GaussJordan as GJ
+from models.GaussMethod import GaussMethod as GM
+from models.Matrix import Matrix as M
 
 def main():
     #Para resolución de matriz gauss jordan
     '''filas = int(input("Ingresa la cantidad de filas de la matriz: "))
     columnas = int(input("Ingresa la cantidad de columnas de la matriz: "))
-    matriz = GJ.crear_matriz(filas, columnas)
+    matriz = M.crear_matriz(filas, columnas)
     
     print("\nSISTEMA DE ECUACIONES INGRESADO\n")
     matriz_aumentada = GJ(matriz)
@@ -33,7 +35,7 @@ def main():
                 "Sólo se puede encontrar el DETERMINANTE en matrices cuadradas.\n ")
         print(mensaje)
     
-    matriz = GJ.crear_matriz(filas, columnas)
+    matriz = M.crear_matriz(filas, columnas)
 
     print("\nMATRIZ A RESOLVER:\n")
     for fila in matriz:
@@ -42,7 +44,7 @@ def main():
         print()
     print()
     
-    matriz_det = GJ(matriz)
+    matriz_det = GM(matriz)
     matriz_det.gauss_method()
 
 
