@@ -62,8 +62,12 @@ class MainController():
     
     def open_determinant_window(self,matrix_instance:GaussMethod):
         config = matrix_instance.gauss_method()
+        if config is False:
+            warning_box("La matriz debe ser cuadrada")
+            return
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_determinant_window(config)
+
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:
         if matriz == []:

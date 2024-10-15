@@ -10,6 +10,8 @@ class GaussMethod(Matrix):
         self.tolerance = 1e-13
     
     def gauss_method(self):
+        if self.filas != self.columnas:
+            return False
         if not self.determinante_nulo():
             for col in range(self.columnas):
                 self.pivote_triangular(col)
