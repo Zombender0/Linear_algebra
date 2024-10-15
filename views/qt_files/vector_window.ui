@@ -120,7 +120,7 @@ QScrollBar {
    <item>
     <widget class="QTabWidget" name="vector_tab">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="vector_x_vector_widget">
       <attribute name="title">

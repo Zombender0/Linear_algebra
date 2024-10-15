@@ -19,10 +19,11 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QHBoxLayout, QHeaderView, QLabel, QMainWindow,
     QPushButton, QSizePolicy, QSpinBox, QTableWidget,
     QTableWidgetItem, QVBoxLayout, QWidget)
+
 from views.qt_files.qrc_files import resources_rc
 
 class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
+    def setupUi(self, MainWindow:QMainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModality.NonModal)
@@ -235,6 +236,7 @@ class Ui_MainWindow(object):
         self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.addItem("")
+        self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.setObjectName(u"table_solution_matrix_combobox")
         self.table_solution_matrix_combobox.setCursor(QCursor(Qt.ArrowCursor))
         self.table_solution_matrix_combobox.setFocusPolicy(Qt.FocusPolicy.WheelFocus)
@@ -319,7 +321,8 @@ class Ui_MainWindow(object):
         self.table_random_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Matriz aleatoria", None))
         self.table_solution_matrix_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Resolver por", None))
         self.table_solution_matrix_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Reducci\u00f3n", None))
-        self.table_solution_matrix_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Aplicar vector por vector", None))
+        self.table_solution_matrix_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Vectores", None))
+        self.table_solution_matrix_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"Determinante", None))
 
         self.table_transposition_button.setText(QCoreApplication.translate("MainWindow", u"Transponer Matriz", None))
         self.table_solve_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Resolver", None))

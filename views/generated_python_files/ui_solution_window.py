@@ -28,7 +28,11 @@ class Ui_main_widget(object):
         icon = QIcon()
         icon.addFile(u":/icon/Images/grid.ico", QSize(), QIcon.Normal, QIcon.Off)
         main_widget.setWindowIcon(icon)
-        main_widget.setStyleSheet(u"#Main_widget{\n"
+        main_widget.setStyleSheet(u"*{\n"
+"background-color: #d3d3d3;\n"
+"}\n"
+"\n"
+"#Main_widget{\n"
 "background-color: #d3d3d3;\n"
 "\n"
 "}\n"
@@ -54,13 +58,12 @@ class Ui_main_widget(object):
 "    border:2px solid #404040;        \n"
 "    border-radius: 4px;           \n"
 "    padding: 2.5px 5px;            \n"
-"font: 700 9pt \"Calibri\";\n"
+"font: 700 13pt \"Calibri\";\n"
 "}\n"
 "\n"
 "QTableWidget{\n"
 "background-color: #819299; \n"
 "gridline-color: #fff;  \n"
-"color: #fff;\n"
 "}\n"
 "\n"
 "QHeaderView{\n"
@@ -76,12 +79,12 @@ class Ui_main_widget(object):
 "background-color: #85939a;\n"
 "}\n"
 "QTableWidget::item::hover{\n"
-"background-color: #B6BEC2\n"
+"backgr"
+                        "ound-color: #B6BEC2\n"
 "}\n"
 "\n"
 "QTabBar::tab{\n"
-""
-                        "background-color: #80857C;\n"
+"background-color: #80857C;\n"
 "color: white;\n"
 "}\n"
 "\n"
@@ -107,6 +110,9 @@ class Ui_main_widget(object):
 "border: 1.5px solid #2E4053;\n"
 "border-radius:7px\n"
 "}\n"
+"#tabWidget QWidget{\n"
+"background-color: #85939a\n"
+"}\n"
 "")
         self.main_widget_vertical_layout = QVBoxLayout(main_widget)
         self.main_widget_vertical_layout.setObjectName(u"main_widget_vertical_layout")
@@ -126,9 +132,10 @@ class Ui_main_widget(object):
 
         self.label = QLabel(self.options_tab_widget)
         self.label.setObjectName(u"label")
+        self.label.setMaximumSize(QSize(16777215, 40))
         self.label.setStyleSheet(u"border-radius:6px;\n"
 "font: 700 9pt \"Calibri\";")
-
+    
         self.options_tab_horizontal_layout.addWidget(self.label, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.next_tab_button = QPushButton(self.options_tab_widget)

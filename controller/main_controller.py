@@ -8,14 +8,14 @@ from controller.subcontrollers.solution_controller import SolutionController
 from controller.subcontrollers.vector_controller import VectorController
 
 from models.GaussJordan import GaussJordan
+from models.GaussMethod import GaussMethod
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QTableWidgetItem,QMainWindow,QWidget
-from random import randint
 
 #Continue here
 
 class MainController():
-    def __init__(self,window):
+    def __init__(self,window:QMainWindow):
         self.main_window = MainWindow(window)
         self.solution_controller = SolutionController()
         self.vector_controller = VectorController()
@@ -46,6 +46,8 @@ class MainController():
                 self.open_solution_window(GaussJordan(matriz))
             case 'vxv':
                 self.open_vector_window(GaussJordan(matriz))
+            case 'determinante':
+                self.open_determinant_window(GaussMethod(matriz))
             case _:
                 warning_box("Seleccione una opcion para resolver")
 
@@ -58,6 +60,10 @@ class MainController():
         self.vector_controller.set_window(VectorWindow(matrix_instance))
         self.vector_controller.open_vector_window()
     
+    def open_determinant_window(self,matrix_instance:GaussMethod):
+        config = matrix_instance.gauss_method()
+        self.solution_controller.set_window(SolutionWindow())
+        self.solution_controller.open_determinant_window(config)
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:
         if matriz == []:

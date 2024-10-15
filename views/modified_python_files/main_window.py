@@ -20,6 +20,7 @@ class MainWindow(Generated_MainWindow):
         self.column_spinbox.setValue(3)
         self.table_solution_matrix_combobox.setItemData(1,"reduccion")
         self.table_solution_matrix_combobox.setItemData(2,"vxv")
+        self.table_solution_matrix_combobox.setItemData(3,"determinante")
 
     @Slot()
     def update_matrix_size(self):

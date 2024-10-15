@@ -1,11 +1,14 @@
 from views.generated_python_files.ui_solution_window import Ui_main_widget as Generated_SolutionWindow
 from PySide6.QtWidgets import (QHBoxLayout, QLabel,QListWidget, QPushButton,
     QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,QTextEdit,
-    QWidget)
+    QWidget,QHBoxLayout)
 
-from PySide6.QtCore import Slot
+from PySide6.QtCore import Slot,Qt
+from PySide6.QtGui import QFont
 from helpers.matrix_helper import insert_data_to_table
+
 class SolutionWindow(QWidget,Generated_SolutionWindow):  
+    header_font = QFont('Calibri',30)
     def __init__(self,parent:QWidget=None):
         super().__init__(parent)
         self.setupUi(self)  
@@ -34,9 +37,30 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
             else:
                 insert_data_to_table(self.s_table,config[step],editable=False)
             self.tab_widget.addTab(self.p,f'p{i+1}')
+        #set first step
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)
-
+            
+    def create_determinant_step(self,config:dict):
+        for i,(step,(matriz,determinant)) in enumerate(config.items()):
+            self.p = QWidget()
+            self.p.setProperty('step_data',step)
+            self.p.setObjectName(f'p{i+1}')
+            self.horizontal_layout = QHBoxLayout(self.p)
+            self.horizontal_layout.setObjectName(f"vertical_layout_{i+1}")
+            self.horizontal_layout.setContentsMargins(6,0,0,0)
+            self.determinant_label = QLabel(f"{determinant}")
+            self.horizontal_layout.addWidget(self.determinant_label, 0, Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignVCenter)
+            self.determinant_label.setFont(self.header_font)
+            self.s_table = QTableWidget(self.p)
+            self.s_table.setObjectName(f"s_table_{i+1}")
+            self.horizontal_layout.addWidget(self.s_table)
+            insert_data_to_table(self.s_table,matriz,editable=False,last_b=False)
+            self.horizontal_layout.setStretch(1,100)
+            self.horizontal_layout.setStretch(1,10)
+            self.tab_widget.addTab(self.p,f'p{i+1}')
+        first_step = self.tab_widget.currentWidget().property('step_data')
+        self.label.setText(first_step)
     def show_step_property(self):
         step = self.tab_widget.currentWidget().property('step_data')
         if step is not None:

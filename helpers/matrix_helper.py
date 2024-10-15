@@ -8,6 +8,7 @@ def resize_to_content(function):
         table = args[0]
         
         table.resizeColumnsToContents()
+        table.resizeRowsToContents()
         return result
     return wrapper
 
