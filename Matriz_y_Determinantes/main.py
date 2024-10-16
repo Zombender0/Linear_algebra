@@ -1,5 +1,6 @@
 from models.GaussJordan import GaussJordan as GJ
 from models.GaussMethod import GaussMethod as GM
+from models.CramersRule import CramersRule as CR
 from models.Matrix import Matrix as M
 
 def main():
@@ -24,7 +25,7 @@ def main():
 
 
     #Para resolución de determinante de una matriz
-    while True:
+    '''while True:
         filas = int(input("Cantidad de filas de la matriz: "))
         columnas = int(input("Cantidad de columnas de la matriz: "))
         
@@ -45,7 +46,22 @@ def main():
     print()
     
     matriz_det = GM(matriz)
-    matriz_det.gauss_method()
+    matriz_det.gauss_method()'''
+
+    #Regla de Cramer
+    filas = int(input("Ingresa la cantidad de filas de la matriz: "))
+    columnas = int(input("Ingresa la cantidad de columnas de la matriz: "))
+    matriz = M.crear_matriz(filas, columnas)
+
+    print("\nMATRIZ A RESOLVER:\n")
+    for fila in matriz:
+        for valor in fila:
+            print(f"{int(valor) if valor.is_integer() else f'{valor:.1f}'}", end = " ")
+        print()
+    print()
+
+    matriz_cramer = CR(matriz)
+    matriz_cramer.cramersRule()
 
 
 if __name__ == '__main__':
