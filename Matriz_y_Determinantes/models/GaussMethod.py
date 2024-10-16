@@ -20,11 +20,13 @@ class GaussMethod(Matrix):
         #Validación por si una matriz tiene líneas de ceros.
         for fila in range(self.filas):
             if all(self.matriz[fila][i] == 0 for i in range(self.columnas)):
+                self.det *= 0
                 self.config[f"\nLa fila {fila + 1} es una línea de ceros. Por lo tanto, el determinante es igual a 0"] = copy.deepcopy(self.matriz)
                 return True
 
         for col in range(self.columnas):
             if all(self.matriz[i][col] == 0 for i in range(self.filas)):
+                self.det *= 0
                 self.config[f"\nLa columna {col + 1} es una línea de ceros. Por lo tanto, el determinante es igual a 0"] = copy.deepcopy(self.matriz)
                 return True
         
@@ -32,6 +34,7 @@ class GaussMethod(Matrix):
         for i in range(self.filas):
             for j in range(i + 1, self.filas):
                 if self.matriz[i] == self.matriz[j]:
+                    self.det *= 0
                     self.config[f"\nLas filas {i+1} y {j+1} son iguales. Por lo tanto, el determinante es igual a 0."] = copy.deepcopy(self.matriz)
                     return True
 
@@ -40,6 +43,7 @@ class GaussMethod(Matrix):
                 col_i = [self.matriz[k][i] for k in range(self.filas)]
                 col_j = [self.matriz[k][j] for k in range(self.filas)]
                 if col_i == col_j:
+                    self.det *= 0
                     self.config[f"\nLas columnas {i+1} y {j+1} son iguales. Por lo tanto, el determinante es igual a 0."] = copy.deepcopy(self.matriz)
                     return True
         
