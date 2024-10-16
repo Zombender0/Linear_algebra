@@ -39,7 +39,7 @@ class CramersRule(Matrix):
         sistema.gauss_method()
         determinante_sistema = sistema.det
         self.determinantes.append(determinante_sistema)
-        self.config[f"\nDeterminante del sistema de ecuaciones\n"] = (copy.deepcopy(sistema.config), determinante_sistema) 
+        self.config[f"\nDeterminante del sistema de ecuaciones\n"] = (copy.deepcopy(sistema.matriz), determinante_sistema) 
 
         for col in range(n_variables):
             matriz_modificada = copy.deepcopy(matriz_coeficientes)
@@ -57,7 +57,7 @@ class CramersRule(Matrix):
             gauss.gauss_method()
             determinante_variable = gauss.det
             self.determinantes.append(determinante_variable)
-            self.config[f"\nDeterminante de X{col + 1}\n"] = (copy.deepcopy(gauss.config), determinante_variable)
+            self.config[f"\nDeterminante de X{col + 1}\n"] = (copy.deepcopy(gauss.matriz), determinante_variable)
 
 
     def solucion_variables(self):
