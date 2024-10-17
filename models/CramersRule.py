@@ -14,7 +14,8 @@ class CramersRule(Matrix):
         if self.filas != self.columnas - 1:
             return False
         #self.imprimir_ecuaciones()
-        if not self.calcular_determinante_por_variable(): return self.config
+        if self.calcular_determinante_por_variable() is False: 
+            return self.config
         self.solucion_variables()
         #self.verificacion()
 
@@ -62,7 +63,7 @@ class CramersRule(Matrix):
             except ZeroDivisionError:
                 solucion =0
             self.soluciones.append(solucion)
-            mensaje = f"\nX{col + 1} = {round(determinante_variable,4)}/{round(determinante_sistema,4)} = {round(solucion,4)}"
+            mensaje = f"\nX{col + 1} = {round(determinante_variable,3)}/{round(determinante_sistema,3)} = {round(solucion,3)}"
             mensajes_solucion.append(mensaje)
         
         self.config[f"\nSOLUCIONES"] = (copy.deepcopy(self.matriz),tuple(msj for msj in enumerate (mensajes_solucion)))

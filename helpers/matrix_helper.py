@@ -73,7 +73,7 @@ def insert_data_to_table(table:QTableWidget,matrix:list[list]|list,editable=Fals
     for row in range(rows):
         for col in range(columns):
             item = table.item(row,col)
-            item.setText(str(matrix[row][col]))
+            item.setText(str(round(matrix[row][col],4)))
             if not editable:
                 item.setFlags(Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled)
     
