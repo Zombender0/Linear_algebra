@@ -14,7 +14,7 @@ class CramersRule(Matrix):
         if self.filas != self.columnas - 1:
             return False
         #self.imprimir_ecuaciones()
-        self.calcular_determinante_por_variable()
+        if not self.calcular_determinante_por_variable(): return self.config
         self.solucion_variables()
         #self.verificacion()
 
@@ -28,9 +28,12 @@ class CramersRule(Matrix):
         matriz_coef_copia = copy.deepcopy(matriz_coeficientes)
         sistema = GaussMethod(matriz_coef_copia)
 
-        #self.config["\nMATRIZ DE COEFICIENTES\n"] = copy.deepcopy(sistema.matriz)
+        self.config["\nMATRIZ DE COEFICIENTES\n"] = (copy.deepcopy(sistema.matriz), 1)
         sistema.gauss_method()
         determinante_sistema = sistema.det
+        if determinante_sistema == 0:
+            self.config[f"\nNo hay solucion para este sistema"] = (copy.deepcopy(sistema.matriz),0)
+            return False
         self.determinantes.append(determinante_sistema)
         self.config[f"\nDeterminante del sistema de ecuaciones\n"] = (copy.deepcopy(sistema.matriz), determinante_sistema) 
 
@@ -40,9 +43,10 @@ class CramersRule(Matrix):
                 matriz_modificada[fil][col] = columna_resultados[fil]
             gauss = GaussMethod(matriz_modificada)
 
-            self.config[f"\nMATRIZ CON COLUMNA #{col + 1} INTERCAMBIADA\n"] = copy.deepcopy(gauss.matriz)
+            self.config[f"\nMATRIZ CON COLUMNA #{col + 1} INTERCAMBIADA\n"] = (copy.deepcopy(gauss.matriz),1)
+            print(gauss.matriz)
             gauss.gauss_method()
-            determinante_variable = gauss.det
+            determinante_variable = round(gauss.det,4)
             self.determinantes.append(determinante_variable)
             self.config[f"\nDeterminante de X{col + 1}\n"] = (copy.deepcopy(gauss.matriz), determinante_variable)
 
@@ -53,7 +57,10 @@ class CramersRule(Matrix):
         mensajes_solucion = []
         for col in range(n_variables):
             determinante_variable = self.determinantes[col + 1]
-            solucion = determinante_variable / determinante_sistema
+            try:
+                solucion = determinante_variable / determinante_sistema
+            except ZeroDivisionError:
+                solucion =0
             self.soluciones.append(solucion)
             mensaje = f"\nX{col + 1} = {round(determinante_variable,4)}/{round(determinante_sistema,4)} = {round(solucion,4)}"
             mensajes_solucion.append(mensaje)

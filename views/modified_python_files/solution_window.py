@@ -79,7 +79,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
             self.s_table = QTableWidget(self.p)
             if not isinstance(content[0][0],list):
                 content[0] = [content[0]]
-            insert_data_to_table(self.s_table,content[0],editable=False,last_b=True)
+            insert_data_to_table(self.s_table,content[0],editable=False,last_b=False,letter=' ')
             self.s_table.setObjectName(f"s_table_{i+1}")
             self.layout_.addWidget(self.s_table)
             

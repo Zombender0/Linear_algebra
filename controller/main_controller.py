@@ -34,6 +34,9 @@ class MainController():
         self.main_window.table_import_from_csv_button.clicked.connect(lambda: self.main_window.import_matrix_from_csv())
 
     @Slot()
+    def change_horizontal_headers(self):
+        pass
+    @Slot()
     def solution_tab(self):
         matriz = get_data_from_table(self.main_window.input_table)
         if matriz == None:

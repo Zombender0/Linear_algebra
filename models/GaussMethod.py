@@ -4,7 +4,7 @@ import copy
 
 class GaussMethod(Matrix):
     def __init__(self, matriz: list[list]) -> None:
-        super().__init__(matriz)
+        super().__init__(copy.deepcopy(matriz))
         self.det = 1 #Determinante inicializado
         self.config = {}
         self.tolerance = 1e-13
@@ -128,7 +128,7 @@ class GaussMethod(Matrix):
             dividendo = self.matriz[fila][col]
             operando = dividendo / pivote
             self.matriz[fila] = [
-                0 if isclose(self.matriz[fila][i] + (operando * self.matriz[col][i]), 0, abs_tol=self.tolerance)
+                0 if isclose(self.matriz[fila][i] - (operando * self.matriz[col][i]), 0, abs_tol=self.tolerance)
                 else self.matriz[fila][i] - (operando * self.matriz[col][i]) 
                 for i in range(self.columnas)
                 ]

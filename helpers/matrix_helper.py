@@ -65,15 +65,16 @@ def get_data_from_table(table:QTableWidget)->list[list]:
     return matrix
 
 @resize_to_content
-def insert_data_to_table(table:QTableWidget,matrix:list[list]|list,editable=False,last_b=False)->None:
+def insert_data_to_table(table:QTableWidget,matrix:list[list]|list,editable=False,last_b=False,letter='X')->None:
     rows = len(matrix)
     columns = len(matrix[0])
     if table.rowCount() != rows or table.columnCount() !=columns:
-        resize_table(table,rows,columns,last_b=last_b)
+        resize_table(table,rows,columns, last_b=last_b,letter=letter)
     for row in range(rows):
         for col in range(columns):
             item = table.item(row,col)
             item.setText(str(matrix[row][col]))
-            if editable:item.setFlags(Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled)
+            if not editable:
+                item.setFlags(Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled)
     
 
