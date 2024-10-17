@@ -12,12 +12,11 @@ class CramersRule(Matrix):
 
     def cramersRule(self):
         if self.filas != self.columnas - 1:
-            print("La matriz debe ser CUADRADA 'n x n' (excluyendo la columna 'b')")
-            return #HACER ESTA VALIDACION DIRECTAMENTE DESDE LA INTERFAZ :)
-        self.imprimir_ecuaciones()
+            return False
+        #self.imprimir_ecuaciones()
         self.calcular_determinante_por_variable()
         self.solucion_variables()
-        self.verificacion()
+        #self.verificacion()
 
         return self.config
 
@@ -29,17 +28,11 @@ class CramersRule(Matrix):
         matriz_coef_copia = copy.deepcopy(matriz_coeficientes)
         sistema = GaussMethod(matriz_coef_copia)
 
-        self.config["\nMATRIZ DE COEFICIENTES\n"] = copy.deepcopy(sistema.matriz)
-        '''for fila in sistema.matriz:
-            for valor in fila:
-                print(f"{int(valor) if valor.is_integer() else f'{valor:.1f}'}", end = " ")
-            print()
-        print()'''
-
+        #self.config["\nMATRIZ DE COEFICIENTES\n"] = copy.deepcopy(sistema.matriz)
         sistema.gauss_method()
         determinante_sistema = sistema.det
         self.determinantes.append(determinante_sistema)
-        self.config[f"\nDeterminante del sistema de ecuaciones\n"] = (copy.deepcopy(sistema.config), determinante_sistema) 
+        self.config[f"\nDeterminante del sistema de ecuaciones\n"] = (copy.deepcopy(sistema.matriz), determinante_sistema) 
 
         for col in range(n_variables):
             matriz_modificada = copy.deepcopy(matriz_coeficientes)
@@ -48,17 +41,10 @@ class CramersRule(Matrix):
             gauss = GaussMethod(matriz_modificada)
 
             self.config[f"\nMATRIZ CON COLUMNA #{col + 1} INTERCAMBIADA\n"] = copy.deepcopy(gauss.matriz)
-            '''for fila in gauss.matriz:
-                for valor in fila:
-                    print(f"{int(valor) if valor.is_integer() else f'{valor:.1f}'}", end = " ")
-                print()
-            print()'''
-
             gauss.gauss_method()
             determinante_variable = gauss.det
             self.determinantes.append(determinante_variable)
-            self.config[f"\nDeterminante de X{col + 1}\n"] = (copy.deepcopy(gauss.config), determinante_variable)
-
+            self.config[f"\nDeterminante de X{col + 1}\n"] = (copy.deepcopy(gauss.matriz), determinante_variable)
 
     def solucion_variables(self):
         determinante_sistema = self.determinantes[0]
@@ -69,12 +55,11 @@ class CramersRule(Matrix):
             determinante_variable = self.determinantes[col + 1]
             solucion = determinante_variable / determinante_sistema
             self.soluciones.append(solucion)
-            mensaje = f"\nX{col + 1} = {determinante_variable}/{determinante_sistema} = {solucion}"
+            mensaje = f"\nX{col + 1} = {round(determinante_variable,4)}/{round(determinante_sistema,4)} = {round(solucion,4)}"
             mensajes_solucion.append(mensaje)
         
-        self.config[f"\nSOLUCIONES"] = {f"{i + 1}": msj for i, msj in enumerate(mensajes_solucion)}
-
-
+        self.config[f"\nSOLUCIONES"] = (copy.deepcopy(self.matriz),tuple(msj for msj in enumerate (mensajes_solucion)))
+        
     def verificacion(self):
         mensajes_verificacion = []
         for fila in range(self.filas):

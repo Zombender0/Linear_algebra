@@ -9,6 +9,7 @@ from controller.subcontrollers.vector_controller import VectorController
 
 from models.GaussJordan import GaussJordan
 from models.GaussMethod import GaussMethod
+from models.CramersRule import CramersRule
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QTableWidgetItem,QMainWindow,QWidget
 
@@ -48,8 +49,10 @@ class MainController():
                 self.open_vector_window(GaussJordan(matriz))
             case 'determinante':
                 self.open_determinant_window(GaussMethod(matriz))
+            case 'cramer':
+                self.open_cramer_window(CramersRule(matriz))
             case _:
-                warning_box("Seleccione una opcion para resolver")
+                information_box("Seleccione una opcion para resolver")
 
     def open_solution_window(self,matrix_instance:GaussJordan):
         config = matrix_instance.gauss_jordan()
@@ -62,8 +65,20 @@ class MainController():
     
     def open_determinant_window(self,matrix_instance:GaussMethod):
         config = matrix_instance.gauss_method()
+        if config is False:
+            warning_box("La matriz no es cuadrada")
+            return
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_determinant_window(config)
+
+    def open_cramer_window(self,matrix_instance:CramersRule ):
+        config = matrix_instance.cramersRule()
+        if config is False:
+            warning_box("La matriz no es cuadrada")
+            return
+        self.solution_controller.set_window(SolutionWindow())
+        self.solution_controller.open_cramer_window(config)
+
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:
         if matriz == []:

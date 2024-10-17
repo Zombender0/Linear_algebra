@@ -13,6 +13,7 @@ class SolutionController():
         self.solution_window.back_tab_button.clicked.connect(lambda: self.solution_window.previous_tab())
         self.solution_window.next_tab_button.clicked.connect(lambda: self.solution_window.next_tab())
         self.solution_window.tab_widget.currentChanged.connect(lambda: self.solution_window.show_step_property())
+    
     def open_window(self):
         self.connect_buttons()
         self.solution_window.show()
@@ -23,6 +24,10 @@ class SolutionController():
 
     def open_determinant_window(self,config:dict)->None:
         self.solution_window.create_determinant_step(config)
+        self.open_window()
+
+    def open_cramer_window(self,config:dict)->None:
+        self.solution_window.create_cramer_solution(config)
         self.open_window()
 
     

@@ -1,7 +1,7 @@
 from views.generated_python_files.ui_solution_window import Ui_main_widget as Generated_SolutionWindow
 from PySide6.QtWidgets import (QHBoxLayout, QLabel,QListWidget, QPushButton,
     QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,QTextEdit,
-    QWidget,QHBoxLayout)
+    QWidget,QVBoxLayout,QListWidgetItem)
 
 from PySide6.QtCore import Slot,Qt
 from PySide6.QtGui import QFont
@@ -47,7 +47,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
             self.p.setProperty('step_data',step)
             self.p.setObjectName(f'p{i+1}')
             self.horizontal_layout = QHBoxLayout(self.p)
-            self.horizontal_layout.setObjectName(f"vertical_layout_{i+1}")
+            self.horizontal_layout.setObjectName(f"horizontal_layout{i+1}")
             self.horizontal_layout.setContentsMargins(6,0,0,0)
             self.determinant_label = QLabel(f"{determinant}")
             self.horizontal_layout.addWidget(self.determinant_label, 0, Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignVCenter)
@@ -58,6 +58,41 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
             insert_data_to_table(self.s_table,matriz,editable=False,last_b=False)
             self.horizontal_layout.setStretch(1,100)
             self.horizontal_layout.setStretch(1,10)
+            self.tab_widget.addTab(self.p,f'p{i+1}')
+        first_step = self.tab_widget.currentWidget().property('step_data')
+        self.label.setText(first_step)
+    
+    def create_cramer_solution(self,config:dict):
+        for i,(step,content) in enumerate(config.items()):
+            self.p = QWidget()
+            self.p.setProperty('step_data',step)
+            self.p.setObjectName(f'p{i+1}')
+
+            if not isinstance(content[1],tuple): # This is an step, so horizontal_layout
+                self.layout_ = QHBoxLayout(self.p)
+                self.layout_.setObjectName(f"horizontal_layout{i+1}")
+                self.layout_.setContentsMargins(6,0,0,0)
+            else:
+                self.layout_ = QVBoxLayout(self.p)
+                self.layout_.setObjectName(f"vertical_layout{i+1}")
+                self.layout_.setContentsMargins(0,0,0,6)
+            self.s_table = QTableWidget(self.p)
+            if not isinstance(content[0][0],list):
+                content[0] = [content[0]]
+            insert_data_to_table(self.s_table,content[0],editable=False,last_b=True)
+            self.s_table.setObjectName(f"s_table_{i+1}")
+            self.layout_.addWidget(self.s_table)
+            
+            if not isinstance(content[1],tuple):
+                self.determinant_label = QLabel(f"{content[1]}")
+                self.layout_.addWidget(self.determinant_label, 0, Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignVCenter)
+                self.determinant_label.setFont(self.header_font)
+            else:
+                self.solution_list = QListWidget(self.p)
+                self.solution_list.setObjectName('solution_list')
+                for variable in content[1]:
+                    self.solution_list.addItem(variable[1])
+                self.layout_.addWidget(self.solution_list)
             self.tab_widget.addTab(self.p,f'p{i+1}')
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)

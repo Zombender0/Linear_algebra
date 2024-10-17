@@ -21,6 +21,7 @@ class MainWindow(Generated_MainWindow):
         self.table_solution_matrix_combobox.setItemData(1,"reduccion")
         self.table_solution_matrix_combobox.setItemData(2,"vxv")
         self.table_solution_matrix_combobox.setItemData(3,"determinante")
+        self.table_solution_matrix_combobox.setItemData(4,"cramer")
 
     @Slot()
     def update_matrix_size(self):
