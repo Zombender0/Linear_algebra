@@ -30,7 +30,9 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
                 self.solution_list.setObjectName('solution_list')
                 if matrix[1] != '':
                     for variable in matrix[1]:
-                        self.solution_list.addItem(variable)
+                        item = QListWidgetItem(variable)
+                        item.setFont(QFont('Calibri',15))
+                        self.solution_list.addItem(item)
                     self.verticalLayout.addWidget(self.solution_list)
                 else:
                     self.solution_list.hide()
@@ -91,7 +93,9 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
                 self.solution_list = QListWidget(self.p)
                 self.solution_list.setObjectName('solution_list')
                 for variable in content[1]:
-                    self.solution_list.addItem(variable[1])
+                    item = QListWidgetItem(variable[1])
+                    item.setFont(QFont('Calibri',15))
+                    self.solution_list.addItem(item)
                 self.layout_.addWidget(self.solution_list)
             self.tab_widget.addTab(self.p,f'p{i+1}')
         first_step = self.tab_widget.currentWidget().property('step_data')

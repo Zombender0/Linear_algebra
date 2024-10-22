@@ -84,5 +84,8 @@ class MainWindow(Generated_MainWindow):
         if matrix is None:
             return
         insert_data_to_table(self.input_table,matrix,editable=True,last_b=True)
-                
+        rows = len(matrix)
+        columns = len(matrix[0])
+        self.row_spinbox.setValue(rows)
+        self.column_spinbox.setValue(columns)                
 

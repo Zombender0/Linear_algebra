@@ -30,6 +30,8 @@ class Ui_main_widget(object):
         main_widget.setWindowIcon(icon)
         main_widget.setStyleSheet(u"*{\n"
 "background-color: #d3d3d3;\n"
+"margin: 0px;\n"
+"padding: 0px;\n"
 "}\n"
 "\n"
 "#Main_widget{\n"
@@ -64,7 +66,7 @@ class Ui_main_widget(object):
 "QTableWidget{\n"
 "background-color: #819299; \n"
 "gridline-color: #fff;  \n"
-"color: #fff\n"
+"color:#fff\n"
 "}\n"
 "\n"
 "QHeaderView{\n"
@@ -77,11 +79,11 @@ class Ui_main_widget(object):
 "background-color: #85939a;\n"
 "}\n"
 "QTableCornerButton::section {\n"
-"background-color: #85939a;\n"
+"background-color: #85939"
+                        "a;\n"
 "}\n"
 "QTableWidget::item::hover{\n"
-"backgr"
-                        "ound-color: #B6BEC2\n"
+"background-color: #B6BEC2\n"
 "}\n"
 "\n"
 "QTabBar::tab{\n"
@@ -102,16 +104,8 @@ class Ui_main_widget(object):
 "border : none\n"
 "}\n"
 "QListWidget::item{\n"
-"margin: 2px;\n"
-"margin-left:0;\n"
+"margin: 0px;\n"
 "color: #fff;\n"
-"font: 700 20pt;\n"
-"}\n"
-"QListWidget::item::hover{\n"
-"color : #1A5276 ;\n"
-"font: 700 9pt \"Segoe UI\";\n"
-"border: 1.5px solid #2E4053;\n"
-"border-radius:7px\n"
 "}\n"
 "#tabWidget QWidget{\n"
 "background-color: #85939a\n"
@@ -137,7 +131,7 @@ class Ui_main_widget(object):
         self.label.setObjectName(u"label")
         self.label.setMaximumSize(QSize(16777215, 40))
         self.label.setStyleSheet(u"border-radius:6px;\n"
-"font: 700 9pt \"Calibri\";")
+"font: 700 13pt \"Calibri\";")
     
         self.options_tab_horizontal_layout.addWidget(self.label, 0, Qt.AlignmentFlag.AlignHCenter)
 

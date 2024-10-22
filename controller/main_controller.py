@@ -32,7 +32,7 @@ class MainController():
         self.main_window.table_transposition_button.clicked.connect(lambda: self.main_window.transpose_matrix())
         self.main_window.table_adjust_size_button.clicked.connect(lambda: self.main_window.adjust_matrix())
         self.main_window.table_import_from_csv_button.clicked.connect(lambda: self.main_window.import_matrix_from_csv())
-
+        self.main_window.table_solution_matrix_combobox.currentIndexChanged.connect(lambda: self.solution_combobox_changed())
     @Slot()
     def change_horizontal_headers(self):
         pass
@@ -81,6 +81,20 @@ class MainController():
             return
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_cramer_window(config)
+
+    @Slot()
+    def solution_combobox_changed(self):
+        option = self.main_window.table_solution_matrix_combobox.currentData()
+        if option == 'determinante':
+            resize_table(self.main_window.input_table,
+                         self.main_window.row_spinbox.value(),
+                         self.main_window.column_spinbox.value(),
+                         last_b=False)
+        else:
+            resize_table(self.main_window.input_table,
+                         self.main_window.row_spinbox.value(),
+                         self.main_window.column_spinbox.value(),
+                         last_b=True)
 
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:

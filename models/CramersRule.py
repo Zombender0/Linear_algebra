@@ -33,7 +33,7 @@ class CramersRule(Matrix):
         sistema.gauss_method()
         determinante_sistema = sistema.det
         if determinante_sistema == 0:
-            self.config[f"\nNo hay solucion para este sistema"] = (copy.deepcopy(sistema.matriz),0)
+            self.config[f"\nNo hay solucion con el metodo cramer"] = (copy.deepcopy(sistema.matriz),0)
             return False
         self.determinantes.append(determinante_sistema)
         self.config[f"\nDeterminante del sistema de ecuaciones\n"] = (copy.deepcopy(sistema.matriz), determinante_sistema) 
@@ -45,7 +45,6 @@ class CramersRule(Matrix):
             gauss = GaussMethod(matriz_modificada)
 
             self.config[f"\nMATRIZ CON COLUMNA #{col + 1} INTERCAMBIADA\n"] = (copy.deepcopy(gauss.matriz),1)
-            print(gauss.matriz)
             gauss.gauss_method()
             determinante_variable = round(gauss.det,4)
             self.determinantes.append(determinante_variable)
