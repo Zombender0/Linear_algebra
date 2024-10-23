@@ -19,9 +19,10 @@ class MainWindow(Generated_MainWindow):
         self.row_spinbox.setValue(3)
         self.column_spinbox.setValue(3)
         self.table_solution_matrix_combobox.setItemData(1,"reduccion")
-        self.table_solution_matrix_combobox.setItemData(2,"vxv")
+        self.table_solution_matrix_combobox.setItemData(2,"vector")
         self.table_solution_matrix_combobox.setItemData(3,"determinante")
         self.table_solution_matrix_combobox.setItemData(4,"cramer")
+        self.table_solution_matrix_combobox.setItemData(5,"invertible")
 
     @Slot()
     def update_matrix_size(self):

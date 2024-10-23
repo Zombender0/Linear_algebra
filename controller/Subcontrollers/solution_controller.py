@@ -29,5 +29,6 @@ class SolutionController():
     def open_cramer_window(self,config:dict)->None:
         self.solution_window.create_cramer_solution(config)
         self.open_window()
-
-    
+    def open_invertible_matrix_window(self,config:dict)->None:
+        self.solution_window.create_invertable_solution(config)
+        self.open_window()

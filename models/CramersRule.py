@@ -82,7 +82,7 @@ class CramersRule(Matrix):
                     operador = "-"
                     valor = -valor
                 else: operador = ""
-                coef = f"{("(" + str(int(valor)) + ")" if valor.is_integer() else f'{valor:.1f}')}"
+                coef = f"{('(' + str(int(valor)) + ')' if valor.is_integer() else f'{valor:.1f}')}"
                 if operador:
                     exp += f" {operador} {coef}({self.soluciones[col]})"
                 else:
@@ -106,7 +106,7 @@ class CramersRule(Matrix):
                     operador = "-"
                     valor = -valor
                 else: operador = ""
-                coef = f"{("(" + str(int(valor)) + ")" if valor.is_integer() else f'{valor:.1f}') if valor != 1 else ""}"
+                coef = f"{('(' + str(int(valor)) + ')' if valor.is_integer() else f'{valor:.1f}') if valor != 1 else ''}"
                 if operador:
                     ecuacion += f" {operador} {coef}X{col + 1}"
                 else:

@@ -239,6 +239,7 @@ class Ui_MainWindow(object):
         self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.addItem("")
+        self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.setObjectName(u"table_solution_matrix_combobox")
         self.table_solution_matrix_combobox.setCursor(QCursor(Qt.ArrowCursor))
         self.table_solution_matrix_combobox.setFocusPolicy(Qt.FocusPolicy.WheelFocus)
@@ -326,6 +327,7 @@ class Ui_MainWindow(object):
         self.table_solution_matrix_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Vectores", None))
         self.table_solution_matrix_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"Determinante", None))
         self.table_solution_matrix_combobox.setItemText(4, QCoreApplication.translate("MainWindow", u"Cramer", None))
+        self.table_solution_matrix_combobox.setItemText(5, QCoreApplication.translate("MainWindow", u"Matriz invertida", None))
 
         self.table_transposition_button.setText(QCoreApplication.translate("MainWindow", u"Transponer Matriz", None))
         self.table_solve_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Resolver", None))

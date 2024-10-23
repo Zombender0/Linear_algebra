@@ -10,6 +10,7 @@ from controller.subcontrollers.vector_controller import VectorController
 from models.GaussJordan import GaussJordan
 from models.GaussMethod import GaussMethod
 from models.CramersRule import CramersRule
+from models.InvertibleMatrix import InvertibleMatrix
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QTableWidgetItem,QMainWindow,QWidget
 
@@ -48,12 +49,14 @@ class MainController():
         match op_solution:
             case 'reduccion':
                 self.open_solution_window(GaussJordan(matriz))
-            case 'vxv':
+            case 'vector':
                 self.open_vector_window(GaussJordan(matriz))
             case 'determinante':
                 self.open_determinant_window(GaussMethod(matriz))
             case 'cramer':
                 self.open_cramer_window(CramersRule(matriz))
+            case 'invertible':
+                self.open_inverted_matrix_window(InvertibleMatrix(matriz))
             case _:
                 information_box("Seleccione una opcion para resolver")
 
@@ -82,10 +85,17 @@ class MainController():
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_cramer_window(config)
 
+    def open_inverted_matrix_window(self,matrix_instance:InvertibleMatrix):
+        config = matrix_instance.invertibleMatrix()
+        if config is False:
+            warning_box("La matriz no es cuadrada")
+            return
+        self.solution_controller.set_window(SolutionWindow())
+        self.solution_controller.open_invertible_matrix_window(config)
     @Slot()
     def solution_combobox_changed(self):
         option = self.main_window.table_solution_matrix_combobox.currentData()
-        if option == 'determinante':
+        if option == 'determinante' or option == 'invertible':
             resize_table(self.main_window.input_table,
                          self.main_window.row_spinbox.value(),
                          self.main_window.column_spinbox.value(),

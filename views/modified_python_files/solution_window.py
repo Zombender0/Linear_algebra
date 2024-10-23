@@ -78,6 +78,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
                 self.layout_ = QVBoxLayout(self.p)
                 self.layout_.setObjectName(f"vertical_layout{i+1}")
                 self.layout_.setContentsMargins(0,0,0,6)
+
             self.s_table = QTableWidget(self.p)
             if not isinstance(content[0][0],list):
                 content[0] = [content[0]]
@@ -97,6 +98,22 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
                     item.setFont(QFont('Calibri',15))
                     self.solution_list.addItem(item)
                 self.layout_.addWidget(self.solution_list)
+            self.tab_widget.addTab(self.p,f'p{i+1}')
+        first_step = self.tab_widget.currentWidget().property('step_data')
+        self.label.setText(first_step)
+    
+    def create_invertable_solution(self,config:dict)->None:
+        for i,(step,aumented_matrix) in enumerate(config.items()):
+            self.p = QWidget()
+            self.p.setProperty('step_data',step)
+            self.p.setObjectName(f'p{i+1}')
+            self.vertical_layout = QVBoxLayout(self.p)
+            self.vertical_layout.setObjectName(f"vertical_layout{i+1}")
+            self.vertical_layout.setContentsMargins(0,0,0,0)
+            self.s_table = QTableWidget(self.p)
+            self.s_table.setObjectName(f"s_table_{i+1}")
+            self.vertical_layout.addWidget(self.s_table)
+            insert_data_to_table(self.s_table,aumented_matrix,editable=False,last_b=False,letter='X')
             self.tab_widget.addTab(self.p,f'p{i+1}')
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)
