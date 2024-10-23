@@ -1,6 +1,7 @@
 from models.GaussJordan import GaussJordan as GJ
 from models.GaussMethod import GaussMethod as GM
 from models.CramersRule import CramersRule as CR
+from models.InvertibleMatrix import InvertibleMatrix as IM
 from models.Matrix import Matrix as M
 
 def main():
@@ -49,7 +50,7 @@ def main():
     matriz_det.gauss_method()'''
 
     #Regla de Cramer
-    filas = int(input("Ingresa la cantidad de filas de la matriz: "))
+    '''filas = int(input("Ingresa la cantidad de filas de la matriz: "))
     columnas = int(input("Ingresa la cantidad de columnas de la matriz: "))
     matriz = M.crear_matriz(filas, columnas)
 
@@ -61,7 +62,21 @@ def main():
     print()
 
     matriz_cramer = CR(matriz)
-    matriz_cramer.cramersRule()
+    matriz_cramer.cramersRule()'''
+
+    #Matriz invertida
+    filas = int(input("Ingresa la cantidad de filas de la matriz: "))
+    columnas = int(input("Ingresa la cantidad de columnas de la matriz: "))
+    matriz = M.crear_matriz(filas, columnas)
+
+    for fila in matriz:
+        for valor in fila:
+            print(f"{int(valor) if valor.is_integer() else f'{valor:.1f}'}", end = " ")
+        print()
+    print()
+
+    matriz_invertida = IM(matriz)
+    matriz_invertida.invertibleMatrix()
 
 
 if __name__ == '__main__':
