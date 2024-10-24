@@ -173,7 +173,7 @@ class GaussJordan(Matrix):
                     if i in columnas_pivotes: continue
                     if valor == 0: continue
                     operador, valor = (" -",valor) if valor > 0 else(" +",-valor)
-                    expr += f"{operador} {("(" + str(int(valor)) + ")" if valor.is_integer() else f'{valor:.1f}') if valor != 1 else ""}X{i+1}"
+                    expr += f"{operador} {('(' + str(int(valor)) + ')' if valor.is_integer() else f'{valor:.1f}') if valor != 1 else ''}X{i+1}"
                 variables.append(expr)
         return variables
 
@@ -189,7 +189,7 @@ class GaussJordan(Matrix):
                     operador = "-"
                     valor = -valor
                 else: operador = ""
-                coef = f"{("(" + str(int(valor)) + ")" if valor.is_integer() else f'{valor:.1f}') if valor != 1 else ""}"
+                coef = f"{('(' + str(int(valor)) + ')' if valor.is_integer() else f'{valor:.1f}') if valor != 1 else ''}"
                 if operador:
                     ecuacion += f" {operador} {coef}X{col + 1}"
                 else:
