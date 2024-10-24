@@ -160,7 +160,7 @@ class Ui_main_widget(object):
         QMetaObject.connectSlotsByName(main_widget)
 
     def retranslateUi(self, main_widget):
-        main_widget.setWindowTitle(QCoreApplication.translate("main_widget", u"Solucion por reduccion", None))
+        main_widget.setWindowTitle(QCoreApplication.translate("main_widget", u"Solución", None))
         self.back_tab_button.setText("")
         self.label.setText(QCoreApplication.translate("main_widget", u"Procedimiento", None))
         self.next_tab_button.setText("")

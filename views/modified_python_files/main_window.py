@@ -12,12 +12,13 @@ from constants.file_filter import CSV_FILTER
 class MainWindow(Generated_MainWindow):
     def __init__(self,main_window:QMainWindow):
         self.setupUi(main_window)
-        resize_table(self.input_table,3,3,last_b=True)
+        resize_table(self.input_table,3,3,last_b=False,letter=' ')
     
     def setupUi(self, MainWindow):
         super().setupUi(MainWindow)
         self.row_spinbox.setValue(3)
         self.column_spinbox.setValue(3)
+        self.table_solution_matrix_combobox.setItemData(0,"index")
         self.table_solution_matrix_combobox.setItemData(1,"reduccion")
         self.table_solution_matrix_combobox.setItemData(2,"vector")
         self.table_solution_matrix_combobox.setItemData(3,"determinante")

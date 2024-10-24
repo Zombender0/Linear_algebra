@@ -77,7 +77,7 @@ class MainController():
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_determinant_window(config)
 
-    def open_cramer_window(self,matrix_instance:CramersRule ):
+    def open_cramer_window(self,matrix_instance:CramersRule):
         config = matrix_instance.cramersRule()
         if config is False:
             warning_box("La matriz no es cuadrada")
@@ -92,19 +92,17 @@ class MainController():
             return
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_invertible_matrix_window(config)
+
     @Slot()
     def solution_combobox_changed(self):
         option = self.main_window.table_solution_matrix_combobox.currentData()
-        if option == 'determinante' or option == 'invertible':
-            resize_table(self.main_window.input_table,
-                         self.main_window.row_spinbox.value(),
-                         self.main_window.column_spinbox.value(),
-                         last_b=False)
-        else:
-            resize_table(self.main_window.input_table,
-                         self.main_window.row_spinbox.value(),
-                         self.main_window.column_spinbox.value(),
-                         last_b=True)
+        last_b = False if option in ('determinante','invertible','vector','index') else True
+        letter = ' ' if option == 'index' else 'X' 
+        resize_table(self.main_window.input_table,
+                     self.main_window.row_spinbox.value(),
+                     self.main_window.column_spinbox.value(),
+                     last_b=last_b,
+                     letter=letter)
 
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:

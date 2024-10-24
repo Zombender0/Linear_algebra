@@ -104,19 +104,31 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
     
     def create_invertable_solution(self,config:dict)->None:
         for i,(step,aumented_matrix) in enumerate(config.items()):
+            columns = len(aumented_matrix[0])//2
+            original_matrix = [row[:columns] for row in aumented_matrix]
+            inverted_matrix = [row[columns:] for row in aumented_matrix]
             self.p = QWidget()
             self.p.setProperty('step_data',step)
             self.p.setObjectName(f'p{i+1}')
-            self.vertical_layout = QVBoxLayout(self.p)
-            self.vertical_layout.setObjectName(f"vertical_layout{i+1}")
-            self.vertical_layout.setContentsMargins(0,0,0,0)
-            self.s_table = QTableWidget(self.p)
-            self.s_table.setObjectName(f"s_table_{i+1}")
-            self.vertical_layout.addWidget(self.s_table)
-            insert_data_to_table(self.s_table,aumented_matrix,editable=False,last_b=False,letter='X')
+            self.p.setStyleSheet('')
+            self.horizontal_layout = QHBoxLayout(self.p)
+            self.horizontal_layout.setObjectName(f"horizontal_layout{i+1}")
+            self.horizontal_layout.setContentsMargins(0,0,6,0)
+            self.original_table = QTableWidget(self.p)
+            self.original_table.setObjectName(f"original_table_{i+1}")
+            self.inverted_table = QTableWidget(self.p)
+            self.inverted_table.setObjectName(f'inverted_table_{i+1}')
+            self.horizontal_layout.addWidget(self.original_table)
+            self.horizontal_layout.addWidget(self.inverted_table)
+            insert_data_to_table(self.original_table,original_matrix,editable=False,last_b=False,letter='X')
+            insert_data_to_table(self.inverted_table,inverted_matrix,editable=False,last_b=False,letter='X')
             self.tab_widget.addTab(self.p,f'p{i+1}')
+            if step in ('Matriz inversa','Matriz Aumentada'):
+                self.inverted_table.hide()
+                insert_data_to_table(self.original_table,aumented_matrix,editable=False,last_b=False,letter='X')
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)
+
     def show_step_property(self):
         step = self.tab_widget.currentWidget().property('step_data')
         if step is not None:

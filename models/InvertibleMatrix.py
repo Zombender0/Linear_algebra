@@ -47,13 +47,13 @@ class InvertibleMatrix(Matrix):
 
         if pivote != 1 and pivote != 0:
             self.matriz_aumentada[col] = [x / pivote for x in self.matriz_aumentada[col]]
-            self.config[f"\nF{col + 1} -> F{col + 1} / {int(pivote) if pivote.is_integer() else f'{pivote:.2f}'}"] = copy.deepcopy(self.matriz_aumentada)
+            self.config[f"F{col + 1} -> F{col + 1} / {int(pivote) if pivote.is_integer() else f'{pivote:.2f}'}"] = copy.deepcopy(self.matriz_aumentada)
         
         return True if self.matriz_aumentada[col][col] == 1 else False
         
     def intercambio(self, fila, fila_intercambio) -> None:
         self.matriz_aumentada[fila],self.matriz_aumentada[fila_intercambio] = self.matriz_aumentada[fila_intercambio],self.matriz_aumentada[fila]
-        self.config[f"\nF{fila + 1} <--> F{fila_intercambio + 1}"] = copy.deepcopy(self.matriz_aumentada)
+        self.config[f"F{fila + 1} <--> F{fila_intercambio + 1}"] = copy.deepcopy(self.matriz_aumentada)
 
     def reduccion_a_cero(self, col : int):
         for fila in range(self.filas):
@@ -70,13 +70,13 @@ class InvertibleMatrix(Matrix):
 
             operando_tipo = int(operando) if operando.is_integer() else f"{operando:.2f}"
 
-            self.config[f"\nF{fila + 1} -> F{fila + 1} {operador} {operando_tipo}F{col + 1}\n"] = copy.deepcopy(self.matriz_aumentada)
+            self.config[f"F{fila + 1} -> F{fila + 1} {operador} {operando_tipo}F{col + 1}"] = copy.deepcopy(self.matriz_aumentada)
 
     def singularMatrix(self) -> bool:
         matriz_cuadrada_copia = copy.deepcopy(self.matriz)
         matrizA = GaussMethod(matriz_cuadrada_copia)
         #Continue here
-        self.config["Matriz A"] = copy.deepcopy(matriz)
+        #self.config["Matriz A"] = copy.deepcopy(matriz)
         print("MATRIZ A")
         self.imprimir_matriz(matrizA.matriz)
 
