@@ -25,12 +25,12 @@ class MainController():
         self.connect_main_window_buttons()
         
     def connect_main_window_buttons(self):
-        self.main_window.table_update_button.clicked.connect(lambda: self.main_window.update_matrix_size())
+        self.main_window.table_update_button.clicked.connect(lambda: self.update_matrix_size())
         self.main_window.table_fill_0_button.clicked.connect(lambda: self.main_window.fill_matrix_0())
         self.main_window.table_clean_matrix_button.clicked.connect(lambda: self.main_window.clean_matrix())
         self.main_window.table_random_matrix_button.clicked.connect(lambda: self.main_window.random_matrix())
         self.main_window.table_solve_matrix_button.clicked.connect(lambda: self.solution_tab())
-        self.main_window.table_transposition_button.clicked.connect(lambda: self.main_window.transpose_matrix())
+        self.main_window.table_transposition_button.clicked.connect(lambda: self.transpose_matrix())
         self.main_window.table_adjust_size_button.clicked.connect(lambda: self.main_window.adjust_matrix())
         self.main_window.table_import_from_csv_button.clicked.connect(lambda: self.main_window.import_matrix_from_csv())
         self.main_window.table_solution_matrix_combobox.currentIndexChanged.connect(lambda: self.solution_combobox_changed())
@@ -104,6 +104,15 @@ class MainController():
                      last_b=last_b,
                      letter=letter)
 
+    @Slot()
+    def transpose_matrix(self):
+        self.main_window.transpose_matrix()
+        self.solution_combobox_changed()
+
+    @Slot()
+    def update_matrix_size(self):
+        self.main_window.update_matrix_size()
+        self.solution_combobox_changed()
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:
         if matriz == []:

@@ -25,7 +25,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
             self.s_table.setObjectName(f"s_table_{i+1}")
             self.verticalLayout.addWidget(self.s_table)
             if i == len(config)-1:
-                insert_data_to_table(self.s_table,config[step][0],editable=False)
+                insert_data_to_table(self.s_table,config[step][0],editable=False,last_b=True)
                 self.solution_list = QListWidget(self.p)
                 self.solution_list.setObjectName('solution_list')
                 if matrix[1] != '':
@@ -37,7 +37,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
                 else:
                     self.solution_list.hide()
             else:
-                insert_data_to_table(self.s_table,config[step],editable=False)
+                insert_data_to_table(self.s_table,config[step],editable=False,last_b=True)
             self.tab_widget.addTab(self.p,f'p{i+1}')
         #set first step
         first_step = self.tab_widget.currentWidget().property('step_data')
@@ -123,7 +123,9 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
             insert_data_to_table(self.original_table,original_matrix,editable=False,last_b=False,letter='X')
             insert_data_to_table(self.inverted_table,inverted_matrix,editable=False,last_b=False,letter='X')
             self.tab_widget.addTab(self.p,f'p{i+1}')
-            if step in ('Matriz inversa','Matriz Aumentada'):
+            if step in ('Matriz inversa',
+                        'El determinante es igual a 0, por lo tanto, la matriz A no tiene inversa',
+                        'No hay solucion en Gauss-Jordan, por lo tanto, la matriz es singular.'):
                 self.inverted_table.hide()
                 insert_data_to_table(self.original_table,aumented_matrix,editable=False,last_b=False,letter='X')
         first_step = self.tab_widget.currentWidget().property('step_data')
