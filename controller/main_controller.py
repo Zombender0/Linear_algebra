@@ -11,6 +11,8 @@ from models.GaussJordan import GaussJordan
 from models.GaussMethod import GaussMethod
 from models.CramersRule import CramersRule
 from models.InvertibleMatrix import InvertibleMatrix
+from models.CramersRule import CramersRule
+from models.InvertibleMatrix import InvertibleMatrix
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QTableWidgetItem,QMainWindow,QWidget
 
@@ -34,9 +36,7 @@ class MainController():
         self.main_window.table_adjust_size_button.clicked.connect(lambda: self.main_window.adjust_matrix())
         self.main_window.table_import_from_csv_button.clicked.connect(lambda: self.main_window.import_matrix_from_csv())
         self.main_window.table_solution_matrix_combobox.currentIndexChanged.connect(lambda: self.solution_combobox_changed())
-    @Slot()
-    def change_horizontal_headers(self):
-        pass
+
     @Slot()
     def solution_tab(self):
         matriz = get_data_from_table(self.main_window.input_table)
@@ -113,6 +113,7 @@ class MainController():
     def update_matrix_size(self):
         self.main_window.update_matrix_size()
         self.solution_combobox_changed()
+        
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:
         if matriz == []:
