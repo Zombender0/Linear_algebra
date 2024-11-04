@@ -21,8 +21,10 @@ class BisectionMethod():
         fb = EquationEvaluator(self.funcion, self.interval_b)
         
         if fa * fb >= 0:
+            self.config["La función debe cambiar de signo en el intervalo dado [a, b]"] = f"fa * fb -> {fa*fb} >= 0"
+            #No estoy segura qué poner como valore de la clave aquí JAJAJA
             print("La función debe cambiar de signo en el intervalo dado [a, b].")
-            return
+            return self.config
         
         c_anterior = None
         while True:
@@ -36,6 +38,11 @@ class BisectionMethod():
                 if error_porcentual/100 <= self.tolerancia:
                     self.datos_por_iteracion.append([self.interval_a, self.interval_b, self.media_c, fa, fb, fc, fa * fc, str_error_porcentual])
                     self.print_iterations()
+                    solucion = f"La raíz aproximada es {self.media_c} con un error porcentual de {error_porcentual}%"
+                    + f"\nNúmero de iteraciones: {self.n_iter}"
+
+                    self.config[f"ITERACIÓN {self.n_iter}"] = (copy.deepcopy(self.datos_por_iteracion), solucion)
+
                     print(f"\nLa raíz aproximada es {self.media_c} con un error porcentual de {error_porcentual}%")
                     print(f"Número de iteraciones: {self.n_iter}\n")
                     break
@@ -46,22 +53,30 @@ class BisectionMethod():
             self.print_iterations()
             
             if fc == 0:
-                print(f"\nLa raíz aproximada es {self.media_c}.")
+                solucion = f"La raíz aproximada es {self.media_c} con un error porcentual de {error_porcentual}%"
+                + f"\nNúmero de iteraciones: {self.n_iter}"
+                self.config[f"ITERACIÓN {self.n_iter}"] = (copy.deepcopy(self.datos_por_iteracion), solucion)
+
+                print(f"\nLa raíz aproximada es {self.media_c} con un error porcentual de {error_porcentual}%.")
                 print(f"Número de iteraciones: {self.n_iter}\n")
                 break
 
         
             if fa*fc > 0:
+                descripcion_paso = f"fa*fc -> {fa*fc} > 0, por lo tanto, a se debe sustituir por c"
                 print("\nSe sustituye el intervalo a por c\n")
                 self.interval_a = self.media_c
                 fa = EquationEvaluator(self.funcion, self.interval_a)
             else:
+                descripcion_paso = f"fa*fc -> {fa*fc} < 0, por lo tanto, b se debe sustituir por c"
                 print("\nSe sustituye el intervalo b por c\n")
                 self.interval_b = self.media_c
                 fb = EquationEvaluator(self.funcion, self.interval_b)
             
+            self.config[f"ITERACIÓN {self.n_iter}"] = (copy.deepcopy(self.datos_por_iteracion), descripcion_paso)
             c_anterior = self.media_c
 
+        return self.config
 
     def print_iterations(self):
         """
@@ -75,6 +90,6 @@ class BisectionMethod():
 
 
 if __name__ == '__main__':
-    BM = BisectionMethod('(x**3)-sen(2*x)+(e**x)', -4, 2, 0.001)
+    BM = BisectionMethod('(x**3)-sen(2*x)+(e**x)', -2, 2, 0.001)
     BM.bisection_method()
 
