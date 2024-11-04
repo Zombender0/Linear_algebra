@@ -34,30 +34,33 @@ class BisectionMethod():
                 error_porcentual = abs(((self.media_c - c_anterior)/self.media_c)*100)
                 if error_porcentual/100 <= self.tolerancia:
                     self.datos_por_iteracion.append([self.interval_a, self.interval_b, self.media_c, fa, fb, fc, fa * fc, error_porcentual])
-                    print(f"La raíz aproximada es {self.media_c} con un error porcentual de {error_porcentual}%")
+                    self.print_iterations()
+                    print(f"\nLa raíz aproximada es {self.media_c} con un error porcentual de {error_porcentual}%")
                     print(f"Número de iteraciones: {self.n_iter}\n")
                     break
             else:
                 error_porcentual = "-"
             
             self.datos_por_iteracion.append([self.interval_a, self.interval_b, self.media_c, fa, fb, fc, fa*fc, error_porcentual])
+            self.print_iterations()
             
             if fc == 0:
-                print(f"La raíz aproximada es {self.media_c}.")
+                print(f"\nLa raíz aproximada es {self.media_c}.")
                 print(f"Número de iteraciones: {self.n_iter}\n")
                 break
 
         
             if fa*fc > 0:
+                print("\nSe sustituye el intervalo a por c\n")
                 self.interval_a = self.media_c
                 fa = EquationEvaluator(self.funcion, self.interval_a)
             else:
+                print("\nSe sustituye el intervalo b por c\n")
                 self.interval_b = self.media_c
                 fb = EquationEvaluator(self.funcion, self.interval_b)
             
             c_anterior = self.media_c
 
-        self.print_iterations()
 
     def print_iterations(self):
         """
