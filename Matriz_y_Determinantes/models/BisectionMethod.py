@@ -63,7 +63,7 @@ class BisectionMethod():
         """
         Imprime los datos de cada iteración en formato de tabla.
         """
-        headers = ["intervalo a", "intervalo b", "media c", "fa", "fb", "fa*fc", "error porcentual"]
+        headers = ["intervalo a", "intervalo b", "media c", "fa", "fb", "fc", "fa*fc", "error porcentual"]
         print(f"{' | '.join(headers)}")
         print("-" * 90)
         for row in self.datos_por_iteracion:
