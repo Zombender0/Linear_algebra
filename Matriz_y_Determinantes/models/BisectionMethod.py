@@ -43,7 +43,6 @@ class BisectionMethod():
             self.datos_por_iteracion.append([self.interval_a, self.interval_b, self.media_c, fa, fb, fc, fa*fc, error_porcentual])
             
             if fc == 0:
-                self.datos_por_iteracion.append([self.interval_a, self.interval_b, self.media_c, fa, fb, fc, fa * fc, error_porcentual])
                 print(f"La raíz aproximada es {self.media_c}.")
                 print(f"Número de iteraciones: {self.n_iter}\n")
                 break
