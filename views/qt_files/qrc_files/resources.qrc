@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="icon">
+    <file>Images/align-justify.svg</file>
+    <file>Images/fx.svg</file>
+    <file>Images/matrix.svg</file>
     <file>Images/plus.png</file>
     <file>Images/substract.png</file>
     <file>Images/icon.ico</file>

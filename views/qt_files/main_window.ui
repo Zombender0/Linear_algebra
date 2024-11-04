@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>675</width>
-    <height>270</height>
+    <width>603</width>
+    <height>291</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,135 +21,156 @@
     <normaloff>:/icon/Images/grid.ico</normaloff>:/icon/Images/grid.ico</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">#MainWindow{
-background-color: #d3d3d3;
-
-}
-
-#MainWindow QPushButton{
-border: 2px solid #404040;
-border-radius: 8px;
-padding: 1px 5px;
+   <string notr="true">*{
+border:none;
+background-color: transparent;
+background: none;
+padding: 0;
+margin: 0;
 color: #fff;
-background-color: #6c757d;
-font: 700 10pt &quot;Calibri&quot;;
 }
 
-#MainWindow QPushButton:hover{
-background-color: #5c636a;
+QToolTip{
+color: #000;
+padding: 2px;
+border-radius:3px;
 }
-#MainWindow QPushButton:pressed {
-    border: 4px solid #c0c4c8 
+#MainWindow{
+background: #2c313c
 }
 
-QSpinBox{
-color: white;
-background-color: #6c757d;
-font: 12pt
+#table_buttons_frame{
+background-color: #2c313c
 }
-QSpinBox:up-button{
+
+#table_buttons_frame QPushButton, #table_buttons_frame QComboBox {
+    color: #ffffff;
+    text-align: center;
+	padding: 3px;
+    border-radius: 10px;
+    background-color: #16191d;
+}
+
+#table_buttons_frame QPushButton::hover, #table_buttons_frame QComboBox::hover {
+    background-color: #2a2e35;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    border-color: #454a52;
+}
+
+#table_buttons_frame QPushButton::pressed, #table_buttons_frame QComboBox::pressed {
+    background-color: #1d2127;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+	font-weight: 350;
+}
+
+#table_buttons_frame QSpinBox{
+color: #fff;
+background-color: #1d2127;
+border-radius: 10px;
+}
+
+#table_buttons_frame QLabel{
+background-color: #1f232a;
+padding: 3px;
+font-weight: 700;
+border-radius: 7px;
+}
+
+#table_column_spinbox_widget QSpinBox, #table_row_spinbox_widget QSpinBox{
+color: #fff;
+font-weight: 700;
+}
+
+#table_column_spinbox_widget QSpinBox:up-button, #table_row_spinbox_widget QSpinBox:up-button{
 image:url(:/icon/Images/arrow_upwards.png);
-border-left:0.5px solid #fff;
-subcontrol-position:right;
+subcontrol-position: right;
 width: 18px;
 height: 18px;
 }
-QSpinBox:down-button{
+
+#table_column_spinbox_widget QSpinBox:down-button, #table_row_spinbox_widget QSpinBox:down-button{
 image:url(:/icon/Images/arrow_downwards.png);
-border-right:0.5px solid #fff;
-subcontrol-position:left;
-width:18px;
-height:18px
-}
-QSpinBox:up-button:hover{
-background-color: #5c636f;
-}
-QSpinBox:down-button:hover{
-background-color: #5c636f;
-}
-QLabel {
-    color: #fff;
- background-color: #6a858d; 
-    border:2px solid #404040;        
-    border-radius: 4px;           
-    padding: 2.5px 5px;            
-font: 700 11pt &quot;Calibri&quot;;
-}
-QComboBox{
-font: 700 10pt &quot;Calibri&quot;;
-color: white;
-background-color: #6c757d;
-border: 1.5px solid #404040;
-border-radius: 6px;
-padding-left:10px
-}
-QComboBox::drop-down{
-border:0px;
-}
-QComboBox::down-arrow{
-image: url(:/icon/Images/arrow_downwards.png);
-width:20px;
-height: 20px;
-margin-right: 13px;
+subcontrol-position: left;
+width: 18px;
+height: 18px;
 }
 
+ #table_buttons_frame QComboBox:dropdown{
+border: 0px;
+}
 
-QComboBox QListView{
-font: 700 9pt &quot;Calibri&quot;;
-border: 1px solid rgba(0,0,0,10%);
-padding: 5px;
-background-color: #6c757d;
-color: white;
+#table_buttons_frame QComboBox:down-arrow{
+subcontrol-position: right;
+width: 18px;
+height: 18px;
+}
+
+#table_buttons_frame QComboBox QListView{
+color: #fff;
+font-weight: 500;
+background-color: #2c313c;
 outline: 0px;
-}
-QComboBox::hover{
-background-color: #5c636a;
+padding: 5px;
 }
 
-QTableWidget{
-background-color: #819299; 
-gridline-color: #fff;  
-
+#main_table_widget QTableWidget{
+background-color: #3e4555;
+gridline-color:#fff;
 }
 
-QHeaderView{
-background-color: #85939a;
-color:white;
-font: 700 9pt &quot;Calibri&quot;;
+#main_table_widget QHeaderView, #main_table_widget QHeaderView::section, #main_table_widget QTableCornerButton::section{
+background-color: #3e4555;
+color: #fff;
 }
 
-QHeaderView::section {
-background-color: #85939a;
+#main_table_widget QTableWidget::item{
+color: #fff;
 }
-QTableCornerButton::section {
-background-color: #85939a;
-}
-QTableWidget::item{
-color:#fff;
 
+#main_table_widget QTableWidget::item::hover{
+background-color: #242831;
+font-weight: 700;
 }
-QTableWidget::item::hover{
-background-color: #B6BEC2
-}
-</string>
+
+#side_bar{
+background: #16191d
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <layout class="QVBoxLayout" name="centralwidget_layout" stretch="0">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
-     <widget class="QWidget" name="table_widget" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="10,100">
-       <item>
-        <widget class="QFrame" name="table_buttons_frame">
-         <property name="frameShape">
-          <enum>QFrame::Shape::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Shadow::Raised</enum>
-         </property>
-         <layout class="QHBoxLayout" name="table_buttons_horizontal_layout" stretch="15,15,80">
+     <widget class="QWidget" name="side_bar" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <property name="topMargin">
+        <number>9</number>
+       </property>
+       <property name="rightMargin">
+        <number>9</number>
+       </property>
+       <item alignment="Qt::AlignmentFlag::AlignTop">
+        <widget class="QWidget" name="expand_button_widget" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <property name="spacing">
+           <number>0</number>
+          </property>
           <property name="leftMargin">
            <number>0</number>
           </property>
@@ -163,263 +184,536 @@ background-color: #B6BEC2
            <number>0</number>
           </property>
           <item>
-           <widget class="QWidget" name="table_row_spinbox_widget" native="true">
-            <property name="styleSheet">
-             <string notr="true"/>
+           <widget class="QPushButton" name="expand_button">
+            <property name="toolTip">
+             <string>Expandir Menu</string>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_3">
-             <property name="leftMargin">
-              <number>9</number>
-             </property>
-             <property name="topMargin">
-              <number>9</number>
-             </property>
-             <property name="rightMargin">
-              <number>9</number>
-             </property>
-             <property name="bottomMargin">
-              <number>9</number>
-             </property>
-             <item alignment="Qt::AlignmentFlag::AlignHCenter">
-              <widget class="QLabel" name="row_spinbox_label">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Filas</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="row_spinbox">
-               <property name="minimumSize">
-                <size>
-                 <width>60</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">border-color: rgb(0, 0, 0);</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="qrc_files/resources.qrc">
+              <normaloff>:/icon/Images/align-justify.svg</normaloff>:/icon/Images/align-justify.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
            </widget>
-          </item>
-          <item>
-           <widget class="QWidget" name="table_column_spinbox_widget" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout">
-             <property name="leftMargin">
-              <number>9</number>
-             </property>
-             <property name="topMargin">
-              <number>9</number>
-             </property>
-             <property name="rightMargin">
-              <number>9</number>
-             </property>
-             <property name="bottomMargin">
-              <number>9</number>
-             </property>
-             <item alignment="Qt::AlignmentFlag::AlignHCenter">
-              <widget class="QLabel" name="column_spinbox_label">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Columnas</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QSpinBox" name="column_spinbox">
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <layout class="QGridLayout" name="table_grid_options">
-            <property name="leftMargin">
-             <number>9</number>
-            </property>
-            <property name="topMargin">
-             <number>9</number>
-            </property>
-            <property name="rightMargin">
-             <number>9</number>
-            </property>
-            <property name="bottomMargin">
-             <number>9</number>
-            </property>
-            <property name="horizontalSpacing">
-             <number>6</number>
-            </property>
-            <item row="0" column="0">
-             <widget class="QPushButton" name="table_update_button">
-              <property name="layoutDirection">
-               <enum>Qt::LayoutDirection::LeftToRight</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
-              <property name="text">
-               <string>Actualizar</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QPushButton" name="table_fill_0_button">
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
-              <property name="text">
-               <string>Rellenar espacios con 0</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QPushButton" name="table_clean_matrix_button">
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
-              <property name="text">
-               <string>Limpiar Matriz</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QPushButton" name="table_random_matrix_button">
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
-              <property name="text">
-               <string>Matriz aleatoria</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QComboBox" name="table_solution_matrix_combobox">
-              <property name="cursor">
-               <cursorShape>ArrowCursor</cursorShape>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::WheelFocus</enum>
-              </property>
-              <property name="acceptDrops">
-               <bool>false</bool>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
-              <item>
-               <property name="text">
-                <string>Resolver por</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Reducción</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Aplicar vector por vector</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QPushButton" name="table_transposition_button">
-              <property name="text">
-               <string>Transponer Matriz</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QPushButton" name="table_solve_matrix_button">
-              <property name="styleSheet">
-               <string notr="true"/>
-              </property>
-              <property name="text">
-               <string>Resolver</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QPushButton" name="table_adjust_size_button">
-              <property name="text">
-               <string>Ajustar tamaño</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QPushButton" name="table_import_from_csv_button">
-              <property name="text">
-               <string>Importar csv</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
           </item>
          </layout>
         </widget>
        </item>
-       <item>
-        <widget class="QTableWidget" name="input_table">
-         <property name="styleSheet">
-          <string notr="true"/>
+       <item alignment="Qt::AlignmentFlag::AlignTop">
+        <widget class="QWidget" name="tab_buttons_widget" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-         <attribute name="verticalHeaderVisible">
-          <bool>true</bool>
-         </attribute>
-         <row/>
-         <row/>
-         <row/>
-         <column>
-          <property name="text">
-           <string>X1</string>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <property name="spacing">
+           <number>10</number>
           </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>X2</string>
+          <property name="leftMargin">
+           <number>0</number>
           </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>b</string>
+          <property name="topMargin">
+           <number>0</number>
           </property>
-         </column>
-         <item row="0" column="0">
-          <property name="text">
-           <string>ff</string>
+          <property name="rightMargin">
+           <number>0</number>
           </property>
-          <property name="font">
-           <font>
-            <family>Calibri</family>
-            <pointsize>9</pointsize>
-           </font>
+          <property name="bottomMargin">
+           <number>0</number>
           </property>
-          <property name="flags">
-           <set>ItemIsSelectable|ItemIsEditable|ItemIsEnabled</set>
-          </property>
-         </item>
+          <item>
+           <widget class="QPushButton" name="equation_tab_button">
+            <property name="toolTip">
+             <string>Ecuaciones</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="qrc_files/resources.qrc">
+              <normaloff>:/icon/Images/fx.svg</normaloff>:/icon/Images/fx.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>28</width>
+              <height>28</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="matrix_tab_button">
+            <property name="toolTip">
+             <string>Matrices</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="qrc_files/resources.qrc">
+              <normaloff>:/icon/Images/matrix.svg</normaloff>:/icon/Images/matrix.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="main_stacked_widget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="matrix_page">
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>4</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QWidget" name="main_table_widget" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="10,100">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="table_buttons_frame">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Shape::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Shadow::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="table_buttons_horizontal_layout" stretch="15,15,100">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWidget" name="table_row_spinbox_widget" native="true">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <property name="leftMargin">
+                  <number>9</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>9</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>9</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>9</number>
+                 </property>
+                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QLabel" name="row_spinbox_label">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Filas de la matriz</string>
+                   </property>
+                   <property name="text">
+                    <string>Filas</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QSpinBox" name="row_spinbox">
+                   <property name="minimumSize">
+                    <size>
+                     <width>60</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">border-color: rgb(0, 0, 0);</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="table_column_spinbox_widget" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+                 <property name="leftMargin">
+                  <number>9</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>9</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>9</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>9</number>
+                 </property>
+                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QLabel" name="column_spinbox_label">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>Columnas de la matriz</string>
+                   </property>
+                   <property name="text">
+                    <string>Columnas</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                  <widget class="QSpinBox" name="column_spinbox">
+                   <property name="minimumSize">
+                    <size>
+                     <width>60</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="table_grid_options" rowstretch="0,0,0,0,0" columnstretch="0,0,0">
+                <property name="sizeConstraint">
+                 <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>6</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>6</number>
+                </property>
+                <property name="horizontalSpacing">
+                 <number>5</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QPushButton" name="table_clean_matrix_button">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>Limpiar todos los valores de la matriz</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string>Limpiar Matriz</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QPushButton" name="table_fill_0_button">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>Rellenar espacios de la matriz con 0</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string>Rellenar con 0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QPushButton" name="table_update_button">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>Actualizar dimensiones de la matriz</string>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LayoutDirection::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string>Actualizar</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="table_transposition_button">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>Transponer matriz</string>
+                  </property>
+                  <property name="text">
+                   <string>Transponer Matriz</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="table_random_matrix_button">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>Llenar espacios vacíos de la matriz con números aleatorios</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string>Matriz aleatoria</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QPushButton" name="table_adjust_size_button">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>Ajustar tamaño de la matriz en base al contenido actual</string>
+                  </property>
+                  <property name="text">
+                   <string>Ajustar tamaño</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QPushButton" name="table_import_from_csv_button">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>Importar matriz desde un archivo CSV</string>
+                  </property>
+                  <property name="text">
+                   <string>Importar CSV</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QComboBox" name="table_solution_matrix_combobox">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>ArrowCursor</cursorShape>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::WheelFocus</enum>
+                  </property>
+                  <property name="acceptDrops">
+                   <bool>false</bool>
+                  </property>
+                  <property name="toolTip">
+                   <string>Opciones para resolver matriz</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Resolver por</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Reducción</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Vectores</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QPushButton" name="table_solve_matrix_button">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                   </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>Resolver según el método seleccionado</string>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string>Resolver</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="input_table">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>true</bool>
+             </attribute>
+             <row/>
+             <row/>
+             <row/>
+             <column>
+              <property name="text">
+               <string>X1</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>X2</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>b</string>
+              </property>
+             </column>
+             <item row="0" column="0">
+              <property name="text">
+               <string>ff</string>
+              </property>
+              <property name="font">
+               <font>
+                <family>Calibri</family>
+                <pointsize>9</pointsize>
+               </font>
+              </property>
+              <property name="flags">
+               <set>ItemIsSelectable|ItemIsEditable|ItemIsEnabled</set>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="equations_page"/>
      </widget>
     </item>
    </layout>

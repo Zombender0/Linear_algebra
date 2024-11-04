@@ -1,4 +1,5 @@
 import sys 
+sys.path.append(r'C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra')
 from PySide6.QtWidgets import QMainWindow, QApplication
 from controller.main_controller import MainController
 
