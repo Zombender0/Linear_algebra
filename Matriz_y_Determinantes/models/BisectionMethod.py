@@ -32,16 +32,17 @@ class BisectionMethod():
 
             if c_anterior is not None:
                 error_porcentual = abs(((self.media_c - c_anterior)/self.media_c)*100)
+                str_error_porcentual = str(round(error_porcentual, 6)) + "%"
                 if error_porcentual/100 <= self.tolerancia:
-                    self.datos_por_iteracion.append([self.interval_a, self.interval_b, self.media_c, fa, fb, fc, fa * fc, error_porcentual])
+                    self.datos_por_iteracion.append([self.interval_a, self.interval_b, self.media_c, fa, fb, fc, fa * fc, str_error_porcentual])
                     self.print_iterations()
                     print(f"\nLa raíz aproximada es {self.media_c} con un error porcentual de {error_porcentual}%")
                     print(f"Número de iteraciones: {self.n_iter}\n")
                     break
             else:
-                error_porcentual = "-"
+                str_error_porcentual = "-"
             
-            self.datos_por_iteracion.append([self.interval_a, self.interval_b, self.media_c, fa, fb, fc, fa*fc, error_porcentual])
+            self.datos_por_iteracion.append([self.interval_a, self.interval_b, self.media_c, fa, fb, fc, fa*fc, str_error_porcentual])
             self.print_iterations()
             
             if fc == 0:
@@ -74,6 +75,6 @@ class BisectionMethod():
 
 
 if __name__ == '__main__':
-    BM = BisectionMethod('(x**3)-sen(2*x)+(e**x)', -1.5, 2, 0.01)
+    BM = BisectionMethod('(x**3)-sen(2*x)+(e**x)', -4, 2, 0.001)
     BM.bisection_method()
 
