@@ -28,9 +28,15 @@ Este proyecto es una calculadora para la clase de álgebra lineal.
    ```bash
    python "$VIRTUAL_ENV/../path_config.py"
    ```
-
    Si no estás utilizando un entorno virtual, asegúrate de agregar en el archivo de ejecución la ruta raíz del programa **(Donde se encuentran todas las carpetas)**
    ```bash
    sys.path.append('ruta_raiz')
    ```
-   
+
+## Despliegue
+
+Para desplegar la aplicación, es necesario utilizar el archivo ***deploy_app.spec*** de la carpeta ***deploy_config***. La herramienta utilizada es ***pyside6-deploy***. Asegúrate de haber instalado las dependencias anteriormente.
+
+Configura el archivo ***deploy_app.spec*** según el nombre de las rutas que utilize tu máquina local. 
+
+Por defecto se creará un ejecutable con dependencias y otro de un solo archivo, para facilitar su distribución
