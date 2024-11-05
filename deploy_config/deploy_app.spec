@@ -8,7 +8,7 @@ title = "Calculadora de álgebra lineal"
 project_dir = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra
 
 # source file path
-input_file = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\app\main.py
+input_file = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\app\main.pyw
 
 # directory where exec is stored
 exec_directory = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\output
@@ -23,7 +23,7 @@ windowed = true
 [python]
 
 # python path
-python_path = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\venv\Scripts\python.exe
+python_path = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\venv\Scripts\pythonw.exe
 
 # python packages to install
 # ordered-set = increase compile time performance of nuitka packaging
@@ -43,7 +43,7 @@ qml_files =
 excluded_qml_plugins = QtQuick, QtQuick3D, QtCharts, QtWebEngine, QtTest, QtSensors
 
 # qt modules used. comma separated
-modules = Svg,Core,Gui,Widgets
+modules = Widgets,Core,Gui,Svg
 
 # qt plugins used by the application
 plugins = styles

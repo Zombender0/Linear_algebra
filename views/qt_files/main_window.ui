@@ -17,7 +17,7 @@
    <string>Calculadora de matrices</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="qrc_files/resources.qrc">
+   <iconset>
     <normaloff>:/icon/Images/grid.ico</normaloff>:/icon/Images/grid.ico</iconset>
   </property>
   <property name="styleSheet">
@@ -273,7 +273,7 @@ background: #2c313c
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="qrc_files/resources.qrc">
+                <iconset>
                  <normaloff>:/icon/Images/align-justify.svg</normaloff>:/icon/Images/align-justify.svg</iconset>
                </property>
                <property name="iconSize">
@@ -337,7 +337,7 @@ background: #2c313c
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="qrc_files/resources.qrc">
+                <iconset>
                  <normaloff>:/icon/Images/matrix.svg</normaloff>:/icon/Images/matrix.svg</iconset>
                </property>
                <property name="iconSize">
@@ -360,7 +360,7 @@ background: #2c313c
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="qrc_files/resources.qrc">
+                <iconset>
                  <normaloff>:/icon/Images/fx.svg</normaloff>:/icon/Images/fx.svg</iconset>
                </property>
                <property name="iconSize">

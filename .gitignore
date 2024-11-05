@@ -5,3 +5,5 @@ venv/
 colors.txt
 matrix.csv
 test/
+.vscode
+app/deployment

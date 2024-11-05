@@ -366,7 +366,6 @@ class Ui_MainWindow(object):
         self.table_update_button.setFont(font2)
         self.table_update_button.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.table_update_button.setStyleSheet(u"")
-
         self.table_grid_options.addWidget(self.table_update_button, 0, 1, 1, 1)
 
         self.table_transposition_button = QPushButton(self.table_buttons_frame)

@@ -24,9 +24,9 @@ class MainWindow(Generated_MainWindow):
         self.table_solution_matrix_combobox.setItemData(3,"determinante")
         self.table_solution_matrix_combobox.setItemData(4,"cramer")
         self.table_solution_matrix_combobox.setItemData(5,"invertible")
-
         self.solution_combobox_options.setItemData(0,"index")
         self.solution_combobox_options.setItemData(1,"biseccion")
+        self.main_stacked_widget.setCurrentIndex(0)
         
 
     @Slot()
