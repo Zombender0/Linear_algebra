@@ -8,6 +8,7 @@ ALLOWED_DATA = {
             '**': pow, 
             'log': log, 
             'log10': log10, 
+            'ln': log10,
             'e': e, 
             'pi': pi,
             'abs': abs
