@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>492</width>
-    <height>408</height>
+    <width>605</width>
+    <height>547</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,46 +18,60 @@
     <normaloff>:/icon/Images/math.ico</normaloff>:/icon/Images/math.ico</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">#main_widget{
-background-color: #d3d3d3;
-font: 700 11pt &quot;Calibri&quot;;
+   <string notr="true">*{
+border:none;
+background-color: transparent;
+background: none;
+padding: 0;
+margin: 0;
+color: #fff;
+}
+
+QToolTip{
+color: #000;
+padding: 2px;
+border-radius:3px;
+}
+
+#main_widget{
+background-color: #2c313c;
 }
 QTabWidget:pane{
-background-color: #d3d3d3
+background-color: #2c313c
 }
 #vector_x_vector_widget,#matrix_x_matrix_widget,#matrix_x_vector_widget{
-background-color: #d3d3d3;
+background-color: #2c313c;
 }
 QTabBar::tab{
-background-color: #80857C;
+background-color: #16191d;
 color: white;
 }
 
 QTabBar::tab:hover{
-background-color: #B0B3AD
+background-color:#2a2e35;
 }
 
 QTabBar::tab:selected{
-background-color:#454742
+background-color: #1d2127;
 }
 
 QSpinBox{
-color: white;
-background-color: #6c757d;
+color: #fff;
+background-color: #1d2127;
+border-radius: 10px;
+font-weight: 700;
 }
 QSpinBox:up-button{
 image:url(:/icon/Images/arrow_upwards.png);
-border-left:0.5px solid #fff;
-subcontrol-position:right;
-width: 20px;
-height: 20px;
+subcontrol-position: right;
+width: 18px;
+height: 18px;
 }
 QSpinBox:down-button{
 image:url(:/icon/Images/arrow_downwards.png);
-border-right:0.5px solid #fff;
-subcontrol-position:left;
-width:20px;
-height:20px
+subcontrol-position: left;
+width: 18px;
+height: 18px;
 }
 QSpinBox:up-button:hover{
 background-color: #5c636f;
@@ -66,61 +80,64 @@ QSpinBox:down-button:hover{
 background-color: #5c636f;
 }
 QPushButton{
-border: 2px solid #404040;
-border-radius: 8px;
-padding: 1px 5px;
-color: #fff;
-background-color: #6c757d;
-font: 700 10pt &quot;Calibri&quot;;
+color: #ffffff;
+    text-align: center;
+	padding: 3px;
+    border-radius: 10px;
+    background-color: #16191d;
 }
 
 QPushButton:hover{
-background-color: #5c636a;
+background-color: #2a2e35;
+    border-color: #454a52;
 }
 QPushButton:pressed {
-    border: 4px solid #c0c4c8 
+    background-color: #1d2127;
+	font-weight: 350;
 }
 QLabel {
-    color: #fff;
- background-color: #6a858d; 
-    border:2px solid #404040;        
-    border-radius: 4px;           
-    padding: 2.5px 5px;            
-font: 700 10pt &quot;Calibri&quot;;
+background-color: #1f232a;
+padding: 3px;
+font-weight: 700;
+border-radius: 7px;
 }
 
 QTableWidget{
-background-color: #819299; 
-gridline-color: #fff;  
+background-color: #3e4555;
+gridline-color:#fff;
 }
 
 QHeaderView{
-background-color: #85939a;
-color:white;
-font: 700 9pt &quot;Calibri&quot;;
+background-color: #3e4555;
+color: #fff;
 }
 
 QHeaderView::section {
-background-color: #85939a;
+background-color: #3e4555;
+color: #fff;
 }
 QTableCornerButton::section {
-background-color: #85939a;
+background-color: #3e4555;
+color: #fff;
 }
 QTableWidget::item{
-color:#fff
+color: #fff;
 }
 QTableWidget::item::hover{
-background-color: #B6BEC2
+background-color: #242831;
+font-weight: 700;
 }
 QScrollBar {
 	background: #a9a9a9;
-}</string>
+}
+
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTabWidget" name="vector_tab">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="vector_x_vector_widget">
       <attribute name="title">
@@ -254,7 +271,7 @@ max-width:10px;
                    <bool>true</bool>
                   </attribute>
                   <attribute name="verticalHeaderDefaultSectionSize">
-                   <number>22</number>
+                   <number>24</number>
                   </attribute>
                   <attribute name="verticalHeaderShowSortIndicator" stdset="0">
                    <bool>false</bool>
@@ -596,7 +613,7 @@ max-width:10px;
                    <bool>true</bool>
                   </attribute>
                   <attribute name="verticalHeaderDefaultSectionSize">
-                   <number>22</number>
+                   <number>24</number>
                   </attribute>
                   <attribute name="verticalHeaderShowSortIndicator" stdset="0">
                    <bool>false</bool>
@@ -1028,7 +1045,7 @@ max-width:10px;
                    <bool>true</bool>
                   </attribute>
                   <attribute name="verticalHeaderDefaultSectionSize">
-                   <number>22</number>
+                   <number>24</number>
                   </attribute>
                   <attribute name="verticalHeaderShowSortIndicator" stdset="0">
                    <bool>false</bool>

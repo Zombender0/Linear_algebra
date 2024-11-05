@@ -1,0 +1,30 @@
+{
+    "QCustomSlideMenu": [
+		{
+			"name": "side_bar",
+			"defaultSize": [{
+				"width": 45,
+				"height": "parent"
+			}],
+			"collapsedSize": [{
+				"width": 45,
+				"height": "parent"
+			}],
+			"expandedSize": [{
+				"width": 145,
+				"height": "aparentuparentto"
+			}],
+			"toggleButton": [{
+				"buttonName": "expand_button",
+				"icons": [{
+					"whenMenuIsCollapsed": ":./icon/Images/align-justify.svg",
+					"whenMenuIsExpanded": ":./icon/Images/align-justify.svg"
+				}]
+			}],
+			"menuTransitionAnimation": [{
+				"animationDuration": 250,  
+				"animationEasingCurve": "Linear" 
+			}]
+		}
+	]
+}

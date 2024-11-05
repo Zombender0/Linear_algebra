@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (QHBoxLayout, QLabel,QListWidget, QPushButton,
 
 from PySide6.QtCore import Slot,Qt
 from PySide6.QtGui import QFont
-from helpers.matrix_helper import insert_data_to_table
+from helpers.matrix_helper import insert_data_to_table,customize_headers_in_table
 
 class SolutionWindow(QWidget,Generated_SolutionWindow):  
     header_font = QFont('Calibri',30)
@@ -128,6 +128,35 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
                         'No hay solucion en Gauss-Jordan, por lo tanto, la matriz es singular.'):
                 self.inverted_table.hide()
                 insert_data_to_table(self.original_table,aumented_matrix,editable=False,last_b=False,letter='X')
+        first_step = self.tab_widget.currentWidget().property('step_data')
+        self.label.setText(first_step)
+
+    def create_bisection_solution(self,config:dict)->None:
+        header = ['a','b','c','fa','fb','fc','fa * fc', 'Error Porcentual']
+        for i,(step,content) in enumerate(config.items()):
+            self.p = QWidget()
+            self.p.setProperty('step_data',step)
+            self.p.setObjectName(f'p{i+1}')
+            self.verticalLayout = QVBoxLayout(self.p)
+            self.verticalLayout.setObjectName(f"vertical_layout_{i+1}")
+            self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+            self.s_table = QTableWidget(self.p)
+            self.s_table.setObjectName(f"s_table_{i+1}")
+            self.verticalLayout.addWidget(self.s_table)
+            if isinstance(content,str):#No solution
+                self.s_table.hide()
+                self.s_label = QLabel(content)
+                self.verticalLayout.addWidget(self.s_label)
+            else:
+                matrix = content[0]
+                solution = content[1]
+                insert_data_to_table(self.s_table,matrix,editable=False,last_b=False,letter=' ')
+                customize_headers_in_table(self.s_table,header)
+                self.s_label = QLabel(solution)
+                self.s_label.setFont(QFont('Calibri',15))
+                self.verticalLayout.addWidget(self.s_label)
+            self.tab_widget.addTab(self.p,f'p{i+1}')
+
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)
 

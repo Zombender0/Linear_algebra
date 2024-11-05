@@ -13,6 +13,7 @@ from models.CramersRule import CramersRule
 from models.InvertibleMatrix import InvertibleMatrix
 from models.CramersRule import CramersRule
 from models.InvertibleMatrix import InvertibleMatrix
+from models.BisectionMethod import BisectionMethod
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QTableWidgetItem,QMainWindow,QWidget
 
@@ -36,7 +37,12 @@ class MainController():
         self.main_window.table_adjust_size_button.clicked.connect(lambda: self.main_window.adjust_matrix())
         self.main_window.table_import_from_csv_button.clicked.connect(lambda: self.main_window.import_matrix_from_csv())
         self.main_window.table_solution_matrix_combobox.currentIndexChanged.connect(lambda: self.solution_combobox_changed())
+        self.main_window.matrix_tab_button.clicked.connect(lambda: self.main_window.main_stacked_widget.setCurrentIndex(0))
+        self.main_window.equation_tab_button.clicked.connect(lambda: self.main_window.main_stacked_widget.setCurrentIndex(1))
 
+        #EQUATIONS
+        self.main_window.solution_solve_button.clicked.connect(lambda: self.solve_equation_button())
+    
     @Slot()
     def solution_tab(self):
         matriz = get_data_from_table(self.main_window.input_table)
@@ -104,6 +110,17 @@ class MainController():
                      last_b=last_b,
                      letter=letter)
 
+    def open_bisection_solution_window(self,bisection_instance:BisectionMethod):
+        config = bisection_instance.bisection_method()
+        print(config)
+        if config == 'not tolerance':
+            warning_box("El valor de la tolerancia debe ser entre 0 y 1")
+            return
+        elif config == 'not equation':
+            warning_box("Ecuacion ingresada no valida")
+            return
+        self.solution_controller.set_window(SolutionWindow())
+        self.solution_controller.open_bisection_equation_window(config)
     @Slot()
     def transpose_matrix(self):
         self.main_window.transpose_matrix()
@@ -113,6 +130,28 @@ class MainController():
     def update_matrix_size(self):
         self.main_window.update_matrix_size()
         self.solution_combobox_changed()
+    #EQUATIONS
+    @Slot()
+    def solve_equation_button(self):
+        equation = self.main_window.equation_input.text()
+        interval_a = self.main_window.interval_a_line_edit.text()
+        interval_b = self.main_window.interval_b_line_edit.text()
+        tolerance = self.main_window.tolerance_line_edit.text()
+        try:
+            interval_a = float(interval_a)
+            interval_b = float(interval_b)
+            tolerance = float(tolerance)
+        except ValueError:
+            warning_box('Argumentos invalidos')
+            return
+        
+        op_solution = self.main_window.solution_combobox_options.currentData()
+        match op_solution:
+            case 'biseccion':
+                bisection = BisectionMethod(equation,interval_a,interval_b,tolerance)
+                self.open_bisection_solution_window(bisection)
+            case _:
+                information_box("Selecciona una opcion para resolver")
         
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:
@@ -129,3 +168,4 @@ class MainController():
                 warning_box('La matriz ingresada esta incompleta')
                 return False
         return True
+    

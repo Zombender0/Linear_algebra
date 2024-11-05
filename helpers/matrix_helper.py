@@ -73,8 +73,23 @@ def insert_data_to_table(table:QTableWidget,matrix:list[list]|list,editable=Fals
     for row in range(rows):
         for col in range(columns):
             item = table.item(row,col)
-            item.setText(str(round(matrix[row][col],4)))
+            value = matrix[row][col]
+            if isinstance(value,str):
+                item.setText(value)
+            else:
+                item.setText(str(round(matrix[row][col],5)))
             if not editable:
                 item.setFlags(Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled)
+
+def customize_headers_in_table(table:QTableWidget,header:list):
+    columns = table.columnCount()
+    if len(header) != columns:
+        return
+    for col in range(columns):
+        horizontal_item = table.horizontalHeaderItem(col)
+        if horizontal_item is None:
+            horizontal_item = QTableWidgetItem()
+            table.setHorizontalHeaderItem(col,horizontal_item)
+        horizontal_item.setText(f'{header[col]}')
     
 
