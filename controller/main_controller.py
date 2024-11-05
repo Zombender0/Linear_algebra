@@ -144,6 +144,10 @@ class MainController():
         except ValueError:
             warning_box('Argumentos invalidos')
             return
+
+        if interval_a > interval_b:
+            warning_box('a debe ser menor que b')
+            return
         
         op_solution = self.main_window.solution_combobox_options.currentData()
         match op_solution:
