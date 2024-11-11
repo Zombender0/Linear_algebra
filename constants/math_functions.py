@@ -1,4 +1,4 @@
-from math import cos, sin, tan, pow, log, log10, e, pi,sqrt
+from math import cos, sin, tan, pow, log, log10, e, pi,sqrt,exp
 
 ALLOWED_DATA = {
             'cos': cos, 
@@ -11,4 +11,5 @@ ALLOWED_DATA = {
             'pi': pi,
             'abs': abs,
             'sqrt': sqrt,
+            'exp': exp
         }
