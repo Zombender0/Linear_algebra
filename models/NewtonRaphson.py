@@ -33,13 +33,17 @@ class NewthonRaphson():
 
             x_siguiente = x_actual - (fxi/fxi_derivada)
 
-            error_absoluto = abs((x_siguiente - x_actual)/x_siguiente)*100
-            str_error_porcentual = str(round(error_absoluto, 6)) + "%"
-            self.datos_por_iteracion.append([str_n_iteraciones, x_actual, x_siguiente, fxi, fxi_derivada, str_error_porcentual])
+            if x_siguiente != 0:
+                error_absoluto = abs((x_siguiente - x_actual)/x_siguiente)*100
+                str_error_porcentual = str(round(error_absoluto, 6)) + "%"
+            else:
+                error_absoluto = 0
+                str_error_porcentual = 'Indefinido'
+            self.datos_por_iteracion.append([str_n_iteraciones, x_actual, x_siguiente, fxi, fxi_derivada, error_absoluto,str_error_porcentual])
             #self.print_iterations()
 
             if error_absoluto/100 <= self.tolerancia:
-                solucion = f"\nLa raíz aproximada es {x_siguiente} con un error porcentual de {error_absoluto}%\nNúmero de iteraciones: {self.n_iter}"
+                solucion = f"\nLa raíz{' aproximada' if error_absoluto != 0 else ''} es {x_siguiente} con un error porcentual de {error_absoluto}%\nNúmero de iteraciones: {self.n_iter}"
                 #print(solucion)
                 self.config["Solución Aproximada"] = (copy.deepcopy(self.datos_por_iteracion), solucion)
                 return self.config
@@ -54,7 +58,7 @@ class NewthonRaphson():
         """
         Imprime los datos de cada iteración en formato de tabla.
         """
-        headers = ["Iteración", "Xi", "Xi + 1", "f(Xi)", "f'(Xi)", "Error absoluto"]
+        headers = ["Iteración", "Xi", "Xi + 1", "f(Xi)", "f'(Xi)", "Error porcentual"]
         print(f"{' | '.join(headers)}")
         print("-" * 90)
         for row in self.datos_por_iteracion:

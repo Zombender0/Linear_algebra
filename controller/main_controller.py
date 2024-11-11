@@ -194,10 +194,13 @@ class MainController(QObject):
 
         if x_value is False:
             warning_box('El valor de x no es un número válido')
+            return
         if max_iter is False or max_iter <= 0:
             warning_box('El valor de iteraciones máximas no es un número válido')
+            return
         if tolerance is False:
             warning_box('La tolerancia no es un número válido')
+            return
         if self.equation_controller.equation is None:
             warning_box('No se ha ingresado la ecuación a resolver')
             return
