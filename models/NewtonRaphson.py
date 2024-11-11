@@ -34,16 +34,18 @@ class NewthonRaphson():
             x_siguiente = x_actual - (fxi/fxi_derivada)
 
             if x_siguiente != 0:
-                error_absoluto = abs((x_siguiente - x_actual)/x_siguiente)*100
-                str_error_porcentual = str(round(error_absoluto, 6)) + "%"
+                error_absoluto = abs(x_siguiente - x_actual)
+                error_porcentual = abs((x_siguiente - x_actual)/x_siguiente)*100
+                str_error_porcentual = str(round(error_porcentual, 6)) + "%"
             else:
-                error_absoluto = 0
+                error_absoluto = abs(x_siguiente - x_actual)
+                error_porcentual = 0
                 str_error_porcentual = 'Indefinido'
-            self.datos_por_iteracion.append([str_n_iteraciones, x_actual, x_siguiente, fxi, fxi_derivada, error_absoluto,str_error_porcentual])
+            self.datos_por_iteracion.append([str_n_iteraciones, x_actual, x_siguiente, fxi, fxi_derivada, error_absoluto, str_error_porcentual])
             #self.print_iterations()
 
-            if error_absoluto/100 <= self.tolerancia:
-                solucion = f"\nLa raíz{' aproximada' if error_absoluto != 0 else ''} es {x_siguiente} con un error porcentual de {error_absoluto}%\nNúmero de iteraciones: {self.n_iter}"
+            if error_porcentual/100 <= self.tolerancia:
+                solucion = f"\nLa raíz{' aproximada' if error_porcentual != 0 else ''} es {x_siguiente} con un error porcentual de {error_porcentual}%\nNúmero de iteraciones: {self.n_iter}"
                 #print(solucion)
                 self.config["Solución Aproximada"] = (copy.deepcopy(self.datos_por_iteracion), solucion)
                 return self.config
