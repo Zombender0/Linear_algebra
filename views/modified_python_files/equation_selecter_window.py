@@ -12,6 +12,7 @@ class EquationSelecterWindow(QDialog,GeneratedEquationDialog):
     def setupUi(self, insert_equation_dialog):
         super().setupUi(insert_equation_dialog)
         self.equation_line_edit.setClearButtonEnabled(True)
+        self.setWindowTitle('Ingresar ecuación')
 
     @Slot()
     def connect_x_to_n_button(self):

@@ -18,6 +18,7 @@ class VectorWindow(QWidget,Generated_VectorWindow):
     def setupUi(self, main_widget):
         super().setupUi(main_widget)
         self.resize_matrices()
+        self.setWindowTitle('Operaciones con vectores')
 
     def resize_matrices(self):
         #Tablas de vector por vector

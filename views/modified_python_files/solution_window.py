@@ -12,6 +12,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
     def __init__(self,parent:QWidget=None):
         super().__init__(parent)
         self.setupUi(self)  
+        self.setWindowTitle('Solución')
 
     def create_tab_solutions(self,config: dict):
         for i,(step,matrix) in enumerate(config.items()):
@@ -42,6 +43,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
         #set first step
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)
+        self.setWindowTitle('Solucción por reducción')
             
     def create_determinant_step(self,config:dict):
         for i,(step,(matriz,determinant)) in enumerate(config.items()):
@@ -63,6 +65,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
             self.tab_widget.addTab(self.p,f'p{i+1}')
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)
+        self.setWindowTitle('Calcular determinante')
     
     def create_cramer_solution(self,config:dict):
         for i,(step,content) in enumerate(config.items()):
@@ -101,6 +104,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
             self.tab_widget.addTab(self.p,f'p{i+1}')
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)
+        self.setWindowTitle('Solucción por Cramer')
     
     def create_invertable_solution(self,config:dict)->None:
         for i,(step,aumented_matrix) in enumerate(config.items()):
@@ -130,6 +134,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
                 insert_data_to_table(self.original_table,aumented_matrix,editable=False,last_b=False,letter='X')
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)
+        self.setWindowTitle('Solucción de matriz invertida')
 
     def create_bisection_solution(self,config:dict)->None:
         for i,(step,content) in enumerate(config.items()):
@@ -158,6 +163,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
             self.tab_widget.addTab(self.p,f'p{i+1}')
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)
+        self.setWindowTitle('Raíz de ecuación por bisección')
     
     def create_newton_solution(self,config:dict)->None:
         for i,(step,content) in enumerate(config.items()):
@@ -179,12 +185,12 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
                 self.s_label.setFont(QFont('Calibri',15))
                 self.verticalLayout.addWidget(self.s_label)
             else:
-                insert_data_to_table(self.s_table,matrix,editable=False,last_b=False,letter='')
-                customize_headers_in_table(self.s_table,NEWTON_HEADER)
+                self.s_table.hide()
             self.tab_widget.addTab(self.p,f'p{i+1}')
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)
-
+        self.setWindowTitle('Raíz de ecuación por Newton Raphson')
+        
     def show_step_property(self):
         step = self.tab_widget.currentWidget().property('step_data')
         if step is not None:

@@ -1,7 +1,7 @@
 [app]
 
 # title of your application
-title = "Calculadora de álgebra lineal"
+title = pyside_app_demo
 
 # project directory. the general assumption is that project_dir is the parent directory
 # of input_file
@@ -18,17 +18,14 @@ project_file =
 
 # application icon
 icon = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\views\qt_files\qrc_files\Images\icon.ico
-windowed = true
 
 [python]
 
 # python path
-python_path = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\venv\Scripts\pythonw.exe
+python_path = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\venv\Scripts\python.exe
 
 # python packages to install
-# ordered-set = increase compile time performance of nuitka packaging
-# zstandard = provides final executable size optimization
-packages = Nuitka==2.1
+packages = Nuitka==2.4.8
 
 # buildozer = for deploying Android application
 android_packages = buildozer==1.5.0,cython==0.29.33
@@ -65,6 +62,9 @@ plugins =
 # of the app bundle
 # eg = extra_args = --show-modules --follow-stdlib
 macos.permissions = 
+
+# mode of using nuitka. accepts standalone or onefile. default is onefile.
+mode = onefile
 
 # (str) specify any extra nuitka arguments
 extra_args = --quiet --noinclude-qt-translations

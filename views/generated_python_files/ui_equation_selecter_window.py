@@ -25,6 +25,8 @@ class Ui_insert_equation_dialog(object):
     def setupUi(self, insert_equation_dialog):
         if not insert_equation_dialog.objectName():
             insert_equation_dialog.setObjectName(u"insert_equation_dialog")
+        icon = QIcon()
+        icon.addFile(u":/icon/Images/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
         insert_equation_dialog.resize(425, 356)
         insert_equation_dialog.setStyleSheet(u"#insert_equation_dialog{\n"
 "background-color: #2c313c\n"

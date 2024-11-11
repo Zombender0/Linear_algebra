@@ -1,5 +1,5 @@
 import copy
-from sympy import symbols, diff
+from symengine import symbols, diff
 from models.EquationEvaluator import EquationEvaluator as EC_EVAL
 #from DerivativeFunction import funcion_derivada, derivados
 
@@ -12,6 +12,7 @@ class NewthonRaphson():
         self.tolerancia = abs(tol)
         self.datos_por_iteracion = []
         self.config = {}
+        
     def newton_raphson_method(self):
         if not self.tolerancia <=1:
             return 'not tolerance'
@@ -27,7 +28,7 @@ class NewthonRaphson():
 
             if fxi_derivada == 0:
                 self.config["Derivada cero. No se puede continuar."] = copy.deepcopy([self.datos_por_iteracion])
-                print("\nDerivada cero. No se puede continuar.")
+
                 return self.config
 
             x_siguiente = x_actual - (fxi/fxi_derivada)
@@ -35,18 +36,18 @@ class NewthonRaphson():
             error_absoluto = abs((x_siguiente - x_actual)/x_siguiente)*100
             str_error_porcentual = str(round(error_absoluto, 6)) + "%"
             self.datos_por_iteracion.append([str_n_iteraciones, x_actual, x_siguiente, fxi, fxi_derivada, str_error_porcentual])
-            self.print_iterations()
+            #self.print_iterations()
 
             if error_absoluto/100 <= self.tolerancia:
                 solucion = f"\nLa raíz aproximada es {x_siguiente} con un error porcentual de {error_absoluto}%\nNúmero de iteraciones: {self.n_iter}"
-                print(solucion)
+                #print(solucion)
                 self.config["Solución Aproximada"] = (copy.deepcopy(self.datos_por_iteracion), solucion)
                 return self.config
             
             x_actual = x_siguiente
         
         self.config["Se ha alcanzado el número máximo de iteraciones."] = copy.deepcopy(self.datos_por_iteracion)
-        print("Se ha alcanzado el número máximo de iteraciones.")
+        #print("Se ha alcanzado el número máximo de iteraciones.")
         return self.config
 
     def print_iterations(self):
@@ -62,3 +63,4 @@ class NewthonRaphson():
 if __name__ == '__main__':
     NR = NewthonRaphson('cos(2*x)', 10, 0.01, 100)
     NR.newton_raphson_method()
+    print(NR.config)

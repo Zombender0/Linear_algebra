@@ -180,7 +180,7 @@ class MainController(QObject):
             warning_box('No se ha ingresado la ecuación a resolver')
             return
         parsed_equation = EquationParser(self.equation_controller.equation)
-        bisection = BisectionMethod(parsed_equation.equation,interval_a,interval_b,tolerance)
+        bisection = BisectionMethod(parsed_equation,interval_a,interval_b,tolerance)
         self.open_bisection_solution_window(bisection)
     
     def get_root_newton_method(self):
