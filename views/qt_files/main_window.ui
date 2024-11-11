@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>657</width>
-    <height>491</height>
+    <width>553</width>
+    <height>476</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,7 +43,7 @@ background: #2c313c
 background-color: #2c313c
 }
 
-#table_buttons_frame QPushButton, #table_buttons_frame QComboBox,#solution_widget QComboBox, #solution_widget QPushButton {
+#table_buttons_frame QPushButton, #table_buttons_frame QComboBox,#solution_widget QComboBox, #equations_page QPushButton{
     color: #ffffff;
     text-align: center;
 	padding: 3px;
@@ -51,12 +51,12 @@ background-color: #2c313c
     background-color: #16191d;
 }
 
-#table_buttons_frame QPushButton::hover, #table_buttons_frame QComboBox::hover,#solution_widget QComboBox::hover, #solution_widget QPushButton::hover {
+#table_buttons_frame QPushButton::hover, #table_buttons_frame QComboBox::hover,#equations_page QPushButton::hover{
     background-color: #2a2e35;
     border-color: #454a52;
 }
 
-#table_buttons_frame QPushButton::pressed, #table_buttons_frame QComboBox::pressed,#solution_widget QComboBox::pressed, #solution_widget QPushButton::pressed {
+#table_buttons_frame QPushButton::pressed, #table_buttons_frame QComboBox::pressed,#equations_page QPushButton::pressed{
     background-color: #1d2127;
 	font-weight: 350;
 }
@@ -93,11 +93,11 @@ width: 18px;
 height: 18px;
 }
 
- #table_buttons_frame QComboBox:dropdown, #solution_widget QComboBox{
+ #table_buttons_frame QComboBox:dropdown{
 border: 0px;
 }
 
-#table_buttons_frame QComboBox:down-arrow, #solution_widget QComboBox{
+#table_buttons_frame QComboBox:down-arrow{
 subcontrol-position: right;
 width: 18px;
 height: 18px;
@@ -140,31 +140,70 @@ text-align: left;
 background-color: #1f232a;
 }
 
-#equation_widget QLineEdit{
-color: #fff;
-background-color: #596379;
-border-radius:10px;
-padding: 5px;
-font-weight: 350;
-}
-
-#equation_buttons_frame QLineEdit{
-color: #fff;
-background-color: #596379;
-border-radius:10px;
-padding: 5px;
-font-weight: 350;
-}
-#equation_buttons_frame QLabel{
+#equations_page QLabel{
 background-color: #1f232a;
-padding: 3px;
+padding: -3px;
 font-weight: 700;
-border-radius: 7px;
+border-radius: 10px;
 }
 
 #equations_page{
-background: #2c313c
-}</string>
+background: #2c313c;
+}
+
+#method_equation_tab_widget QWidget{
+background-color: #3e4555
+}
+
+#equations_page QTabWidget:pane{
+background-color: #2c313c
+}
+
+QTabBar::tab{
+background-color: #16191d;
+color: white;
+}
+
+QTabBar::tab:hover{
+background-color: #B0B3AD
+}
+
+QTabBar::tab:selected{
+background-color:#454742
+}
+
+#bisection_tab QLineEdit, #newton_tab QLineEdit{
+color: #fff;
+background-color: #596379;
+border-radius:10px;
+font-weight: 350;
+}
+
+#bisection_tab QLabel, #newton_tab QLabel{
+background-color: #1f232a;
+padding: -3px;
+font-weight: 700;
+border-radius: 10px;
+}
+
+ #bisection_tab QPushButton, #newton_tab QPushButton{
+color: #ffffff;
+    text-align: center;
+	padding: 3px;
+    border-radius: 10px;
+    background-color: #16191d;
+}
+
+#bisection_tab QPushButton::hover, #newton_tab QPushButton::hover{
+    background-color: #2a2e35;
+    border-color: #454a52;
+}
+
+#bisection_tab QPushButton::pressed, #newton_tab QPushButton::pressed{
+background-color: #1d2127;
+font-weight: 350;
+}
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -202,7 +241,7 @@ background: #2c313c
         <enum>QLayout::SizeConstraint::SetMinAndMaxSize</enum>
        </property>
        <property name="leftMargin">
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="topMargin">
         <number>0</number>
@@ -215,6 +254,12 @@ background: #2c313c
        </property>
        <item>
         <widget class="QWidget" name="sub_side_bar" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>16777215</width>
@@ -273,7 +318,7 @@ background: #2c313c
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="qrc_files/resources.qrc">
                  <normaloff>:/icon/Images/align-justify.svg</normaloff>:/icon/Images/align-justify.svg</iconset>
                </property>
                <property name="iconSize">
@@ -337,7 +382,7 @@ background: #2c313c
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="qrc_files/resources.qrc">
                  <normaloff>:/icon/Images/matrix.svg</normaloff>:/icon/Images/matrix.svg</iconset>
                </property>
                <property name="iconSize">
@@ -360,7 +405,7 @@ background: #2c313c
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="qrc_files/resources.qrc">
                  <normaloff>:/icon/Images/fx.svg</normaloff>:/icon/Images/fx.svg</iconset>
                </property>
                <property name="iconSize">
@@ -382,6 +427,15 @@ background: #2c313c
     </item>
     <item>
      <widget class="QStackedWidget" name="main_stacked_widget">
+      <property name="frameShape">
+       <enum>QFrame::Shape::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
       <property name="currentIndex">
        <number>1</number>
       </property>
@@ -431,7 +485,13 @@ background: #2c313c
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <layout class="QHBoxLayout" name="table_buttons_horizontal_layout" stretch="15,15,100">
+             <layout class="QHBoxLayout" name="table_buttons_horizontal_layout" stretch="15,15,120">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+              </property>
               <property name="leftMargin">
                <number>0</number>
               </property>
@@ -450,17 +510,20 @@ background: #2c313c
                  <string notr="true"/>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
                  <property name="leftMargin">
-                  <number>9</number>
+                  <number>0</number>
                  </property>
                  <property name="topMargin">
-                  <number>9</number>
+                  <number>0</number>
                  </property>
                  <property name="rightMargin">
-                  <number>9</number>
+                  <number>0</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>9</number>
+                  <number>0</number>
                  </property>
                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
                   <widget class="QLabel" name="row_spinbox_label">
@@ -512,17 +575,20 @@ background: #2c313c
               <item>
                <widget class="QWidget" name="table_column_spinbox_widget" native="true">
                 <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
                  <property name="leftMargin">
-                  <number>9</number>
+                  <number>0</number>
                  </property>
                  <property name="topMargin">
-                  <number>9</number>
+                  <number>0</number>
                  </property>
                  <property name="rightMargin">
-                  <number>9</number>
+                  <number>0</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>9</number>
+                  <number>0</number>
                  </property>
                  <item alignment="Qt::AlignmentFlag::AlignHCenter">
                   <widget class="QLabel" name="column_spinbox_label">
@@ -569,9 +635,9 @@ background: #2c313c
                </widget>
               </item>
               <item>
-               <layout class="QGridLayout" name="table_grid_options" rowstretch="0,0,0" columnstretch="0,0,0">
+               <layout class="QGridLayout" name="table_grid_options" rowstretch="0,0,0" columnstretch="0,0,0" rowminimumheight="0,0,0">
                 <property name="sizeConstraint">
-                 <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                 <enum>QLayout::SizeConstraint::SetFixedSize</enum>
                 </property>
                 <property name="leftMargin">
                  <number>0</number>
@@ -587,6 +653,9 @@ background: #2c313c
                 </property>
                 <property name="horizontalSpacing">
                  <number>5</number>
+                </property>
+                <property name="verticalSpacing">
+                 <number>3</number>
                 </property>
                 <item row="0" column="0">
                  <widget class="QPushButton" name="table_clean_matrix_button">
@@ -728,7 +797,7 @@ background: #2c313c
                    <string>Opciones para resolver matriz</string>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true">text-align:center;</string>
                   </property>
                   <item>
                    <property name="text">
@@ -833,56 +902,107 @@ background: #2c313c
        </layout>
       </widget>
       <widget class="QWidget" name="equations_page">
-       <layout class="QVBoxLayout" name="verticalLayout_8" stretch="10,9,9">
+       <layout class="QVBoxLayout" name="verticalLayout_8" stretch="10,100">
         <property name="spacing">
-         <number>15</number>
+         <number>6</number>
         </property>
         <property name="leftMargin">
-         <number>4</number>
+         <number>0</number>
         </property>
         <property name="topMargin">
          <number>0</number>
         </property>
         <property name="rightMargin">
-         <number>5</number>
+         <number>0</number>
         </property>
         <property name="bottomMargin">
-         <number>5</number>
+         <number>0</number>
         </property>
-        <item alignment="Qt::AlignmentFlag::AlignTop">
+        <item>
          <widget class="QWidget" name="equation_widget" native="true">
-          <layout class="QVBoxLayout" name="verticalLayout_9">
+          <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>6</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item>
-            <widget class="QLineEdit" name="equation_input">
+            <widget class="QLabel" name="side_equation_text_label">
+             <property name="maximumSize">
+              <size>
+               <width>140</width>
+               <height>40</height>
+              </size>
+             </property>
              <property name="font">
               <font>
-               <pointsize>11</pointsize>
-               <fontweight></fontweight>
+               <pointsize>12</pointsize>
+               <bold>true</bold>
               </font>
              </property>
-             <property name="inputMethodHints">
-              <set>Qt::InputMethodHint::ImhNone</set>
+             <property name="text">
+              <string>Ecuacion actual: </string>
              </property>
-             <property name="placeholderText">
-              <string>Insertar ecuación</string>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignmentFlag::AlignLeft">
+            <widget class="QLabel" name="equation_text_label">
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background: none</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignVCenter">
+            <widget class="QPushButton" name="edit_equation_button">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string>Editar ecuación</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="qrc_files/resources.qrc">
+               <normaloff>:/icon/Images/edit.svg</normaloff>:/icon/Images/edit.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
              </property>
             </widget>
            </item>
           </layout>
          </widget>
         </item>
-        <item alignment="Qt::AlignmentFlag::AlignTop">
-         <widget class="QFrame" name="equation_buttons_frame">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_10">
-           <property name="spacing">
-            <number>15</number>
-           </property>
+        <item>
+         <widget class="QWidget" name="method_equation_widget" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_9">
            <property name="leftMargin">
             <number>0</number>
            </property>
@@ -896,171 +1016,315 @@ background: #2c313c
             <number>0</number>
            </property>
            <item>
-            <widget class="QWidget" name="interval_a_widget" native="true">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+            <widget class="QTabWidget" name="method_equation_tab_widget">
+             <property name="currentIndex">
+              <number>0</number>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_2">
-              <property name="spacing">
-               <number>6</number>
-              </property>
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="interval_a_label">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Intervalo a</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="interval_a_line_edit"/>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="interval_b_widget" native="true">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_3">
-              <property name="spacing">
-               <number>5</number>
-              </property>
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="interval_b_label">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Intervalo b</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="interval_b_line_edit"/>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="tolerance_widget" native="true">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_4">
-              <property name="spacing">
-               <number>5</number>
-              </property>
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="tolerance_label">
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Tolerancia</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="tolerance_line_edit"/>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item alignment="Qt::AlignmentFlag::AlignLeft">
-         <widget class="QWidget" name="solution_widget" native="true">
-          <layout class="QHBoxLayout" name="horizontalLayout_5">
-           <item>
-            <widget class="QPushButton" name="solution_solve_button">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Resolver</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="solution_combobox_options">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>0</height>
-              </size>
-             </property>
-             <item>
-              <property name="text">
-               <string>Obtener raíces por</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
+             <widget class="QWidget" name="bisection_tab">
+              <attribute name="title">
                <string>Bisección</string>
-              </property>
-             </item>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_10">
+               <property name="leftMargin">
+                <number>5</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>5</number>
+               </property>
+               <property name="bottomMargin">
+                <number>9</number>
+               </property>
+               <item alignment="Qt::AlignmentFlag::AlignTop">
+                <widget class="QWidget" name="bisection_config_widget" native="true">
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>9</pointsize>
+                   <kerning>true</kerning>
+                  </font>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_12">
+                  <property name="spacing">
+                   <number>12</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>5</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>9</number>
+                  </property>
+                  <item>
+                   <layout class="QGridLayout" name="bisection_config_grid">
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="bisection_interval_b_label">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Intervalo b</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="bisection_interval_a_label">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Intervalo a</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="bisection_tolerance_label">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Tolerancia</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="bisection_interval_b_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QLineEdit" name="bisection_tolerance_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLineEdit" name="bisection_interval_a_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="bisection_solution_button">
+                 <property name="font">
+                  <font>
+                   <pointsize>14</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Obtener raíz</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="bisection_spacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="newton_tab">
+              <attribute name="title">
+               <string>Newton</string>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_13">
+               <item>
+                <widget class="QWidget" name="newton_config_widget" native="true">
+                 <property name="font">
+                  <font>
+                   <pointsize>9</pointsize>
+                  </font>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_14">
+                  <property name="spacing">
+                   <number>12</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <layout class="QGridLayout" name="newton_config_grid">
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="newton_max_iter_label">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Iteraciones máximas</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="newton_max_iter_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="newton_tolerance_label">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Tolerancia</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QLineEdit" name="newton_tolerance_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="newton_x_value_label">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Valor de x</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLineEdit" name="newton_x_value_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="newton_solution_button">
+                 <property name="font">
+                  <font>
+                   <pointsize>14</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Obtener raíz</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="newton_spacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>240</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
             </widget>
            </item>
           </layout>

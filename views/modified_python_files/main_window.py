@@ -8,6 +8,7 @@ from helpers.matrix_helper import get_data_from_table,insert_data_to_table,resiz
 from utils.matrix_utils import get_transposed_matrix,create_matrix_from_csv
 from utils.generic_utils import get_file_from_dialog
 from constants.file_filter import CSV_FILTER
+
 class MainWindow(Generated_MainWindow):
     def __init__(self,main_window:QMainWindow):
         self.setupUi(main_window)
@@ -24,10 +25,7 @@ class MainWindow(Generated_MainWindow):
         self.table_solution_matrix_combobox.setItemData(3,"determinante")
         self.table_solution_matrix_combobox.setItemData(4,"cramer")
         self.table_solution_matrix_combobox.setItemData(5,"invertible")
-        self.solution_combobox_options.setItemData(0,"index")
-        self.solution_combobox_options.setItemData(1,"biseccion")
         self.main_stacked_widget.setCurrentIndex(0)
-        
 
     @Slot()
     def update_matrix_size(self):

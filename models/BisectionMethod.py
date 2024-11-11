@@ -93,7 +93,6 @@ class BisectionMethod():
         for row in self.datos_por_iteracion:
             print(" | ".join(f"{value:.6f}" if isinstance(value, float) else str(value) for value in row))
 
-
 if __name__ == '__main__':
     BM = BisectionMethod('(x**3)-sen(2*x)+(e**x)', -2, 2, 0.001)
     BM.bisection_method()

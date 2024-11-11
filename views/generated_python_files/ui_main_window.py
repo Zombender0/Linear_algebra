@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowWopQvr.ui'
+## Form generated from reading UI file 'main_windowfGUvbQ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -18,9 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QHBoxLayout, QHeaderView, QLabel, QLayout,
     QLineEdit, QMainWindow, QPushButton, QSizePolicy,
-    QSpinBox, QStackedWidget, QTableWidget, QTableWidgetItem,
-    QVBoxLayout, QWidget)
-
+    QSpacerItem, QSpinBox, QStackedWidget, QTabWidget,
+    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 from PySide6.QtSvg import QtSvg
 from views.qt_files.qrc_files import resources_rc
 
@@ -29,7 +28,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModality.NonModal)
-        MainWindow.resize(657, 491)
+        MainWindow.resize(553, 476)
         icon = QIcon()
         icon.addFile(u":/icon/Images/grid.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -55,7 +54,7 @@ class Ui_MainWindow(object):
 "background-color: #2c313c\n"
 "}\n"
 "\n"
-"#table_buttons_frame QPushButton, #table_buttons_frame QComboBox,#solution_widget QComboBox, #solution_widget QPushButton {\n"
+"#table_buttons_frame QPushButton, #table_buttons_frame QComboBox,#solution_widget QComboBox, #equations_page QPushButton{\n"
 "    color: #ffffff;\n"
 "    text-align: center;\n"
 "	padding: 3px;\n"
@@ -63,18 +62,18 @@ class Ui_MainWindow(object):
 "    background-color: #16191d;\n"
 "}\n"
 "\n"
-"#table_buttons_frame QPushButton::hover, #table_buttons_frame QComboBox::hover,#solution_widget QComboBox::hover, #solution_widget QPushButton::hover {\n"
+"#table_buttons_frame QPushButton::hover, #table_buttons_frame QComboBox::hover,#equations_page QPushButton::hover{\n"
 "    background-color: #2a2e35;\n"
 "    border-color: #454a52;\n"
 "}\n"
 "\n"
-"#table_buttons_frame QPushButton::pressed, #table_buttons_frame QComboBox::pressed,#solution_widget QComboBox::pressed, #solution_widget QPushButton::pressed {\n"
-"    background-co"
-                        "lor: #1d2127;\n"
+"#table_buttons_frame QPushButton::pressed, #table_buttons_frame QComboBox::pressed,#equations_page QPushButton::pressed{\n"
+"    background-color: #1d2127;\n"
 "	font-weight: 350;\n"
 "}\n"
 "\n"
-"#table_buttons_frame QSpinBox{\n"
+"#table_buttons_frame QSpin"
+                        "Box{\n"
 "color: #fff;\n"
 "background-color: #1d2127;\n"
 "border-radius: 10px;\n"
@@ -106,18 +105,18 @@ class Ui_MainWindow(object):
 "height: 18px;\n"
 "}\n"
 "\n"
-" #table_buttons_frame QComboBox:dropdown, #solution_widget QComboBox{\n"
+" #table_buttons_frame QComboBox:dropdown{\n"
 "border: 0px;\n"
 "}\n"
 "\n"
-"#table_buttons_frame QComboBo"
-                        "x:down-arrow, #solution_widget QComboBox{\n"
+"#table_buttons_frame QComboBox:down-arrow{\n"
 "subcontrol-position: right;\n"
 "width: 18px;\n"
 "height: 18px;\n"
 "}\n"
 "\n"
-"#table_buttons_frame QComboBox QListView, #solution_widget QComboBox QListView{\n"
+"#table_but"
+                        "tons_frame QComboBox QListView, #solution_widget QComboBox QListView{\n"
 "color: #fff;\n"
 "font-weight: 500;\n"
 "background-color: #2c313c;\n"
@@ -154,32 +153,72 @@ class Ui_MainWindow(object):
 "background-color: #1f232a;\n"
 "}\n"
 "\n"
-""
-                        "#equation_widget QLineEdit{\n"
-"color: #fff;\n"
-"background-color: #596379;\n"
-"border-radius:10px;\n"
-"padding: 5px;\n"
-"font-weight: 350;\n"
-"}\n"
-"\n"
-"#equation_buttons_frame QLineEdit{\n"
-"color: #fff;\n"
-"background-color: #596379;\n"
-"border-radius:10px;\n"
-"padding: 5px;\n"
-"font-weight: 350;\n"
-"}\n"
-"#equation_buttons_frame QLabel{\n"
+"#equations_page QLabel{\n"
 "background-color: #1f232a;\n"
-"padding: 3px;\n"
+"padding: -3px;\n"
 "font-weight: 700;\n"
-"border-radius: 7px;\n"
+"border-radius: 10px;\n"
 "}\n"
 "\n"
-"#equations_page{\n"
-"background: #2c313c\n"
-"}")
+""
+                        "#equations_page{\n"
+"background: #2c313c;\n"
+"}\n"
+"\n"
+"#method_equation_tab_widget QWidget{\n"
+"background-color: #3e4555\n"
+"}\n"
+"\n"
+"#equations_page QTabWidget:pane{\n"
+"background-color: #2c313c\n"
+"}\n"
+"\n"
+"QTabBar::tab{\n"
+"background-color: #16191d;\n"
+"color: white;\n"
+"}\n"
+"\n"
+"QTabBar::tab:hover{\n"
+"background-color: #B0B3AD\n"
+"}\n"
+"\n"
+"QTabBar::tab:selected{\n"
+"background-color:#454742\n"
+"}\n"
+"\n"
+"#bisection_tab QLineEdit, #newton_tab QLineEdit{\n"
+"color: #fff;\n"
+"background-color: #596379;\n"
+"border-radius:10px;\n"
+"font-weight: 350;\n"
+"}\n"
+"\n"
+"#bisection_tab QLabel, #newton_tab QLabel{\n"
+"background-color: #1f232a;\n"
+"padding: -3px;\n"
+"font-weight: 700;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+" #bisection_tab QPushButton, #newton_tab QPushButton{\n"
+"color: #ffffff;\n"
+"    text-align: center;\n"
+"	padding: 3px;\n"
+"    border-radius: 10px;\n"
+"    background-color: #16191d;\n"
+"}\n"
+"\n"
+"#bisection_tab QPushButton::hover, #newton_tab QPushButton::hover{\n"
+"    background"
+                        "-color: #2a2e35;\n"
+"    border-color: #454a52;\n"
+"}\n"
+"\n"
+"#bisection_tab QPushButton::pressed, #newton_tab QPushButton::pressed{\n"
+"background-color: #1d2127;\n"
+"font-weight: 350;\n"
+"}\n"
+"")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setStyleSheet(u"")
@@ -194,9 +233,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.verticalLayout_5.setSizeConstraint(QLayout.SizeConstraint.SetMinAndMaxSize)
-        self.verticalLayout_5.setContentsMargins(9, 0, 0, 0)
+        self.verticalLayout_5.setContentsMargins(5, 0, 0, 0)
         self.sub_side_bar = QWidget(self.side_bar)
         self.sub_side_bar.setObjectName(u"sub_side_bar")
+        self.sub_side_bar.setMinimumSize(QSize(0, 0))
         self.sub_side_bar.setMaximumSize(QSize(16777215, 16777215))
         self.verticalLayout_11 = QVBoxLayout(self.sub_side_bar)
         self.verticalLayout_11.setSpacing(0)
@@ -269,6 +309,9 @@ class Ui_MainWindow(object):
 
         self.main_stacked_widget = QStackedWidget(self.centralwidget)
         self.main_stacked_widget.setObjectName(u"main_stacked_widget")
+        self.main_stacked_widget.setFrameShape(QFrame.Shape.NoFrame)
+        self.main_stacked_widget.setFrameShadow(QFrame.Shadow.Plain)
+        self.main_stacked_widget.setLineWidth(1)
         self.matrix_page = QWidget()
         self.matrix_page.setObjectName(u"matrix_page")
         self.verticalLayout_4 = QVBoxLayout(self.matrix_page)
@@ -287,14 +330,17 @@ class Ui_MainWindow(object):
         self.table_buttons_frame.setFrameShape(QFrame.Shape.StyledPanel)
         self.table_buttons_frame.setFrameShadow(QFrame.Shadow.Raised)
         self.table_buttons_horizontal_layout = QHBoxLayout(self.table_buttons_frame)
+        self.table_buttons_horizontal_layout.setSpacing(0)
         self.table_buttons_horizontal_layout.setObjectName(u"table_buttons_horizontal_layout")
+        self.table_buttons_horizontal_layout.setSizeConstraint(QLayout.SizeConstraint.SetMinimumSize)
         self.table_buttons_horizontal_layout.setContentsMargins(0, 0, 0, 0)
         self.table_row_spinbox_widget = QWidget(self.table_buttons_frame)
         self.table_row_spinbox_widget.setObjectName(u"table_row_spinbox_widget")
         self.table_row_spinbox_widget.setStyleSheet(u"")
         self.verticalLayout_3 = QVBoxLayout(self.table_row_spinbox_widget)
+        self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(9, 9, 9, 9)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.row_spinbox_label = QLabel(self.table_row_spinbox_widget)
         self.row_spinbox_label.setObjectName(u"row_spinbox_label")
         self.row_spinbox_label.setMaximumSize(QSize(16777215, 30))
@@ -320,8 +366,9 @@ class Ui_MainWindow(object):
         self.table_column_spinbox_widget = QWidget(self.table_buttons_frame)
         self.table_column_spinbox_widget.setObjectName(u"table_column_spinbox_widget")
         self.verticalLayout = QVBoxLayout(self.table_column_spinbox_widget)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(9, 9, 9, 9)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.column_spinbox_label = QLabel(self.table_column_spinbox_widget)
         self.column_spinbox_label.setObjectName(u"column_spinbox_label")
         self.column_spinbox_label.setMaximumSize(QSize(16777215, 30))
@@ -342,8 +389,9 @@ class Ui_MainWindow(object):
 
         self.table_grid_options = QGridLayout()
         self.table_grid_options.setObjectName(u"table_grid_options")
-        self.table_grid_options.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
+        self.table_grid_options.setSizeConstraint(QLayout.SizeConstraint.SetFixedSize)
         self.table_grid_options.setHorizontalSpacing(5)
+        self.table_grid_options.setVerticalSpacing(3)
         self.table_grid_options.setContentsMargins(0, 6, 0, 6)
         self.table_clean_matrix_button = QPushButton(self.table_buttons_frame)
         self.table_clean_matrix_button.setObjectName(u"table_clean_matrix_button")
@@ -366,6 +414,7 @@ class Ui_MainWindow(object):
         self.table_update_button.setFont(font2)
         self.table_update_button.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.table_update_button.setStyleSheet(u"")
+
         self.table_grid_options.addWidget(self.table_update_button, 0, 1, 1, 1)
 
         self.table_transposition_button = QPushButton(self.table_buttons_frame)
@@ -405,7 +454,7 @@ class Ui_MainWindow(object):
         self.table_solution_matrix_combobox.setCursor(QCursor(Qt.ArrowCursor))
         self.table_solution_matrix_combobox.setFocusPolicy(Qt.FocusPolicy.WheelFocus)
         self.table_solution_matrix_combobox.setAcceptDrops(False)
-        self.table_solution_matrix_combobox.setStyleSheet(u"")
+        self.table_solution_matrix_combobox.setStyleSheet(u"text-align:center;")
 
         self.table_grid_options.addWidget(self.table_solution_matrix_combobox, 1, 2, 1, 1)
 
@@ -421,7 +470,7 @@ class Ui_MainWindow(object):
 
         self.table_buttons_horizontal_layout.setStretch(0, 15)
         self.table_buttons_horizontal_layout.setStretch(1, 15)
-        self.table_buttons_horizontal_layout.setStretch(2, 100)
+        self.table_buttons_horizontal_layout.setStretch(2, 120)
 
         self.verticalLayout_2.addWidget(self.table_buttons_frame)
 
@@ -458,124 +507,213 @@ class Ui_MainWindow(object):
         self.equations_page = QWidget()
         self.equations_page.setObjectName(u"equations_page")
         self.verticalLayout_8 = QVBoxLayout(self.equations_page)
-        self.verticalLayout_8.setSpacing(15)
+        self.verticalLayout_8.setSpacing(6)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.verticalLayout_8.setContentsMargins(4, 0, 5, 5)
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.equation_widget = QWidget(self.equations_page)
         self.equation_widget.setObjectName(u"equation_widget")
-        self.verticalLayout_9 = QVBoxLayout(self.equation_widget)
-        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.equation_input = QLineEdit(self.equation_widget)
-        self.equation_input.setObjectName(u"equation_input")
-        self.equation_input.setFont(font2)
-        self.equation_input.setInputMethodHints(Qt.InputMethodHint.ImhNone)
-
-        self.verticalLayout_9.addWidget(self.equation_input)
-
-
-        self.verticalLayout_8.addWidget(self.equation_widget, 0, Qt.AlignmentFlag.AlignTop)
-
-        self.equation_buttons_frame = QFrame(self.equations_page)
-        self.equation_buttons_frame.setObjectName(u"equation_buttons_frame")
-        sizePolicy.setHeightForWidth(self.equation_buttons_frame.sizePolicy().hasHeightForWidth())
-        self.equation_buttons_frame.setSizePolicy(sizePolicy)
-        self.verticalLayout_10 = QVBoxLayout(self.equation_buttons_frame)
-        self.verticalLayout_10.setSpacing(15)
-        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.interval_a_widget = QWidget(self.equation_buttons_frame)
-        self.interval_a_widget.setObjectName(u"interval_a_widget")
-        sizePolicy.setHeightForWidth(self.interval_a_widget.sizePolicy().hasHeightForWidth())
-        self.interval_a_widget.setSizePolicy(sizePolicy)
-        self.horizontalLayout_2 = QHBoxLayout(self.interval_a_widget)
-        self.horizontalLayout_2.setSpacing(6)
+        self.horizontalLayout_2 = QHBoxLayout(self.equation_widget)
+        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.interval_a_label = QLabel(self.interval_a_widget)
-        self.interval_a_label.setObjectName(u"interval_a_label")
-        self.interval_a_label.setMaximumSize(QSize(16777215, 30))
+        self.horizontalLayout_2.setContentsMargins(6, 0, 0, 0)
+        self.side_equation_text_label = QLabel(self.equation_widget)
+        self.side_equation_text_label.setObjectName(u"side_equation_text_label")
+        self.side_equation_text_label.setMaximumSize(QSize(140, 40))
+        self.side_equation_text_label.setFont(font1)
 
-        self.horizontalLayout_2.addWidget(self.interval_a_label)
+        self.horizontalLayout_2.addWidget(self.side_equation_text_label)
 
-        self.interval_a_line_edit = QLineEdit(self.interval_a_widget)
-        self.interval_a_line_edit.setObjectName(u"interval_a_line_edit")
+        self.equation_text_label = QLabel(self.equation_widget)
+        self.equation_text_label.setObjectName(u"equation_text_label")
+        font4 = QFont()
+        font4.setPointSize(14)
+        font4.setBold(True)
+        self.equation_text_label.setFont(font4)
+        self.equation_text_label.setStyleSheet(u"background: none")
 
-        self.horizontalLayout_2.addWidget(self.interval_a_line_edit)
+        self.horizontalLayout_2.addWidget(self.equation_text_label, 0, Qt.AlignmentFlag.AlignLeft)
 
+        self.edit_equation_button = QPushButton(self.equation_widget)
+        self.edit_equation_button.setObjectName(u"edit_equation_button")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.edit_equation_button.sizePolicy().hasHeightForWidth())
+        self.edit_equation_button.setSizePolicy(sizePolicy1)
+        icon4 = QIcon()
+        icon4.addFile(u":/icon/Images/edit.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.edit_equation_button.setIcon(icon4)
+        self.edit_equation_button.setIconSize(QSize(30, 30))
 
-        self.verticalLayout_10.addWidget(self.interval_a_widget)
-
-        self.interval_b_widget = QWidget(self.equation_buttons_frame)
-        self.interval_b_widget.setObjectName(u"interval_b_widget")
-        sizePolicy.setHeightForWidth(self.interval_b_widget.sizePolicy().hasHeightForWidth())
-        self.interval_b_widget.setSizePolicy(sizePolicy)
-        self.horizontalLayout_3 = QHBoxLayout(self.interval_b_widget)
-        self.horizontalLayout_3.setSpacing(5)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.interval_b_label = QLabel(self.interval_b_widget)
-        self.interval_b_label.setObjectName(u"interval_b_label")
-        self.interval_b_label.setMaximumSize(QSize(16777215, 30))
-
-        self.horizontalLayout_3.addWidget(self.interval_b_label)
-
-        self.interval_b_line_edit = QLineEdit(self.interval_b_widget)
-        self.interval_b_line_edit.setObjectName(u"interval_b_line_edit")
-
-        self.horizontalLayout_3.addWidget(self.interval_b_line_edit)
+        self.horizontalLayout_2.addWidget(self.edit_equation_button, 0, Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignVCenter)
 
 
-        self.verticalLayout_10.addWidget(self.interval_b_widget)
+        self.verticalLayout_8.addWidget(self.equation_widget)
 
-        self.tolerance_widget = QWidget(self.equation_buttons_frame)
-        self.tolerance_widget.setObjectName(u"tolerance_widget")
-        sizePolicy.setHeightForWidth(self.tolerance_widget.sizePolicy().hasHeightForWidth())
-        self.tolerance_widget.setSizePolicy(sizePolicy)
-        self.horizontalLayout_4 = QHBoxLayout(self.tolerance_widget)
-        self.horizontalLayout_4.setSpacing(5)
-        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.tolerance_label = QLabel(self.tolerance_widget)
-        self.tolerance_label.setObjectName(u"tolerance_label")
-        self.tolerance_label.setMaximumSize(QSize(16777215, 30))
+        self.method_equation_widget = QWidget(self.equations_page)
+        self.method_equation_widget.setObjectName(u"method_equation_widget")
+        self.verticalLayout_9 = QVBoxLayout(self.method_equation_widget)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.method_equation_tab_widget = QTabWidget(self.method_equation_widget)
+        self.method_equation_tab_widget.setObjectName(u"method_equation_tab_widget")
+        self.bisection_tab = QWidget()
+        self.bisection_tab.setObjectName(u"bisection_tab")
+        self.verticalLayout_10 = QVBoxLayout(self.bisection_tab)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.verticalLayout_10.setContentsMargins(5, 0, 5, 9)
+        self.bisection_config_widget = QWidget(self.bisection_tab)
+        self.bisection_config_widget.setObjectName(u"bisection_config_widget")
+        self.bisection_config_widget.setMaximumSize(QSize(16777215, 16777215))
+        font5 = QFont()
+        font5.setPointSize(9)
+        font5.setKerning(True)
+        self.bisection_config_widget.setFont(font5)
+        self.verticalLayout_12 = QVBoxLayout(self.bisection_config_widget)
+        self.verticalLayout_12.setSpacing(12)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalLayout_12.setContentsMargins(0, 5, 0, 9)
+        self.bisection_config_grid = QGridLayout()
+        self.bisection_config_grid.setObjectName(u"bisection_config_grid")
+        self.bisection_interval_b_label = QLabel(self.bisection_config_widget)
+        self.bisection_interval_b_label.setObjectName(u"bisection_interval_b_label")
+        self.bisection_interval_b_label.setFont(font1)
 
-        self.horizontalLayout_4.addWidget(self.tolerance_label)
+        self.bisection_config_grid.addWidget(self.bisection_interval_b_label, 1, 0, 1, 1)
 
-        self.tolerance_line_edit = QLineEdit(self.tolerance_widget)
-        self.tolerance_line_edit.setObjectName(u"tolerance_line_edit")
+        self.bisection_interval_a_label = QLabel(self.bisection_config_widget)
+        self.bisection_interval_a_label.setObjectName(u"bisection_interval_a_label")
+        self.bisection_interval_a_label.setFont(font1)
 
-        self.horizontalLayout_4.addWidget(self.tolerance_line_edit)
+        self.bisection_config_grid.addWidget(self.bisection_interval_a_label, 0, 0, 1, 1)
+
+        self.bisection_tolerance_label = QLabel(self.bisection_config_widget)
+        self.bisection_tolerance_label.setObjectName(u"bisection_tolerance_label")
+        self.bisection_tolerance_label.setFont(font1)
+
+        self.bisection_config_grid.addWidget(self.bisection_tolerance_label, 2, 0, 1, 1)
+
+        self.bisection_interval_b_line_edit = QLineEdit(self.bisection_config_widget)
+        self.bisection_interval_b_line_edit.setObjectName(u"bisection_interval_b_line_edit")
+        font6 = QFont()
+        font6.setPointSize(14)
+        self.bisection_interval_b_line_edit.setFont(font6)
+        self.bisection_interval_b_line_edit.setClearButtonEnabled(True)
+
+        self.bisection_config_grid.addWidget(self.bisection_interval_b_line_edit, 1, 1, 1, 1)
+
+        self.bisection_tolerance_line_edit = QLineEdit(self.bisection_config_widget)
+        self.bisection_tolerance_line_edit.setObjectName(u"bisection_tolerance_line_edit")
+        self.bisection_tolerance_line_edit.setFont(font6)
+        self.bisection_tolerance_line_edit.setClearButtonEnabled(True)
+
+        self.bisection_config_grid.addWidget(self.bisection_tolerance_line_edit, 2, 1, 1, 1)
+
+        self.bisection_interval_a_line_edit = QLineEdit(self.bisection_config_widget)
+        self.bisection_interval_a_line_edit.setObjectName(u"bisection_interval_a_line_edit")
+        self.bisection_interval_a_line_edit.setFont(font6)
+        self.bisection_interval_a_line_edit.setClearButtonEnabled(True)
+
+        self.bisection_config_grid.addWidget(self.bisection_interval_a_line_edit, 0, 1, 1, 1)
 
 
-        self.verticalLayout_10.addWidget(self.tolerance_widget)
+        self.verticalLayout_12.addLayout(self.bisection_config_grid)
 
 
-        self.verticalLayout_8.addWidget(self.equation_buttons_frame, 0, Qt.AlignmentFlag.AlignTop)
+        self.verticalLayout_10.addWidget(self.bisection_config_widget, 0, Qt.AlignmentFlag.AlignTop)
 
-        self.solution_widget = QWidget(self.equations_page)
-        self.solution_widget.setObjectName(u"solution_widget")
-        self.horizontalLayout_5 = QHBoxLayout(self.solution_widget)
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.solution_solve_button = QPushButton(self.solution_widget)
-        self.solution_solve_button.setObjectName(u"solution_solve_button")
-        self.solution_solve_button.setMinimumSize(QSize(80, 0))
+        self.bisection_solution_button = QPushButton(self.bisection_tab)
+        self.bisection_solution_button.setObjectName(u"bisection_solution_button")
+        self.bisection_solution_button.setFont(font6)
 
-        self.horizontalLayout_5.addWidget(self.solution_solve_button)
+        self.verticalLayout_10.addWidget(self.bisection_solution_button)
 
-        self.solution_combobox_options = QComboBox(self.solution_widget)
-        self.solution_combobox_options.addItem("")
-        self.solution_combobox_options.addItem("")
-        self.solution_combobox_options.setObjectName(u"solution_combobox_options")
-        self.solution_combobox_options.setMinimumSize(QSize(160, 0))
+        self.bisection_spacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.horizontalLayout_5.addWidget(self.solution_combobox_options)
+        self.verticalLayout_10.addItem(self.bisection_spacer)
+
+        self.method_equation_tab_widget.addTab(self.bisection_tab, "")
+        self.newton_tab = QWidget()
+        self.newton_tab.setObjectName(u"newton_tab")
+        self.verticalLayout_13 = QVBoxLayout(self.newton_tab)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.newton_config_widget = QWidget(self.newton_tab)
+        self.newton_config_widget.setObjectName(u"newton_config_widget")
+        font7 = QFont()
+        font7.setPointSize(9)
+        self.newton_config_widget.setFont(font7)
+        self.verticalLayout_14 = QVBoxLayout(self.newton_config_widget)
+        self.verticalLayout_14.setSpacing(12)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.newton_config_grid = QGridLayout()
+        self.newton_config_grid.setObjectName(u"newton_config_grid")
+        self.newton_max_iter_label = QLabel(self.newton_config_widget)
+        self.newton_max_iter_label.setObjectName(u"newton_max_iter_label")
+        self.newton_max_iter_label.setFont(font1)
+
+        self.newton_config_grid.addWidget(self.newton_max_iter_label, 1, 0, 1, 1)
+
+        self.newton_max_iter_line_edit = QLineEdit(self.newton_config_widget)
+        self.newton_max_iter_line_edit.setObjectName(u"newton_max_iter_line_edit")
+        self.newton_max_iter_line_edit.setFont(font6)
+        self.newton_max_iter_line_edit.setClearButtonEnabled(True)
+
+        self.newton_config_grid.addWidget(self.newton_max_iter_line_edit, 1, 1, 1, 1)
+
+        self.newton_tolerance_label = QLabel(self.newton_config_widget)
+        self.newton_tolerance_label.setObjectName(u"newton_tolerance_label")
+        self.newton_tolerance_label.setFont(font1)
+        self.newton_tolerance_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.newton_config_grid.addWidget(self.newton_tolerance_label, 2, 0, 1, 1)
+
+        self.newton_tolerance_line_edit = QLineEdit(self.newton_config_widget)
+        self.newton_tolerance_line_edit.setObjectName(u"newton_tolerance_line_edit")
+        self.newton_tolerance_line_edit.setFont(font6)
+        self.newton_tolerance_line_edit.setClearButtonEnabled(True)
+
+        self.newton_config_grid.addWidget(self.newton_tolerance_line_edit, 2, 1, 1, 1)
+
+        self.newton_x_value_label = QLabel(self.newton_config_widget)
+        self.newton_x_value_label.setObjectName(u"newton_x_value_label")
+        self.newton_x_value_label.setFont(font1)
+        self.newton_x_value_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.newton_config_grid.addWidget(self.newton_x_value_label, 0, 0, 1, 1)
+
+        self.newton_x_value_line_edit = QLineEdit(self.newton_config_widget)
+        self.newton_x_value_line_edit.setObjectName(u"newton_x_value_line_edit")
+        self.newton_x_value_line_edit.setFont(font6)
+        self.newton_x_value_line_edit.setClearButtonEnabled(True)
+
+        self.newton_config_grid.addWidget(self.newton_x_value_line_edit, 0, 1, 1, 1)
 
 
-        self.verticalLayout_8.addWidget(self.solution_widget, 0, Qt.AlignmentFlag.AlignLeft)
+        self.verticalLayout_14.addLayout(self.newton_config_grid)
+
+
+        self.verticalLayout_13.addWidget(self.newton_config_widget)
+
+        self.newton_solution_button = QPushButton(self.newton_tab)
+        self.newton_solution_button.setObjectName(u"newton_solution_button")
+        self.newton_solution_button.setFont(font6)
+
+        self.verticalLayout_13.addWidget(self.newton_solution_button)
+
+        self.newton_spacer = QSpacerItem(20, 240, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_13.addItem(self.newton_spacer)
+
+        self.method_equation_tab_widget.addTab(self.newton_tab, "")
+
+        self.verticalLayout_9.addWidget(self.method_equation_tab_widget)
+
+
+        self.verticalLayout_8.addWidget(self.method_equation_widget)
 
         self.verticalLayout_8.setStretch(0, 10)
-        self.verticalLayout_8.setStretch(1, 9)
-        self.verticalLayout_8.setStretch(2, 9)
+        self.verticalLayout_8.setStretch(1, 100)
         self.main_stacked_widget.addWidget(self.equations_page)
 
         self.horizontalLayout.addWidget(self.main_stacked_widget)
@@ -585,6 +723,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.main_stacked_widget.setCurrentIndex(1)
+        self.method_equation_tab_widget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -665,13 +804,21 @@ class Ui_MainWindow(object):
         self.input_table.setSortingEnabled(False)
         self.input_table.setSortingEnabled(__sortingEnabled)
 
-        self.equation_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Insertar ecuaci\u00f3n", None))
-        self.interval_a_label.setText(QCoreApplication.translate("MainWindow", u"Intervalo a", None))
-        self.interval_b_label.setText(QCoreApplication.translate("MainWindow", u"Intervalo b", None))
-        self.tolerance_label.setText(QCoreApplication.translate("MainWindow", u"Tolerancia", None))
-        self.solution_solve_button.setText(QCoreApplication.translate("MainWindow", u"Resolver", None))
-        self.solution_combobox_options.setItemText(0, QCoreApplication.translate("MainWindow", u"Obtener ra\u00edces por", None))
-        self.solution_combobox_options.setItemText(1, QCoreApplication.translate("MainWindow", u"Bisecci\u00f3n", None))
-
+        self.side_equation_text_label.setText(QCoreApplication.translate("MainWindow", u"Ecuacion actual: ", None))
+        self.equation_text_label.setText("")
+#if QT_CONFIG(tooltip)
+        self.edit_equation_button.setToolTip(QCoreApplication.translate("MainWindow", u"Editar ecuaci\u00f3n", None))
+#endif // QT_CONFIG(tooltip)
+        self.edit_equation_button.setText("")
+        self.bisection_interval_b_label.setText(QCoreApplication.translate("MainWindow", u"Intervalo b", None))
+        self.bisection_interval_a_label.setText(QCoreApplication.translate("MainWindow", u"Intervalo a", None))
+        self.bisection_tolerance_label.setText(QCoreApplication.translate("MainWindow", u"Tolerancia", None))
+        self.bisection_solution_button.setText(QCoreApplication.translate("MainWindow", u"Obtener ra\u00edz", None))
+        self.method_equation_tab_widget.setTabText(self.method_equation_tab_widget.indexOf(self.bisection_tab), QCoreApplication.translate("MainWindow", u"Bisecci\u00f3n", None))
+        self.newton_max_iter_label.setText(QCoreApplication.translate("MainWindow", u"Iteraciones m\u00e1ximas", None))
+        self.newton_tolerance_label.setText(QCoreApplication.translate("MainWindow", u"Tolerancia", None))
+        self.newton_x_value_label.setText(QCoreApplication.translate("MainWindow", u"Valor de x", None))
+        self.newton_solution_button.setText(QCoreApplication.translate("MainWindow", u"Obtener ra\u00edz", None))
+        self.method_equation_tab_widget.setTabText(self.method_equation_tab_widget.indexOf(self.newton_tab), QCoreApplication.translate("MainWindow", u"Newton", None))
     # retranslateUi
 

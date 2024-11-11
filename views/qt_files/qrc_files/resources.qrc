@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icon">
+    <file>Images/edit.svg</file>
+    <file>Images/x_to_2.svg</file>
     <file>Images/align-justify.svg</file>
     <file>Images/fx.svg</file>
     <file>Images/matrix.svg</file>
@@ -10,7 +12,6 @@
     <file>Images/arrow_right.png</file>
     <file>Images/arrow_downwards.png</file>
     <file>Images/arrow_upwards.png</file>
-    <file>Images/grid.ico</file>
     <file>Images/math.ico</file>
   </qresource>
 </RCC>

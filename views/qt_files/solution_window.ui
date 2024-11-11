@@ -14,7 +14,7 @@
    <string>Solución</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="qrc_files/resources.qrc">
+   <iconset>
     <normaloff>:/icon/Images/grid.ico</normaloff>:/icon/Images/grid.ico</iconset>
   </property>
   <property name="styleSheet">
@@ -33,9 +33,6 @@ padding: 2px;
 border-radius:3px;
 }
 
-QTabWidget:pane{
-background-color: #2c313c
-}
 
 #main_widget{
 background: #2c313c
@@ -57,6 +54,7 @@ border-color: #454a52;
 background-color: #1d2127;
 	font-weight: 350;
 }
+
 QLabel {
 background-color: #1f232a;
 padding: 3px;
@@ -94,13 +92,17 @@ background-color: #242831;
 font-weight: 700;
 }
 
-
 QTabBar::tab:hover{
 background-color: #B0B3AD
 }
 
 QTabBar::tab:selected{
 background-color:#454742
+}
+
+QTabBar::tab{
+background-color: #16191d;
+color: white;
 }
 
 QListWidget{
@@ -112,10 +114,7 @@ margin: 0px;
 color: #fff;
 }
 
-QTabBar::tab{
-background-color: #16191d;
-color: white;
-}
+
 </string>
   </property>
   <layout class="QVBoxLayout" name="main_widget_vertical_layout" stretch="1,10">
