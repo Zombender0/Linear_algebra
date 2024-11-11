@@ -13,3 +13,4 @@ ALLOWED_DATA = {
             'sqrt': sqrt,
             'exp': exp
         }
+#--windows-console-mode=disable

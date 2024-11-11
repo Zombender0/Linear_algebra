@@ -18,6 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QDialog, QGridLayout, QHBoxLayout,
     QLabel, QLineEdit, QPushButton, QSizePolicy,
     QVBoxLayout, QWidget)
+
 from PySide6.QtSvg import QtSvg
 from views.qt_files.qrc_files import resources_rc
 
@@ -27,6 +28,7 @@ class Ui_insert_equation_dialog(object):
             insert_equation_dialog.setObjectName(u"insert_equation_dialog")
         icon = QIcon()
         icon.addFile(u":/icon/Images/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
+        insert_equation_dialog.setWindowIcon(icon)
         insert_equation_dialog.resize(425, 356)
         insert_equation_dialog.setStyleSheet(u"#insert_equation_dialog{\n"
 "background-color: #2c313c\n"

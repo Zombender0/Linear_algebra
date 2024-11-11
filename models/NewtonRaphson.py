@@ -35,13 +35,9 @@ class NewthonRaphson():
 
             if x_siguiente != 0:
                 error_absoluto = abs(x_siguiente - x_actual)
-                error_porcentual = abs((x_siguiente - x_actual)/x_siguiente)*100
-                str_error_porcentual = str(round(error_porcentual, 6)) + "%"
             else:
                 error_absoluto = abs(x_siguiente - x_actual)
-                error_porcentual = 0
-                str_error_porcentual = 'Indefinido'
-            self.datos_por_iteracion.append([str_n_iteraciones, x_actual, x_siguiente, fxi, fxi_derivada, error_absoluto, str_error_porcentual])
+            self.datos_por_iteracion.append([str_n_iteraciones, x_actual, x_siguiente, fxi, fxi_derivada, error_absoluto])
             #self.print_iterations()
 
             if error_absoluto <= self.tolerancia:
