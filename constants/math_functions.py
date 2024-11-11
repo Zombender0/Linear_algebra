@@ -6,7 +6,7 @@ ALLOWED_DATA = {
             'tan': tan, 
             '**': pow, 
             'log': log, 
-            'ln': log10,
+            'ln': log,
             'e': e, 
             'pi': pi,
             'abs': abs,
