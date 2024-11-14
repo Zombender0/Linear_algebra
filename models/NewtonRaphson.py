@@ -32,11 +32,7 @@ class NewthonRaphson():
                 return self.config
 
             x_siguiente = x_actual - (fxi/fxi_derivada)
-
-            if x_siguiente != 0:
-                error_absoluto = abs(x_siguiente - x_actual)
-            else:
-                error_absoluto = abs(x_siguiente - x_actual)
+            error_absoluto = abs(x_siguiente - x_actual)
             self.datos_por_iteracion.append([str_n_iteraciones, x_actual, x_siguiente, fxi, fxi_derivada, error_absoluto])
             #self.print_iterations()
 

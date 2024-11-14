@@ -1,0 +1,6 @@
+{python.exe_path} -m 
+nuitka {main_file.py_path} --follow-imports 
+--enable-plugin=pyside6 --output-dir={output_dir_path}
+--quiet --noinclude-qt-translations --onefile --noinclude-dlls=*.cpp.o --noinclude-dlls=*.qsb --noinclude-dlls=*.webp 
+--windows-icon-from-ico={app_icon.icon_path}
+--windows-console-mode=disable

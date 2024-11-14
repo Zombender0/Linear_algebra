@@ -41,3 +41,7 @@ class SolutionController():
     def open_newton_equation_window(self,config:dict)->None:
         self.solution_window.create_newton_solution(config)
         self.open_window()
+
+    def open_false_position_equation_window(self,config:dict)->None:
+        self.solution_window.create_false_position_solution(config)
+        self.open_window()

@@ -15,7 +15,7 @@ class MainWindow(Generated_MainWindow):
         #loadJsonStyle(self,self)
         resize_table(self.input_table,3,3,last_b=False,letter=' ')
         
-    def setupUi(self, MainWindow):
+    def setupUi(self, MainWindow:QMainWindow):
         super().setupUi(MainWindow)
         self.row_spinbox.setValue(3)
         self.column_spinbox.setValue(3)
@@ -26,6 +26,8 @@ class MainWindow(Generated_MainWindow):
         self.table_solution_matrix_combobox.setItemData(4,"cramer")
         self.table_solution_matrix_combobox.setItemData(5,"invertible")
         self.main_stacked_widget.setCurrentIndex(0)
+        self.method_equation_tab_widget.setCurrentIndex(0)
+        MainWindow.showMaximized()
 
     @Slot()
     def update_matrix_size(self):

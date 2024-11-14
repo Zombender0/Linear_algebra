@@ -18,6 +18,7 @@ from models.CramersRule import CramersRule
 from models.InvertibleMatrix import InvertibleMatrix
 from models.BisectionMethod import BisectionMethod
 from models.NewtonRaphson import NewthonRaphson
+from models.FalsePositionMethod import FalsePositionMethod
 from PySide6.QtCore import Slot,QObject
 from PySide6.QtWidgets import QMainWindow
 from helpers.validation_helper import float_parser
@@ -33,6 +34,10 @@ class MainController(QObject):
         self.connect_main_window_buttons()
         
     def connect_main_window_buttons(self):
+        #UI
+        self.main_window.matrix_tab_button.clicked.connect(lambda: self.main_window.main_stacked_widget.setCurrentIndex(0))
+        self.main_window.equation_tab_button.clicked.connect(lambda: self.main_window.main_stacked_widget.setCurrentIndex(1)) 
+        #MATRIX
         self.main_window.table_update_button.clicked.connect(lambda: self.update_matrix_size())
         self.main_window.table_fill_0_button.clicked.connect(lambda: self.main_window.fill_matrix_0())
         self.main_window.table_clean_matrix_button.clicked.connect(lambda: self.main_window.clean_matrix())
@@ -42,14 +47,11 @@ class MainController(QObject):
         self.main_window.table_adjust_size_button.clicked.connect(lambda: self.main_window.adjust_matrix())
         self.main_window.table_import_from_csv_button.clicked.connect(lambda: self.main_window.import_matrix_from_csv())
         self.main_window.table_solution_matrix_combobox.currentIndexChanged.connect(lambda: self.solution_combobox_changed())
-        self.main_window.matrix_tab_button.clicked.connect(lambda: self.main_window.main_stacked_widget.setCurrentIndex(0))
-        self.main_window.equation_tab_button.clicked.connect(lambda: self.main_window.main_stacked_widget.setCurrentIndex(1))
-
         #EQUATIONS
         self.main_window.edit_equation_button.clicked.connect(lambda: self.open_equation_selecter_window())
         self.main_window.bisection_solution_button.clicked.connect(lambda: self.get_root_bisection_method())
         self.main_window.newton_solution_button.clicked.connect(lambda: self.get_root_newton_method())
-    
+        self.main_window.false_solution_button.clicked.connect(lambda: self.get_root_false_position_method())
     @Slot()
     def solution_tab(self):
         matriz = get_data_from_table(self.main_window.input_table)
@@ -133,6 +135,13 @@ class MainController(QObject):
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_newton_equation_window(config)
 
+    def open_false_position_solution_window(self,false_position_instance:FalsePositionMethod):
+        config = false_position_instance.false_position_method()
+        if config == 'not tolerance':
+            warning_box("El valor de la tolerancia debe ser entre 0 y 1")
+            return
+        self.solution_controller.set_window(SolutionWindow())
+        self.solution_controller.open_false_position_equation_window(config)
 
     def open_equation_selecter_window(self):
         self.equation_controller.set_window(EquationSelecterWindow())
@@ -207,6 +216,35 @@ class MainController(QObject):
         parsed_equation = EquationParser(self.equation_controller.equation)
         newton = NewthonRaphson(parsed_equation,x_value,tolerance,max_iter)
         self.open_newton_solution_window(newton)
+
+    def get_root_false_position_method(self):
+        interval_a = self.main_window.false_interval_a_line_edit.text()
+        interval_b = self.main_window.false_interval_b_line_edit.text()
+        tolerance = self.main_window.false_tolerance_line_edit.text()
+
+        interval_a = float_parser(interval_a)
+        interval_b = float_parser(interval_b)
+        tolerance = float_parser(tolerance)
+
+        if interval_a is False:
+            warning_box('El intervalo a no es un número')
+            return
+        if interval_b is False:
+            warning_box('El intervalo b no es un número')
+            return
+        if tolerance is False:
+            warning_box('La tolerancia no es un número')
+            return
+        if interval_a > interval_b:
+            warning_box('El intervalo xl debe ser menor que el intervalo xu')
+            return
+        if self.equation_controller.equation is None:
+            warning_box('No se ha ingresado la ecuación a resolver')
+            return
+        
+        parsed_equation = EquationParser(self.equation_controller.equation)
+        false_position = FalsePositionMethod(parsed_equation,interval_a,interval_b,tolerance)
+        self.open_false_position_solution_window(false_position)
 
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:

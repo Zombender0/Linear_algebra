@@ -6,7 +6,7 @@ from PySide6.QtWidgets import (QHBoxLayout, QLabel,QListWidget, QPushButton,
 from PySide6.QtCore import Slot,Qt
 from PySide6.QtGui import QFont
 from helpers.matrix_helper import insert_data_to_table,customize_headers_in_table
-from constants.equation_methods import BISECTION_HEADER,NEWTON_HEADER
+from constants.equation_methods import BISECTION_HEADER,NEWTON_HEADER,FALSE_POSITION_HEADER
 class SolutionWindow(QWidget,Generated_SolutionWindow):  
     header_font = QFont('Calibri',30)
     def __init__(self,parent:QWidget=None):
@@ -190,7 +190,35 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
         first_step = self.tab_widget.currentWidget().property('step_data')
         self.label.setText(first_step)
         self.setWindowTitle('Raíz de ecuación por Newton Raphson')
-        
+    def create_false_position_solution(self,config:dict)->None:
+        for i,(step,content) in enumerate(config.items()):
+            self.p = QWidget()
+            self.p.setProperty('step_data',step)
+            self.p.setObjectName(f'p{i+1}')
+            self.verticalLayout = QVBoxLayout(self.p)
+            self.verticalLayout.setObjectName(f"vertical_layout_{i+1}")
+            self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+            self.s_table = QTableWidget(self.p)
+            self.s_table.setObjectName(f"s_table_{i+1}")
+            self.verticalLayout.addWidget(self.s_table)
+            if isinstance(content,str):#No solution
+                self.s_table.hide()
+                self.s_label = QLabel(content)
+                self.verticalLayout.addWidget(self.s_label)
+            else:
+                matrix = content[0]
+                solution = content[1]
+                insert_data_to_table(self.s_table,matrix,editable=False,last_b=False,letter=' ')
+                customize_headers_in_table(self.s_table,FALSE_POSITION_HEADER)
+                self.s_label = QLabel(solution)
+                self.s_label.setFont(QFont('Calibri',15))
+                self.verticalLayout.addWidget(self.s_label)
+
+            self.tab_widget.addTab(self.p,f'p{i+1}')
+        first_step = self.tab_widget.currentWidget().property('step_data')
+        self.label.setText(first_step)
+        self.setWindowTitle('Raíz de ecuación por Falsa posición')
+
     def show_step_property(self):
         step = self.tab_widget.currentWidget().property('step_data')
         if step is not None:
@@ -203,6 +231,7 @@ class SolutionWindow(QWidget,Generated_SolutionWindow):
         current_index = self.tab_widget.currentIndex()
         if current_index > 0:
             self.tab_widget.setCurrentIndex(current_index-1)
+
     @Slot()
     def next_tab(self):
         current_index = self.tab_widget.currentIndex()

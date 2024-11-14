@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowfGUvbQ.ui'
+## Form generated from reading UI file 'main_windowiunkAM.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -28,10 +28,9 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModality.NonModal)
-        MainWindow.resize(553, 476)
-        MainWindow.showMaximized()
+        MainWindow.resize(553, 392)
         icon = QIcon()
-        icon.addFile(u":/icon/Images/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icon/Images/grid.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"*{\n"
 "border:none;\n"
@@ -187,35 +186,35 @@ class Ui_MainWindow(object):
 "background-color:#454742\n"
 "}\n"
 "\n"
-"#bisection_tab QLineEdit, #newton_tab QLineEdit{\n"
+"#bisection_tab QLineEdit, #newton_tab QLineEdit, #false_position_tab QLineEdit{\n"
 "color: #fff;\n"
 "background-color: #596379;\n"
 "border-radius:10px;\n"
 "font-weight: 350;\n"
 "}\n"
 "\n"
-"#bisection_tab QLabel, #newton_tab QLabel{\n"
+"#bisection_tab QLabel, #newton_tab QLabel, #false_position_tab QLabel{\n"
 "background-color: #1f232a;\n"
 "padding: -3px;\n"
 "font-weight: 700;\n"
 "border-radius: 10px;\n"
 "}\n"
 "\n"
-" #bisection_tab QPushButton, #newton_tab QPushButton{\n"
+" #bisection_tab QPushButton, #newton_tab QPushButton, #false_position_tab QPushButton{\n"
 "color: #ffffff;\n"
 "    text-align: center;\n"
 "	padding: 3px;\n"
 "    border-radius: 10px;\n"
 "    background-color: #16191d;\n"
 "}\n"
-"\n"
-"#bisection_tab QPushButton::hover, #newton_tab QPushButton::hover{\n"
-"    background"
-                        "-color: #2a2e35;\n"
+""
+                        "\n"
+"#bisection_tab QPushButton::hover, #newton_tab QPushButton::hover, #false_position_tabQ QPushButton::hover{\n"
+"    background-color: #2a2e35;\n"
 "    border-color: #454a52;\n"
 "}\n"
 "\n"
-"#bisection_tab QPushButton::pressed, #newton_tab QPushButton::pressed{\n"
+"#bisection_tab QPushButton::pressed, #newton_tab QPushButton::pressed, #false_position_tab QPushButton::pressed{\n"
 "background-color: #1d2127;\n"
 "font-weight: 350;\n"
 "}\n"
@@ -638,6 +637,7 @@ class Ui_MainWindow(object):
         self.newton_tab.setObjectName(u"newton_tab")
         self.verticalLayout_13 = QVBoxLayout(self.newton_tab)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.verticalLayout_13.setContentsMargins(5, 0, 5, -1)
         self.newton_config_widget = QWidget(self.newton_tab)
         self.newton_config_widget.setObjectName(u"newton_config_widget")
         font7 = QFont()
@@ -646,7 +646,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_14 = QVBoxLayout(self.newton_config_widget)
         self.verticalLayout_14.setSpacing(12)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_14.setContentsMargins(0, 5, 0, 9)
         self.newton_config_grid = QGridLayout()
         self.newton_config_grid.setObjectName(u"newton_config_grid")
         self.newton_max_iter_label = QLabel(self.newton_config_widget)
@@ -707,6 +707,77 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.addItem(self.newton_spacer)
 
         self.method_equation_tab_widget.addTab(self.newton_tab, "")
+        self.false_position_tab = QWidget()
+        self.false_position_tab.setObjectName(u"false_position_tab")
+        self.verticalLayout_16 = QVBoxLayout(self.false_position_tab)
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.verticalLayout_16.setContentsMargins(5, 0, 5, -1)
+        self.false_position_config_widget = QWidget(self.false_position_tab)
+        self.false_position_config_widget.setObjectName(u"false_position_config_widget")
+        self.false_position_config_widget.setMaximumSize(QSize(16777215, 16777215))
+        self.false_position_config_widget.setFont(font5)
+        self.verticalLayout_15 = QVBoxLayout(self.false_position_config_widget)
+        self.verticalLayout_15.setSpacing(12)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.verticalLayout_15.setContentsMargins(0, 5, 0, 9)
+        self.false_position_config_grid = QGridLayout()
+        self.false_position_config_grid.setObjectName(u"false_position_config_grid")
+        self.false_interval_b_label = QLabel(self.false_position_config_widget)
+        self.false_interval_b_label.setObjectName(u"false_interval_b_label")
+        self.false_interval_b_label.setFont(font1)
+
+        self.false_position_config_grid.addWidget(self.false_interval_b_label, 1, 0, 1, 1)
+
+        self.false_interval_a_label = QLabel(self.false_position_config_widget)
+        self.false_interval_a_label.setObjectName(u"false_interval_a_label")
+        self.false_interval_a_label.setFont(font1)
+
+        self.false_position_config_grid.addWidget(self.false_interval_a_label, 0, 0, 1, 1)
+
+        self.false_tolerance_label = QLabel(self.false_position_config_widget)
+        self.false_tolerance_label.setObjectName(u"false_tolerance_label")
+        self.false_tolerance_label.setFont(font1)
+
+        self.false_position_config_grid.addWidget(self.false_tolerance_label, 2, 0, 1, 1)
+
+        self.false_interval_b_line_edit = QLineEdit(self.false_position_config_widget)
+        self.false_interval_b_line_edit.setObjectName(u"false_interval_b_line_edit")
+        self.false_interval_b_line_edit.setFont(font6)
+        self.false_interval_b_line_edit.setClearButtonEnabled(True)
+
+        self.false_position_config_grid.addWidget(self.false_interval_b_line_edit, 1, 1, 1, 1)
+
+        self.false_tolerance_line_edit = QLineEdit(self.false_position_config_widget)
+        self.false_tolerance_line_edit.setObjectName(u"false_tolerance_line_edit")
+        self.false_tolerance_line_edit.setFont(font6)
+        self.false_tolerance_line_edit.setClearButtonEnabled(True)
+
+        self.false_position_config_grid.addWidget(self.false_tolerance_line_edit, 2, 1, 1, 1)
+
+        self.false_interval_a_line_edit = QLineEdit(self.false_position_config_widget)
+        self.false_interval_a_line_edit.setObjectName(u"false_interval_a_line_edit")
+        self.false_interval_a_line_edit.setFont(font6)
+        self.false_interval_a_line_edit.setClearButtonEnabled(True)
+
+        self.false_position_config_grid.addWidget(self.false_interval_a_line_edit, 0, 1, 1, 1)
+
+
+        self.verticalLayout_15.addLayout(self.false_position_config_grid)
+
+
+        self.verticalLayout_16.addWidget(self.false_position_config_widget)
+
+        self.false_solution_button = QPushButton(self.false_position_tab)
+        self.false_solution_button.setObjectName(u"false_solution_button")
+        self.false_solution_button.setFont(font6)
+
+        self.verticalLayout_16.addWidget(self.false_solution_button)
+
+        self.false_position_spacer = QSpacerItem(20, 158, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_16.addItem(self.false_position_spacer)
+
+        self.method_equation_tab_widget.addTab(self.false_position_tab, "")
 
         self.verticalLayout_9.addWidget(self.method_equation_tab_widget)
 
@@ -724,7 +795,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.main_stacked_widget.setCurrentIndex(1)
-        self.method_equation_tab_widget.setCurrentIndex(0)
+        self.method_equation_tab_widget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -821,5 +892,10 @@ class Ui_MainWindow(object):
         self.newton_x_value_label.setText(QCoreApplication.translate("MainWindow", u"Valor de x", None))
         self.newton_solution_button.setText(QCoreApplication.translate("MainWindow", u"Obtener ra\u00edz", None))
         self.method_equation_tab_widget.setTabText(self.method_equation_tab_widget.indexOf(self.newton_tab), QCoreApplication.translate("MainWindow", u"Newton", None))
+        self.false_interval_b_label.setText(QCoreApplication.translate("MainWindow", u"Intervalo xu", None))
+        self.false_interval_a_label.setText(QCoreApplication.translate("MainWindow", u"Intervalo xl", None))
+        self.false_tolerance_label.setText(QCoreApplication.translate("MainWindow", u"Tolerancia", None))
+        self.false_solution_button.setText(QCoreApplication.translate("MainWindow", u"Obtener ra\u00edz", None))
+        self.method_equation_tab_widget.setTabText(self.method_equation_tab_widget.indexOf(self.false_position_tab), QCoreApplication.translate("MainWindow", u"Falsa posici\u00f3n", None))
     # retranslateUi
 
