@@ -1,6 +1,6 @@
 import copy
-from symengine import symbols, diff
-from models.EquationEvaluator import EquationEvaluator as EC_EVAL
+from models.EquationFunctions import differencial as diff
+from models.EquationFunctions import EquationEvaluator as EC_EVAL
 #from DerivativeFunction import funcion_derivada, derivados
 
 class NewthonRaphson():
@@ -22,9 +22,8 @@ class NewthonRaphson():
             self.n_iter += 1
             str_n_iteraciones = "#" + str(self.n_iter)
             fxi = EC_EVAL(self.funcion, x_actual)
-            x = symbols('x')
-            funcion_derivada = diff(self.funcion, x)
-            fxi_derivada = EC_EVAL(str(funcion_derivada), x_actual)
+            funcion_derivada = diff(self.funcion)
+            fxi_derivada = EC_EVAL(funcion_derivada, x_actual)
 
             if fxi_derivada == 0:
                 self.config["Derivada cero. No se puede continuar."] = copy.deepcopy([self.datos_por_iteracion])
@@ -37,7 +36,7 @@ class NewthonRaphson():
             #self.print_iterations()
 
             if error_absoluto <= self.tolerancia:
-                solucion = f"\nLa raíz{' aproximada' if error_absoluto != 0 else ''} es x = {x_siguiente} con un error absoluto de {error_absoluto}.\nNúmero de iteraciones: {self.n_iter}"
+                solucion = f"La raíz{' aproximada' if error_absoluto != 0 else ''} es x = {x_siguiente} con un error absoluto de {error_absoluto}.\nNúmero de iteraciones: {self.n_iter}"
                 #print(solucion)
                 self.config["Solución Aproximada"] = (copy.deepcopy(self.datos_por_iteracion), solucion)
                 return self.config

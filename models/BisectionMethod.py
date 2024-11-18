@@ -1,5 +1,5 @@
 import copy
-from models.EquationEvaluator import EquationEvaluator
+from models.EquationFunctions import EquationEvaluator
 
 class BisectionMethod():
     def __init__(self, f, a, b, tol) -> None:

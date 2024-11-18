@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowiunkAM.ui'
+## Form generated from reading UI file 'main_windowIRAWEo.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -20,6 +20,7 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QLineEdit, QMainWindow, QPushButton, QSizePolicy,
     QSpacerItem, QSpinBox, QStackedWidget, QTabWidget,
     QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+
 from PySide6.QtSvg import QtSvg
 from views.qt_files.qrc_files import resources_rc
 
@@ -28,7 +29,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModality.NonModal)
-        MainWindow.resize(553, 392)
+        MainWindow.resize(553, 271)
         icon = QIcon()
         icon.addFile(u":/icon/Images/grid.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -186,35 +187,35 @@ class Ui_MainWindow(object):
 "background-color:#454742\n"
 "}\n"
 "\n"
-"#bisection_tab QLineEdit, #newton_tab QLineEdit, #false_position_tab QLineEdit{\n"
+"#bisection_tab QLineEdit, #newton_tab QLineEdit, #false_position_tab QLineEdit, #secant_tab QLineEdit{\n"
 "color: #fff;\n"
 "background-color: #596379;\n"
 "border-radius:10px;\n"
 "font-weight: 350;\n"
 "}\n"
 "\n"
-"#bisection_tab QLabel, #newton_tab QLabel, #false_position_tab QLabel{\n"
+"#bisection_tab QLabel, #newton_tab QLabel, #false_position_tab QLabel, #secant_tab QLabel{\n"
 "background-color: #1f232a;\n"
 "padding: -3px;\n"
 "font-weight: 700;\n"
 "border-radius: 10px;\n"
 "}\n"
 "\n"
-" #bisection_tab QPushButton, #newton_tab QPushButton, #false_position_tab QPushButton{\n"
+" #bisection_tab QPushButton, #newton_tab QPushButton, #false_position_tab QPushButton, #secant_tab QPushButton{\n"
 "color: #ffffff;\n"
 "    text-align: center;\n"
 "	padding: 3px;\n"
-"    border-radius: 10px;\n"
+""
+                        "    border-radius: 10px;\n"
 "    background-color: #16191d;\n"
 "}\n"
-""
-                        "\n"
-"#bisection_tab QPushButton::hover, #newton_tab QPushButton::hover, #false_position_tabQ QPushButton::hover{\n"
+"\n"
+"#bisection_tab QPushButton::hover, #newton_tab QPushButton::hover, #false_position_tab QPushButton::hover, #secant_tab QPushButton::hover{\n"
 "    background-color: #2a2e35;\n"
 "    border-color: #454a52;\n"
 "}\n"
 "\n"
-"#bisection_tab QPushButton::pressed, #newton_tab QPushButton::pressed, #false_position_tab QPushButton::pressed{\n"
+"#bisection_tab QPushButton::pressed, #newton_tab QPushButton::pressed, #false_position_tab QPushButton::pressed, #secant_tab QPushButton::pressed{\n"
 "background-color: #1d2127;\n"
 "font-weight: 350;\n"
 "}\n"
@@ -578,18 +579,21 @@ class Ui_MainWindow(object):
         self.bisection_interval_b_label = QLabel(self.bisection_config_widget)
         self.bisection_interval_b_label.setObjectName(u"bisection_interval_b_label")
         self.bisection_interval_b_label.setFont(font1)
+        self.bisection_interval_b_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.bisection_config_grid.addWidget(self.bisection_interval_b_label, 1, 0, 1, 1)
 
         self.bisection_interval_a_label = QLabel(self.bisection_config_widget)
         self.bisection_interval_a_label.setObjectName(u"bisection_interval_a_label")
         self.bisection_interval_a_label.setFont(font1)
+        self.bisection_interval_a_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.bisection_config_grid.addWidget(self.bisection_interval_a_label, 0, 0, 1, 1)
 
         self.bisection_tolerance_label = QLabel(self.bisection_config_widget)
         self.bisection_tolerance_label.setObjectName(u"bisection_tolerance_label")
         self.bisection_tolerance_label.setFont(font1)
+        self.bisection_tolerance_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.bisection_config_grid.addWidget(self.bisection_tolerance_label, 2, 0, 1, 1)
 
@@ -616,6 +620,8 @@ class Ui_MainWindow(object):
 
         self.bisection_config_grid.addWidget(self.bisection_interval_a_line_edit, 0, 1, 1, 1)
 
+        self.bisection_config_grid.setRowStretch(0, 1)
+        self.bisection_config_grid.setRowStretch(1, 100)
 
         self.verticalLayout_12.addLayout(self.bisection_config_grid)
 
@@ -690,6 +696,8 @@ class Ui_MainWindow(object):
 
         self.newton_config_grid.addWidget(self.newton_x_value_line_edit, 0, 1, 1, 1)
 
+        self.newton_config_grid.setColumnStretch(0, 1)
+        self.newton_config_grid.setColumnStretch(1, 100)
 
         self.verticalLayout_14.addLayout(self.newton_config_grid)
 
@@ -725,18 +733,21 @@ class Ui_MainWindow(object):
         self.false_interval_b_label = QLabel(self.false_position_config_widget)
         self.false_interval_b_label.setObjectName(u"false_interval_b_label")
         self.false_interval_b_label.setFont(font1)
+        self.false_interval_b_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.false_position_config_grid.addWidget(self.false_interval_b_label, 1, 0, 1, 1)
 
         self.false_interval_a_label = QLabel(self.false_position_config_widget)
         self.false_interval_a_label.setObjectName(u"false_interval_a_label")
         self.false_interval_a_label.setFont(font1)
+        self.false_interval_a_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.false_position_config_grid.addWidget(self.false_interval_a_label, 0, 0, 1, 1)
 
         self.false_tolerance_label = QLabel(self.false_position_config_widget)
         self.false_tolerance_label.setObjectName(u"false_tolerance_label")
         self.false_tolerance_label.setFont(font1)
+        self.false_tolerance_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.false_position_config_grid.addWidget(self.false_tolerance_label, 2, 0, 1, 1)
 
@@ -761,6 +772,8 @@ class Ui_MainWindow(object):
 
         self.false_position_config_grid.addWidget(self.false_interval_a_line_edit, 0, 1, 1, 1)
 
+        self.false_position_config_grid.setColumnStretch(0, 1)
+        self.false_position_config_grid.setColumnStretch(1, 100)
 
         self.verticalLayout_15.addLayout(self.false_position_config_grid)
 
@@ -778,6 +791,94 @@ class Ui_MainWindow(object):
         self.verticalLayout_16.addItem(self.false_position_spacer)
 
         self.method_equation_tab_widget.addTab(self.false_position_tab, "")
+        self.secant_tab = QWidget()
+        self.secant_tab.setObjectName(u"secant_tab")
+        self.verticalLayout_18 = QVBoxLayout(self.secant_tab)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.verticalLayout_18.setContentsMargins(5, 0, 5, -1)
+        self.secant_config_widget = QWidget(self.secant_tab)
+        self.secant_config_widget.setObjectName(u"secant_config_widget")
+        self.secant_config_widget.setFont(font7)
+        self.verticalLayout_17 = QVBoxLayout(self.secant_config_widget)
+        self.verticalLayout_17.setSpacing(12)
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.verticalLayout_17.setContentsMargins(0, 5, 0, 9)
+        self.secant_config_grid = QGridLayout()
+        self.secant_config_grid.setObjectName(u"secant_config_grid")
+        self.secant_xi_label = QLabel(self.secant_config_widget)
+        self.secant_xi_label.setObjectName(u"secant_xi_label")
+        self.secant_xi_label.setFont(font1)
+        self.secant_xi_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.secant_config_grid.addWidget(self.secant_xi_label, 2, 0, 1, 1)
+
+        self.secant_x_value_label = QLabel(self.secant_config_widget)
+        self.secant_x_value_label.setObjectName(u"secant_x_value_label")
+        self.secant_x_value_label.setFont(font1)
+        self.secant_x_value_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.secant_config_grid.addWidget(self.secant_x_value_label, 0, 0, 1, 1)
+
+        self.secant_x0_label = QLabel(self.secant_config_widget)
+        self.secant_x0_label.setObjectName(u"secant_x0_label")
+        self.secant_x0_label.setFont(font1)
+        self.secant_x0_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.secant_config_grid.addWidget(self.secant_x0_label, 1, 0, 1, 1)
+
+        self.secant_max_iter_line_edit = QLineEdit(self.secant_config_widget)
+        self.secant_max_iter_line_edit.setObjectName(u"secant_max_iter_line_edit")
+        self.secant_max_iter_line_edit.setFont(font6)
+
+        self.secant_config_grid.addWidget(self.secant_max_iter_line_edit, 3, 1, 1, 2)
+
+        self.secant_max_iter_label = QLabel(self.secant_config_widget)
+        self.secant_max_iter_label.setObjectName(u"secant_max_iter_label")
+        self.secant_max_iter_label.setFont(font1)
+        self.secant_max_iter_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.secant_config_grid.addWidget(self.secant_max_iter_label, 3, 0, 1, 1)
+
+        self.secant_x_value_line_edit = QLineEdit(self.secant_config_widget)
+        self.secant_x_value_line_edit.setObjectName(u"secant_x_value_line_edit")
+        self.secant_x_value_line_edit.setFont(font6)
+        self.secant_x_value_line_edit.setClearButtonEnabled(True)
+
+        self.secant_config_grid.addWidget(self.secant_x_value_line_edit, 0, 1, 1, 2)
+
+        self.secant_x0_line_edit = QLineEdit(self.secant_config_widget)
+        self.secant_x0_line_edit.setObjectName(u"secant_x0_line_edit")
+        self.secant_x0_line_edit.setFont(font6)
+        self.secant_x0_line_edit.setClearButtonEnabled(True)
+
+        self.secant_config_grid.addWidget(self.secant_x0_line_edit, 1, 1, 1, 2)
+
+        self.secant_xi_line_edit = QLineEdit(self.secant_config_widget)
+        self.secant_xi_line_edit.setObjectName(u"secant_xi_line_edit")
+        self.secant_xi_line_edit.setFont(font6)
+        self.secant_xi_line_edit.setClearButtonEnabled(True)
+
+        self.secant_config_grid.addWidget(self.secant_xi_line_edit, 2, 1, 1, 2)
+
+        self.secant_config_grid.setColumnStretch(0, 1)
+        self.secant_config_grid.setColumnStretch(1, 100)
+
+        self.verticalLayout_17.addLayout(self.secant_config_grid)
+
+
+        self.verticalLayout_18.addWidget(self.secant_config_widget)
+
+        self.secant_solution_button = QPushButton(self.secant_tab)
+        self.secant_solution_button.setObjectName(u"secant_solution_button")
+        self.secant_solution_button.setFont(font6)
+
+        self.verticalLayout_18.addWidget(self.secant_solution_button)
+
+        self.secant_spacer = QSpacerItem(20, 255, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_18.addItem(self.secant_spacer)
+
+        self.method_equation_tab_widget.addTab(self.secant_tab, "")
 
         self.verticalLayout_9.addWidget(self.method_equation_tab_widget)
 
@@ -795,7 +896,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.main_stacked_widget.setCurrentIndex(1)
-        self.method_equation_tab_widget.setCurrentIndex(2)
+        self.method_equation_tab_widget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -897,5 +998,11 @@ class Ui_MainWindow(object):
         self.false_tolerance_label.setText(QCoreApplication.translate("MainWindow", u"Tolerancia", None))
         self.false_solution_button.setText(QCoreApplication.translate("MainWindow", u"Obtener ra\u00edz", None))
         self.method_equation_tab_widget.setTabText(self.method_equation_tab_widget.indexOf(self.false_position_tab), QCoreApplication.translate("MainWindow", u"Falsa posici\u00f3n", None))
+        self.secant_xi_label.setText(QCoreApplication.translate("MainWindow", u"Xi", None))
+        self.secant_x_value_label.setText(QCoreApplication.translate("MainWindow", u"Valor de x", None))
+        self.secant_x0_label.setText(QCoreApplication.translate("MainWindow", u"X0", None))
+        self.secant_max_iter_label.setText(QCoreApplication.translate("MainWindow", u"Iteraciones m\u00e1ximas", None))
+        self.secant_solution_button.setText(QCoreApplication.translate("MainWindow", u"Obtener ra\u00edz", None))
+        self.method_equation_tab_widget.setTabText(self.method_equation_tab_widget.indexOf(self.secant_tab), QCoreApplication.translate("MainWindow", u"Secante", None))
     # retranslateUi
 

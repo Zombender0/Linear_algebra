@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>553</width>
-    <height>392</height>
+    <height>271</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -172,21 +172,21 @@ QTabBar::tab:selected{
 background-color:#454742
 }
 
-#bisection_tab QLineEdit, #newton_tab QLineEdit, #false_position_tab QLineEdit{
+#bisection_tab QLineEdit, #newton_tab QLineEdit, #false_position_tab QLineEdit, #secant_tab QLineEdit{
 color: #fff;
 background-color: #596379;
 border-radius:10px;
 font-weight: 350;
 }
 
-#bisection_tab QLabel, #newton_tab QLabel, #false_position_tab QLabel{
+#bisection_tab QLabel, #newton_tab QLabel, #false_position_tab QLabel, #secant_tab QLabel{
 background-color: #1f232a;
 padding: -3px;
 font-weight: 700;
 border-radius: 10px;
 }
 
- #bisection_tab QPushButton, #newton_tab QPushButton, #false_position_tab QPushButton{
+ #bisection_tab QPushButton, #newton_tab QPushButton, #false_position_tab QPushButton, #secant_tab QPushButton{
 color: #ffffff;
     text-align: center;
 	padding: 3px;
@@ -194,12 +194,12 @@ color: #ffffff;
     background-color: #16191d;
 }
 
-#bisection_tab QPushButton::hover, #newton_tab QPushButton::hover, #false_position_tabQ QPushButton::hover{
+#bisection_tab QPushButton::hover, #newton_tab QPushButton::hover, #false_position_tab QPushButton::hover, #secant_tab QPushButton::hover{
     background-color: #2a2e35;
     border-color: #454a52;
 }
 
-#bisection_tab QPushButton::pressed, #newton_tab QPushButton::pressed, #false_position_tab QPushButton::pressed{
+#bisection_tab QPushButton::pressed, #newton_tab QPushButton::pressed, #false_position_tab QPushButton::pressed, #secant_tab QPushButton::pressed{
 background-color: #1d2127;
 font-weight: 350;
 }
@@ -1018,7 +1018,7 @@ font-weight: 350;
            <item>
             <widget class="QTabWidget" name="method_equation_tab_widget">
              <property name="currentIndex">
-              <number>2</number>
+              <number>3</number>
              </property>
              <widget class="QWidget" name="bisection_tab">
               <attribute name="title">
@@ -1068,7 +1068,7 @@ font-weight: 350;
                    <number>9</number>
                   </property>
                   <item>
-                   <layout class="QGridLayout" name="bisection_config_grid">
+                   <layout class="QGridLayout" name="bisection_config_grid" rowstretch="1,100,0">
                     <item row="1" column="0">
                      <widget class="QLabel" name="bisection_interval_b_label">
                       <property name="font">
@@ -1079,6 +1079,9 @@ font-weight: 350;
                       </property>
                       <property name="text">
                        <string>Intervalo b</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
                       </property>
                      </widget>
                     </item>
@@ -1093,6 +1096,9 @@ font-weight: 350;
                       <property name="text">
                        <string>Intervalo a</string>
                       </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
                      </widget>
                     </item>
                     <item row="2" column="0">
@@ -1105,6 +1111,9 @@ font-weight: 350;
                       </property>
                       <property name="text">
                        <string>Tolerancia</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
                       </property>
                      </widget>
                     </item>
@@ -1217,7 +1226,7 @@ font-weight: 350;
                    <number>9</number>
                   </property>
                   <item>
-                   <layout class="QGridLayout" name="newton_config_grid">
+                   <layout class="QGridLayout" name="newton_config_grid" columnstretch="1,100">
                     <item row="1" column="0">
                      <widget class="QLabel" name="newton_max_iter_label">
                       <property name="font">
@@ -1379,7 +1388,7 @@ font-weight: 350;
                    <number>9</number>
                   </property>
                   <item>
-                   <layout class="QGridLayout" name="false_position_config_grid">
+                   <layout class="QGridLayout" name="false_position_config_grid" columnstretch="1,100">
                     <item row="1" column="0">
                      <widget class="QLabel" name="false_interval_b_label">
                       <property name="font">
@@ -1390,6 +1399,9 @@ font-weight: 350;
                       </property>
                       <property name="text">
                        <string>Intervalo xu</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
                       </property>
                      </widget>
                     </item>
@@ -1404,6 +1416,9 @@ font-weight: 350;
                       <property name="text">
                        <string>Intervalo xl</string>
                       </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
                      </widget>
                     </item>
                     <item row="2" column="0">
@@ -1416,6 +1431,9 @@ font-weight: 350;
                       </property>
                       <property name="text">
                        <string>Tolerancia</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
                       </property>
                      </widget>
                     </item>
@@ -1484,6 +1502,190 @@ font-weight: 350;
                   <size>
                    <width>20</width>
                    <height>158</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="secant_tab">
+              <attribute name="title">
+               <string>Secante</string>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_18">
+               <property name="leftMargin">
+                <number>5</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>5</number>
+               </property>
+               <item>
+                <widget class="QWidget" name="secant_config_widget" native="true">
+                 <property name="font">
+                  <font>
+                   <pointsize>9</pointsize>
+                  </font>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_17">
+                  <property name="spacing">
+                   <number>12</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>5</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>9</number>
+                  </property>
+                  <item>
+                   <layout class="QGridLayout" name="secant_config_grid" columnstretch="1,100,0">
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="secant_xi_label">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Xi</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="secant_x_value_label">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Valor de x</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="secant_x0_label">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>X0</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1" colspan="2">
+                     <widget class="QLineEdit" name="secant_max_iter_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="QLabel" name="secant_max_iter_label">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Iteraciones máximas</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1" colspan="2">
+                     <widget class="QLineEdit" name="secant_x_value_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1" colspan="2">
+                     <widget class="QLineEdit" name="secant_x0_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1" colspan="2">
+                     <widget class="QLineEdit" name="secant_xi_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="secant_solution_button">
+                 <property name="font">
+                  <font>
+                   <pointsize>14</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Obtener raíz</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="secant_spacer">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>255</height>
                   </size>
                  </property>
                 </spacer>

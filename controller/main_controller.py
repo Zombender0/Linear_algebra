@@ -22,7 +22,7 @@ from models.FalsePositionMethod import FalsePositionMethod
 from PySide6.QtCore import Slot,QObject
 from PySide6.QtWidgets import QMainWindow
 from helpers.validation_helper import float_parser
-from models.EquationEvaluator import EquationParser
+from models.EquationFunctions import EquationParser
 class MainController(QObject):
     def __init__(self,window:QMainWindow):
         super().__init__()
