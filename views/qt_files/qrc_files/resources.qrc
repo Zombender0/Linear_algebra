@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icon">
+    <file>Images/left_ar.svg</file>
+    <file>Images/right_ar.svg</file>
     <file>Images/edit.svg</file>
     <file>Images/x_to_2.svg</file>
     <file>Images/align-justify.svg</file>

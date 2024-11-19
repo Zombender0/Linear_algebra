@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowIRAWEo.ui'
+## Form generated from reading UI file 'main_windowAQDgMq.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -29,9 +29,9 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModality.NonModal)
-        MainWindow.resize(553, 271)
+        MainWindow.resize(665, 517)
         icon = QIcon()
-        icon.addFile(u":/icon/Images/grid.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icon/Images/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"*{\n"
 "border:none;\n"
@@ -196,7 +196,7 @@ class Ui_MainWindow(object):
 "\n"
 "#bisection_tab QLabel, #newton_tab QLabel, #false_position_tab QLabel, #secant_tab QLabel{\n"
 "background-color: #1f232a;\n"
-"padding: -3px;\n"
+"padding: 1px;\n"
 "font-weight: 700;\n"
 "border-radius: 10px;\n"
 "}\n"
@@ -205,8 +205,8 @@ class Ui_MainWindow(object):
 "color: #ffffff;\n"
 "    text-align: center;\n"
 "	padding: 3px;\n"
-""
-                        "    border-radius: 10px;\n"
+" "
+                        "   border-radius: 10px;\n"
 "    background-color: #16191d;\n"
 "}\n"
 "\n"
@@ -805,63 +805,62 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setContentsMargins(0, 5, 0, 9)
         self.secant_config_grid = QGridLayout()
         self.secant_config_grid.setObjectName(u"secant_config_grid")
-        self.secant_xi_label = QLabel(self.secant_config_widget)
-        self.secant_xi_label.setObjectName(u"secant_xi_label")
-        self.secant_xi_label.setFont(font1)
-        self.secant_xi_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.secant_tolerance_label = QLabel(self.secant_config_widget)
+        self.secant_tolerance_label.setObjectName(u"secant_tolerance_label")
+        self.secant_tolerance_label.setFont(font1)
+        self.secant_tolerance_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.secant_config_grid.addWidget(self.secant_xi_label, 2, 0, 1, 1)
-
-        self.secant_x_value_label = QLabel(self.secant_config_widget)
-        self.secant_x_value_label.setObjectName(u"secant_x_value_label")
-        self.secant_x_value_label.setFont(font1)
-        self.secant_x_value_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.secant_config_grid.addWidget(self.secant_x_value_label, 0, 0, 1, 1)
-
-        self.secant_x0_label = QLabel(self.secant_config_widget)
-        self.secant_x0_label.setObjectName(u"secant_x0_label")
-        self.secant_x0_label.setFont(font1)
-        self.secant_x0_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.secant_config_grid.addWidget(self.secant_x0_label, 1, 0, 1, 1)
+        self.secant_config_grid.addWidget(self.secant_tolerance_label, 3, 0, 1, 1)
 
         self.secant_max_iter_line_edit = QLineEdit(self.secant_config_widget)
         self.secant_max_iter_line_edit.setObjectName(u"secant_max_iter_line_edit")
         self.secant_max_iter_line_edit.setFont(font6)
 
-        self.secant_config_grid.addWidget(self.secant_max_iter_line_edit, 3, 1, 1, 2)
+        self.secant_config_grid.addWidget(self.secant_max_iter_line_edit, 2, 1, 1, 2)
 
-        self.secant_max_iter_label = QLabel(self.secant_config_widget)
-        self.secant_max_iter_label.setObjectName(u"secant_max_iter_label")
-        self.secant_max_iter_label.setFont(font1)
-        self.secant_max_iter_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.secant_tolerance_line_edit = QLineEdit(self.secant_config_widget)
+        self.secant_tolerance_line_edit.setObjectName(u"secant_tolerance_line_edit")
+        self.secant_tolerance_line_edit.setFont(font6)
 
-        self.secant_config_grid.addWidget(self.secant_max_iter_label, 3, 0, 1, 1)
-
-        self.secant_x_value_line_edit = QLineEdit(self.secant_config_widget)
-        self.secant_x_value_line_edit.setObjectName(u"secant_x_value_line_edit")
-        self.secant_x_value_line_edit.setFont(font6)
-        self.secant_x_value_line_edit.setClearButtonEnabled(True)
-
-        self.secant_config_grid.addWidget(self.secant_x_value_line_edit, 0, 1, 1, 2)
-
-        self.secant_x0_line_edit = QLineEdit(self.secant_config_widget)
-        self.secant_x0_line_edit.setObjectName(u"secant_x0_line_edit")
-        self.secant_x0_line_edit.setFont(font6)
-        self.secant_x0_line_edit.setClearButtonEnabled(True)
-
-        self.secant_config_grid.addWidget(self.secant_x0_line_edit, 1, 1, 1, 2)
+        self.secant_config_grid.addWidget(self.secant_tolerance_line_edit, 3, 1, 1, 1)
 
         self.secant_xi_line_edit = QLineEdit(self.secant_config_widget)
         self.secant_xi_line_edit.setObjectName(u"secant_xi_line_edit")
         self.secant_xi_line_edit.setFont(font6)
         self.secant_xi_line_edit.setClearButtonEnabled(True)
 
-        self.secant_config_grid.addWidget(self.secant_xi_line_edit, 2, 1, 1, 2)
+        self.secant_config_grid.addWidget(self.secant_xi_line_edit, 1, 1, 1, 2)
+
+        self.secant_x0_line_edit = QLineEdit(self.secant_config_widget)
+        self.secant_x0_line_edit.setObjectName(u"secant_x0_line_edit")
+        self.secant_x0_line_edit.setFont(font6)
+        self.secant_x0_line_edit.setClearButtonEnabled(True)
+
+        self.secant_config_grid.addWidget(self.secant_x0_line_edit, 0, 1, 1, 2)
+
+        self.secant_x0_label = QLabel(self.secant_config_widget)
+        self.secant_x0_label.setObjectName(u"secant_x0_label")
+        self.secant_x0_label.setFont(font1)
+        self.secant_x0_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.secant_config_grid.addWidget(self.secant_x0_label, 0, 0, 1, 1)
+
+        self.secant_max_iter_label = QLabel(self.secant_config_widget)
+        self.secant_max_iter_label.setObjectName(u"secant_max_iter_label")
+        self.secant_max_iter_label.setFont(font1)
+        self.secant_max_iter_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.secant_config_grid.addWidget(self.secant_max_iter_label, 2, 0, 1, 1)
+
+        self.secant_xi_label = QLabel(self.secant_config_widget)
+        self.secant_xi_label.setObjectName(u"secant_xi_label")
+        self.secant_xi_label.setFont(font1)
+        self.secant_xi_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.secant_config_grid.addWidget(self.secant_xi_label, 1, 0, 1, 1)
 
         self.secant_config_grid.setColumnStretch(0, 1)
-        self.secant_config_grid.setColumnStretch(1, 100)
+        self.secant_config_grid.setColumnStretch(1, 10)
 
         self.verticalLayout_17.addLayout(self.secant_config_grid)
 
@@ -998,10 +997,10 @@ class Ui_MainWindow(object):
         self.false_tolerance_label.setText(QCoreApplication.translate("MainWindow", u"Tolerancia", None))
         self.false_solution_button.setText(QCoreApplication.translate("MainWindow", u"Obtener ra\u00edz", None))
         self.method_equation_tab_widget.setTabText(self.method_equation_tab_widget.indexOf(self.false_position_tab), QCoreApplication.translate("MainWindow", u"Falsa posici\u00f3n", None))
-        self.secant_xi_label.setText(QCoreApplication.translate("MainWindow", u"Xi", None))
-        self.secant_x_value_label.setText(QCoreApplication.translate("MainWindow", u"Valor de x", None))
+        self.secant_tolerance_label.setText(QCoreApplication.translate("MainWindow", u"Tolerancia", None))
         self.secant_x0_label.setText(QCoreApplication.translate("MainWindow", u"X0", None))
         self.secant_max_iter_label.setText(QCoreApplication.translate("MainWindow", u"Iteraciones m\u00e1ximas", None))
+        self.secant_xi_label.setText(QCoreApplication.translate("MainWindow", u"Xi", None))
         self.secant_solution_button.setText(QCoreApplication.translate("MainWindow", u"Obtener ra\u00edz", None))
         self.method_equation_tab_widget.setTabText(self.method_equation_tab_widget.indexOf(self.secant_tab), QCoreApplication.translate("MainWindow", u"Secante", None))
     # retranslateUi

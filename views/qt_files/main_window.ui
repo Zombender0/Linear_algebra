@@ -9,16 +9,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>553</width>
-    <height>271</height>
+    <width>665</width>
+    <height>517</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Calculadora de matrices</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/icon/Images/grid.ico</normaloff>:/icon/Images/grid.ico</iconset>
+   <iconset resource="qrc_files/resources.qrc">
+    <normaloff>:/icon/Images/icon.ico</normaloff>:/icon/Images/icon.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">*{
@@ -181,7 +181,7 @@ font-weight: 350;
 
 #bisection_tab QLabel, #newton_tab QLabel, #false_position_tab QLabel, #secant_tab QLabel{
 background-color: #1f232a;
-padding: -3px;
+padding: 1px;
 font-weight: 700;
 border-radius: 10px;
 }
@@ -1546,9 +1546,9 @@ font-weight: 350;
                    <number>9</number>
                   </property>
                   <item>
-                   <layout class="QGridLayout" name="secant_config_grid" columnstretch="1,100,0">
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="secant_xi_label">
+                   <layout class="QGridLayout" name="secant_config_grid" columnstretch="1,10,0">
+                    <item row="3" column="0">
+                     <widget class="QLabel" name="secant_tolerance_label">
                       <property name="font">
                        <font>
                         <pointsize>12</pointsize>
@@ -1556,30 +1556,60 @@ font-weight: 350;
                        </font>
                       </property>
                       <property name="text">
-                       <string>Xi</string>
+                       <string>Tolerancia</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1" colspan="2">
+                     <widget class="QLineEdit" name="secant_max_iter_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1">
+                     <widget class="QLineEdit" name="secant_tolerance_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1" colspan="2">
+                     <widget class="QLineEdit" name="secant_xi_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1" colspan="2">
+                     <widget class="QLineEdit" name="secant_x0_line_edit">
+                      <property name="font">
+                       <font>
+                        <pointsize>14</pointsize>
+                        <fontweight></fontweight>
+                       </font>
+                      </property>
+                      <property name="clearButtonEnabled">
+                       <bool>true</bool>
                       </property>
                      </widget>
                     </item>
                     <item row="0" column="0">
-                     <widget class="QLabel" name="secant_x_value_label">
-                      <property name="font">
-                       <font>
-                        <pointsize>12</pointsize>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Valor de x</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="0">
                      <widget class="QLabel" name="secant_x0_label">
                       <property name="font">
                        <font>
@@ -1595,17 +1625,7 @@ font-weight: 350;
                       </property>
                      </widget>
                     </item>
-                    <item row="3" column="1" colspan="2">
-                     <widget class="QLineEdit" name="secant_max_iter_line_edit">
-                      <property name="font">
-                       <font>
-                        <pointsize>14</pointsize>
-                        <fontweight></fontweight>
-                       </font>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="3" column="0">
+                    <item row="2" column="0">
                      <widget class="QLabel" name="secant_max_iter_label">
                       <property name="font">
                        <font>
@@ -1621,42 +1641,19 @@ font-weight: 350;
                       </property>
                      </widget>
                     </item>
-                    <item row="0" column="1" colspan="2">
-                     <widget class="QLineEdit" name="secant_x_value_line_edit">
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="secant_xi_label">
                       <property name="font">
                        <font>
-                        <pointsize>14</pointsize>
-                        <fontweight></fontweight>
+                        <pointsize>12</pointsize>
+                        <bold>true</bold>
                        </font>
                       </property>
-                      <property name="clearButtonEnabled">
-                       <bool>true</bool>
+                      <property name="text">
+                       <string>Xi</string>
                       </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1" colspan="2">
-                     <widget class="QLineEdit" name="secant_x0_line_edit">
-                      <property name="font">
-                       <font>
-                        <pointsize>14</pointsize>
-                        <fontweight></fontweight>
-                       </font>
-                      </property>
-                      <property name="clearButtonEnabled">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1" colspan="2">
-                     <widget class="QLineEdit" name="secant_xi_line_edit">
-                      <property name="font">
-                       <font>
-                        <pointsize>14</pointsize>
-                        <fontweight></fontweight>
-                       </font>
-                      </property>
-                      <property name="clearButtonEnabled">
-                       <bool>true</bool>
+                      <property name="alignment">
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
                       </property>
                      </widget>
                     </item>
