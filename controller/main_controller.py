@@ -208,7 +208,13 @@ class MainController(QObject):
         self.solution_combobox_changed()
         
     #EQUATION TAB. 
-
+    @Slot()
+    def solution_combobox_changed(self):
+        resize_table(self.main_window.input_table,
+        self.main_window.row_spinbox.value(),
+        self.main_window.column_spinbox.value(),
+        last_b=True,
+        letter='X')
     @Slot()
     def get_root_bisection_method(self):
         interval_a = self.main_window.bisection_interval_a_line_edit.text()
