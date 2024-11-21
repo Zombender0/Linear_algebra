@@ -22,9 +22,12 @@ class NewthonRaphson():
             self.n_iter += 1
             str_n_iteraciones = "#" + str(self.n_iter)
             fxi = EC_EVAL(self.funcion, x_actual)
+            if fxi == 'domain error':
+                return 'Error de dominio matemático'
             funcion_derivada = diff(self.funcion)
             fxi_derivada = EC_EVAL(funcion_derivada, x_actual)
-
+            if fxi_derivada == 'domain error':
+                return 'Error de dominio matemático'
             if fxi_derivada == 0:
                 self.config["Derivada cero. No se puede continuar."] = copy.deepcopy([self.datos_por_iteracion])
 

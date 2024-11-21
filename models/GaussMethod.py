@@ -56,7 +56,7 @@ class GaussMethod(Matrix):
             self.det *= self.matriz[i][i]
         
         respuesta = exp + operacion
-        self.config[respuesta] = (copy.deepcopy(self.matriz), f'{round(self.det,2)}')
+        self.config[respuesta] = (copy.deepcopy(self.matriz), f'{round(self.det,4)}')
     
     def pivote_triangular(self, col: int):
         mejor_fila = -1

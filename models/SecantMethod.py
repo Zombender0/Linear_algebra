@@ -22,10 +22,12 @@ class SecantMethod():
             fx0 = EC_EVAL(self.funcion, self.x0)
             fxi = EC_EVAL(self.funcion, self.xi)
 
+            if 'domain error' in (fx0,fxi):
+                return 'Error de dominio matemático'
             x_siguiente = self.xi - (fxi*(self.x0 - self.xi))/(fx0 - fxi)
 
             error_porcentual = abs((x_siguiente - self.xi)/x_siguiente)*100
-            str_error_porcentual = str(round(error_porcentual, 6)) + "%"
+            str_error_porcentual = str(round(error_porcentual, 4)) + "%"
 
             self.datos_por_iteracion.append([str_n_iteraciones, self.x0, self.xi, x_siguiente, fx0, fxi, str_error_porcentual])
             #self.print_iterations()

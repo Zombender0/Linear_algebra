@@ -13,18 +13,15 @@ class MainWindow(Generated_MainWindow):
     def __init__(self,main_window:QMainWindow):
         self.setupUi(main_window)
         #loadJsonStyle(self,self)
-        resize_table(self.input_table,3,3,last_b=False,letter=' ')
         
     def setupUi(self, MainWindow:QMainWindow):
         super().setupUi(MainWindow)
+        resize_table(self.input_table,3,3,last_b=True,letter='X')
         self.row_spinbox.setValue(3)
         self.column_spinbox.setValue(3)
         self.table_solution_matrix_combobox.setItemData(0,"index")
         self.table_solution_matrix_combobox.setItemData(1,"reduccion")
-        self.table_solution_matrix_combobox.setItemData(2,"vector")
-        self.table_solution_matrix_combobox.setItemData(3,"determinante")
-        self.table_solution_matrix_combobox.setItemData(4,"cramer")
-        self.table_solution_matrix_combobox.setItemData(5,"invertible")
+        self.table_solution_matrix_combobox.setItemData(2,"cramer")
         self.main_stacked_widget.setCurrentIndex(0)
         self.method_equation_tab_widget.setCurrentIndex(0)
         MainWindow.showMaximized()

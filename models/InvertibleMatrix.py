@@ -93,7 +93,7 @@ class InvertibleMatrix(Matrix):
 
     def imprimir_matriz(self, matriz_cualquiera):
         matriz : str = ''
-        maximo_tamaño_fila = max(len(f'{round(matriz_cualquiera[fila][columna], 3)}') for fila in range(len(matriz_cualquiera)) for columna in range(len(matriz_cualquiera[0]))) + 2
+        maximo_tamaño_fila = max(len(f'{round(matriz_cualquiera[fila][columna], 4)}') for fila in range(len(matriz_cualquiera)) for columna in range(len(matriz_cualquiera[0]))) + 2
         for fila in range(len(matriz_cualquiera)):
             fila_str = ''
             for columna in range(len(matriz_cualquiera[0])):
@@ -103,11 +103,11 @@ class InvertibleMatrix(Matrix):
 
     def imprimir_matriz_aumentada(self):
         matriz : str = ''
-        maximo_tamaño_fila = max(len(f'{round(self.matriz_aumentada[fila][columna], 3)}') for fila in range(self.filas) for columna in range(len(self.matriz_aumentada[0]))) + 2
+        maximo_tamaño_fila = max(len(f'{round(self.matriz_aumentada[fila][columna], 4)}') for fila in range(self.filas) for columna in range(len(self.matriz_aumentada[0]))) + 2
         for fila in range(self.filas):
             fila_str = ''
             for columna in range(len(self.matriz_aumentada[0])):
-                fila_str += f'{round(self.matriz_aumentada[fila][columna], 3):<{maximo_tamaño_fila}}'
+                fila_str += f'{round(self.matriz_aumentada[fila][columna], 4):<{maximo_tamaño_fila}}'
             matriz += fila_str + '\n'
         print(matriz)
     

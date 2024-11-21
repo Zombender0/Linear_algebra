@@ -19,7 +19,8 @@ class BisectionMethod():
             return 'not equation'
         fa = EquationEvaluator(self.funcion, self.interval_a)
         fb = EquationEvaluator(self.funcion, self.interval_b)
-        
+        if 'domain error' in (fa,fb):
+            return 'Error de dominio matemático'
         if fa * fb >= 0:
             self.config["La función debe cambiar de signo en el intervalo dado [a, b]"] = f"fa * fb -> {fa*fb} >= 0"
             #No estoy segura qué poner como valore de la clave aquí JAJAJA
@@ -31,18 +32,18 @@ class BisectionMethod():
             self.n_iter += 1
             self.media_c = (self.interval_a + self.interval_b)/2
             fc = EquationEvaluator(self.funcion, self.media_c)
-
+            if fc  == 'domain error':
+                return 'Error de dominio matemático'
             if c_anterior is not None:
                 error_porcentual = abs(((self.media_c - c_anterior)/self.media_c)*100)
-                str_error_porcentual = str(round(error_porcentual, 6)) + "%"
+                str_error_porcentual = str(round(error_porcentual, 4)) + "%"
                 if error_porcentual/100 <= self.tolerancia:
                     self.datos_por_iteracion.append([self.interval_a, self.interval_b, self.media_c, fa, fb, fc, fa * fc, str_error_porcentual])
                     #self.print_iterations()
                     solucion = f"La raíz aproximada es {self.media_c} con un error porcentual de {error_porcentual}%"
-                    solucion +=f"\nNúmero de iteraciones: {self.n_iter}"
+                    solucion +=f"Número de iteraciones: {self.n_iter}"
 
                     self.config[f"ITERACIÓN {self.n_iter}"] = (copy.deepcopy(self.datos_por_iteracion), solucion)
-
                     #print(f"Número de iteraciones: {self.n_iter}\n")
                     #print(f"\nLa raíz aproximada es {self.media_c} con un error porcentual de {error_porcentual}%")
                     break

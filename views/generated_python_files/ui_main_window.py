@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowAQDgMq.ui'
+## Form generated from reading UI file 'main_windowpOvWNs.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -15,11 +15,12 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
-    QHBoxLayout, QHeaderView, QLabel, QLayout,
-    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
-    QSpacerItem, QSpinBox, QStackedWidget, QTabWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
+    QGridLayout, QHBoxLayout, QHeaderView, QLabel,
+    QLayout, QLineEdit, QMainWindow, QPushButton,
+    QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
+    QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
+    QWidget)
 
 from PySide6.QtSvg import QtSvg
 from views.qt_files.qrc_files import resources_rc
@@ -28,8 +29,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.setWindowModality(Qt.WindowModality.NonModal)
-        MainWindow.resize(665, 517)
+        MainWindow.setWindowModality(Qt.WindowModality.WindowModal)
+        MainWindow.resize(652, 407)
         icon = QIcon()
         icon.addFile(u":/icon/Images/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -219,7 +220,10 @@ class Ui_MainWindow(object):
 "background-color: #1d2127;\n"
 "font-weight: 350;\n"
 "}\n"
-"")
+"\n"
+"QCheckBox::unchecked{\n"
+"color: #8b7a78\n"
+"}")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setStyleSheet(u"")
@@ -238,7 +242,7 @@ class Ui_MainWindow(object):
         self.sub_side_bar = QWidget(self.side_bar)
         self.sub_side_bar.setObjectName(u"sub_side_bar")
         self.sub_side_bar.setMinimumSize(QSize(0, 0))
-        self.sub_side_bar.setMaximumSize(QSize(16777215, 16777215))
+        self.sub_side_bar.setMaximumSize(QSize(32, 16777215))
         self.verticalLayout_11 = QVBoxLayout(self.sub_side_bar)
         self.verticalLayout_11.setSpacing(0)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
@@ -271,6 +275,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.tab_buttons_frame.sizePolicy().hasHeightForWidth())
         self.tab_buttons_frame.setSizePolicy(sizePolicy)
         self.tab_buttons_frame.setMaximumSize(QSize(16777215, 16777215))
+        self.tab_buttons_frame.setStyleSheet(u"text-align: left;")
         self.verticalLayout_7 = QVBoxLayout(self.tab_buttons_frame)
         self.verticalLayout_7.setSpacing(5)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
@@ -333,9 +338,21 @@ class Ui_MainWindow(object):
         self.table_buttons_horizontal_layout = QHBoxLayout(self.table_buttons_frame)
         self.table_buttons_horizontal_layout.setSpacing(0)
         self.table_buttons_horizontal_layout.setObjectName(u"table_buttons_horizontal_layout")
-        self.table_buttons_horizontal_layout.setSizeConstraint(QLayout.SizeConstraint.SetMinimumSize)
+        self.table_buttons_horizontal_layout.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
         self.table_buttons_horizontal_layout.setContentsMargins(0, 0, 0, 0)
-        self.table_row_spinbox_widget = QWidget(self.table_buttons_frame)
+        self.table_column_row_widget = QWidget(self.table_buttons_frame)
+        self.table_column_row_widget.setObjectName(u"table_column_row_widget")
+        self.verticalLayout_19 = QVBoxLayout(self.table_column_row_widget)
+        self.verticalLayout_19.setSpacing(0)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.verticalLayout_19.setContentsMargins(3, 0, 3, 3)
+        self.sub_table_column_row_widget = QWidget(self.table_column_row_widget)
+        self.sub_table_column_row_widget.setObjectName(u"sub_table_column_row_widget")
+        self.horizontalLayout_3 = QHBoxLayout(self.sub_table_column_row_widget)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.table_row_spinbox_widget = QWidget(self.sub_table_column_row_widget)
         self.table_row_spinbox_widget.setObjectName(u"table_row_spinbox_widget")
         self.table_row_spinbox_widget.setStyleSheet(u"")
         self.verticalLayout_3 = QVBoxLayout(self.table_row_spinbox_widget)
@@ -362,9 +379,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.row_spinbox, 0, Qt.AlignmentFlag.AlignHCenter)
 
 
-        self.table_buttons_horizontal_layout.addWidget(self.table_row_spinbox_widget)
+        self.horizontalLayout_3.addWidget(self.table_row_spinbox_widget)
 
-        self.table_column_spinbox_widget = QWidget(self.table_buttons_frame)
+        self.table_column_spinbox_widget = QWidget(self.sub_table_column_row_widget)
         self.table_column_spinbox_widget.setObjectName(u"table_column_spinbox_widget")
         self.verticalLayout = QVBoxLayout(self.table_column_spinbox_widget)
         self.verticalLayout.setSpacing(0)
@@ -386,7 +403,24 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.column_spinbox, 0, Qt.AlignmentFlag.AlignHCenter)
 
 
-        self.table_buttons_horizontal_layout.addWidget(self.table_column_spinbox_widget)
+        self.horizontalLayout_3.addWidget(self.table_column_spinbox_widget)
+
+
+        self.verticalLayout_19.addWidget(self.sub_table_column_row_widget)
+
+        self.table_resize_checkbox = QCheckBox(self.table_column_row_widget)
+        self.table_resize_checkbox.setObjectName(u"table_resize_checkbox")
+        font2 = QFont()
+        font2.setPointSize(11)
+        self.table_resize_checkbox.setFont(font2)
+        self.table_resize_checkbox.setContextMenuPolicy(Qt.ContextMenuPolicy.DefaultContextMenu)
+        self.table_resize_checkbox.setChecked(False)
+        self.table_resize_checkbox.setTristate(False)
+
+        self.verticalLayout_19.addWidget(self.table_resize_checkbox)
+
+
+        self.table_buttons_horizontal_layout.addWidget(self.table_column_row_widget)
 
         self.table_grid_options = QGridLayout()
         self.table_grid_options.setObjectName(u"table_grid_options")
@@ -394,22 +428,6 @@ class Ui_MainWindow(object):
         self.table_grid_options.setHorizontalSpacing(5)
         self.table_grid_options.setVerticalSpacing(3)
         self.table_grid_options.setContentsMargins(0, 6, 0, 6)
-        self.table_clean_matrix_button = QPushButton(self.table_buttons_frame)
-        self.table_clean_matrix_button.setObjectName(u"table_clean_matrix_button")
-        font2 = QFont()
-        font2.setPointSize(11)
-        self.table_clean_matrix_button.setFont(font2)
-        self.table_clean_matrix_button.setStyleSheet(u"")
-
-        self.table_grid_options.addWidget(self.table_clean_matrix_button, 0, 0, 1, 1)
-
-        self.table_fill_0_button = QPushButton(self.table_buttons_frame)
-        self.table_fill_0_button.setObjectName(u"table_fill_0_button")
-        self.table_fill_0_button.setFont(font2)
-        self.table_fill_0_button.setStyleSheet(u"")
-
-        self.table_grid_options.addWidget(self.table_fill_0_button, 1, 1, 1, 1)
-
         self.table_update_button = QPushButton(self.table_buttons_frame)
         self.table_update_button.setObjectName(u"table_update_button")
         self.table_update_button.setFont(font2)
@@ -418,18 +436,11 @@ class Ui_MainWindow(object):
 
         self.table_grid_options.addWidget(self.table_update_button, 0, 1, 1, 1)
 
-        self.table_transposition_button = QPushButton(self.table_buttons_frame)
-        self.table_transposition_button.setObjectName(u"table_transposition_button")
-        self.table_transposition_button.setFont(font2)
+        self.table_vector_button = QPushButton(self.table_buttons_frame)
+        self.table_vector_button.setObjectName(u"table_vector_button")
+        self.table_vector_button.setFont(font2)
 
-        self.table_grid_options.addWidget(self.table_transposition_button, 1, 0, 1, 1)
-
-        self.table_random_matrix_button = QPushButton(self.table_buttons_frame)
-        self.table_random_matrix_button.setObjectName(u"table_random_matrix_button")
-        self.table_random_matrix_button.setFont(font2)
-        self.table_random_matrix_button.setStyleSheet(u"")
-
-        self.table_grid_options.addWidget(self.table_random_matrix_button, 2, 0, 1, 1)
+        self.table_grid_options.addWidget(self.table_vector_button, 2, 2, 1, 1)
 
         self.table_adjust_size_button = QPushButton(self.table_buttons_frame)
         self.table_adjust_size_button.setObjectName(u"table_adjust_size_button")
@@ -437,16 +448,21 @@ class Ui_MainWindow(object):
 
         self.table_grid_options.addWidget(self.table_adjust_size_button, 2, 1, 1, 1)
 
-        self.table_import_from_csv_button = QPushButton(self.table_buttons_frame)
-        self.table_import_from_csv_button.setObjectName(u"table_import_from_csv_button")
-        self.table_import_from_csv_button.setFont(font2)
+        self.table_clean_matrix_button = QPushButton(self.table_buttons_frame)
+        self.table_clean_matrix_button.setObjectName(u"table_clean_matrix_button")
+        self.table_clean_matrix_button.setFont(font2)
+        self.table_clean_matrix_button.setStyleSheet(u"")
 
-        self.table_grid_options.addWidget(self.table_import_from_csv_button, 0, 2, 1, 1)
+        self.table_grid_options.addWidget(self.table_clean_matrix_button, 0, 0, 1, 1)
+
+        self.table_solve_matrix_button = QPushButton(self.table_buttons_frame)
+        self.table_solve_matrix_button.setObjectName(u"table_solve_matrix_button")
+        self.table_solve_matrix_button.setFont(font2)
+        self.table_solve_matrix_button.setStyleSheet(u"")
+
+        self.table_grid_options.addWidget(self.table_solve_matrix_button, 3, 2, 1, 1)
 
         self.table_solution_matrix_combobox = QComboBox(self.table_buttons_frame)
-        self.table_solution_matrix_combobox.addItem("")
-        self.table_solution_matrix_combobox.addItem("")
-        self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.addItem("")
         self.table_solution_matrix_combobox.addItem("")
@@ -455,23 +471,52 @@ class Ui_MainWindow(object):
         self.table_solution_matrix_combobox.setCursor(QCursor(Qt.ArrowCursor))
         self.table_solution_matrix_combobox.setFocusPolicy(Qt.FocusPolicy.WheelFocus)
         self.table_solution_matrix_combobox.setAcceptDrops(False)
-        self.table_solution_matrix_combobox.setStyleSheet(u"text-align:center;")
+        self.table_solution_matrix_combobox.setStyleSheet(u"")
 
-        self.table_grid_options.addWidget(self.table_solution_matrix_combobox, 1, 2, 1, 1)
+        self.table_grid_options.addWidget(self.table_solution_matrix_combobox, 3, 1, 1, 1)
 
-        self.table_solve_matrix_button = QPushButton(self.table_buttons_frame)
-        self.table_solve_matrix_button.setObjectName(u"table_solve_matrix_button")
-        self.table_solve_matrix_button.setFont(font2)
-        self.table_solve_matrix_button.setStyleSheet(u"")
+        self.table_random_matrix_button = QPushButton(self.table_buttons_frame)
+        self.table_random_matrix_button.setObjectName(u"table_random_matrix_button")
+        self.table_random_matrix_button.setFont(font2)
+        self.table_random_matrix_button.setStyleSheet(u"")
 
-        self.table_grid_options.addWidget(self.table_solve_matrix_button, 2, 2, 1, 1)
+        self.table_grid_options.addWidget(self.table_random_matrix_button, 2, 0, 1, 1)
+
+        self.table_fill_0_button = QPushButton(self.table_buttons_frame)
+        self.table_fill_0_button.setObjectName(u"table_fill_0_button")
+        self.table_fill_0_button.setFont(font2)
+        self.table_fill_0_button.setStyleSheet(u"")
+
+        self.table_grid_options.addWidget(self.table_fill_0_button, 1, 1, 1, 1)
+
+        self.table_transposition_button = QPushButton(self.table_buttons_frame)
+        self.table_transposition_button.setObjectName(u"table_transposition_button")
+        self.table_transposition_button.setFont(font2)
+
+        self.table_grid_options.addWidget(self.table_transposition_button, 1, 0, 1, 1)
+
+        self.table_invert_button = QPushButton(self.table_buttons_frame)
+        self.table_invert_button.setObjectName(u"table_invert_button")
+        self.table_invert_button.setFont(font2)
+
+        self.table_grid_options.addWidget(self.table_invert_button, 1, 2, 1, 1)
+
+        self.table_determinant_button = QPushButton(self.table_buttons_frame)
+        self.table_determinant_button.setObjectName(u"table_determinant_button")
+        self.table_determinant_button.setFont(font2)
+
+        self.table_grid_options.addWidget(self.table_determinant_button, 0, 2, 1, 1)
+
+        self.table_import_from_csv_button = QPushButton(self.table_buttons_frame)
+        self.table_import_from_csv_button.setObjectName(u"table_import_from_csv_button")
+        self.table_import_from_csv_button.setFont(font2)
+
+        self.table_grid_options.addWidget(self.table_import_from_csv_button, 3, 0, 1, 1)
 
 
         self.table_buttons_horizontal_layout.addLayout(self.table_grid_options)
 
-        self.table_buttons_horizontal_layout.setStretch(0, 15)
-        self.table_buttons_horizontal_layout.setStretch(1, 15)
-        self.table_buttons_horizontal_layout.setStretch(2, 120)
+        self.table_buttons_horizontal_layout.setStretch(1, 200)
 
         self.verticalLayout_2.addWidget(self.table_buttons_frame)
 
@@ -499,7 +544,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.input_table)
 
-        self.verticalLayout_2.setStretch(0, 10)
         self.verticalLayout_2.setStretch(1, 100)
 
         self.verticalLayout_4.addWidget(self.main_table_widget)
@@ -894,15 +938,15 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.main_stacked_widget.setCurrentIndex(1)
-        self.method_equation_tab_widget.setCurrentIndex(3)
+        self.main_stacked_widget.setCurrentIndex(0)
+        self.method_equation_tab_widget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Calculadora de matrices", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Calculadora de \u00e1lgebra", None))
 #if QT_CONFIG(tooltip)
         self.expand_button.setToolTip(QCoreApplication.translate("MainWindow", u"Expandir Menu", None))
 #endif // QT_CONFIG(tooltip)
@@ -910,11 +954,11 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.matrix_tab_button.setToolTip(QCoreApplication.translate("MainWindow", u"Matrices", None))
 #endif // QT_CONFIG(tooltip)
-        self.matrix_tab_button.setText("")
+        self.matrix_tab_button.setText(QCoreApplication.translate("MainWindow", u"Matrices", None))
 #if QT_CONFIG(tooltip)
         self.equation_tab_button.setToolTip(QCoreApplication.translate("MainWindow", u"Ecuaciones", None))
 #endif // QT_CONFIG(tooltip)
-        self.equation_tab_button.setText("")
+        self.equation_tab_button.setText(QCoreApplication.translate("MainWindow", u"Ra\u00edz de ecuaciones", None))
 #if QT_CONFIG(tooltip)
         self.row_spinbox_label.setToolTip(QCoreApplication.translate("MainWindow", u"Filas de la matriz", None))
 #endif // QT_CONFIG(tooltip)
@@ -923,48 +967,49 @@ class Ui_MainWindow(object):
         self.column_spinbox_label.setToolTip(QCoreApplication.translate("MainWindow", u"Columnas de la matriz", None))
 #endif // QT_CONFIG(tooltip)
         self.column_spinbox_label.setText(QCoreApplication.translate("MainWindow", u"Columnas", None))
-#if QT_CONFIG(tooltip)
-        self.table_clean_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Limpiar todos los valores de la matriz", None))
-#endif // QT_CONFIG(tooltip)
-        self.table_clean_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Limpiar Matriz", None))
-#if QT_CONFIG(tooltip)
-        self.table_fill_0_button.setToolTip(QCoreApplication.translate("MainWindow", u"Rellenar espacios de la matriz con 0", None))
-#endif // QT_CONFIG(tooltip)
-        self.table_fill_0_button.setText(QCoreApplication.translate("MainWindow", u"Rellenar con 0", None))
+        self.table_resize_checkbox.setText(QCoreApplication.translate("MainWindow", u"Redimensionar autom\u00e1ticamente", None))
 #if QT_CONFIG(tooltip)
         self.table_update_button.setToolTip(QCoreApplication.translate("MainWindow", u"Actualizar dimensiones de la matriz", None))
 #endif // QT_CONFIG(tooltip)
         self.table_update_button.setText(QCoreApplication.translate("MainWindow", u"Actualizar", None))
-#if QT_CONFIG(tooltip)
-        self.table_transposition_button.setToolTip(QCoreApplication.translate("MainWindow", u"Transponer matriz", None))
-#endif // QT_CONFIG(tooltip)
-        self.table_transposition_button.setText(QCoreApplication.translate("MainWindow", u"Transponer Matriz", None))
-#if QT_CONFIG(tooltip)
-        self.table_random_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Llenar espacios vac\u00edos de la matriz con n\u00fameros aleatorios", None))
-#endif // QT_CONFIG(tooltip)
-        self.table_random_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Matriz aleatoria", None))
+        self.table_vector_button.setText(QCoreApplication.translate("MainWindow", u"Vectores", None))
 #if QT_CONFIG(tooltip)
         self.table_adjust_size_button.setToolTip(QCoreApplication.translate("MainWindow", u"Ajustar tama\u00f1o de la matriz en base al contenido actual", None))
 #endif // QT_CONFIG(tooltip)
         self.table_adjust_size_button.setText(QCoreApplication.translate("MainWindow", u"Ajustar tama\u00f1o", None))
 #if QT_CONFIG(tooltip)
-        self.table_import_from_csv_button.setToolTip(QCoreApplication.translate("MainWindow", u"Importar matriz desde un archivo CSV", None))
+        self.table_clean_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Limpiar todos los valores de la matriz", None))
 #endif // QT_CONFIG(tooltip)
-        self.table_import_from_csv_button.setText(QCoreApplication.translate("MainWindow", u"Importar CSV", None))
+        self.table_clean_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Limpiar Matriz", None))
+#if QT_CONFIG(tooltip)
+        self.table_solve_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Resolver seg\u00fan el m\u00e9todo seleccionado", None))
+#endif // QT_CONFIG(tooltip)
+        self.table_solve_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Resolver", None))
         self.table_solution_matrix_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Resolver por", None))
         self.table_solution_matrix_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Reducci\u00f3n", None))
-        self.table_solution_matrix_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Vectores", None))
-        self.table_solution_matrix_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"Determinante", None))
-        self.table_solution_matrix_combobox.setItemText(4, QCoreApplication.translate("MainWindow", u"Cramer", None))
-        self.table_solution_matrix_combobox.setItemText(5, QCoreApplication.translate("MainWindow", u"Invertir ", None))
+        self.table_solution_matrix_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Cramer", None))
 
 #if QT_CONFIG(tooltip)
         self.table_solution_matrix_combobox.setToolTip(QCoreApplication.translate("MainWindow", u"Opciones para resolver matriz", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.table_solve_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Resolver seg\u00fan el m\u00e9todo seleccionado", None))
+        self.table_random_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Llenar espacios vac\u00edos de la matriz con n\u00fameros aleatorios", None))
 #endif // QT_CONFIG(tooltip)
-        self.table_solve_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Resolver", None))
+        self.table_random_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Matriz aleatoria", None))
+#if QT_CONFIG(tooltip)
+        self.table_fill_0_button.setToolTip(QCoreApplication.translate("MainWindow", u"Rellenar espacios de la matriz con 0", None))
+#endif // QT_CONFIG(tooltip)
+        self.table_fill_0_button.setText(QCoreApplication.translate("MainWindow", u"Rellenar con 0", None))
+#if QT_CONFIG(tooltip)
+        self.table_transposition_button.setToolTip(QCoreApplication.translate("MainWindow", u"Transponer matriz", None))
+#endif // QT_CONFIG(tooltip)
+        self.table_transposition_button.setText(QCoreApplication.translate("MainWindow", u"Transponer Matriz", None))
+        self.table_invert_button.setText(QCoreApplication.translate("MainWindow", u"Invertir", None))
+        self.table_determinant_button.setText(QCoreApplication.translate("MainWindow", u"Determinante", None))
+#if QT_CONFIG(tooltip)
+        self.table_import_from_csv_button.setToolTip(QCoreApplication.translate("MainWindow", u"Importar matriz desde un archivo CSV", None))
+#endif // QT_CONFIG(tooltip)
+        self.table_import_from_csv_button.setText(QCoreApplication.translate("MainWindow", u"Importar Matriz", None))
         ___qtablewidgetitem = self.input_table.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"X1", None));
         ___qtablewidgetitem1 = self.input_table.horizontalHeaderItem(1)

@@ -45,3 +45,7 @@ class SolutionController():
     def open_false_position_equation_window(self,config:dict)->None:
         self.solution_window.create_false_position_solution(config)
         self.open_window()
+
+    def open_secant_equation_window(self,config:dict)->None:
+        self.solution_window.create_secant_solution(config)
+        self.open_window()

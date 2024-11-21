@@ -19,7 +19,8 @@ class FalsePositionMethod():
         
         fxl = EquationEvaluator(self.funcion, self.xl)
         fxu = EquationEvaluator(self.funcion, self.xu)
-        
+        if 'domain error' in (fxl,fxu):
+            return 'Error de dominio'
         if fxl * fxu >= 0:
             self.config["La función debe cambiar de signo en el intervalo dado [xl, xu]"] = f"fxl * fxu -> {fxl * fxu} >= 0"
             #print("La función debe cambiar de signo en el intervalo dado [xl, xu].")
@@ -33,7 +34,7 @@ class FalsePositionMethod():
 
             if xr_anterior is not None:
                 error_porcentual = abs(((self.xr - xr_anterior)/self.xr)*100)
-                str_error_porcentual = str(round(error_porcentual, 6)) + "%"
+                str_error_porcentual = str(round(error_porcentual, 4)) + "%"
                 if error_porcentual/100 <= self.tolerancia:
                     self.datos_por_iteracion.append([self.xl, self.xu, self.xr, fxl, fxu, fxr, fxl*fxr, str_error_porcentual])
                     #self.print_iterations()

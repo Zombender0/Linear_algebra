@@ -10,7 +10,7 @@ def EquationEvaluator(equation:str,x_value:int|float)->float|None:
     try:
         result = eval(equation, {"__builtins__": None}, allowed_data_copy)
     except ValueError:
-        return 'mthe'
+        return 'domain error'
     except Exception as e:
         return None
     return result

@@ -29,10 +29,10 @@ class Matrix():
     
     def __str__(self) -> str:
         matriz : str = ''
-        maximo_tamaño_fila = max(len(f'{round(self.matriz[fila][columna], 3)}') for fila in range(self.filas) for columna in range(self.columnas)) + 2
+        maximo_tamaño_fila = max(len(f'{round(self.matriz[fila][columna], 4)}') for fila in range(self.filas) for columna in range(self.columnas)) + 2
         for fila in range(self.filas):
             fila_str = ''
             for columna in range(self.columnas):
-                fila_str += f'{round(self.matriz[fila][columna], 3):<{maximo_tamaño_fila}}'
+                fila_str += f'{round(self.matriz[fila][columna], 4):<{maximo_tamaño_fila}}'
             matriz += fila_str + '\n'
         return matriz

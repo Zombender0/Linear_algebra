@@ -1,6 +1,11 @@
+from PySide6.QtCore import Slot,QObject,QSize
+from PySide6.QtWidgets import QMainWindow
+
 from helpers.box_helper import *
 from helpers.matrix_helper import *
-
+from helpers.validation_helper import float_parser
+from helpers.animation_helper import animate_side_bar
+from constants.ui_constants import MAX_WIDTH
 from views.modified_python_files.main_window import MainWindow 
 from views.modified_python_files.solution_window import SolutionWindow
 from views.modified_python_files.vector_window import VectorWindow
@@ -19,10 +24,9 @@ from models.InvertibleMatrix import InvertibleMatrix
 from models.BisectionMethod import BisectionMethod
 from models.NewtonRaphson import NewthonRaphson
 from models.FalsePositionMethod import FalsePositionMethod
-from PySide6.QtCore import Slot,QObject
-from PySide6.QtWidgets import QMainWindow
-from helpers.validation_helper import float_parser
+from models.SecantMethod import SecantMethod
 from models.EquationFunctions import EquationParser
+
 class MainController(QObject):
     def __init__(self,window:QMainWindow):
         super().__init__()
@@ -37,6 +41,7 @@ class MainController(QObject):
         #UI
         self.main_window.matrix_tab_button.clicked.connect(lambda: self.main_window.main_stacked_widget.setCurrentIndex(0))
         self.main_window.equation_tab_button.clicked.connect(lambda: self.main_window.main_stacked_widget.setCurrentIndex(1)) 
+        self.main_window.expand_button.clicked.connect(lambda: animate_side_bar(self.main_window.sub_side_bar,QSize(32,MAX_WIDTH),QSize(150,MAX_WIDTH)))
         #MATRIX
         self.main_window.table_update_button.clicked.connect(lambda: self.update_matrix_size())
         self.main_window.table_fill_0_button.clicked.connect(lambda: self.main_window.fill_matrix_0())
@@ -46,12 +51,17 @@ class MainController(QObject):
         self.main_window.table_transposition_button.clicked.connect(lambda: self.transpose_matrix())
         self.main_window.table_adjust_size_button.clicked.connect(lambda: self.main_window.adjust_matrix())
         self.main_window.table_import_from_csv_button.clicked.connect(lambda: self.main_window.import_matrix_from_csv())
-        self.main_window.table_solution_matrix_combobox.currentIndexChanged.connect(lambda: self.solution_combobox_changed())
+        self.main_window.table_invert_button.clicked.connect(lambda: self.open_inverted_matrix_window())
+        self.main_window.table_determinant_button.clicked.connect(lambda: self.open_determinant_window())
+        self.main_window.table_vector_button.clicked.connect(lambda: self.open_vector_window())
+        self.main_window.table_resize_checkbox.checkStateChanged.connect(lambda: self.alter_checkbox())
         #EQUATIONS
         self.main_window.edit_equation_button.clicked.connect(lambda: self.open_equation_selecter_window())
         self.main_window.bisection_solution_button.clicked.connect(lambda: self.get_root_bisection_method())
         self.main_window.newton_solution_button.clicked.connect(lambda: self.get_root_newton_method())
         self.main_window.false_solution_button.clicked.connect(lambda: self.get_root_false_position_method())
+        self.main_window.secant_solution_button.clicked.connect(lambda: self.get_root_secant_method())
+
     @Slot()
     def solution_tab(self):
         matriz = get_data_from_table(self.main_window.input_table)
@@ -64,28 +74,47 @@ class MainController(QObject):
         match op_solution:
             case 'reduccion':
                 self.open_solution_window(GaussJordan(matriz))
-            case 'vector':
-                self.open_vector_window(GaussJordan(matriz))
-            case 'determinante':
-                self.open_determinant_window(GaussMethod(matriz))
             case 'cramer':
                 self.open_cramer_window(CramersRule(matriz))
-            case 'invertible':
-                self.open_inverted_matrix_window(InvertibleMatrix(matriz))
-            case _:
+            case 'index':
                 information_box("Seleccione una opcion para resolver")
+            case _:
+                warning_box('Error inesperado. Reinicie la aplicación')
+
+    def alter_checkbox(self):
+        resize_table(self.main_window.input_table,self.main_window.row_spinbox.value(),self.main_window.column_spinbox.value(),last_b=True,letter='X')
+        if self.main_window.table_resize_checkbox.isChecked():
+            self.main_window.row_spinbox.valueChanged.connect(self.main_window.update_matrix_size)
+            self.main_window.column_spinbox.valueChanged.connect(self.main_window.update_matrix_size)
+            return
+        self.main_window.row_spinbox.valueChanged.disconnect(self.main_window.update_matrix_size)
+        self.main_window.column_spinbox.valueChanged.disconnect(self.main_window.update_matrix_size)
 
     def open_solution_window(self,matrix_instance:GaussJordan):
         config = matrix_instance.gauss_jordan()
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_solution_window(config)
 
-    def open_vector_window(self,matrix_instance:GaussJordan):
-        self.vector_controller.set_window(VectorWindow(matrix_instance))
+    def open_vector_window(self):
+        matriz = get_data_from_table(self.main_window.input_table)
+        if matriz == None:
+            warning_box("No se pudo generar esta tabla")
+            return
+        if not MainController.__valid_matriz(matriz):
+            return
+        self.vector_controller.set_window(VectorWindow(GaussJordan(matriz)))
         self.vector_controller.open_vector_window()
     
-    def open_determinant_window(self,matrix_instance:GaussMethod):
+    def open_determinant_window(self):
+        matriz = get_data_from_table(self.main_window.input_table)
+        if matriz == None:
+            warning_box("No se pudo generar esta tabla")
+            return
+        if not MainController.__valid_matriz(matriz):
+            return
+        matrix_instance = GaussMethod(matriz[:-1])
         config = matrix_instance.gauss_method()
+
         if config is False:
             warning_box("La matriz no es cuadrada")
             return
@@ -100,29 +129,29 @@ class MainController(QObject):
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_cramer_window(config)
 
-    def open_inverted_matrix_window(self,matrix_instance:InvertibleMatrix):
+    def open_inverted_matrix_window(self):
+        matriz = get_data_from_table(self.main_window.input_table)
+        if matriz == None:
+            warning_box("No se pudo generar esta tabla")
+            return
+        if not MainController.__valid_matriz(matriz):
+            return
+        matrix_instance = InvertibleMatrix(matriz)
         config = matrix_instance.invertibleMatrix()
+
         if config is False:
             warning_box("La matriz no es cuadrada")
             return
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_invertible_matrix_window(config)
 
-    @Slot()
-    def solution_combobox_changed(self):
-        option = self.main_window.table_solution_matrix_combobox.currentData()
-        last_b = False if option in ('determinante','invertible','vector','index') else True
-        letter = ' ' if option == 'index' else 'X' 
-        resize_table(self.main_window.input_table,
-                     self.main_window.row_spinbox.value(),
-                     self.main_window.column_spinbox.value(),
-                     last_b=last_b,
-                     letter=letter)
-
     def open_bisection_solution_window(self,bisection_instance:BisectionMethod):
         config = bisection_instance.bisection_method()
         if config == 'not tolerance':
             warning_box("El valor de la tolerancia debe ser entre 0 y 1")
+            return
+        if config == 'Error de dominio matemático':
+            warning_box(config)
             return
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_bisection_equation_window(config)
@@ -132,6 +161,9 @@ class MainController(QObject):
         if config == 'not tolerance':
             warning_box("El valor de la tolerancia debe ser entre 0 y 1")
             return
+        if config == 'Error de dominio matemático':
+            warning_box(config)
+            return
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_newton_equation_window(config)
 
@@ -140,8 +172,22 @@ class MainController(QObject):
         if config == 'not tolerance':
             warning_box("El valor de la tolerancia debe ser entre 0 y 1")
             return
+        if config == 'Error de dominio matemático':
+            warning_box(config)
+            return
         self.solution_controller.set_window(SolutionWindow())
         self.solution_controller.open_false_position_equation_window(config)
+
+    def open_secant_solution_window(self,secant_instance:SecantMethod):
+        config = secant_instance.secant_method()
+        if config == 'not tolerance':
+            warning_box("El valor de la tolerancia debe ser entre 0 y 1")
+            return
+        if config == 'Error de dominio matemático':
+            warning_box(config)
+            return
+        self.solution_controller.set_window(SolutionWindow())
+        self.solution_controller.open_secant_equation_window(config)
 
     def open_equation_selecter_window(self):
         self.equation_controller.set_window(EquationSelecterWindow())
@@ -191,7 +237,7 @@ class MainController(QObject):
         parsed_equation = EquationParser(self.equation_controller.equation)
         bisection = BisectionMethod(parsed_equation,interval_a,interval_b,tolerance)
         self.open_bisection_solution_window(bisection)
-    
+    @Slot()
     def get_root_newton_method(self):
         x_value = self.main_window.newton_x_value_line_edit.text()
         max_iter = self.main_window.newton_max_iter_line_edit.text()
@@ -216,7 +262,7 @@ class MainController(QObject):
         parsed_equation = EquationParser(self.equation_controller.equation)
         newton = NewthonRaphson(parsed_equation,x_value,tolerance,max_iter)
         self.open_newton_solution_window(newton)
-
+    @Slot()
     def get_root_false_position_method(self):
         interval_a = self.main_window.false_interval_a_line_edit.text()
         interval_b = self.main_window.false_interval_b_line_edit.text()
@@ -246,6 +292,36 @@ class MainController(QObject):
         false_position = FalsePositionMethod(parsed_equation,interval_a,interval_b,tolerance)
         self.open_false_position_solution_window(false_position)
 
+    def get_root_secant_method(self):
+        interval_a = self.main_window.secant_x0_line_edit.text()
+        interval_b = self.main_window.secant_xi_line_edit.text()
+        tolerance = self.main_window.secant_tolerance_line_edit.text()
+        max_iter = self.main_window.secant_max_iter_line_edit.text()
+
+        interval_a = float_parser(interval_a)
+        interval_b = float_parser(interval_b)
+        tolerance = float_parser(tolerance)
+        max_iter = float_parser(max_iter)
+        
+        if interval_a is False:
+            warning_box('El intervalo a no es un número')
+            return
+        if interval_b is False:
+            warning_box('El intervalo b no es un número')
+            return
+        if tolerance is False:
+            warning_box('La tolerancia no es un número')
+            return
+        if interval_a > interval_b:
+            warning_box('El intervalo xl debe ser menor que el intervalo xu')
+            return
+        if self.equation_controller.equation is None:
+            warning_box('No se ha ingresado la ecuación a resolver')
+            return
+        parsed_equation = EquationParser(self.equation_controller.equation)
+        false_position = SecantMethod(parsed_equation,interval_a,interval_b,tolerance,max_iter)
+        self.open_secant_solution_window(false_position)
+        
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:
         if matriz == []:

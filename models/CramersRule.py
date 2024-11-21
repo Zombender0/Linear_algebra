@@ -62,10 +62,10 @@ class CramersRule(Matrix):
             except ZeroDivisionError:
                 solucion =0
             self.soluciones.append(solucion)
-            mensaje = f"\nX{col + 1} = {round(determinante_variable,3)}/{round(determinante_sistema,3)} = {round(solucion,3)}"
+            mensaje = f"X{col + 1} = {round(determinante_variable,4)}/{round(determinante_sistema,4)} = {round(solucion,4)}"
             mensajes_solucion.append(mensaje)
         
-        self.config[f"\nSOLUCIONES"] = (copy.deepcopy(self.matriz),tuple(msj for msj in enumerate (mensajes_solucion)))
+        self.config[f"SOLUCIONES"] = (copy.deepcopy(self.matriz),tuple(msj for msj in enumerate (mensajes_solucion)))
         
     def verificacion(self):
         mensajes_verificacion = []
@@ -90,7 +90,7 @@ class CramersRule(Matrix):
             mensaje = f"Ec. {fila + 1}: {exp} = {operacion}"
             mensajes_verificacion.append(mensaje)
         
-        self.config["\n\nVERIFICACIÓN\n"] = {f"{i + 1}": msj for i, msj in enumerate(mensajes_verificacion)}
+        self.config["VERIFICACIÓN"] = {f"{i + 1}": msj for i, msj in enumerate(mensajes_verificacion)}
             
 
     def imprimir_ecuaciones(self):
