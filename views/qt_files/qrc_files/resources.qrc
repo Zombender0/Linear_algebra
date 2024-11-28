@@ -1,5 +1,21 @@
 <RCC>
   <qresource prefix="icon">
+    <file>Images/change.svg</file>
+    <file>Images/delete.svg</file>
+    <file>Images/clean.svg</file>
+    <file>Images/transpose.svg</file>
+    <file>Images/random.svg</file>
+    <file>Images/save.svg</file>
+    <file>Images/vector.svg</file>
+    <file>Images/refresh.svg</file>
+    <file>Images/csv.svg</file>
+    <file>Images/resize.svg</file>
+    <file>Images/export.svg</file>
+    <file>Images/zero.svg</file>
+    <file>Images/import.svg</file>
+    <file>Images/help-circle.svg</file>
+    <file>Images/info.svg</file>
+    <file>Images/settings.svg</file>
     <file>Images/left_ar.svg</file>
     <file>Images/right_ar.svg</file>
     <file>Images/edit.svg</file>

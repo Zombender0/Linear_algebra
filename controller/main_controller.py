@@ -5,7 +5,10 @@ from helpers.box_helper import *
 from helpers.matrix_helper import *
 from helpers.validation_helper import float_parser
 from helpers.animation_helper import animate_side_bar
+from utils.generic_utils import select_path_to_csv
+from utils.matrix_utils import get_transposed_matrix
 from constants.ui_constants import MAX_WIDTH
+from constants.file_filter import CSV_FILTER
 from views.modified_python_files.main_window import MainWindow 
 from views.modified_python_files.solution_window import SolutionWindow
 from views.modified_python_files.vector_window import VectorWindow
@@ -38,39 +41,52 @@ class MainController(QObject):
         self.connect_main_window_buttons()
         
     def connect_main_window_buttons(self):
+
+        window = self.main_window
         #UI
-        self.main_window.matrix_tab_button.clicked.connect(lambda: self.main_window.main_stacked_widget.setCurrentIndex(0))
-        self.main_window.equation_tab_button.clicked.connect(lambda: self.main_window.main_stacked_widget.setCurrentIndex(1)) 
-        self.main_window.expand_button.clicked.connect(lambda: animate_side_bar(self.main_window.sub_side_bar,QSize(32,MAX_WIDTH),QSize(150,MAX_WIDTH)))
+        window.matrix_tab_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(0))
+        window.equation_tab_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(1)) 
+        window.expand_button.clicked.connect(lambda: animate_side_bar(window.sub_side_bar,QSize(32,MAX_WIDTH),QSize(170,MAX_WIDTH)))
         #MATRIX
-        self.main_window.table_update_button.clicked.connect(lambda: self.update_matrix_size())
-        self.main_window.table_fill_0_button.clicked.connect(lambda: self.main_window.fill_matrix_0())
-        self.main_window.table_clean_matrix_button.clicked.connect(lambda: self.main_window.clean_matrix())
-        self.main_window.table_random_matrix_button.clicked.connect(lambda: self.main_window.random_matrix())
-        self.main_window.table_solve_matrix_button.clicked.connect(lambda: self.solution_tab())
-        self.main_window.table_transposition_button.clicked.connect(lambda: self.transpose_matrix())
-        self.main_window.table_adjust_size_button.clicked.connect(lambda: self.main_window.adjust_matrix())
-        self.main_window.table_import_from_csv_button.clicked.connect(lambda: self.main_window.import_matrix_from_csv())
-        self.main_window.table_invert_button.clicked.connect(lambda: self.open_inverted_matrix_window())
-        self.main_window.table_determinant_button.clicked.connect(lambda: self.open_determinant_window())
-        self.main_window.table_vector_button.clicked.connect(lambda: self.open_vector_window())
-        self.main_window.table_resize_checkbox.checkStateChanged.connect(lambda: self.alter_checkbox())
+        window.import_button.clicked.connect(lambda: window.import_matrix_from_csv())
+        window.export_button.clicked.connect(lambda: self.export_matrix_from_csv())
+        ##Right Corner Buttons
+        window.table_solve_button.clicked.connect(lambda: self.solve_button())
+        window.table_determinant_button.clicked.connect(lambda: self.open_determinant_window())
+        window.table_invert_button.clicked.connect(lambda: self.open_inverted_matrix_window())
+        window.table_vector_button.clicked.connect(lambda: self.open_vector_window())
+        window.table_transpose_button.clicked.connect(lambda: self.transpose_matrix())
+        window.table_update_button.clicked.connect(lambda: window.update_matrix_size())
+        ##RESIZE
+        window.table_resize_checkbox.stateChanged.connect(lambda: self.alter_checkbox())
+        ##COEFICIENT TABLE
+        window.clean_coeficient_matrix_button.clicked.connect(lambda: window.clean_table(window.coeficient_table))
+        window.adjust_coeficient_matrix_button.clicked.connect(lambda: window.adjust_matrix(window.coeficient_table))
+        window.fill_0_coeficient_matrix_button.clicked.connect(lambda: window.fill_matrix_0(window.coeficient_table))
+        window.random_matrix_button.clicked.connect(lambda: window.random_matrix(window.coeficient_table))
+        ##INDEPENDENT TERMS TABLE
+        window.clean_independent_matrix_button.clicked.connect(lambda: window.clean_table(window.independent_terms_table))
+        window.adjust_independent_matrix_button.clicked.connect(lambda: window.adjust_matrix(window.independent_terms_table))
+        window.zero_independent_matrix_button.clicked.connect(lambda: window.fill_matrix_0(window.independent_terms_table))
+        window.random_independent_matrix_button.clicked.connect(lambda: window.random_matrix(window.independent_terms_table))
+
         #EQUATIONS
-        self.main_window.edit_equation_button.clicked.connect(lambda: self.open_equation_selecter_window())
-        self.main_window.bisection_solution_button.clicked.connect(lambda: self.get_root_bisection_method())
-        self.main_window.newton_solution_button.clicked.connect(lambda: self.get_root_newton_method())
-        self.main_window.false_solution_button.clicked.connect(lambda: self.get_root_false_position_method())
-        self.main_window.secant_solution_button.clicked.connect(lambda: self.get_root_secant_method())
+        window.edit_equation_button.clicked.connect(lambda: self.open_equation_selecter_window())
+        window.bisection_solution_button.clicked.connect(lambda: self.get_root_bisection_method())
+        window.newton_solution_button.clicked.connect(lambda: self.get_root_newton_method())
+        window.false_solution_button.clicked.connect(lambda: self.get_root_false_position_method())
+        window.secant_solution_button.clicked.connect(lambda: self.get_root_secant_method())
 
     @Slot()
-    def solution_tab(self):
-        matriz = get_data_from_table(self.main_window.input_table)
+    def solve_button(self):
+        matriz = self.get_aumented_matrix_data()
+        print(matriz)
         if matriz == None:
             warning_box("No se pudo generar esta tabla")
             return
         if not MainController.__valid_matriz(matriz):
-            return
-        op_solution = self.main_window.table_solution_matrix_combobox.currentData()
+            return None
+        op_solution = self.main_window.table_select_solutions_combobox.currentData()
         match op_solution:
             case 'reduccion':
                 self.open_solution_window(GaussJordan(matriz))
@@ -82,7 +98,9 @@ class MainController(QObject):
                 warning_box('Error inesperado. Reinicie la aplicación')
 
     def alter_checkbox(self):
-        resize_table(self.main_window.input_table,self.main_window.row_spinbox.value(),self.main_window.column_spinbox.value(),last_b=True,letter='X')
+        rows = self.main_window.row_spinbox.value()
+        columns = self.main_window.column_spinbox.value()
+        self.main_window.resize_aumented_matrix(rows,columns)
         if self.main_window.table_resize_checkbox.isChecked():
             self.main_window.row_spinbox.valueChanged.connect(self.main_window.update_matrix_size)
             self.main_window.column_spinbox.valueChanged.connect(self.main_window.update_matrix_size)
@@ -96,7 +114,7 @@ class MainController(QObject):
         self.solution_controller.open_solution_window(config)
 
     def open_vector_window(self):
-        matriz = get_data_from_table(self.main_window.input_table)
+        matriz = get_data_from_table(self.main_window.coeficient_table)
         if matriz == None:
             warning_box("No se pudo generar esta tabla")
             return
@@ -106,13 +124,13 @@ class MainController(QObject):
         self.vector_controller.open_vector_window()
     
     def open_determinant_window(self):
-        matriz = get_data_from_table(self.main_window.input_table)
+        matriz = get_data_from_table(self.main_window.coeficient_table)
         if matriz == None:
             warning_box("No se pudo generar esta tabla")
             return
         if not MainController.__valid_matriz(matriz):
             return
-        matrix_instance = GaussMethod(matriz[:-1])
+        matrix_instance = GaussMethod(matriz)
         config = matrix_instance.gauss_method()
 
         if config is False:
@@ -130,7 +148,7 @@ class MainController(QObject):
         self.solution_controller.open_cramer_window(config)
 
     def open_inverted_matrix_window(self):
-        matriz = get_data_from_table(self.main_window.input_table)
+        matriz = get_data_from_table(self.main_window.coeficient_table)
         if matriz == None:
             warning_box("No se pudo generar esta tabla")
             return
@@ -196,25 +214,8 @@ class MainController(QObject):
     @Slot(str)
     def change_equation(self,rich_text_equation:str):
         self.main_window.equation_text_label.setText(rich_text_equation)
-    
-    @Slot()
-    def transpose_matrix(self):
-        self.main_window.transpose_matrix()
-        self.solution_combobox_changed()
 
-    @Slot()
-    def update_matrix_size(self):
-        self.main_window.update_matrix_size()
-        self.solution_combobox_changed()
         
-    #EQUATION TAB. 
-    @Slot()
-    def solution_combobox_changed(self):
-        resize_table(self.main_window.input_table,
-        self.main_window.row_spinbox.value(),
-        self.main_window.column_spinbox.value(),
-        last_b=True,
-        letter='X')
     @Slot()
     def get_root_bisection_method(self):
         interval_a = self.main_window.bisection_interval_a_line_edit.text()
@@ -268,6 +269,7 @@ class MainController(QObject):
         parsed_equation = EquationParser(self.equation_controller.equation)
         newton = NewthonRaphson(parsed_equation,x_value,tolerance,max_iter)
         self.open_newton_solution_window(newton)
+
     @Slot()
     def get_root_false_position_method(self):
         interval_a = self.main_window.false_interval_a_line_edit.text()
@@ -327,7 +329,37 @@ class MainController(QObject):
         parsed_equation = EquationParser(self.equation_controller.equation)
         false_position = SecantMethod(parsed_equation,interval_a,interval_b,tolerance,max_iter)
         self.open_secant_solution_window(false_position)
+    
+    def get_aumented_matrix_data(self):
+        coeficient_matrix = get_data_from_table(self.main_window.coeficient_table)
+        independent_terms_matrix = get_data_from_table(self.main_window.independent_terms_table)
+        if coeficient_matrix == None or independent_terms_matrix == None:
+            return None
+        aumented_matrix = [row + t for row,t in zip(coeficient_matrix,independent_terms_matrix)]
+        return aumented_matrix
+    
+    @Slot()
+    def transpose_matrix(self):
+        original_matrix = get_data_from_table(self.main_window.coeficient_table)
+        if original_matrix == None:
+            return None
+        transposed_matrix = get_transposed_matrix(original_matrix)
+        print(transposed_matrix)
+        insert_data_to_table(self.main_window.coeficient_table,transposed_matrix,editable=True,last_b=False,letter='X')
+        self.main_window.row_spinbox.setValue(len(transposed_matrix))
+        self.main_window.column_spinbox.setValue(len(transposed_matrix[0]))
         
+    @Slot()
+    def export_matrix_from_csv(self)->None:
+        matrix = self.get_aumented_matrix_data()
+        if matrix is None:
+            warning_box('Matriz invalida')
+            return None
+        file_path = select_path_to_csv(CSV_FILTER)
+        with open(file_path,mode='w',encoding='utf-8') as f:
+            for row in matrix:
+                f.write(';'.join(map(str,row))+'\n')
+
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:
         if matriz == []:

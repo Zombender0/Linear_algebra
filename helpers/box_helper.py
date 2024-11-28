@@ -22,4 +22,4 @@ def question_box(message):
     box.setText(message)
     box.setWindowTitle('Pregunta')
     box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-    return box.exec()
+    return box.exec() == QMessageBox.Yes

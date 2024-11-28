@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>652</width>
-    <height>407</height>
+    <width>719</width>
+    <height>385</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,15 +35,15 @@ color: #000;
 padding: 2px;
 border-radius:3px;
 }
-#MainWindow{
+#MainWindow, #table_buttons_down_widget{
 background: #2c313c
 }
 
-#table_buttons_frame{
-background-color: #2c313c
+#table_buttons_frame, #matrix_page{
+background-color: #2c313c;
 }
 
-#table_buttons_frame QPushButton, #table_buttons_frame QComboBox,#solution_widget QComboBox, #equations_page QPushButton{
+#table_buttons_frame QPushButton, #table_buttons_frame QComboBox,#solution_widget QComboBox, #equations_page QPushButton, #table_options_widget QPushButton, #table_options_widget QComboBox, #table_aumented_widget QPushButton{
     color: #ffffff;
     text-align: center;
 	padding: 3px;
@@ -51,12 +51,12 @@ background-color: #2c313c
     background-color: #16191d;
 }
 
-#table_buttons_frame QPushButton::hover, #table_buttons_frame QComboBox::hover,#equations_page QPushButton::hover{
+#table_buttons_frame QPushButton::hover, #table_buttons_frame QComboBox::hover,#equations_page QPushButton::hover, #table_options_widget QPushButton::hover, #table_options_widget QComboBox::hover, #table_aumented_widget QPushButton::hover{
     background-color: #2a2e35;
     border-color: #454a52;
 }
 
-#table_buttons_frame QPushButton::pressed, #table_buttons_frame QComboBox::pressed,#equations_page QPushButton::pressed{
+#table_buttons_frame QPushButton::pressed, #table_buttons_frame QComboBox::pressed,#equations_page QPushButton::pressed, #table_options_widget QPushButton::pressed, #table_options_widget QComboBox::pressed, #table_aumented_widget QPushButton::pressed{
     background-color: #1d2127;
 	font-weight: 350;
 }
@@ -65,9 +65,10 @@ background-color: #2c313c
 color: #fff;
 background-color: #1d2127;
 border-radius: 10px;
+padding: 1px;
 }
 
-#table_buttons_frame QLabel{
+#table_buttons_frame QLabel, #table_aumented_widget QLabel{
 background-color: #1f232a;
 padding: 3px;
 font-weight: 700;
@@ -118,26 +119,33 @@ gridline-color:#fff;
 
 #main_table_widget QHeaderView, #main_table_widget QHeaderView::section, #main_table_widget QTableCornerButton::section{
 background-color: #3e4555;
-color: #fff;
+}
+
+#main_table_widget QTableWidget::item:hover, #main_table_widget QTableWidget::item:selected{
+background-color: #e9eaef;
+font-weight: 700;
+color: #000
 }
 
 #main_table_widget QTableWidget::item{
 color: #fff;
+selection-color: #000
 }
 
-#main_table_widget QTableWidget::item::hover{
-background-color: #242831;
-font-weight: 700;
+/* Estilo para el editor de texto cuando se está editando una celda */
+QTableWidget::item QLineEdit{
+color: black;
 }
 
 #side_bar{
 background: #16191d
 }
-#tab_buttons_frame QPushButton, #expand_button_frame QPushButton{
+#sub_side_bar QPushButton, #expand_button_frame QPushButton{
 text-align: left;
 }
-#tab_buttons_frame QPushButton::hover{
+#sub_side_bar QPushButton::hover, #table_buttons_down_widget QPushButton::hover{
 background-color: #1f232a;
+font-weight: 700;
 }
 
 #equations_page QLabel{
@@ -171,7 +179,6 @@ background-color: #B0B3AD
 QTabBar::tab:selected{
 background-color:#454742
 }
-
 #bisection_tab QLineEdit, #newton_tab QLineEdit, #false_position_tab QLineEdit, #secant_tab QLineEdit{
 color: #fff;
 background-color: #596379;
@@ -206,6 +213,18 @@ font-weight: 350;
 
 QCheckBox::unchecked{
 color: #8b7a78;
+}
+
+#table_buttons_down_widget QPushButton{
+text-align:left;
+}
+
+#sub_table_column_row_widget QLabel{
+background: none;
+}
+
+#table_aumented_widget QLabel{
+background:none;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -244,7 +263,7 @@ color: #8b7a78;
         <enum>QLayout::SizeConstraint::SetMinAndMaxSize</enum>
        </property>
        <property name="leftMargin">
-        <number>5</number>
+        <number>3</number>
        </property>
        <property name="topMargin">
         <number>0</number>
@@ -265,13 +284,21 @@ color: #8b7a78;
          </property>
          <property name="maximumSize">
           <size>
-           <width>32</width>
+           <width>33</width>
            <height>16777215</height>
           </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true">#sub_side_bar QPushButton{
+padding-right: 5px
+}
+#config_button_frame QPushButton{
+padding-left: 0px;
+}</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <property name="spacing">
-           <number>0</number>
+           <number>6</number>
           </property>
           <property name="leftMargin">
            <number>0</number>
@@ -287,6 +314,12 @@ color: #8b7a78;
           </property>
           <item>
            <widget class="QFrame" name="expand_button_frame">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
@@ -338,7 +371,7 @@ color: #8b7a78;
           <item alignment="Qt::AlignmentFlag::AlignTop">
            <widget class="QFrame" name="tab_buttons_frame">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -375,6 +408,7 @@ color: #8b7a78;
                </property>
                <property name="font">
                 <font>
+                 <pointsize>11</pointsize>
                  <bold>false</bold>
                 </font>
                </property>
@@ -401,11 +435,17 @@ color: #8b7a78;
              </item>
              <item>
               <widget class="QPushButton" name="equation_tab_button">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
                <property name="toolTip">
                 <string>Ecuaciones</string>
                </property>
                <property name="styleSheet">
-                <string notr="true">text-align:left;</string>
+                <string notr="true">text-align:left;
+margin-left:-1px;</string>
                </property>
                <property name="text">
                 <string>Raíz de ecuaciones</string>
@@ -418,6 +458,199 @@ color: #8b7a78;
                 <size>
                  <width>32</width>
                  <height>32</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignmentFlag::AlignBottom">
+           <widget class="QFrame" name="exportation_importation_button_frame">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_21">
+             <property name="spacing">
+              <number>5</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>11</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="export_button">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>Exportar matriz actual</string>
+               </property>
+               <property name="text">
+                <string>Importar csv</string>
+               </property>
+               <property name="icon">
+                <iconset resource="qrc_files/resources.qrc">
+                 <normaloff>:/icon/Images/export.svg</normaloff>:/icon/Images/export.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="import_button">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>Importar matriz en formato CSV</string>
+               </property>
+               <property name="text">
+                <string>Importar matriz</string>
+               </property>
+               <property name="icon">
+                <iconset resource="qrc_files/resources.qrc">
+                 <normaloff>:/icon/Images/import.svg</normaloff>:/icon/Images/import.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignmentFlag::AlignBottom">
+           <widget class="QFrame" name="config_button_frame">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align:left</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_20">
+             <property name="spacing">
+              <number>5</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="config_button">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>Configuración</string>
+               </property>
+               <property name="text">
+                <string>Configuración</string>
+               </property>
+               <property name="icon">
+                <iconset resource="qrc_files/resources.qrc">
+                 <normaloff>:/icon/Images/settings.svg</normaloff>:/icon/Images/settings.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="information_button">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>Información</string>
+               </property>
+               <property name="text">
+                <string>Información</string>
+               </property>
+               <property name="icon">
+                <iconset resource="qrc_files/resources.qrc">
+                 <normaloff>:/icon/Images/info.svg</normaloff>:/icon/Images/info.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="help_button">
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>Ayuda</string>
+               </property>
+               <property name="text">
+                <string>Ayuda</string>
+               </property>
+               <property name="icon">
+                <iconset resource="qrc_files/resources.qrc">
+                 <normaloff>:/icon/Images/help-circle.svg</normaloff>:/icon/Images/help-circle.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
                 </size>
                </property>
               </widget>
@@ -491,9 +724,9 @@ color: #8b7a78;
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <layout class="QHBoxLayout" name="table_buttons_horizontal_layout" stretch="0,200">
+             <layout class="QHBoxLayout" name="table_buttons_horizontal_layout" stretch="0,0,0">
               <property name="spacing">
-               <number>0</number>
+               <number>10</number>
               </property>
               <property name="sizeConstraint">
                <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
@@ -510,23 +743,29 @@ color: #8b7a78;
               <property name="bottomMargin">
                <number>0</number>
               </property>
-              <item>
+              <item alignment="Qt::AlignmentFlag::AlignLeft">
                <widget class="QWidget" name="table_column_row_widget" native="true">
-                <layout class="QVBoxLayout" name="verticalLayout_19">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_19" stretch="100,1">
                  <property name="spacing">
-                  <number>0</number>
+                  <number>5</number>
                  </property>
                  <property name="leftMargin">
-                  <number>3</number>
-                 </property>
-                 <property name="topMargin">
                   <number>0</number>
                  </property>
+                 <property name="topMargin">
+                  <number>4</number>
+                 </property>
                  <property name="rightMargin">
-                  <number>3</number>
+                  <number>0</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>3</number>
+                  <number>0</number>
                  </property>
                  <item>
                   <widget class="QWidget" name="sub_table_column_row_widget" native="true">
@@ -535,7 +774,7 @@ color: #8b7a78;
                      <number>0</number>
                     </property>
                     <property name="leftMargin">
-                     <number>0</number>
+                     <number>10</number>
                     </property>
                     <property name="topMargin">
                      <number>0</number>
@@ -548,6 +787,12 @@ color: #8b7a78;
                     </property>
                     <item>
                      <widget class="QWidget" name="table_row_spinbox_widget" native="true">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
                       <property name="styleSheet">
                        <string notr="true"/>
                       </property>
@@ -616,6 +861,12 @@ color: #8b7a78;
                     </item>
                     <item>
                      <widget class="QWidget" name="table_column_spinbox_widget" native="true">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
                       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
                        <property name="spacing">
                         <number>0</number>
@@ -680,319 +931,1009 @@ color: #8b7a78;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QCheckBox" name="table_resize_checkbox">
+                  <widget class="QWidget" name="checkbox_widget" native="true">
                    <property name="font">
                     <font>
                      <pointsize>11</pointsize>
                     </font>
                    </property>
-                   <property name="contextMenuPolicy">
-                    <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+                   <layout class="QHBoxLayout" name="horizontalLayout_5">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                     <widget class="QCheckBox" name="table_resize_checkbox">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="contextMenuPolicy">
+                       <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
+                      </property>
+                      <property name="toolTip">
+                       <string>Redimensionar automáticamente</string>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="text">
+                       <string>Autoescala</string>
+                      </property>
+                      <property name="checked">
+                       <bool>false</bool>
+                      </property>
+                      <property name="tristate">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignmentFlag::AlignLeft">
+               <widget class="QWidget" name="select_matrix_widget" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                  <horstretch>1</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_25">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="sizeConstraint">
+                  <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>5</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="select_table_combobox">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
                    </property>
-                   <property name="text">
-                    <string>Redimensionar automáticamente</string>
+                   <property name="frame">
+                    <bool>true</bool>
                    </property>
-                   <property name="checked">
-                    <bool>false</bool>
-                   </property>
-                   <property name="tristate">
-                    <bool>false</bool>
-                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Seleccionar matriz</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="select_matrix_options_widget" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_8">
+                    <property name="spacing">
+                     <number>5</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QPushButton" name="save_current_table_button">
+                      <property name="font">
+                       <font>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="toolTip">
+                       <string>Guardar matriz actual</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="qrc_files/resources.qrc">
+                        <normaloff>:/icon/Images/save.svg</normaloff>:/icon/Images/save.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>26</width>
+                        <height>26</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="change_current_table_button">
+                      <property name="font">
+                       <font>
+                        <pointsize>9</pointsize>
+                       </font>
+                      </property>
+                      <property name="toolTip">
+                       <string>Cambiar matriz seleccionada</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="qrc_files/resources.qrc">
+                        <normaloff>:/icon/Images/change.svg</normaloff>:/icon/Images/change.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>26</width>
+                        <height>26</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButton">
+                      <property name="toolTip">
+                       <string>Eliminar matriz</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="qrc_files/resources.qrc">
+                        <normaloff>:/icon/Images/delete.svg</normaloff>:/icon/Images/delete.svg</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>26</width>
+                        <height>26</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
                </widget>
               </item>
               <item>
-               <layout class="QGridLayout" name="table_grid_options" rowstretch="0,0,0,0,0" columnstretch="0,0,0" rowminimumheight="0,0,0,0,0">
-                <property name="sizeConstraint">
-                 <enum>QLayout::SizeConstraint::SetFixedSize</enum>
+               <widget class="QWidget" name="table_extra_options_widget" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+                  <horstretch>1</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
                 </property>
-                <property name="leftMargin">
-                 <number>0</number>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
                 </property>
-                <property name="topMargin">
-                 <number>6</number>
+                <property name="sizeIncrement">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
                 </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>6</number>
-                </property>
-                <property name="horizontalSpacing">
-                 <number>5</number>
-                </property>
-                <property name="verticalSpacing">
-                 <number>3</number>
-                </property>
-                <item row="0" column="1">
-                 <widget class="QPushButton" name="table_update_button">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Actualizar dimensiones de la matriz</string>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::LayoutDirection::LeftToRight</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string>Actualizar</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="2">
-                 <widget class="QPushButton" name="table_vector_button">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Operaciones con vectores</string>
-                  </property>
-                  <property name="text">
-                   <string>Vectores</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="1">
-                 <widget class="QPushButton" name="table_adjust_size_button">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Ajustar tamaño de la matriz en base al contenido actual</string>
-                  </property>
-                  <property name="text">
-                   <string>Ajustar tamaño</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QPushButton" name="table_clean_matrix_button">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Limpiar todos los valores de la matriz</string>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string>Limpiar Matriz</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="2">
-                 <widget class="QPushButton" name="table_solve_matrix_button">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Resolver según el método seleccionado</string>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string>Resolver</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <widget class="QComboBox" name="table_solution_matrix_combobox">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>ArrowCursor</cursorShape>
-                  </property>
-                  <property name="focusPolicy">
-                   <enum>Qt::FocusPolicy::WheelFocus</enum>
-                  </property>
-                  <property name="acceptDrops">
-                   <bool>false</bool>
-                  </property>
-                  <property name="toolTip">
-                   <string>Opciones para resolver matriz</string>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>Resolver por</string>
+                <layout class="QVBoxLayout" name="verticalLayout_26">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <layout class="QGridLayout" name="table_extra_options_grid">
+                   <property name="sizeConstraint">
+                    <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
                    </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Reducción</string>
+                   <property name="topMargin">
+                    <number>0</number>
                    </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Cramer</string>
+                   <property name="horizontalSpacing">
+                    <number>4</number>
                    </property>
-                  </item>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QPushButton" name="table_random_matrix_button">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Llenar espacios vacíos de la matriz con números aleatorios</string>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string>Matriz aleatoria</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QPushButton" name="table_fill_0_button">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Rellenar espacios de la matriz con 0</string>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string>Rellenar con 0</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QPushButton" name="table_transposition_button">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Transponer matriz</string>
-                  </property>
-                  <property name="text">
-                   <string>Transponer Matriz</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="2">
-                 <widget class="QPushButton" name="table_invert_button">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Obtener matriz invertida</string>
-                  </property>
-                  <property name="text">
-                   <string>Invertir</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="2">
-                 <widget class="QPushButton" name="table_determinant_button">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Obtener determinante de la matriz</string>
-                  </property>
-                  <property name="text">
-                   <string>Determinante</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QPushButton" name="table_import_from_csv_button">
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                   </font>
-                  </property>
-                  <property name="toolTip">
-                   <string>Importar matriz desde un archivo CSV</string>
-                  </property>
-                  <property name="text">
-                   <string>Importar Matriz</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+                   <property name="verticalSpacing">
+                    <number>3</number>
+                   </property>
+                   <item row="0" column="2">
+                    <widget class="QComboBox" name="table_select_solutions_combobox">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="toolTip">
+                      <string>Seleccionar método para resolver</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>Resolver por</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Reducción</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Cramer</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="2" column="2">
+                    <widget class="QPushButton" name="table_solve_button">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="toolTip">
+                      <string>Solucionar matriz</string>
+                     </property>
+                     <property name="text">
+                      <string>Resolver</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="4">
+                    <widget class="QPushButton" name="table_vector_button">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="toolTip">
+                      <string>Operaciones con matrices</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="qrc_files/resources.qrc">
+                       <normaloff>:/icon/Images/vector.svg</normaloff>:/icon/Images/vector.svg</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>21</width>
+                       <height>21</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="3">
+                    <widget class="QPushButton" name="table_invert_button">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="toolTip">
+                      <string>Obtener matriz invertida</string>
+                     </property>
+                     <property name="text">
+                      <string>Invertir</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="4">
+                    <widget class="QPushButton" name="table_transpose_button">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Transponer matriz</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="qrc_files/resources.qrc">
+                       <normaloff>:/icon/Images/transpose.svg</normaloff>:/icon/Images/transpose.svg</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>24</width>
+                       <height>24</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="3">
+                    <widget class="QPushButton" name="table_determinant_button">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="toolTip">
+                      <string>Obtener determinante de la matriz</string>
+                     </property>
+                     <property name="text">
+                      <string>Determinante</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>26</width>
+                       <height>26</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="5" rowspan="3">
+                    <widget class="QPushButton" name="table_update_button">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                       <horstretch>1</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>38</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="toolTip">
+                      <string>Actualizar tamaño</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="qrc_files/resources.qrc">
+                       <normaloff>:/icon/Images/refresh.svg</normaloff>:/icon/Images/refresh.svg</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>28</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
               </item>
              </layout>
             </widget>
            </item>
            <item>
-            <widget class="QTableWidget" name="input_table">
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <attribute name="verticalHeaderVisible">
-              <bool>true</bool>
-             </attribute>
-             <row/>
-             <row/>
-             <row/>
-             <column>
-              <property name="text">
-               <string>X1</string>
+            <widget class="QWidget" name="table_aumented_widget" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="10,1">
+              <property name="spacing">
+               <number>6</number>
               </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>X2</string>
+              <property name="leftMargin">
+               <number>0</number>
               </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>b</string>
+              <property name="topMargin">
+               <number>0</number>
               </property>
-             </column>
-             <item row="0" column="0">
-              <property name="text">
-               <string/>
+              <property name="rightMargin">
+               <number>0</number>
               </property>
-              <property name="font">
-               <font>
-                <family>Calibri</family>
-                <pointsize>9</pointsize>
-               </font>
+              <property name="bottomMargin">
+               <number>0</number>
               </property>
-              <property name="flags">
-               <set>ItemIsSelectable|ItemIsEditable|ItemIsEnabled</set>
-              </property>
-             </item>
+              <item>
+               <widget class="QWidget" name="coeficient_table_widget" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_23">
+                 <property name="spacing">
+                  <number>3</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QWidget" name="coeficient_option_widget" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_7">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>30</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item alignment="Qt::AlignmentFlag::AlignLeft">
+                     <widget class="QLabel" name="coeficient_label">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="toolTip">
+                       <string>Matriz de coeficientes</string>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">margin-left: 10px;</string>
+                      </property>
+                      <property name="text">
+                       <string>Matriz de coeficientes</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item alignment="Qt::AlignmentFlag::AlignLeft">
+                     <widget class="QWidget" name="coeficient_option_sub_widget" native="true">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>1</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_27">
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <layout class="QGridLayout" name="coeficient_option_grid">
+                         <property name="bottomMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="spacing">
+                          <number>6</number>
+                         </property>
+                         <item row="0" column="3">
+                          <widget class="QPushButton" name="adjust_coeficient_matrix_button">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>38</width>
+                             <height>34</height>
+                            </size>
+                           </property>
+                           <property name="toolTip">
+                            <string>Ajustar tamaño</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="qrc_files/resources.qrc">
+                             <normaloff>:/icon/Images/resize.svg</normaloff>:/icon/Images/resize.svg</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>28</width>
+                             <height>28</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QPushButton" name="random_matrix_button">
+                           <property name="maximumSize">
+                            <size>
+                             <width>38</width>
+                             <height>34</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="toolTip">
+                            <string>Llenar espacios vacíos de la matriz con números aleatorios</string>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true"/>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="qrc_files/resources.qrc">
+                             <normaloff>:/icon/Images/random.svg</normaloff>:/icon/Images/random.svg</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>36</width>
+                             <height>36</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="0">
+                          <widget class="QPushButton" name="clean_coeficient_matrix_button">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>38</width>
+                             <height>34</height>
+                            </size>
+                           </property>
+                           <property name="toolTip">
+                            <string>Limpiar matriz de coeficientes</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="qrc_files/resources.qrc">
+                             <normaloff>:/icon/Images/clean.svg</normaloff>:/icon/Images/clean.svg</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>28</width>
+                             <height>28</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="2">
+                          <widget class="QPushButton" name="fill_0_coeficient_matrix_button">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>38</width>
+                             <height>34</height>
+                            </size>
+                           </property>
+                           <property name="toolTip">
+                            <string>Rellenar Espacios con cero</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="qrc_files/resources.qrc">
+                             <normaloff>:/icon/Images/zero.svg</normaloff>:/icon/Images/zero.svg</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>36</width>
+                             <height>36</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="coeficient_table">
+                   <property name="toolTip">
+                    <string>Matriz de coeficientes</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="sortingEnabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="cornerButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                   <attribute name="verticalHeaderVisible">
+                    <bool>true</bool>
+                   </attribute>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <column>
+                    <property name="text">
+                     <string>X1</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>X2</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>b</string>
+                    </property>
+                   </column>
+                   <item row="0" column="0">
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Calibri</family>
+                      <pointsize>9</pointsize>
+                     </font>
+                    </property>
+                    <property name="flags">
+                     <set>ItemIsSelectable|ItemIsEditable|ItemIsEnabled</set>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="independent_terms_widget" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_24">
+                 <property name="spacing">
+                  <number>3</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QWidget" name="independent_options_widget" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_9">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="independent_terms_label">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="toolTip">
+                       <string>Términos independientes</string>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">margin-left: -3px;</string>
+                      </property>
+                      <property name="text">
+                       <string>Independientes</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QWidget" name="widget" native="true">
+                      <layout class="QHBoxLayout" name="horizontalLayout_4">
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <layout class="QGridLayout" name="independent_option_grid">
+                         <property name="bottomMargin">
+                          <number>0</number>
+                         </property>
+                         <item row="0" column="0">
+                          <widget class="QPushButton" name="clean_independent_matrix_button">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                             <horstretch>1</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>38</width>
+                             <height>38</height>
+                            </size>
+                           </property>
+                           <property name="toolTip">
+                            <string>Limpiar matriz de coeficientes</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="qrc_files/resources.qrc">
+                             <normaloff>:/icon/Images/clean.svg</normaloff>:/icon/Images/clean.svg</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>28</width>
+                             <height>28</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="1">
+                          <widget class="QPushButton" name="random_independent_matrix_button">
+                           <property name="maximumSize">
+                            <size>
+                             <width>38</width>
+                             <height>38</height>
+                            </size>
+                           </property>
+                           <property name="toolTip">
+                            <string>Llenar espacios vacíos con números aleatorios</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="qrc_files/resources.qrc">
+                             <normaloff>:/icon/Images/random.svg</normaloff>:/icon/Images/random.svg</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>36</width>
+                             <height>36</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="3">
+                          <widget class="QPushButton" name="adjust_independent_matrix_button">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                             <horstretch>1</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>38</width>
+                             <height>38</height>
+                            </size>
+                           </property>
+                           <property name="toolTip">
+                            <string>Ajustar tamaño</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="qrc_files/resources.qrc">
+                             <normaloff>:/icon/Images/resize.svg</normaloff>:/icon/Images/resize.svg</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>28</width>
+                             <height>28</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="0" column="2">
+                          <widget class="QPushButton" name="zero_independent_matrix_button">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                             <horstretch>1</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>38</width>
+                             <height>38</height>
+                            </size>
+                           </property>
+                           <property name="toolTip">
+                            <string>Rellenar espacios con cero</string>
+                           </property>
+                           <property name="text">
+                            <string/>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="qrc_files/resources.qrc">
+                             <normaloff>:/icon/Images/zero.svg</normaloff>:/icon/Images/zero.svg</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>36</width>
+                             <height>36</height>
+                            </size>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="independent_terms_table">
+                   <property name="contextMenuPolicy">
+                    <enum>Qt::ContextMenuPolicy::ActionsContextMenu</enum>
+                   </property>
+                   <property name="toolTip">
+                    <string>Términos independientes</string>
+                   </property>
+                   <property name="textElideMode">
+                    <enum>Qt::TextElideMode::ElideLeft</enum>
+                   </property>
+                   <property name="gridStyle">
+                    <enum>Qt::PenStyle::SolidLine</enum>
+                   </property>
+                   <property name="sortingEnabled">
+                    <bool>true</bool>
+                   </property>
+                   <attribute name="horizontalHeaderVisible">
+                    <bool>true</bool>
+                   </attribute>
+                   <attribute name="verticalHeaderVisible">
+                    <bool>false</bool>
+                   </attribute>
+                   <row>
+                    <property name="text">
+                     <string>Nueva fila</string>
+                    </property>
+                   </row>
+                   <column>
+                    <property name="text">
+                     <string>b</string>
+                    </property>
+                   </column>
+                   <item row="0" column="0">
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>
@@ -1117,7 +2058,7 @@ color: #8b7a78;
            <item>
             <widget class="QTabWidget" name="method_equation_tab_widget">
              <property name="currentIndex">
-              <number>0</number>
+              <number>3</number>
              </property>
              <widget class="QWidget" name="bisection_tab">
               <attribute name="title">
