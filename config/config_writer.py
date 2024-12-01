@@ -6,7 +6,7 @@ class ConfigWriter(ConfigBase):
     def __init__(self,config_object:cp.ConfigParser):
         super().__init__(config_object)
 
-    def save_matrix(self,nombre: str, matriz_coeficientes: list[list], terminos_independientes: list):
+    def save_matrix(self,nombre: str, matriz_coeficientes: list[list], terminos_independientes: list=None):
         nombre = f'MATRICES.{nombre}'
         try:
             self.config.add_section(nombre)
@@ -35,6 +35,7 @@ class ConfigWriter(ConfigBase):
         
         for key, value in options.items():
             self.config.set('OPCIONES', key, str(value))
+        self._save_config()
 
     def delete_matrix(self,nombre:str):
         self.config.remove_section(f'MATRICES.{nombre}')
@@ -43,8 +44,8 @@ class ConfigWriter(ConfigBase):
     def delete_equation(self,nombre:str):
         self.config.remove_section(f'ECUACIONES.{nombre}')
         self._save_config()
-        
+
 if __name__ == '__main__':
     config = cp.ConfigParser()
     c_object = ConfigWriter(config)
-    c_object.delete_matrix('A')
+    c_object.save_matrix('A',[[1,2,3],[2,3,4]])

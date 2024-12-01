@@ -24,9 +24,9 @@ class ConfigBase():
             'MATRIX_SOLVE_METHOD':'0',
             'ROWS': '3',
             'COLUMNS': '3',
-            'CURRENT_MATRIX': 'None',
             'CURRENT_MAIN_TAB': '0',
-            'CURRENT_EQUATION_TAB': '0'
+            'CURRENT_EQUATION_TAB': '0',
+            'CHECK_AUTOSCALE': 'False'
         }
         self._save_config()
     
