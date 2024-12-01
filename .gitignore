@@ -7,4 +7,5 @@ matrix.csv
 test/
 .vscode
 app/deployment
-cloc.exe
+cloc.exe 
+config/config.ini
