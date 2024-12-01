@@ -1,10 +1,10 @@
 import copy
-from models.Matrix import Matrix
-from models.GaussMethod import GaussMethod
+from Matrix import Matrix
+from GaussMethod import GaussMethod
 
 class CramersRule(Matrix):
-    def __init__(self, matriz: list[list]) -> None:
-        super().__init__(matriz)
+    def __init__(self, matriz: list[list], fraccion:bool) -> None:
+        super().__init__(matriz, fraccion)
         self.config = {}
         self.determinantes = []
         self.soluciones = []
@@ -27,7 +27,7 @@ class CramersRule(Matrix):
         columna_resultados = [fila[-1] for fila in self.matriz]
 
         matriz_coef_copia = copy.deepcopy(matriz_coeficientes)
-        sistema = GaussMethod(matriz_coef_copia)
+        sistema = GaussMethod(matriz_coef_copia, self.fraccion_oper)
 
         self.config["\nMATRIZ DE COEFICIENTES\n"] = copy.deepcopy(sistema.matriz)
         '''for fila in sistema.matriz:
@@ -45,7 +45,7 @@ class CramersRule(Matrix):
             matriz_modificada = copy.deepcopy(matriz_coeficientes)
             for fil in range(len(matriz_modificada)):
                 matriz_modificada[fil][col] = columna_resultados[fil]
-            gauss = GaussMethod(matriz_modificada)
+            gauss = GaussMethod(matriz_modificada, self.fraccion_oper)
 
             self.config[f"\nMATRIZ CON COLUMNA #{col + 1} INTERCAMBIADA\n"] = copy.deepcopy(gauss.matriz)
             '''for fila in gauss.matriz:
