@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>719</width>
+    <width>716</width>
     <height>385</height>
    </rect>
   </property>
@@ -1117,7 +1117,7 @@ margin-left:-1px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="pushButton">
+                     <widget class="QPushButton" name="delete_current_table_button">
                       <property name="toolTip">
                        <string>Eliminar matriz</string>
                       </property>
