@@ -1,4 +1,4 @@
-from PySide6.QtCore import QRunnable
+from PySide6.QtCore import QRunnable,QThread
 
 class TaskRunnable(QRunnable):
     def __init__(self,function, *args, **kwargs):
