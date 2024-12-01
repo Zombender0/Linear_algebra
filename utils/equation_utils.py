@@ -1,5 +1,5 @@
 import re
-
+from symengine import latex
 def equation_to_rich_text(equation: str) -> str:
     equation = equation.replace("**", "^") 
     equation = re.sub(r'\bcos\b', 'cos', equation)
@@ -16,12 +16,12 @@ def equation_to_rich_text(equation: str) -> str:
     equation = equation.replace('*', '·')
     equation = equation.replace('/', '÷')
     equation = equation.replace('sqrt', '√')
-
-    equation = re.sub(r"(\d+|\w+|\([^\)]*\))\^(\d+|\w+|\([^\)]*\))", lambda m: m.group(1) + f'<sup>{m.group(2)[1:-1]}</sup>', equation)
-    
+    pattern = r"(\d+|\w+|\([^()]*\))\^(\d+|\w+|\([^()]*\))"
+    equation = re.sub(pattern, lambda m: m.group(1) + f'<sup>{m.group(2)}</sup>', equation)
+    print(equation)
     q_label_output = f"<html><body><p>{equation}</p></body></html>"
     return q_label_output
 
 if __name__ == '__main__':
-    value = equation_to_rich_text('5x**2')
+    value = equation_to_rich_text('5x**(cos(2x))')
     print(value)

@@ -32,7 +32,6 @@ def differencial(equation:str)->str:
     return str(differencial)
 
 if __name__ == '__main__':
-    
     function = 'ln(x)'
     function = EquationParser(function)
     print(differencial(function))

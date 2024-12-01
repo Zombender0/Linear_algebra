@@ -1,5 +1,6 @@
 from PySide6.QtCore import Slot,QObject,QSize
 from PySide6.QtWidgets import QMainWindow
+from configparser import ConfigParser
 
 from helpers.box_helper import *
 from helpers.matrix_helper import *
@@ -38,6 +39,7 @@ class MainController(QObject):
         self.vector_controller = VectorController()
         self.equation_controller = EquationController()
         self.equation_controller.equation_accepted_signal.connect(self.change_equation)
+        
         self.connect_main_window_buttons()
         
     def connect_main_window_buttons(self):
