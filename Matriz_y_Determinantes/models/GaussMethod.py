@@ -1,41 +1,42 @@
-from models.Matrix import Matrix
+from Matrix import Matrix
+from math import isclose
 import copy
+from fractions import Fraction
 
 class GaussMethod(Matrix):
-    def __init__(self, matriz: list[list]) -> None:
-        super().__init__(matriz)
+    def __init__(self, matriz: list[list], fraccion:bool) -> None:
+        super().__init__(copy.deepcopy(matriz), fraccion)
         self.det = 1 #Determinante inicializado
         self.config = {}
+        self.tolerance = 1e-13
     
     def gauss_method(self):
+        if self.filas != self.columnas:
+            return False
         if not self.determinante_nulo():
             for col in range(self.columnas):
                 self.pivote_triangular(col)
                 self.reduccion_triangular(col)
             self.calculo_determinante()
-        
         return self.config
     
     def determinante_nulo(self) -> bool:
         #Validación por si una matriz tiene líneas de ceros.
         for fila in range(self.filas):
             if all(self.matriz[fila][i] == 0 for i in range(self.columnas)):
-                self.det *= 0
-                self.config[f"\nLa fila {fila + 1} es una línea de ceros. Por lo tanto, el determinante es igual a 0"] = copy.deepcopy(self.matriz)
+                self.config[f"La fila {fila + 1} es una línea de ceros. Por lo tanto, el determinante es igual a 0"] = (copy.deepcopy(self.matriz),0)
                 return True
 
         for col in range(self.columnas):
             if all(self.matriz[i][col] == 0 for i in range(self.filas)):
-                self.det *= 0
-                self.config[f"\nLa columna {col + 1} es una línea de ceros. Por lo tanto, el determinante es igual a 0"] = copy.deepcopy(self.matriz)
+                self.config[f"La columna {col + 1} es una línea de ceros. Por lo tanto, el determinante es igual a 0"] = (copy.deepcopy(self.matriz),0)
                 return True
         
         #Validación en caso de que una matriz tenga dos filas o dos columnas iguales.
         for i in range(self.filas):
             for j in range(i + 1, self.filas):
                 if self.matriz[i] == self.matriz[j]:
-                    self.det *= 0
-                    self.config[f"\nLas filas {i+1} y {j+1} son iguales. Por lo tanto, el determinante es igual a 0."] = copy.deepcopy(self.matriz)
+                    self.config[f"Las filas {i+1} y {j+1} son iguales. Por lo tanto, el determinante es igual a 0."] = (copy.deepcopy(self.matriz),0)
                     return True
 
         for i in range(self.columnas):
@@ -43,8 +44,7 @@ class GaussMethod(Matrix):
                 col_i = [self.matriz[k][i] for k in range(self.filas)]
                 col_j = [self.matriz[k][j] for k in range(self.filas)]
                 if col_i == col_j:
-                    self.det *= 0
-                    self.config[f"\nLas columnas {i+1} y {j+1} son iguales. Por lo tanto, el determinante es igual a 0."] = copy.deepcopy(self.matriz)
+                    self.config[f"Las columnas {i+1} y {j+1} son iguales. Por lo tanto, el determinante es igual a 0."] = (copy.deepcopy(self.matriz),0)
                     return True
         
         return False
@@ -53,11 +53,19 @@ class GaussMethod(Matrix):
         exp = "Determinante = "
         operacion = f"({self.det}) "
         for i in range(self.filas):
-            operacion += f"({self.matriz[i][i]:.1f})"
+            if not self.fraccion_oper:
+                operacion += f"({self.matriz[i][i]:.1f})"
+            else:
+                operacion += f"({self.matriz[i][i]})"
             self.det *= self.matriz[i][i]
-        
+
+        if isinstance(self.det, Fraction):
+            det_str = str(self.det)  # Mantener la fracción como está
+        else:
+            det_str = f'{round(self.det, 4)}'
+
         respuesta = exp + operacion
-        self.config[respuesta] = (copy.deepcopy(self.matriz), f'Determinante = {self.det}')
+        self.config[respuesta] = (copy.deepcopy(self.matriz), det_str)
     
     def pivote_triangular(self, col: int):
         mejor_fila = -1
@@ -92,7 +100,7 @@ class GaussMethod(Matrix):
                         mejor_columna = col_alt
         
         if mejor_fila == -1:
-            self.config[f"\nNo se encontró pivote en la columna {col + 1}.\n"] = (copy.deepcopy(self.matriz), f'Determinante = {self.det}')
+            self.config[f"No se encontró pivote en la columna {col + 1}."] = (copy.deepcopy(self.matriz), f'{self.det}')
             return
         
         if mejor_columna != col:
@@ -107,7 +115,7 @@ class GaussMethod(Matrix):
         for fila in range(self.filas):
             self.matriz[fila][col],self.matriz[fila][columna_intercambio] = self.matriz[fila][columna_intercambio],self.matriz[fila][col]
         self.det = self.det * -1
-        self.config[f"\nC{col + 1} <--> C{columna_intercambio + 1}\n"] = (copy.deepcopy(self.matriz), f'Determinante = {self.det}')
+        self.config[f"C{col + 1} <--> C{columna_intercambio + 1}"] = (copy.deepcopy(self.matriz), f'{self.det}')
 
 
     def intercambio(self, fila, fila_intercambio) -> None:
@@ -116,7 +124,7 @@ class GaussMethod(Matrix):
 
         self.matriz[fila],self.matriz[fila_intercambio] = self.matriz[fila_intercambio],self.matriz[fila]
         self.det = self.det * -1
-        self.config[f"\nF{fila + 1} <--> F{fila_intercambio + 1}\n"] = (copy.deepcopy(self.matriz), f'Determinante = {self.det}')
+        self.config[f"F{fila + 1} <--> F{fila_intercambio + 1}"] = (copy.deepcopy(self.matriz), f'{self.det}')
     
 
     def reduccion_triangular(self, col: int):
@@ -128,9 +136,15 @@ class GaussMethod(Matrix):
             
             dividendo = self.matriz[fila][col]
             operando = dividendo / pivote
-            self.matriz[fila] = [
-                self.matriz[fila][i] - (operando * self.matriz[col][i]) for i in range(self.columnas)
-            ]
+
+            if not self.fraccion_oper:
+                self.matriz[fila] = [
+                    0 if isclose(self.matriz[fila][i] - (operando * self.matriz[col][i]), 0, abs_tol=self.tolerance)
+                    else self.matriz[fila][i] - (operando * self.matriz[col][i]) 
+                    for i in range(self.columnas)
+                    ]
+            else:
+                self.matriz[fila] = [self.matriz[fila][i] - (operando * self.matriz[col][i]) for i in range(self.columnas)]
 
             divisor = pivote
 
@@ -140,15 +154,18 @@ class GaussMethod(Matrix):
                 operador = "+"
                 operando = -operando  
             
-            dividendo_tipo = int(abs(dividendo)) if abs(dividendo).is_integer() else f"{abs(dividendo):.1f}"
-
-            if abs(divisor) == 1:
-                self.config[f"\nF{fila + 1} -> F{fila + 1} {operador} {dividendo_tipo}F{col + 1}\n"] = (copy.deepcopy(self.matriz), f'Determinante = {self.det}')
+            if not self.fraccion_oper:
+                dividendo_tipo = int(abs(dividendo)) if abs(dividendo).is_integer() else f"{abs(dividendo):.1f}"
+                if abs(divisor) == 1:
+                    self.config[f"F{fila + 1} -> F{fila + 1} {operador} {dividendo_tipo}F{col + 1}"] = (copy.deepcopy(self.matriz), f'{self.det}')
+                else:
+                    divisor_tipo = int(abs(divisor)) if abs(divisor).is_integer() else f"{abs(divisor):.1f}"
+                    self.config[f"F{fila + 1} -> F{fila + 1} {operador} ({dividendo_tipo}/{divisor_tipo})F{col + 1}"] = (copy.deepcopy(self.matriz), f'{self.det}')
             else:
-                divisor_tipo = int(abs(divisor)) if abs(divisor).is_integer() else f"{abs(divisor):.1f}"
-                self.config[f"\nF{fila + 1} -> F{fila + 1} {operador} ({dividendo_tipo}/{divisor_tipo})F{col + 1}\n"] = (copy.deepcopy(self.matriz), f'Determinante = {self.det}')
-
-
-    
+                if abs(divisor) == 1:
+                    self.config[f"F{fila + 1} -> F{fila + 1} {operador} {dividendo}F{col + 1}"] = (copy.deepcopy(self.matriz), f'{self.det}')
+                else:
+                    self.config[f"F{fila + 1} -> F{fila + 1} {operador} ({dividendo} / {divisor}F{col + 1}"] = (copy.deepcopy(self.matriz), f'{self.det}')
+                                
     def __str__(self) -> str:
         return super().__str__()
