@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowcalXxh.ui'
+## Form generated from reading UI file 'main_windowoseGmB.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -21,7 +21,6 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
     QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
     QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
     QWidget)
-
 from PySide6.QtSvg import QtSvg
 from views.qt_files.qrc_files import resources_rc
 
@@ -30,7 +29,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModality.WindowModal)
-        MainWindow.resize(719, 385)
+        MainWindow.resize(716, 385)
         icon = QIcon()
         icon.addFile(u":/icon/Images/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -609,14 +608,14 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.change_current_table_button)
 
-        self.pushButton = QPushButton(self.select_matrix_options_widget)
-        self.pushButton.setObjectName(u"pushButton")
+        self.delete_current_table_button = QPushButton(self.select_matrix_options_widget)
+        self.delete_current_table_button.setObjectName(u"delete_current_table_button")
         icon11 = QIcon()
         icon11.addFile(u":/icon/Images/delete.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton.setIcon(icon11)
-        self.pushButton.setIconSize(QSize(26, 26))
+        self.delete_current_table_button.setIcon(icon11)
+        self.delete_current_table_button.setIconSize(QSize(26, 26))
 
-        self.horizontalLayout_8.addWidget(self.pushButton)
+        self.horizontalLayout_8.addWidget(self.delete_current_table_button)
 
 
         self.verticalLayout_25.addWidget(self.select_matrix_options_widget)
@@ -763,53 +762,53 @@ class Ui_MainWindow(object):
         self.coeficient_option_grid.setSpacing(6)
         self.coeficient_option_grid.setObjectName(u"coeficient_option_grid")
         self.coeficient_option_grid.setContentsMargins(-1, -1, -1, 0)
-        self.random_matrix_button = QPushButton(self.coeficient_option_sub_widget)
-        self.random_matrix_button.setObjectName(u"random_matrix_button")
-        self.random_matrix_button.setMaximumSize(QSize(38, 34))
-        self.random_matrix_button.setFont(font1)
-        self.random_matrix_button.setStyleSheet(u"")
-        icon15 = QIcon()
-        icon15.addFile(u":/icon/Images/random.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.random_matrix_button.setIcon(icon15)
-        self.random_matrix_button.setIconSize(QSize(36, 36))
-
-        self.coeficient_option_grid.addWidget(self.random_matrix_button, 0, 3, 2, 1)
-
         self.adjust_coeficient_matrix_button = QPushButton(self.coeficient_option_sub_widget)
         self.adjust_coeficient_matrix_button.setObjectName(u"adjust_coeficient_matrix_button")
         sizePolicy3.setHeightForWidth(self.adjust_coeficient_matrix_button.sizePolicy().hasHeightForWidth())
         self.adjust_coeficient_matrix_button.setSizePolicy(sizePolicy3)
         self.adjust_coeficient_matrix_button.setMaximumSize(QSize(38, 34))
-        icon16 = QIcon()
-        icon16.addFile(u":/icon/Images/resize.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.adjust_coeficient_matrix_button.setIcon(icon16)
+        icon15 = QIcon()
+        icon15.addFile(u":/icon/Images/resize.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.adjust_coeficient_matrix_button.setIcon(icon15)
         self.adjust_coeficient_matrix_button.setIconSize(QSize(28, 28))
 
-        self.coeficient_option_grid.addWidget(self.adjust_coeficient_matrix_button, 0, 1, 1, 1)
+        self.coeficient_option_grid.addWidget(self.adjust_coeficient_matrix_button, 0, 3, 1, 1)
 
-        self.fill_0_coeficient_matrix_button = QPushButton(self.coeficient_option_sub_widget)
-        self.fill_0_coeficient_matrix_button.setObjectName(u"fill_0_coeficient_matrix_button")
-        sizePolicy3.setHeightForWidth(self.fill_0_coeficient_matrix_button.sizePolicy().hasHeightForWidth())
-        self.fill_0_coeficient_matrix_button.setSizePolicy(sizePolicy3)
-        self.fill_0_coeficient_matrix_button.setMaximumSize(QSize(38, 34))
-        icon17 = QIcon()
-        icon17.addFile(u":/icon/Images/zero.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.fill_0_coeficient_matrix_button.setIcon(icon17)
-        self.fill_0_coeficient_matrix_button.setIconSize(QSize(36, 36))
+        self.random_matrix_button = QPushButton(self.coeficient_option_sub_widget)
+        self.random_matrix_button.setObjectName(u"random_matrix_button")
+        self.random_matrix_button.setMaximumSize(QSize(38, 34))
+        self.random_matrix_button.setFont(font1)
+        self.random_matrix_button.setStyleSheet(u"")
+        icon16 = QIcon()
+        icon16.addFile(u":/icon/Images/random.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.random_matrix_button.setIcon(icon16)
+        self.random_matrix_button.setIconSize(QSize(36, 36))
 
-        self.coeficient_option_grid.addWidget(self.fill_0_coeficient_matrix_button, 0, 2, 1, 1)
+        self.coeficient_option_grid.addWidget(self.random_matrix_button, 0, 1, 1, 1)
 
         self.clean_coeficient_matrix_button = QPushButton(self.coeficient_option_sub_widget)
         self.clean_coeficient_matrix_button.setObjectName(u"clean_coeficient_matrix_button")
         sizePolicy3.setHeightForWidth(self.clean_coeficient_matrix_button.sizePolicy().hasHeightForWidth())
         self.clean_coeficient_matrix_button.setSizePolicy(sizePolicy3)
         self.clean_coeficient_matrix_button.setMaximumSize(QSize(38, 34))
-        icon18 = QIcon()
-        icon18.addFile(u":/icon/Images/clean.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.clean_coeficient_matrix_button.setIcon(icon18)
+        icon17 = QIcon()
+        icon17.addFile(u":/icon/Images/clean.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.clean_coeficient_matrix_button.setIcon(icon17)
         self.clean_coeficient_matrix_button.setIconSize(QSize(28, 28))
 
         self.coeficient_option_grid.addWidget(self.clean_coeficient_matrix_button, 0, 0, 1, 1)
+
+        self.fill_0_coeficient_matrix_button = QPushButton(self.coeficient_option_sub_widget)
+        self.fill_0_coeficient_matrix_button.setObjectName(u"fill_0_coeficient_matrix_button")
+        sizePolicy3.setHeightForWidth(self.fill_0_coeficient_matrix_button.sizePolicy().hasHeightForWidth())
+        self.fill_0_coeficient_matrix_button.setSizePolicy(sizePolicy3)
+        self.fill_0_coeficient_matrix_button.setMaximumSize(QSize(38, 34))
+        icon18 = QIcon()
+        icon18.addFile(u":/icon/Images/zero.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.fill_0_coeficient_matrix_button.setIcon(icon18)
+        self.fill_0_coeficient_matrix_button.setIconSize(QSize(36, 36))
+
+        self.coeficient_option_grid.addWidget(self.fill_0_coeficient_matrix_button, 0, 2, 1, 1)
 
 
         self.verticalLayout_27.addLayout(self.coeficient_option_grid)
@@ -882,7 +881,7 @@ class Ui_MainWindow(object):
         sizePolicy6.setHeightForWidth(self.clean_independent_matrix_button.sizePolicy().hasHeightForWidth())
         self.clean_independent_matrix_button.setSizePolicy(sizePolicy6)
         self.clean_independent_matrix_button.setMaximumSize(QSize(38, 38))
-        self.clean_independent_matrix_button.setIcon(icon18)
+        self.clean_independent_matrix_button.setIcon(icon17)
         self.clean_independent_matrix_button.setIconSize(QSize(28, 28))
 
         self.independent_option_grid.addWidget(self.clean_independent_matrix_button, 0, 0, 1, 1)
@@ -890,30 +889,30 @@ class Ui_MainWindow(object):
         self.random_independent_matrix_button = QPushButton(self.widget)
         self.random_independent_matrix_button.setObjectName(u"random_independent_matrix_button")
         self.random_independent_matrix_button.setMaximumSize(QSize(38, 38))
-        self.random_independent_matrix_button.setIcon(icon15)
+        self.random_independent_matrix_button.setIcon(icon16)
         self.random_independent_matrix_button.setIconSize(QSize(36, 36))
 
-        self.independent_option_grid.addWidget(self.random_independent_matrix_button, 0, 8, 2, 1)
+        self.independent_option_grid.addWidget(self.random_independent_matrix_button, 0, 1, 1, 1)
 
         self.adjust_independent_matrix_button = QPushButton(self.widget)
         self.adjust_independent_matrix_button.setObjectName(u"adjust_independent_matrix_button")
         sizePolicy6.setHeightForWidth(self.adjust_independent_matrix_button.sizePolicy().hasHeightForWidth())
         self.adjust_independent_matrix_button.setSizePolicy(sizePolicy6)
         self.adjust_independent_matrix_button.setMaximumSize(QSize(38, 38))
-        self.adjust_independent_matrix_button.setIcon(icon16)
+        self.adjust_independent_matrix_button.setIcon(icon15)
         self.adjust_independent_matrix_button.setIconSize(QSize(28, 28))
 
-        self.independent_option_grid.addWidget(self.adjust_independent_matrix_button, 0, 2, 1, 1)
+        self.independent_option_grid.addWidget(self.adjust_independent_matrix_button, 0, 3, 1, 1)
 
         self.zero_independent_matrix_button = QPushButton(self.widget)
         self.zero_independent_matrix_button.setObjectName(u"zero_independent_matrix_button")
         sizePolicy6.setHeightForWidth(self.zero_independent_matrix_button.sizePolicy().hasHeightForWidth())
         self.zero_independent_matrix_button.setSizePolicy(sizePolicy6)
         self.zero_independent_matrix_button.setMaximumSize(QSize(38, 38))
-        self.zero_independent_matrix_button.setIcon(icon17)
+        self.zero_independent_matrix_button.setIcon(icon18)
         self.zero_independent_matrix_button.setIconSize(QSize(36, 36))
 
-        self.independent_option_grid.addWidget(self.zero_independent_matrix_button, 0, 7, 1, 1)
+        self.independent_option_grid.addWidget(self.zero_independent_matrix_button, 0, 2, 1, 1)
 
 
         self.horizontalLayout_4.addLayout(self.independent_option_grid)
@@ -1406,9 +1405,9 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.change_current_table_button.setText("")
 #if QT_CONFIG(tooltip)
-        self.pushButton.setToolTip(QCoreApplication.translate("MainWindow", u"Eliminar matriz", None))
+        self.delete_current_table_button.setToolTip(QCoreApplication.translate("MainWindow", u"Eliminar matriz", None))
 #endif // QT_CONFIG(tooltip)
-        self.pushButton.setText("")
+        self.delete_current_table_button.setText("")
         self.table_select_solutions_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Resolver por", None))
         self.table_select_solutions_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Reducci\u00f3n", None))
         self.table_select_solutions_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Cramer", None))
@@ -1445,21 +1444,21 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.coeficient_label.setText(QCoreApplication.translate("MainWindow", u"Matriz de coeficientes", None))
 #if QT_CONFIG(tooltip)
-        self.random_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Llenar espacios vac\u00edos de la matriz con n\u00fameros aleatorios", None))
-#endif // QT_CONFIG(tooltip)
-        self.random_matrix_button.setText("")
-#if QT_CONFIG(tooltip)
         self.adjust_coeficient_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Ajustar tama\u00f1o", None))
 #endif // QT_CONFIG(tooltip)
         self.adjust_coeficient_matrix_button.setText("")
 #if QT_CONFIG(tooltip)
-        self.fill_0_coeficient_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Rellenar Espacios con cero", None))
+        self.random_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Llenar espacios vac\u00edos de la matriz con n\u00fameros aleatorios", None))
 #endif // QT_CONFIG(tooltip)
-        self.fill_0_coeficient_matrix_button.setText("")
+        self.random_matrix_button.setText("")
 #if QT_CONFIG(tooltip)
         self.clean_coeficient_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Limpiar matriz de coeficientes", None))
 #endif // QT_CONFIG(tooltip)
         self.clean_coeficient_matrix_button.setText("")
+#if QT_CONFIG(tooltip)
+        self.fill_0_coeficient_matrix_button.setToolTip(QCoreApplication.translate("MainWindow", u"Rellenar Espacios con cero", None))
+#endif // QT_CONFIG(tooltip)
+        self.fill_0_coeficient_matrix_button.setText("")
         ___qtablewidgetitem = self.coeficient_table.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"X1", None));
         ___qtablewidgetitem1 = self.coeficient_table.horizontalHeaderItem(1)

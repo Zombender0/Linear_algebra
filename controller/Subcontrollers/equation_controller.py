@@ -5,8 +5,6 @@ from utils.equation_utils import equation_to_rich_text
 from models.EquationFunctions import EquationEvaluator,EquationParser
 from helpers.box_helper import warning_box
 
-
-
 class EquationController(QObject):
     equation_accepted_signal = Signal(str)
 

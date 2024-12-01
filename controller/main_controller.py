@@ -1,7 +1,7 @@
 from PySide6.QtCore import Slot,QObject,QSize
 from PySide6.QtWidgets import QMainWindow
 from configparser import ConfigParser
-
+from ast import literal_eval
 from helpers.box_helper import *
 from helpers.matrix_helper import *
 from helpers.validation_helper import float_parser
@@ -11,6 +11,7 @@ from utils.matrix_utils import get_transposed_matrix
 from constants.ui_constants import MAX_WIDTH
 from constants.file_filter import CSV_FILTER
 from views.modified_python_files.main_window import MainWindow 
+from views.modified_python_files.save_name_window import SaveNameWindow
 from views.modified_python_files.solution_window import SolutionWindow
 from views.modified_python_files.vector_window import VectorWindow
 from views.modified_python_files.equation_selecter_window import EquationSelecterWindow
@@ -18,7 +19,8 @@ from views.modified_python_files.equation_selecter_window import EquationSelecte
 from controller.subcontrollers.solution_controller import SolutionController
 from controller.subcontrollers.vector_controller import VectorController
 from controller.subcontrollers.equation_controller import EquationController
-
+from controller.subcontrollers.save_name_controller import SaveController
+from controller.config_controller import ConfigController
 from models.GaussJordan import GaussJordan
 from models.GaussMethod import GaussMethod
 from models.CramersRule import CramersRule
@@ -34,13 +36,17 @@ from models.EquationFunctions import EquationParser
 class MainController(QObject):
     def __init__(self,window:QMainWindow):
         super().__init__()
+        self.config = ConfigParser()
         self.main_window = MainWindow(window)
         self.solution_controller = SolutionController()
         self.vector_controller = VectorController()
         self.equation_controller = EquationController()
         self.equation_controller.equation_accepted_signal.connect(self.change_equation)
-        
+        self.config_controller = ConfigController(self.config,self.main_window)
+        self.save_controller = SaveController(self.config)
+        self.save_controller.name_signal.connect(self.save_matrix_in_config)
         self.connect_main_window_buttons()
+        self.main_window.resize_aumented_matrix(self.main_window.row_spinbox.value(),self.main_window.column_spinbox.value())
         
     def connect_main_window_buttons(self):
 
@@ -78,7 +84,29 @@ class MainController(QObject):
         window.newton_solution_button.clicked.connect(lambda: self.get_root_newton_method())
         window.false_solution_button.clicked.connect(lambda: self.get_root_false_position_method())
         window.secant_solution_button.clicked.connect(lambda: self.get_root_secant_method())
-
+        #CONFIG
+        window.table_select_solutions_combobox.currentIndexChanged.connect(lambda: self.config_controller.config_writer.save_option(
+            {'MATRIX_SOLVE_METHOD': window.table_select_solutions_combobox.currentIndex()}
+            ))
+        window.row_spinbox.valueChanged.connect(lambda: self.config_controller.config_writer.save_option(
+            {'ROWS': window.row_spinbox.value()}
+        ))
+        window.column_spinbox.valueChanged.connect(lambda: self.config_controller.config_writer.save_option(
+           {'COLUMNS': window.column_spinbox.value()}
+        ))
+        window.main_stacked_widget.currentChanged.connect(lambda: self.config_controller.config_writer.save_option(
+            {'CURRENT_MAIN_TAB': window.main_stacked_widget.currentIndex()}
+        ))
+        window.method_equation_tab_widget.currentChanged.connect(lambda: self.config_controller.config_writer.save_option({
+            'CURRENT_EQUATION_TAB': window.method_equation_tab_widget.currentIndex()
+        }))
+        window.table_resize_checkbox.stateChanged.connect(lambda: self.config_controller.config_writer.save_option({
+            'CHECK_AUTOSCALE': window.table_resize_checkbox.isChecked()
+        }))
+        #SAVED MATRICES
+        window.save_current_table_button.clicked.connect(lambda: self.open_save_window())
+        window.change_current_table_button.clicked.connect(lambda: self.change_matrix_from_combobox())
+        window.delete_current_table_button.clicked.connect(lambda: self.delete_matrix_from_combobox())
     @Slot()
     def solve_button(self):
         matriz = self.get_aumented_matrix_data()
@@ -362,6 +390,56 @@ class MainController(QObject):
             for row in matrix:
                 f.write(';'.join(map(str,row))+'\n')
 
+    ##CONFIGURATION
+
+    def open_save_window(self,mode):
+        self.save_controller.set_window(SaveNameWindow(mode=mode))
+        self.save_controller.open_save_window()
+
+    @Slot(str)
+    def save_matrix_in_config(self,name):
+        coeficient_table = get_data_from_table(self.main_window.coeficient_table)
+        independent_table = get_data_from_table(self.main_window.independent_terms_table)
+        if not MainController.__valid_matriz(coeficient_table):
+            return None
+        if not MainController.__valid_matriz(independent_table):
+            return None
+        self.config_controller.config_writer.save_matrix(name,coeficient_table,independent_table)
+        information_box('Matriz guardada con éxito')
+
+    @Slot()
+    def change_matrix_from_combobox(self):
+        if self.main_window.select_table_combobox.currentIndex() == 0:
+            warning_box('Selecciona una de las matrices guardadas para cargarla en la interfaz')
+            return None
+        name = self.main_window.select_table_combobox.currentText()
+        matrix_data = self.config[f'MATRICES.{name}']
+        try:
+            coeficient_table = literal_eval(matrix_data['matriz_coeficientes'])
+            independent_terms_table = literal_eval(matrix_data['terminos_independientes'])
+        except (ValueError,SyntaxError):
+            warning_box('Error al cargar la matriz')
+            return None
+        rows = len(coeficient_table)
+        columns = len(coeficient_table[0])
+        self.main_window.row_spinbox.setValue(rows)
+        self.main_window.column_spinbox.setValue(columns)
+        insert_data_to_table(self.main_window.coeficient_table,coeficient_table,editable=True,last_b=False,)
+        insert_data_to_table(self.main_window.independent_terms_table,independent_terms_table,editable=True,last_b=True)
+        information_box('Matriz cargada con éxito')
+
+    @Slot()
+    def delete_matrix_from_combobox(self):
+        if self.main_window.select_table_combobox.currentIndex() == 0:
+            warning_box('Selecciona una de las matrices guardadas para eliminarla')
+            return None
+        if not question_box('Estás seguro de eliminar esta matriz'):
+            return None
+        self.config_controller.config_writer.delete_matrix(self.main_window.select_table_combobox.currentText())
+        item_index = self.main_window.select_table_combobox.currentIndex()
+        self.main_window.select_table_combobox.setCurrentIndex(0)
+        self.main_window.select_table_combobox.removeItem(item_index)
+        information_box('Matriz eliminada con éxito')
     @staticmethod
     def __valid_matriz(matriz: list[list]) ->bool:
         if matriz == []:
@@ -370,11 +448,9 @@ class MainController(QObject):
         width = len(matriz)
         length = len(matriz[0])
         for row in range(width):    
-            if all(matriz[row][col] == 0 for col in range(length-1)) and matriz[row][-1] !=0:
-                    warning_box("La matriz ingresada no tiene solucion")
-                    return False
             if len(matriz[row]) != length:
                 warning_box('La matriz ingresada esta incompleta')
                 return False
         return True
+    
     
