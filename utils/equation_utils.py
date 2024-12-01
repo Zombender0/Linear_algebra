@@ -1,5 +1,7 @@
 import re
 from symengine import latex
+
+
 def equation_to_rich_text(equation: str) -> str:
     equation = equation.replace("**", "^") 
     equation = re.sub(r'\bcos\b', 'cos', equation)
@@ -18,7 +20,6 @@ def equation_to_rich_text(equation: str) -> str:
     equation = equation.replace('sqrt', '√')
     pattern = r"(\d+|\w+|\([^()]*\))\^(\d+|\w+|\([^()]*\))"
     equation = re.sub(pattern, lambda m: m.group(1) + f'<sup>{m.group(2)}</sup>', equation)
-    print(equation)
     q_label_output = f"<html><body><p>{equation}</p></body></html>"
     return q_label_output
 

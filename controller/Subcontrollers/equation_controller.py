@@ -2,17 +2,17 @@ from views.modified_python_files.equation_selecter_window import EquationSelecte
 from PySide6.QtCore import QThreadPool,Signal,QObject
 from utils.runnable import TaskRunnable
 from utils.equation_utils import equation_to_rich_text
-from models.EquationFunctions import EquationEvaluator,EquationParser
+from models.EquationFunctions import EquationEvaluator,EquationParser,differencial,integrate
 from helpers.box_helper import warning_box
 
 class EquationController(QObject):
     equation_accepted_signal = Signal(str)
 
-    def __init__(self):
+    def __init__(self,thread_pool:QThreadPool):
         super().__init__()
         self.equation = None
         self.equation_window = None
-        self.thread_pool = QThreadPool()
+        self.thread_pool = thread_pool
 
     def set_window(self,window:EquationSelecterWindow)->None:
         if isinstance(self.equation_window,EquationSelecterWindow): 
@@ -52,9 +52,7 @@ class EquationController(QObject):
         self.equation_window.exp_button.clicked.connect(lambda: self.equation_window.connect_exp_button())
         self.equation_window.back_position_button.clicked.connect(lambda: self.equation_window.connect_back_position())
         self.equation_window.next_position_button.clicked.connect(lambda: self.equation_window.connect_next_position_button())
-        self.equation_window.equation_line_edit.textChanged.connect(lambda text: self.run_async_task(
-            self.process_equation, text
-        ))
+        self.equation_window.equation_line_edit.textChanged.connect(lambda text: self.run_async_task(self.process_equation, text))
         self.equation_window.accept_button.clicked.connect(lambda: self.connect_accept_button())
         self.equation_window.apply_button.clicked.connect(lambda: self.connect_apply_button())
         self.equation_window.cancel_button.clicked.connect(lambda: self.connect_cancel_button())

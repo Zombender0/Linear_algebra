@@ -1,9 +1,9 @@
 from PySide6.QtWidgets import QFileDialog,QApplication
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QIcon
-
 from sys import argv
 from views.qt_files.qrc_files import resources_rc
+
 def get_file_from_dialog(name_filter:str):
     file_dialog = QFileDialog()
     icon = QIcon()
