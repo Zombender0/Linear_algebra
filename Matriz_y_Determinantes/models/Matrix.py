@@ -1,8 +1,14 @@
+from fractions import Fraction
+
 class Matrix():
-    def __init__(self, matriz: list[list]) -> None:
+    def __init__(self, matriz: list[list], fraccion:bool) -> None:
         self.matriz = matriz
         self.filas = len(matriz) #Cantidad de filas
         self.columnas = len(matriz[0]) #Cantidad de columnas
+        self.fraccion_oper = fraccion
+
+        if self.fraccion_oper:
+            self.matriz = [[Fraction(x) for x in fila] for fila in self.matriz]
     
     @staticmethod
     def crear_matriz(cantFilas: int, cantColum: int) -> list[list[float]]:
@@ -14,7 +20,7 @@ class Matrix():
                     print(f"Ingrese los {cantColum} valores para la fila {fila + 1}:")
                     entrada = input(" ----> ")
                     print()
-                    caracteres_validos = set("0123456789.- ")
+                    caracteres_validos = set("0123456789.-/ ")
                     if not all(char in caracteres_validos for char in entrada):
                         raise ValueError("Entrada inválida. Usa solo números, puntos" 
                                          " decimales, signos negativos y espacios.")
