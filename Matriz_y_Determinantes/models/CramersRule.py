@@ -12,12 +12,12 @@ class CramersRule(Matrix):
 
     def cramersRule(self):
         if self.filas != self.columnas - 1:
-            print("La matriz debe ser CUADRADA 'n x n' (excluyendo la columna 'b')")
-            return #HACER ESTA VALIDACION DIRECTAMENTE DESDE LA INTERFAZ :)
-        self.imprimir_ecuaciones()
-        self.calcular_determinante_por_variable()
+            return False
+        #self.imprimir_ecuaciones()
+        if self.calcular_determinante_por_variable() is False: 
+            return self.config
         self.solucion_variables()
-        self.verificacion()
+        #self.verificacion()
 
         return self.config
 
@@ -29,15 +29,12 @@ class CramersRule(Matrix):
         matriz_coef_copia = copy.deepcopy(matriz_coeficientes)
         sistema = GaussMethod(matriz_coef_copia, self.fraccion_oper)
 
-        self.config["\nMATRIZ DE COEFICIENTES\n"] = copy.deepcopy(sistema.matriz)
-        '''for fila in sistema.matriz:
-            for valor in fila:
-                print(f"{int(valor) if valor.is_integer() else f'{valor:.1f}'}", end = " ")
-            print()
-        print()'''
-
+        self.config["\nMATRIZ DE COEFICIENTES\n"] = (copy.deepcopy(sistema.matriz), 1)
         sistema.gauss_method()
         determinante_sistema = sistema.det
+        if determinante_sistema == 0:
+            self.config[f"\nNo hay solucion con el metodo cramer"] = (copy.deepcopy(sistema.matriz),0)
+            return False
         self.determinantes.append(determinante_sistema)
         self.config[f"\nDeterminante del sistema de ecuaciones\n"] = (copy.deepcopy(sistema.matriz), determinante_sistema) 
 
@@ -47,18 +44,15 @@ class CramersRule(Matrix):
                 matriz_modificada[fil][col] = columna_resultados[fil]
             gauss = GaussMethod(matriz_modificada, self.fraccion_oper)
 
-            self.config[f"\nMATRIZ CON COLUMNA #{col + 1} INTERCAMBIADA\n"] = copy.deepcopy(gauss.matriz)
-            '''for fila in gauss.matriz:
-                for valor in fila:
-                    print(f"{int(valor) if valor.is_integer() else f'{valor:.1f}'}", end = " ")
-                print()
-            print()'''
-
+            self.config[f"\nMATRIZ CON COLUMNA #{col + 1} INTERCAMBIADA\n"] = (copy.deepcopy(gauss.matriz),1)
             gauss.gauss_method()
-            determinante_variable = gauss.det
+            if not self.fraccion_oper:
+                determinante_variable = round(gauss.det,4)
+            else:
+                determinante_variable = gauss.det
+
             self.determinantes.append(determinante_variable)
             self.config[f"\nDeterminante de X{col + 1}\n"] = (copy.deepcopy(gauss.matriz), determinante_variable)
-
 
     def solucion_variables(self):
         determinante_sistema = self.determinantes[0]
@@ -67,14 +61,20 @@ class CramersRule(Matrix):
         mensajes_solucion = []
         for col in range(n_variables):
             determinante_variable = self.determinantes[col + 1]
-            solucion = determinante_variable / determinante_sistema
+            try:
+                solucion = determinante_variable / determinante_sistema
+            except ZeroDivisionError:
+                solucion = 0
             self.soluciones.append(solucion)
-            mensaje = f"\nX{col + 1} = {determinante_variable}/{determinante_sistema} = {solucion}"
+            if not self.fraccion_oper:
+                mensaje = f"X{col + 1} = {round(determinante_variable,4)}/{round(determinante_sistema,4)} = {round(solucion,4)}"
+            else:
+                mensaje = f"X{col + 1} = {determinante_variable} / {determinante_sistema} = {solucion}"
+
             mensajes_solucion.append(mensaje)
         
-        self.config[f"\nSOLUCIONES"] = {f"{i + 1}": msj for i, msj in enumerate(mensajes_solucion)}
-
-
+        self.config[f"SOLUCIONES"] = (copy.deepcopy(self.matriz),tuple(msj for msj in enumerate (mensajes_solucion)))
+        
     def verificacion(self):
         mensajes_verificacion = []
         for fila in range(self.filas):
@@ -90,7 +90,7 @@ class CramersRule(Matrix):
                     operador = "-"
                     valor = -valor
                 else: operador = ""
-                coef = f"{("(" + str(int(valor)) + ")" if valor.is_integer() else f'{valor:.1f}')}"
+                coef = f"{('(' + str(int(valor)) + ')' if valor.is_integer() else f'{valor:.1f}')}"
                 if operador:
                     exp += f" {operador} {coef}({self.soluciones[col]})"
                 else:
@@ -98,7 +98,7 @@ class CramersRule(Matrix):
             mensaje = f"Ec. {fila + 1}: {exp} = {operacion}"
             mensajes_verificacion.append(mensaje)
         
-        self.config["\n\nVERIFICACIÓN\n"] = {f"{i + 1}": msj for i, msj in enumerate(mensajes_verificacion)}
+        self.config["VERIFICACIÓN"] = {f"{i + 1}": msj for i, msj in enumerate(mensajes_verificacion)}
             
 
     def imprimir_ecuaciones(self):
@@ -114,7 +114,7 @@ class CramersRule(Matrix):
                     operador = "-"
                     valor = -valor
                 else: operador = ""
-                coef = f"{("(" + str(int(valor)) + ")" if valor.is_integer() else f'{valor:.1f}') if valor != 1 else ""}"
+                coef = f"{('(' + str(int(valor)) + ')' if valor.is_integer() else f'{valor:.1f}') if valor != 1 else ''}"
                 if operador:
                     ecuacion += f" {operador} {coef}X{col + 1}"
                 else:
