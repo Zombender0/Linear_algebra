@@ -1,5 +1,6 @@
-from PySide6.QtCore import Slot,QObject,QSize
+from PySide6.QtCore import Slot,QObject,QSize,QThreadPool,Signal
 from PySide6.QtWidgets import QMainWindow
+
 from configparser import ConfigParser
 from ast import literal_eval
 from helpers.box_helper import *
@@ -8,6 +9,8 @@ from helpers.validation_helper import float_parser
 from helpers.animation_helper import animate_side_bar
 from utils.generic_utils import select_path_to_csv
 from utils.matrix_utils import get_transposed_matrix
+from utils.runnable import TaskRunnable
+from utils.equation_utils import equation_to_rich_text
 from constants.ui_constants import MAX_WIDTH
 from constants.file_filter import CSV_FILTER
 from views.modified_python_files.main_window import MainWindow 
@@ -31,23 +34,27 @@ from models.BisectionMethod import BisectionMethod
 from models.NewtonRaphson import NewthonRaphson
 from models.FalsePositionMethod import FalsePositionMethod
 from models.SecantMethod import SecantMethod
-from models.EquationFunctions import EquationParser
+from models.EquationFunctions import EquationParser,differencial,integrate
 
 class MainController(QObject):
     def __init__(self,window:QMainWindow):
         super().__init__()
         self.config = ConfigParser()
         self.main_window = MainWindow(window)
+        self.thread_pool = QThreadPool()
         self.solution_controller = SolutionController()
         self.vector_controller = VectorController()
-        self.equation_controller = EquationController()
-        self.equation_controller.equation_accepted_signal.connect(self.change_equation)
+        self.equation_controller = EquationController(self.thread_pool)
         self.config_controller = ConfigController(self.config,self.main_window)
         self.save_controller = SaveController(self.config)
         self.save_controller.name_signal.connect(self.save_matrix_in_config)
         self.connect_main_window_buttons()
         self.main_window.resize_aumented_matrix(self.main_window.row_spinbox.value(),self.main_window.column_spinbox.value())
-        
+    
+    def run_async_task(self,task,*args):
+        task_runnable = TaskRunnable(task,*args)
+        self.thread_pool.start(task_runnable)
+
     def connect_main_window_buttons(self):
 
         window = self.main_window
@@ -79,11 +86,14 @@ class MainController(QObject):
         window.random_independent_matrix_button.clicked.connect(lambda: window.random_matrix(window.independent_terms_table))
 
         #EQUATIONS
-        window.edit_equation_button.clicked.connect(lambda: self.open_equation_selecter_window())
+        window.equation_edit_button.clicked.connect(lambda: self.open_equation_selecter_window())
         window.bisection_solution_button.clicked.connect(lambda: self.get_root_bisection_method())
         window.newton_solution_button.clicked.connect(lambda: self.get_root_newton_method())
         window.false_solution_button.clicked.connect(lambda: self.get_root_false_position_method())
         window.secant_solution_button.clicked.connect(lambda: self.get_root_secant_method())
+        self.equation_controller.equation_accepted_signal.connect(self.change_equation)
+        self.derivate_signal.connect(self.change_derivative)
+        self.integral_signal.connect(self.change_integral)
         #CONFIG
         window.table_select_solutions_combobox.currentIndexChanged.connect(lambda: self.config_controller.config_writer.save_option(
             {'MATRIX_SOLVE_METHOD': window.table_select_solutions_combobox.currentIndex()}
@@ -110,7 +120,6 @@ class MainController(QObject):
     @Slot()
     def solve_button(self):
         matriz = self.get_aumented_matrix_data()
-        print(matriz)
         if matriz == None:
             warning_box("No se pudo generar esta tabla")
             return
@@ -241,11 +250,6 @@ class MainController(QObject):
         self.equation_controller.set_window(EquationSelecterWindow())
         self.equation_controller.open_equation_selecter_window()
 
-    @Slot(str)
-    def change_equation(self,rich_text_equation:str):
-        self.main_window.equation_text_label.setText(rich_text_equation)
-
-        
     @Slot()
     def get_root_bisection_method(self):
         interval_a = self.main_window.bisection_interval_a_line_edit.text()
@@ -359,6 +363,38 @@ class MainController(QObject):
         parsed_equation = EquationParser(self.equation_controller.equation)
         false_position = SecantMethod(parsed_equation,interval_a,interval_b,tolerance,max_iter)
         self.open_secant_solution_window(false_position)
+
+    @Slot(str)
+    def change_equation(self,rich_text_equation:str):
+        self.main_window.equation_label.setText(rich_text_equation)
+        self.run_async_task(self.calculate_derivative,self.equation_controller.equation)
+        self.run_async_task(self.calculate_integral,self.equation_controller.equation)
+        self.paint_graphic(self.equation_controller.equation)
+
+    @Slot(str)
+    def change_derivative(self,rich_text_derivative:str):
+        self.main_window.equation_derivative_label.setText(rich_text_derivative)
+    
+    @Slot(str)
+    def change_integral(self,rich_text_integral:str):
+        self.main_window.equation_integral_label.setText(rich_text_integral)
+
+    derivate_signal = Signal(str)
+    integral_signal = Signal(str)
+    graph_signal = Signal(str)
+
+    def calculate_derivative(self,equation:str):
+        derivated_equation = differencial(equation)
+        derivated_equation = equation_to_rich_text(derivated_equation)
+        self.derivate_signal.emit(derivated_equation)
+
+    def calculate_integral(self,equation:str):
+        integrated_equation = integrate(equation)
+        integrated_equation = equation_to_rich_text(integrated_equation)
+        self.integral_signal.emit(integrated_equation)
+
+    def paint_graphic(self,equation:str):
+        self.main_window.graph.paint_equation(equation)
     
     def get_aumented_matrix_data(self):
         coeficient_matrix = get_data_from_table(self.main_window.coeficient_table)
@@ -374,7 +410,6 @@ class MainController(QObject):
         if original_matrix == None:
             return None
         transposed_matrix = get_transposed_matrix(original_matrix)
-        print(transposed_matrix)
         insert_data_to_table(self.main_window.coeficient_table,transposed_matrix,editable=True,last_b=False,letter='X')
         self.main_window.row_spinbox.setValue(len(transposed_matrix))
         self.main_window.column_spinbox.setValue(len(transposed_matrix[0]))
