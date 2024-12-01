@@ -5,9 +5,11 @@ from PySide6.QtCore import Slot
 from random import randint
 from helpers.box_helper import warning_box,question_box
 from helpers.matrix_helper import get_data_from_table,insert_data_to_table,resize_table
+
 from utils.matrix_utils import get_transposed_matrix,create_matrix_from_csv
 from utils.generic_utils import get_file_from_dialog
 from constants.file_filter import CSV_FILTER
+from helpers.graph_helper import PyQtGraphWidget
 
 class MainWindow(Generated_MainWindow):
     def __init__(self,main_window:QMainWindow):
@@ -26,7 +28,10 @@ class MainWindow(Generated_MainWindow):
         self.table_select_solutions_combobox.setItemData(2,"cramer")
         self.main_stacked_widget.setCurrentIndex(0)
         self.method_equation_tab_widget.setCurrentIndex(0)
+        self.graph = PyQtGraphWidget(self.graphic_widget)
+        self.verticalLayout_9.addWidget(self.graph)
         MainWindow.showMaximized()
+
 
     def resize_aumented_matrix(self, rows:int,columns:int)->None:
         resize_table(self.coeficient_table,rows,columns,last_b=False,letter='X')
