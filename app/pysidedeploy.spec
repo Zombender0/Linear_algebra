@@ -1,31 +1,31 @@
 [app]
 
 # title of your application
-title = pyside_app_demo
+title = algebrier
 
 # project directory. the general assumption is that project_dir is the parent directory
 # of input_file
-project_dir = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra
+project_dir = 
 
 # source file path
-input_file = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\app\main.pyw
+input_file = 
 
 # directory where exec is stored
-exec_directory = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\output
+exec_directory = 
 
 # path to .pyproject project file
 project_file = 
 
 # application icon
-icon = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\views\qt_files\qrc_files\Images\icon.ico
+icon =
 
 [python]
 
 # python path
-python_path = C:\Users\nocqu\OneDrive\Escritorio\Proyectos\Linear_algebra\venv\Scripts\python.exe
+python_path = 
 
 # python packages to install
-packages = Nuitka==2.4.8
+packages = Nuitka==2.4.11
 
 # buildozer = for deploying Android application
 android_packages = buildozer==1.5.0,cython==0.29.33
@@ -37,13 +37,13 @@ android_packages = buildozer==1.5.0,cython==0.29.33
 qml_files = 
 
 # excluded qml plugin binaries
-excluded_qml_plugins = QtQuick, QtQuick3D, QtCharts, QtWebEngine, QtTest, QtSensors
+excluded_qml_plugins = QtQuick, QtQuick3D, QtWebEngine, QtTest, QtSensors
 
 # qt modules used. comma separated
-modules = Widgets,Core,Gui,Svg
+modules = Core,Gui,Svg,Widgets
 
 # qt plugins used by the application
-plugins = styles
+plugins = platforms,accessiblebridge,platforminputcontexts,generic,egldeviceintegrations,xcbglintegrations,platforms/darwin,platformthemes,imageformats,styles,iconengines
 
 [android]
 
