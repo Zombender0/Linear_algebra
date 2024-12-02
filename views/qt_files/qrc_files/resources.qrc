@@ -3,6 +3,8 @@
     <file>Images/change.svg</file>
     <file>Images/delete.svg</file>
     <file>Images/clean.svg</file>
+    <file>Images/algebrier.png</file>
+    <file>Images/ico.ico</file>
     <file>Images/transpose.svg</file>
     <file>Images/random.svg</file>
     <file>Images/save.svg</file>
@@ -25,7 +27,6 @@
     <file>Images/matrix.svg</file>
     <file>Images/plus.png</file>
     <file>Images/substract.png</file>
-    <file>Images/icon.ico</file>
     <file>Images/arrow_left.png</file>
     <file>Images/arrow_right.png</file>
     <file>Images/arrow_downwards.png</file>

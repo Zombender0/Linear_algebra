@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>716</width>
-    <height>486</height>
+    <width>907</width>
+    <height>475</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="qrc_files/resources.qrc">
-    <normaloff>:/icon/Images/icon.ico</normaloff>:/icon/Images/icon.ico</iconset>
+    <normaloff>:/icon/Images/ico.ico</normaloff>:/icon/Images/ico.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">*{
@@ -724,7 +724,7 @@ margin-left:-1px;</string>
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <layout class="QHBoxLayout" name="table_buttons_horizontal_layout" stretch="0,0,0">
+             <layout class="QHBoxLayout" name="table_buttons_horizontal_layout" stretch="0,0,0,0">
               <property name="spacing">
                <number>10</number>
               </property>
@@ -1142,11 +1142,69 @@ margin-left:-1px;</string>
                 </layout>
                </widget>
               </item>
+              <item alignment="Qt::AlignmentFlag::AlignLeft">
+               <widget class="QWidget" name="logo_widget" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                  <horstretch>3</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_12">
+                 <item>
+                  <widget class="QLabel" name="logo_pix_map">
+                   <property name="maximumSize">
+                    <size>
+                     <width>68</width>
+                     <height>68</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background: none;
+margin: -5px;</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="qrc_files/resources.qrc">:/icon/Images/algebrier.png</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="logo_label">
+                   <property name="font">
+                    <font>
+                     <pointsize>25</pointsize>
+                     <italic>true</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background: none</string>
+                   </property>
+                   <property name="text">
+                    <string>Algebrier</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
               <item>
                <widget class="QWidget" name="table_extra_options_widget" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-                  <horstretch>1</horstretch>
+                  <horstretch>10</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>

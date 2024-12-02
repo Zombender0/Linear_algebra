@@ -14,8 +14,8 @@
    <string>Solución</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/icon/Images/grid.ico</normaloff>:/icon/Images/grid.ico</iconset>
+   <iconset resource="qrc_files/resources.qrc">
+    <normaloff>:/icon/Images/ico.ico</normaloff>:/icon/Images/ico.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">*{

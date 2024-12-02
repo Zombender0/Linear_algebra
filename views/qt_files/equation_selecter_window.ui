@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="qrc_files/resources.qrc">
-    <normaloff>:/icon/Images/icon.ico</normaloff>:/icon/Images/icon.ico</iconset>
+    <normaloff>:/icon/Images/ico.ico</normaloff>:/icon/Images/ico.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#insert_equation_dialog{
