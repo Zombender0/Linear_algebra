@@ -26,7 +26,7 @@ class Ui_save_dialog(object):
             save_dialog.setObjectName(u"save_dialog")
         save_dialog.resize(434, 108)
         icon = QIcon()
-        icon.addFile(u":/icon/Images/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icon/Images/ico.ico", QSize(), QIcon.Normal, QIcon.Off)
         save_dialog.setWindowIcon(icon)
         save_dialog.setStyleSheet(u"*{\n"
 "border:none;\n"

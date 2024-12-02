@@ -26,7 +26,7 @@ class Ui_main_widget(object):
             main_widget.setObjectName(u"main_widget")
         main_widget.resize(600, 450)
         icon = QIcon()
-        icon.addFile(u":/icon/Images/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icon/Images/ico.ico", QSize(), QIcon.Normal, QIcon.Off)
         main_widget.setWindowIcon(icon)
         main_widget.setStyleSheet(u"*{\n"
 "border:none;\n"

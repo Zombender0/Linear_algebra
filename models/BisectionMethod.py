@@ -41,7 +41,7 @@ class BisectionMethod():
                     self.datos_por_iteracion.append([self.interval_a, self.interval_b, self.media_c, fa, fb, fc, fa * fc, str_error_porcentual])
                     #self.print_iterations()
                     solucion = f"La raíz aproximada es {self.media_c} con un error porcentual de {error_porcentual}%"
-                    solucion +=f"Número de iteraciones: {self.n_iter}"
+                    solucion +=f"\nNúmero de iteraciones: {self.n_iter}"
 
                     self.config[f"ITERACIÓN {self.n_iter}"] = (copy.deepcopy(self.datos_por_iteracion), solucion)
                     #print(f"Número de iteraciones: {self.n_iter}\n")

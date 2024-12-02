@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowLjROTb.ui'
+## Form generated from reading UI file 'main_windowhallxC.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -21,6 +21,7 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
     QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
     QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
     QWidget)
+
 from PySide6.QtSvg import QtSvg
 from views.qt_files.qrc_files import resources_rc
 
@@ -29,9 +30,9 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModality.WindowModal)
-        MainWindow.resize(716, 486)
+        MainWindow.resize(907, 475)
         icon = QIcon()
-        icon.addFile(u":/icon/Images/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icon/Images/ico.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"*{\n"
 "border:none;\n"
@@ -623,13 +624,47 @@ class Ui_MainWindow(object):
 
         self.table_buttons_horizontal_layout.addWidget(self.select_matrix_widget, 0, Qt.AlignmentFlag.AlignLeft)
 
+        self.logo_widget = QWidget(self.table_buttons_frame)
+        self.logo_widget.setObjectName(u"logo_widget")
+        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
+        sizePolicy5.setHorizontalStretch(3)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.logo_widget.sizePolicy().hasHeightForWidth())
+        self.logo_widget.setSizePolicy(sizePolicy5)
+        self.horizontalLayout_12 = QHBoxLayout(self.logo_widget)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.logo_pix_map = QLabel(self.logo_widget)
+        self.logo_pix_map.setObjectName(u"logo_pix_map")
+        self.logo_pix_map.setMaximumSize(QSize(68, 68))
+        self.logo_pix_map.setStyleSheet(u"background: none;")
+        self.logo_pix_map.setPixmap(QPixmap(u":/icon/Images/algebrier.png"))
+        self.logo_pix_map.setScaledContents(True)
+        self.logo_pix_map.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_12.addWidget(self.logo_pix_map)
+
+        self.logo_label = QLabel(self.logo_widget)
+        self.logo_label.setObjectName(u"logo_label")
+        font4 = QFont()
+        font4.setPointSize(25)
+        font4.setBold(True)
+        font4.setItalic(True)
+        self.logo_label.setFont(font4)
+        self.logo_label.setStyleSheet(u"background: none")
+        self.logo_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_12.addWidget(self.logo_label)
+
+
+        self.table_buttons_horizontal_layout.addWidget(self.logo_widget, 0, Qt.AlignmentFlag.AlignLeft)
+
         self.table_extra_options_widget = QWidget(self.table_buttons_frame)
         self.table_extra_options_widget.setObjectName(u"table_extra_options_widget")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Maximum)
-        sizePolicy5.setHorizontalStretch(1)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.table_extra_options_widget.sizePolicy().hasHeightForWidth())
-        self.table_extra_options_widget.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Maximum)
+        sizePolicy6.setHorizontalStretch(10)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.table_extra_options_widget.sizePolicy().hasHeightForWidth())
+        self.table_extra_options_widget.setSizePolicy(sizePolicy6)
         self.table_extra_options_widget.setMinimumSize(QSize(0, 0))
         self.table_extra_options_widget.setSizeIncrement(QSize(0, 0))
         self.verticalLayout_26 = QVBoxLayout(self.table_extra_options_widget)
@@ -695,11 +730,11 @@ class Ui_MainWindow(object):
 
         self.table_update_button = QPushButton(self.table_extra_options_widget)
         self.table_update_button.setObjectName(u"table_update_button")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
-        sizePolicy6.setHorizontalStretch(1)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.table_update_button.sizePolicy().hasHeightForWidth())
-        self.table_update_button.setSizePolicy(sizePolicy6)
+        sizePolicy7 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        sizePolicy7.setHorizontalStretch(1)
+        sizePolicy7.setVerticalStretch(0)
+        sizePolicy7.setHeightForWidth(self.table_update_button.sizePolicy().hasHeightForWidth())
+        self.table_update_button.setSizePolicy(sizePolicy7)
         self.table_update_button.setMaximumSize(QSize(38, 38))
         icon14 = QIcon()
         icon14.addFile(u":/icon/Images/refresh.svg", QSize(), QIcon.Normal, QIcon.Off)
@@ -739,10 +774,10 @@ class Ui_MainWindow(object):
         self.coeficient_label.setObjectName(u"coeficient_label")
         sizePolicy2.setHeightForWidth(self.coeficient_label.sizePolicy().hasHeightForWidth())
         self.coeficient_label.setSizePolicy(sizePolicy2)
-        font4 = QFont()
-        font4.setPointSize(11)
-        font4.setBold(True)
-        self.coeficient_label.setFont(font4)
+        font5 = QFont()
+        font5.setPointSize(11)
+        font5.setBold(True)
+        self.coeficient_label.setFont(font5)
         self.coeficient_label.setStyleSheet(u"margin-left: 10px;")
         self.coeficient_label.setWordWrap(False)
 
@@ -750,11 +785,11 @@ class Ui_MainWindow(object):
 
         self.coeficient_option_sub_widget = QWidget(self.coeficient_option_widget)
         self.coeficient_option_sub_widget.setObjectName(u"coeficient_option_sub_widget")
-        sizePolicy7 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy7.setHorizontalStretch(1)
-        sizePolicy7.setVerticalStretch(0)
-        sizePolicy7.setHeightForWidth(self.coeficient_option_sub_widget.sizePolicy().hasHeightForWidth())
-        self.coeficient_option_sub_widget.setSizePolicy(sizePolicy7)
+        sizePolicy8 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy8.setHorizontalStretch(1)
+        sizePolicy8.setVerticalStretch(0)
+        sizePolicy8.setHeightForWidth(self.coeficient_option_sub_widget.sizePolicy().hasHeightForWidth())
+        self.coeficient_option_sub_widget.setSizePolicy(sizePolicy8)
         self.verticalLayout_27 = QVBoxLayout(self.coeficient_option_sub_widget)
         self.verticalLayout_27.setObjectName(u"verticalLayout_27")
         self.verticalLayout_27.setContentsMargins(0, 0, 0, 0)
@@ -830,11 +865,11 @@ class Ui_MainWindow(object):
         self.coeficient_table.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         if (self.coeficient_table.rowCount() < 3):
             self.coeficient_table.setRowCount(3)
-        font5 = QFont()
-        font5.setFamilies([u"Calibri"])
-        font5.setPointSize(9)
+        font6 = QFont()
+        font6.setFamilies([u"Calibri"])
+        font6.setPointSize(9)
         __qtablewidgetitem3 = QTableWidgetItem()
-        __qtablewidgetitem3.setFont(font5);
+        __qtablewidgetitem3.setFont(font6);
         __qtablewidgetitem3.setFlags(Qt.ItemIsSelectable|Qt.ItemIsEditable|Qt.ItemIsEnabled);
         self.coeficient_table.setItem(0, 0, __qtablewidgetitem3)
         self.coeficient_table.setObjectName(u"coeficient_table")
@@ -862,7 +897,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.independent_terms_label = QLabel(self.independent_options_widget)
         self.independent_terms_label.setObjectName(u"independent_terms_label")
-        self.independent_terms_label.setFont(font4)
+        self.independent_terms_label.setFont(font5)
         self.independent_terms_label.setStyleSheet(u"margin-left: -3px;")
         self.independent_terms_label.setWordWrap(False)
 
@@ -878,8 +913,8 @@ class Ui_MainWindow(object):
         self.independent_option_grid.setContentsMargins(-1, -1, -1, 0)
         self.clean_independent_matrix_button = QPushButton(self.widget)
         self.clean_independent_matrix_button.setObjectName(u"clean_independent_matrix_button")
-        sizePolicy6.setHeightForWidth(self.clean_independent_matrix_button.sizePolicy().hasHeightForWidth())
-        self.clean_independent_matrix_button.setSizePolicy(sizePolicy6)
+        sizePolicy7.setHeightForWidth(self.clean_independent_matrix_button.sizePolicy().hasHeightForWidth())
+        self.clean_independent_matrix_button.setSizePolicy(sizePolicy7)
         self.clean_independent_matrix_button.setMaximumSize(QSize(38, 38))
         self.clean_independent_matrix_button.setIcon(icon17)
         self.clean_independent_matrix_button.setIconSize(QSize(28, 28))
@@ -896,8 +931,8 @@ class Ui_MainWindow(object):
 
         self.adjust_independent_matrix_button = QPushButton(self.widget)
         self.adjust_independent_matrix_button.setObjectName(u"adjust_independent_matrix_button")
-        sizePolicy6.setHeightForWidth(self.adjust_independent_matrix_button.sizePolicy().hasHeightForWidth())
-        self.adjust_independent_matrix_button.setSizePolicy(sizePolicy6)
+        sizePolicy7.setHeightForWidth(self.adjust_independent_matrix_button.sizePolicy().hasHeightForWidth())
+        self.adjust_independent_matrix_button.setSizePolicy(sizePolicy7)
         self.adjust_independent_matrix_button.setMaximumSize(QSize(38, 38))
         self.adjust_independent_matrix_button.setIcon(icon15)
         self.adjust_independent_matrix_button.setIconSize(QSize(28, 28))
@@ -906,8 +941,8 @@ class Ui_MainWindow(object):
 
         self.zero_independent_matrix_button = QPushButton(self.widget)
         self.zero_independent_matrix_button.setObjectName(u"zero_independent_matrix_button")
-        sizePolicy6.setHeightForWidth(self.zero_independent_matrix_button.sizePolicy().hasHeightForWidth())
-        self.zero_independent_matrix_button.setSizePolicy(sizePolicy6)
+        sizePolicy7.setHeightForWidth(self.zero_independent_matrix_button.sizePolicy().hasHeightForWidth())
+        self.zero_independent_matrix_button.setSizePolicy(sizePolicy7)
         self.zero_independent_matrix_button.setMaximumSize(QSize(38, 38))
         self.zero_independent_matrix_button.setIcon(icon18)
         self.zero_independent_matrix_button.setIconSize(QSize(36, 36))
@@ -990,10 +1025,10 @@ class Ui_MainWindow(object):
 
         self.equation_label = QLabel(self.equation_widget)
         self.equation_label.setObjectName(u"equation_label")
-        font6 = QFont()
-        font6.setPointSize(14)
-        font6.setBold(True)
-        self.equation_label.setFont(font6)
+        font7 = QFont()
+        font7.setPointSize(14)
+        font7.setBold(True)
+        self.equation_label.setFont(font7)
         self.equation_label.setStyleSheet(u"background: none")
         self.equation_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
@@ -1010,7 +1045,7 @@ class Ui_MainWindow(object):
 
         self.equation_derivative_label = QLabel(self.equation_widget)
         self.equation_derivative_label.setObjectName(u"equation_derivative_label")
-        self.equation_derivative_label.setFont(font6)
+        self.equation_derivative_label.setFont(font7)
         self.equation_derivative_label.setStyleSheet(u"background: none")
         self.equation_derivative_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
@@ -1018,7 +1053,7 @@ class Ui_MainWindow(object):
 
         self.equation_integral_label = QLabel(self.equation_widget)
         self.equation_integral_label.setObjectName(u"equation_integral_label")
-        self.equation_integral_label.setFont(font6)
+        self.equation_integral_label.setFont(font7)
         self.equation_integral_label.setStyleSheet(u"background: none")
         self.equation_integral_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
@@ -1089,7 +1124,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.method_equation_tab_widget = QTabWidget(self.method_equation_widget)
         self.method_equation_tab_widget.setObjectName(u"method_equation_tab_widget")
-        self.method_equation_tab_widget.setFont(font4)
+        self.method_equation_tab_widget.setFont(font5)
         self.bisection_tab = QWidget()
         self.bisection_tab.setObjectName(u"bisection_tab")
         self.verticalLayout_10 = QVBoxLayout(self.bisection_tab)
@@ -1098,10 +1133,10 @@ class Ui_MainWindow(object):
         self.bisection_config_widget = QWidget(self.bisection_tab)
         self.bisection_config_widget.setObjectName(u"bisection_config_widget")
         self.bisection_config_widget.setMaximumSize(QSize(16777215, 16777215))
-        font7 = QFont()
-        font7.setPointSize(9)
-        font7.setKerning(True)
-        self.bisection_config_widget.setFont(font7)
+        font8 = QFont()
+        font8.setPointSize(9)
+        font8.setKerning(True)
+        self.bisection_config_widget.setFont(font8)
         self.verticalLayout_12 = QVBoxLayout(self.bisection_config_widget)
         self.verticalLayout_12.setSpacing(12)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
@@ -1131,23 +1166,23 @@ class Ui_MainWindow(object):
 
         self.bisection_interval_b_line_edit = QLineEdit(self.bisection_config_widget)
         self.bisection_interval_b_line_edit.setObjectName(u"bisection_interval_b_line_edit")
-        font8 = QFont()
-        font8.setPointSize(14)
-        self.bisection_interval_b_line_edit.setFont(font8)
+        font9 = QFont()
+        font9.setPointSize(14)
+        self.bisection_interval_b_line_edit.setFont(font9)
         self.bisection_interval_b_line_edit.setClearButtonEnabled(True)
 
         self.bisection_config_grid.addWidget(self.bisection_interval_b_line_edit, 1, 1, 1, 1)
 
         self.bisection_tolerance_line_edit = QLineEdit(self.bisection_config_widget)
         self.bisection_tolerance_line_edit.setObjectName(u"bisection_tolerance_line_edit")
-        self.bisection_tolerance_line_edit.setFont(font8)
+        self.bisection_tolerance_line_edit.setFont(font9)
         self.bisection_tolerance_line_edit.setClearButtonEnabled(True)
 
         self.bisection_config_grid.addWidget(self.bisection_tolerance_line_edit, 2, 1, 1, 1)
 
         self.bisection_interval_a_line_edit = QLineEdit(self.bisection_config_widget)
         self.bisection_interval_a_line_edit.setObjectName(u"bisection_interval_a_line_edit")
-        self.bisection_interval_a_line_edit.setFont(font8)
+        self.bisection_interval_a_line_edit.setFont(font9)
         self.bisection_interval_a_line_edit.setClearButtonEnabled(True)
 
         self.bisection_config_grid.addWidget(self.bisection_interval_a_line_edit, 0, 1, 1, 1)
@@ -1162,7 +1197,7 @@ class Ui_MainWindow(object):
 
         self.bisection_solution_button = QPushButton(self.bisection_tab)
         self.bisection_solution_button.setObjectName(u"bisection_solution_button")
-        self.bisection_solution_button.setFont(font8)
+        self.bisection_solution_button.setFont(font9)
 
         self.verticalLayout_10.addWidget(self.bisection_solution_button)
 
@@ -1193,7 +1228,7 @@ class Ui_MainWindow(object):
 
         self.newton_max_iter_line_edit = QLineEdit(self.newton_config_widget)
         self.newton_max_iter_line_edit.setObjectName(u"newton_max_iter_line_edit")
-        self.newton_max_iter_line_edit.setFont(font8)
+        self.newton_max_iter_line_edit.setFont(font9)
         self.newton_max_iter_line_edit.setClearButtonEnabled(True)
 
         self.newton_config_grid.addWidget(self.newton_max_iter_line_edit, 1, 1, 1, 1)
@@ -1207,7 +1242,7 @@ class Ui_MainWindow(object):
 
         self.newton_tolerance_line_edit = QLineEdit(self.newton_config_widget)
         self.newton_tolerance_line_edit.setObjectName(u"newton_tolerance_line_edit")
-        self.newton_tolerance_line_edit.setFont(font8)
+        self.newton_tolerance_line_edit.setFont(font9)
         self.newton_tolerance_line_edit.setClearButtonEnabled(True)
 
         self.newton_config_grid.addWidget(self.newton_tolerance_line_edit, 2, 1, 1, 1)
@@ -1221,7 +1256,7 @@ class Ui_MainWindow(object):
 
         self.newton_x_value_line_edit = QLineEdit(self.newton_config_widget)
         self.newton_x_value_line_edit.setObjectName(u"newton_x_value_line_edit")
-        self.newton_x_value_line_edit.setFont(font8)
+        self.newton_x_value_line_edit.setFont(font9)
         self.newton_x_value_line_edit.setClearButtonEnabled(True)
 
         self.newton_config_grid.addWidget(self.newton_x_value_line_edit, 0, 1, 1, 1)
@@ -1236,7 +1271,7 @@ class Ui_MainWindow(object):
 
         self.newton_solution_button = QPushButton(self.newton_tab)
         self.newton_solution_button.setObjectName(u"newton_solution_button")
-        self.newton_solution_button.setFont(font8)
+        self.newton_solution_button.setFont(font9)
 
         self.verticalLayout_13.addWidget(self.newton_solution_button)
 
@@ -1253,7 +1288,7 @@ class Ui_MainWindow(object):
         self.false_position_config_widget = QWidget(self.false_position_tab)
         self.false_position_config_widget.setObjectName(u"false_position_config_widget")
         self.false_position_config_widget.setMaximumSize(QSize(16777215, 16777215))
-        self.false_position_config_widget.setFont(font7)
+        self.false_position_config_widget.setFont(font8)
         self.verticalLayout_15 = QVBoxLayout(self.false_position_config_widget)
         self.verticalLayout_15.setSpacing(12)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
@@ -1283,21 +1318,21 @@ class Ui_MainWindow(object):
 
         self.false_interval_b_line_edit = QLineEdit(self.false_position_config_widget)
         self.false_interval_b_line_edit.setObjectName(u"false_interval_b_line_edit")
-        self.false_interval_b_line_edit.setFont(font8)
+        self.false_interval_b_line_edit.setFont(font9)
         self.false_interval_b_line_edit.setClearButtonEnabled(True)
 
         self.false_position_config_grid.addWidget(self.false_interval_b_line_edit, 1, 1, 1, 1)
 
         self.false_tolerance_line_edit = QLineEdit(self.false_position_config_widget)
         self.false_tolerance_line_edit.setObjectName(u"false_tolerance_line_edit")
-        self.false_tolerance_line_edit.setFont(font8)
+        self.false_tolerance_line_edit.setFont(font9)
         self.false_tolerance_line_edit.setClearButtonEnabled(True)
 
         self.false_position_config_grid.addWidget(self.false_tolerance_line_edit, 2, 1, 1, 1)
 
         self.false_interval_a_line_edit = QLineEdit(self.false_position_config_widget)
         self.false_interval_a_line_edit.setObjectName(u"false_interval_a_line_edit")
-        self.false_interval_a_line_edit.setFont(font8)
+        self.false_interval_a_line_edit.setFont(font9)
         self.false_interval_a_line_edit.setClearButtonEnabled(True)
 
         self.false_position_config_grid.addWidget(self.false_interval_a_line_edit, 0, 1, 1, 1)
@@ -1312,7 +1347,7 @@ class Ui_MainWindow(object):
 
         self.false_solution_button = QPushButton(self.false_position_tab)
         self.false_solution_button.setObjectName(u"false_solution_button")
-        self.false_solution_button.setFont(font8)
+        self.false_solution_button.setFont(font9)
 
         self.verticalLayout_16.addWidget(self.false_solution_button)
 
@@ -1344,20 +1379,20 @@ class Ui_MainWindow(object):
 
         self.secant_max_iter_line_edit = QLineEdit(self.secant_config_widget)
         self.secant_max_iter_line_edit.setObjectName(u"secant_max_iter_line_edit")
-        self.secant_max_iter_line_edit.setFont(font8)
+        self.secant_max_iter_line_edit.setFont(font9)
 
         self.secant_config_grid.addWidget(self.secant_max_iter_line_edit, 2, 1, 1, 2)
 
         self.secant_xi_line_edit = QLineEdit(self.secant_config_widget)
         self.secant_xi_line_edit.setObjectName(u"secant_xi_line_edit")
-        self.secant_xi_line_edit.setFont(font8)
+        self.secant_xi_line_edit.setFont(font9)
         self.secant_xi_line_edit.setClearButtonEnabled(True)
 
         self.secant_config_grid.addWidget(self.secant_xi_line_edit, 1, 1, 1, 2)
 
         self.secant_x0_line_edit = QLineEdit(self.secant_config_widget)
         self.secant_x0_line_edit.setObjectName(u"secant_x0_line_edit")
-        self.secant_x0_line_edit.setFont(font8)
+        self.secant_x0_line_edit.setFont(font9)
         self.secant_x0_line_edit.setClearButtonEnabled(True)
 
         self.secant_config_grid.addWidget(self.secant_x0_line_edit, 0, 1, 1, 2)
@@ -1385,7 +1420,7 @@ class Ui_MainWindow(object):
 
         self.secant_tolerance_line_edit = QLineEdit(self.secant_config_widget)
         self.secant_tolerance_line_edit.setObjectName(u"secant_tolerance_line_edit")
-        self.secant_tolerance_line_edit.setFont(font8)
+        self.secant_tolerance_line_edit.setFont(font9)
 
         self.secant_config_grid.addWidget(self.secant_tolerance_line_edit, 3, 1, 1, 2)
 
@@ -1399,7 +1434,7 @@ class Ui_MainWindow(object):
 
         self.secant_solution_button = QPushButton(self.secant_tab)
         self.secant_solution_button.setObjectName(u"secant_solution_button")
-        self.secant_solution_button.setFont(font8)
+        self.secant_solution_button.setFont(font9)
 
         self.verticalLayout_18.addWidget(self.secant_solution_button)
 
@@ -1418,7 +1453,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.graphic_label = QLabel(self.graphic_widget)
         self.graphic_label.setObjectName(u"graphic_label")
-        self.graphic_label.setFont(font4)
+        self.graphic_label.setFont(font5)
         self.graphic_label.setStyleSheet(u"padding: 3px")
         self.graphic_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -1442,7 +1477,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.main_stacked_widget.setCurrentIndex(1)
+        self.main_stacked_widget.setCurrentIndex(0)
         self.method_equation_tab_widget.setCurrentIndex(0)
 
 
@@ -1509,6 +1544,8 @@ class Ui_MainWindow(object):
         self.delete_current_table_button.setToolTip(QCoreApplication.translate("MainWindow", u"Eliminar matriz", None))
 #endif // QT_CONFIG(tooltip)
         self.delete_current_table_button.setText("")
+        self.logo_pix_map.setText("")
+        self.logo_label.setText(QCoreApplication.translate("MainWindow", u"Algebrier", None))
         self.table_select_solutions_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Resolver por", None))
         self.table_select_solutions_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Reducci\u00f3n", None))
         self.table_select_solutions_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Cramer", None))
@@ -1606,16 +1643,37 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.independent_terms_table.setToolTip(QCoreApplication.translate("MainWindow", u"T\u00e9rminos independientes", None))
 #endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.equation_derivative_text_label.setToolTip(QCoreApplication.translate("MainWindow", u"Integral de la ecuaci\u00f3n actual", None))
+#endif // QT_CONFIG(tooltip)
         self.equation_derivative_text_label.setText(QCoreApplication.translate("MainWindow", u"Integral", None))
+#if QT_CONFIG(tooltip)
+        self.equation_text_label.setToolTip(QCoreApplication.translate("MainWindow", u"Ecuaci\u00f3n actual", None))
+#endif // QT_CONFIG(tooltip)
         self.equation_text_label.setText(QCoreApplication.translate("MainWindow", u"Ecuacion", None))
         self.equation_label.setText("")
+#if QT_CONFIG(tooltip)
+        self.equation_integral_text_label.setToolTip(QCoreApplication.translate("MainWindow", u"Derivada de la ecuaci\u00f3n actual", None))
+#endif // QT_CONFIG(tooltip)
         self.equation_integral_text_label.setText(QCoreApplication.translate("MainWindow", u"Derivada", None))
         self.equation_derivative_label.setText("")
         self.equation_integral_label.setText("")
         self.select_equation_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar ecuaci\u00f3n", None))
 
+#if QT_CONFIG(tooltip)
+        self.select_equation_combobox.setToolTip(QCoreApplication.translate("MainWindow", u"Seleccionar ecuaci\u00f3n", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.equation_save_button.setToolTip(QCoreApplication.translate("MainWindow", u"Guardar ecuaci\u00f3n", None))
+#endif // QT_CONFIG(tooltip)
         self.equation_save_button.setText("")
+#if QT_CONFIG(tooltip)
+        self.equation_load_button.setToolTip(QCoreApplication.translate("MainWindow", u"Cargar ecuaci\u00f3n", None))
+#endif // QT_CONFIG(tooltip)
         self.equation_load_button.setText("")
+#if QT_CONFIG(tooltip)
+        self.equation_delete_button.setToolTip(QCoreApplication.translate("MainWindow", u"Eliminar ecuaci\u00f3n", None))
+#endif // QT_CONFIG(tooltip)
         self.equation_delete_button.setText("")
 #if QT_CONFIG(tooltip)
         self.equation_edit_button.setToolTip(QCoreApplication.translate("MainWindow", u"Editar ecuaci\u00f3n", None))

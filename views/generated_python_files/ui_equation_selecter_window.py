@@ -29,7 +29,7 @@ class Ui_insert_equation_dialog(object):
         insert_equation_dialog.resize(454, 382)
         insert_equation_dialog.setMaximumSize(QSize(454, 382))
         icon = QIcon()
-        icon.addFile(u":/icon/Images/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icon/Images/ico.ico", QSize(), QIcon.Normal, QIcon.Off)
         insert_equation_dialog.setWindowIcon(icon)
         insert_equation_dialog.setStyleSheet(u"#insert_equation_dialog{\n"
 "background-color: #2c313c\n"

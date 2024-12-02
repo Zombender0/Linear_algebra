@@ -1,6 +1,6 @@
 from views.generated_python_files.ui_save_name_window import Ui_save_dialog as GeneratedSavedDialog
 from PySide6.QtWidgets import QDialog
-from PySide6.QtCore import Slot,Signal
+from PySide6.QtCore import Slot,Signal,QSize
 
 class SaveNameWindow(QDialog,GeneratedSavedDialog):  
 
@@ -17,4 +17,5 @@ class SaveNameWindow(QDialog,GeneratedSavedDialog):
         else:
             self.main_line_edit.setPlaceholderText('Ingrese nombre de la ecuacion a guardar: ')
             self.label.setText('Ingresar nombre de la ecuacion')
+        self.setFixedSize(QSize(434, 108))
     
