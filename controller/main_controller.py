@@ -41,6 +41,7 @@ class MainController(QObject):
         super().__init__()
         self.config = ConfigParser()
         self.main_window = MainWindow(window)
+        self.main_window.table_resize_checkbox.stateChanged.connect(lambda: self.alter_checkbox())
         self.thread_pool = QThreadPool()
         self.solution_controller = SolutionController()
         self.vector_controller = VectorController()
@@ -73,8 +74,6 @@ class MainController(QObject):
         window.table_vector_button.clicked.connect(lambda: self.open_vector_window())
         window.table_transpose_button.clicked.connect(lambda: self.transpose_matrix())
         window.table_update_button.clicked.connect(lambda: window.update_matrix_size())
-        ##RESIZE
-        window.table_resize_checkbox.stateChanged.connect(lambda: self.alter_checkbox())
         ##COEFICIENT TABLE
         window.clean_coeficient_matrix_button.clicked.connect(lambda: window.clean_table(window.coeficient_table))
         window.adjust_coeficient_matrix_button.clicked.connect(lambda: window.adjust_matrix(window.coeficient_table))
@@ -504,6 +503,12 @@ class MainController(QObject):
     def save_matrix_in_config(self,name):
         coeficient_table = get_data_from_table(self.main_window.coeficient_table)
         independent_table = get_data_from_table(self.main_window.independent_terms_table)
+        if coeficient_table is None:
+            warning_box('Matriz de coeficientes incompleta')
+            return None
+        if independent_table is None:
+            warning_box('Términos independientes incompletos')
+            return None
         if not MainController.__valid_matriz(coeficient_table):
             return None
         if not MainController.__valid_matriz(independent_table):
