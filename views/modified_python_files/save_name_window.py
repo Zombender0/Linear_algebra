@@ -6,7 +6,8 @@ class SaveNameWindow(QDialog,GeneratedSavedDialog):
 
     def __init__(self,parent:QDialog=None,mode:str=None):
         super().__init__(parent)
-        self.setupUi(self,mode)
+        self.mode = mode
+        self.setupUi(self,self.mode)
     
     def setupUi(self, save_dialog,mode):
         super().setupUi(save_dialog)

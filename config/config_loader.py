@@ -15,7 +15,8 @@ class ConfigLoader(ConfigBase):
                 try:
                     parsed_config[section][key] = literal_eval(value)
                 except (ValueError,SyntaxError):
-                    return False
+                    parsed_config[section][key] = str(value)
+                    continue
         return parsed_config
     
 if __name__ == '__main__':

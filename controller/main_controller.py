@@ -34,7 +34,7 @@ from models.BisectionMethod import BisectionMethod
 from models.NewtonRaphson import NewthonRaphson
 from models.FalsePositionMethod import FalsePositionMethod
 from models.SecantMethod import SecantMethod
-from models.EquationFunctions import EquationParser,differencial,integrate
+from models.EquationFunctions import EquationParser,differencial,integrate,EquationEvaluator
 
 class MainController(QObject):
     def __init__(self,window:QMainWindow):
@@ -47,7 +47,8 @@ class MainController(QObject):
         self.equation_controller = EquationController(self.thread_pool)
         self.config_controller = ConfigController(self.config,self.main_window)
         self.save_controller = SaveController(self.config)
-        self.save_controller.name_signal.connect(self.save_matrix_in_config)
+        self.save_controller.name_matrix_signal.connect(self.save_matrix_in_config)
+        self.save_controller.name_equation_signal.connect(self.save_equation_in_config)
         self.connect_main_window_buttons()
         self.main_window.resize_aumented_matrix(self.main_window.row_spinbox.value(),self.main_window.column_spinbox.value())
     
@@ -113,10 +114,44 @@ class MainController(QObject):
         window.table_resize_checkbox.stateChanged.connect(lambda: self.config_controller.config_writer.save_option({
             'CHECK_AUTOSCALE': window.table_resize_checkbox.isChecked()
         }))
-        #SAVED MATRICES
-        window.save_current_table_button.clicked.connect(lambda: self.open_save_window())
+        save_option_in_section = self.config_controller.config_writer.save_option_in_section
+        window.bisection_interval_a_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'BISECTION',{'INTERVAL_A': str(window.bisection_interval_a_line_edit.text())}))
+        window.bisection_interval_b_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'BISECTION', {'INTERVAL_B': window.bisection_interval_b_line_edit.text()}))
+        window.bisection_tolerance_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'BISECTION', {'TOLERANCE': window.bisection_tolerance_line_edit.text()}))
+        
+        window.newton_x_value_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'NEWTON', {'X_VALUE': window.newton_x_value_line_edit.text()}))
+        window.newton_max_iter_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'NEWTON', {'MAX_ITER': window.newton_max_iter_line_edit.text()}))
+        window.newton_tolerance_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'NEWTON', {'TOLERANCE': window.newton_tolerance_line_edit.text()}))
+        
+        window.false_interval_a_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'FALSA POSICION', {'INTERVAL_XL': window.false_interval_a_line_edit.text()}))
+        window.false_interval_b_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'FALSA POSICION', {'INTERVAL_XI': window.false_interval_b_line_edit.text()}))
+        window.false_tolerance_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'FALSA POSICION', {'TOLERANCE': window.false_tolerance_line_edit.text()}))
+        
+        window.secant_x0_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'SECANTE', {'X0': window.secant_x0_line_edit.text()}))
+        window.secant_xi_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'SECANTE', {'XI': window.secant_xi_line_edit.text()}))
+        window.secant_max_iter_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'SECANTE', {'MAX_ITER': window.secant_max_iter_line_edit.text()}))
+        window.secant_tolerance_line_edit.textChanged.connect(lambda: 
+            self.run_async_task(save_option_in_section,'SECANTE', {'TOLERANCE': window.secant_tolerance_line_edit.text()}))
+        ## SAVED MATRICES
+        window.save_current_table_button.clicked.connect(lambda: self.open_save_window('Matriz'))
         window.change_current_table_button.clicked.connect(lambda: self.change_matrix_from_combobox())
         window.delete_current_table_button.clicked.connect(lambda: self.delete_matrix_from_combobox())
+        ## SAVED EQUATIONS
+        window.equation_save_button.clicked.connect(lambda: self.open_save_window('Ecuacion'))
+        window.equation_load_button.clicked.connect(lambda: self.change_equation_from_combobox())
+        window.equation_delete_button.clicked.connect(lambda: self.delete_equation_from_combobox())
     @Slot()
     def solve_button(self):
         matriz = self.get_aumented_matrix_data()
@@ -431,6 +466,40 @@ class MainController(QObject):
         self.save_controller.set_window(SaveNameWindow(mode=mode))
         self.save_controller.open_save_window()
 
+    def save_equation_in_config(self,name:str):
+        equation = self.equation_controller.equation
+        if equation is None:
+            warning_box('Error. No se ha ingresado ninguna ecuación')
+            return None
+        self.config_controller.config_writer.save_equation(name,equation)
+        self.main_window.select_equation_combobox.addItem(name)
+        information_box('Ecuación guardada con éxito')
+
+    def change_equation_from_combobox(self):
+        if self.main_window.select_equation_combobox.currentIndex() == 0:
+            warning_box('Selecciona una de las ecuaciones guardadas para cargarla en la interfaz')
+            return None
+        name = self.main_window.select_equation_combobox.currentText()
+        equation_data = self.config[f'ECUACIONES.{name}']
+        equation = equation_data['nombre']
+        if EquationEvaluator(equation,1) is None:
+            warning_box('La ecuación ingresada no se puede cargar en la interfaz.')
+            return None
+        self.equation_controller.equation = equation
+        self.change_equation(equation_to_rich_text(equation))
+        information_box('Ecuacion cargada con éxito')
+
+    def delete_equation_from_combobox(self):
+        if self.main_window.select_equation_combobox.currentIndex() == 0:
+            warning_box('Selecciona una de las ecuaciones guardadsa para eliminarla')
+            return None
+        if not question_box('¿Estás seguro de eliminar esta ecuación?'):
+            return None
+        self.config_controller.config_writer.delete_equation(self.main_window.select_equation_combobox.currentText())
+        item_index = self.main_window.select_equation_combobox.currentIndex()
+        self.main_window.select_equation_combobox.setCurrentIndex(0)
+        self.main_window.select_equation_combobox.removeItem(item_index)
+        information_box('Ecuación eliminada con éxito')
     @Slot(str)
     def save_matrix_in_config(self,name):
         coeficient_table = get_data_from_table(self.main_window.coeficient_table)
@@ -440,6 +509,7 @@ class MainController(QObject):
         if not MainController.__valid_matriz(independent_table):
             return None
         self.config_controller.config_writer.save_matrix(name,coeficient_table,independent_table)
+        self.main_window.select_table_combobox.addItem(name)
         information_box('Matriz guardada con éxito')
 
     @Slot()
@@ -468,7 +538,7 @@ class MainController(QObject):
         if self.main_window.select_table_combobox.currentIndex() == 0:
             warning_box('Selecciona una de las matrices guardadas para eliminarla')
             return None
-        if not question_box('Estás seguro de eliminar esta matriz'):
+        if not question_box('¿Estás seguro de eliminar esta matriz?'):
             return None
         self.config_controller.config_writer.delete_matrix(self.main_window.select_table_combobox.currentText())
         item_index = self.main_window.select_table_combobox.currentIndex()

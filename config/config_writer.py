@@ -37,6 +37,13 @@ class ConfigWriter(ConfigBase):
             self.config.set('OPCIONES', key, str(value))
         self._save_config()
 
+    def save_option_in_section(self,section:str,option:dict):
+        if not self.config.has_section(section):
+            return None
+        for key, value in option.items():
+            self.config.set(section,key,str(value))
+        self._save_config()
+        
     def delete_matrix(self,nombre:str):
         self.config.remove_section(f'MATRICES.{nombre}')
         self._save_config()

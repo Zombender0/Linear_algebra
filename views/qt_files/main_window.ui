@@ -94,17 +94,17 @@ width: 18px;
 height: 18px;
 }
 
- #table_buttons_frame QComboBox:dropdown{
+ #table_buttons_frame QComboBox:dropdown, #equation_widget QComboBox:dropdown{
 border: 0px;
 }
 
-#table_buttons_frame QComboBox:down-arrow{
+#table_buttons_frame QComboBox:down-arrow, #equation_widget QComboBox:down-arrow{
 subcontrol-position: right;
 width: 18px;
 height: 18px;
 }
 
-#table_buttons_frame QComboBox QListView, #solution_widget QComboBox QListView{
+#table_buttons_frame QComboBox QListView, #solution_widget QComboBox QListView, #equation_widget QComboBox QListView{
 color: #fff;
 font-weight: 500;
 background-color: #2c313c;
@@ -676,7 +676,7 @@ margin-left:-1px;</string>
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="matrix_page">
        <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -1995,6 +1995,9 @@ margin-left:-1px;</string>
                  <bold>true</bold>
                 </font>
                </property>
+               <property name="toolTip">
+                <string>Integral de la ecuación actual</string>
+               </property>
                <property name="text">
                 <string>Integral</string>
                </property>
@@ -2016,6 +2019,9 @@ margin-left:-1px;</string>
                  <pointsize>12</pointsize>
                  <bold>true</bold>
                 </font>
+               </property>
+               <property name="toolTip">
+                <string>Ecuación actual</string>
                </property>
                <property name="text">
                 <string>Ecuacion</string>
@@ -2051,6 +2057,9 @@ margin-left:-1px;</string>
                  <pointsize>12</pointsize>
                  <bold>true</bold>
                 </font>
+               </property>
+               <property name="toolTip">
+                <string>Derivada de la ecuación actual</string>
                </property>
                <property name="text">
                 <string>Derivada</string>
@@ -2124,11 +2133,14 @@ margin-left:-1px;</string>
               <item>
                <layout class="QGridLayout" name="gridLayout">
                 <item row="0" column="0" colspan="2">
-                 <widget class="QComboBox" name="comboBox">
+                 <widget class="QComboBox" name="select_equation_combobox">
                   <property name="font">
                    <font>
                     <pointsize>11</pointsize>
                    </font>
+                  </property>
+                  <property name="toolTip">
+                   <string>Seleccionar ecuación</string>
                   </property>
                   <item>
                    <property name="text">
@@ -2139,6 +2151,9 @@ margin-left:-1px;</string>
                 </item>
                 <item row="1" column="0">
                  <widget class="QPushButton" name="equation_save_button">
+                  <property name="toolTip">
+                   <string>Guardar ecuación</string>
+                  </property>
                   <property name="text">
                    <string/>
                   </property>
@@ -2156,6 +2171,9 @@ margin-left:-1px;</string>
                 </item>
                 <item row="2" column="0">
                  <widget class="QPushButton" name="equation_load_button">
+                  <property name="toolTip">
+                   <string>Cargar ecuación</string>
+                  </property>
                   <property name="text">
                    <string/>
                   </property>
@@ -2173,6 +2191,9 @@ margin-left:-1px;</string>
                 </item>
                 <item row="2" column="1">
                  <widget class="QPushButton" name="equation_delete_button">
+                  <property name="toolTip">
+                   <string>Eliminar ecuación</string>
+                  </property>
                   <property name="text">
                    <string/>
                   </property>
@@ -2239,6 +2260,12 @@ margin-left:-1px;</string>
            </property>
            <item>
             <widget class="QTabWidget" name="method_equation_tab_widget">
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="currentIndex">
               <number>0</number>
              </property>
@@ -2916,6 +2943,18 @@ margin-left:-1px;</string>
            <item>
             <widget class="QWidget" name="graphic_widget" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_9">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
               <item alignment="Qt::AlignmentFlag::AlignTop">
                <widget class="QLabel" name="graphic_label">
                 <property name="font">

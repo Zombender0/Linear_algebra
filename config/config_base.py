@@ -26,7 +26,29 @@ class ConfigBase():
             'COLUMNS': '3',
             'CURRENT_MAIN_TAB': '0',
             'CURRENT_EQUATION_TAB': '0',
-            'CHECK_AUTOSCALE': 'False'
+            'CHECK_AUTOSCALE': 'False',
+            'EQUATION': 'None'
+        }
+        self.config['BISECTION']={
+            'INTERVAL_A': 'None',
+            'INTERVAL_B': 'None',
+            'TOLERANCE': 'None'
+        }
+        self.config['NEWTON']={
+            'X_VALUE': 'None',
+            'MAX_ITER': 'None',
+            'TOLERANCE': 'None',
+        }
+        self.config['FALSA POSICION']={
+            'INTERVAL_XL': 'None',
+            'INTERVAL_XI': 'None',
+            'TOLERANCE': 'None',
+        }
+        self.config['SECANTE']={
+            'X0': 'None',
+            'XI': 'None',
+            'MAX_ITER': 'None',
+            'TOLERANCE': 'None'
         }
         self._save_config()
     

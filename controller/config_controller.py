@@ -2,7 +2,6 @@ from views.modified_python_files.main_window import MainWindow
 from config.config_loader import ConfigLoader
 from config.config_writer import ConfigWriter
 from configparser import ConfigParser
-from helpers.matrix_helper import insert_data_to_table
 from PySide6.QtCore import Qt
 from helpers.box_helper import warning_box
 class ConfigController():
@@ -16,11 +15,12 @@ class ConfigController():
     def load_config_to_interface(self):
         parsed_config = self.config_loader.parsed_config()
         if parsed_config is False:
-            warning_box('Error al cargar la configuracion')
             return None
         self.load_common_options_config(parsed_config['OPCIONES'])
         self.load_matrices_config({key: value for key, value in parsed_config.items() if key.startswith('MATRICES.')})
-    
+        self.load_equations_config([key for key in parsed_config.keys() if key.startswith('ECUACIONES.')])
+        self.load_equation_methods_config({key:value for key,value in parsed_config.items() if key in ('BISECTION', 'NEWTON', 'FALSA POSICION', 'SECANTE')})
+        
     def load_common_options_config(self,common_options:dict):
         try:
             self.window.table_select_solutions_combobox.setCurrentIndex(common_options['MATRIX_SOLVE_METHOD'])
@@ -40,8 +40,51 @@ class ConfigController():
                 if len(value['MATRIZ_COEFICIENTES']) != len(value['TERMINOS_INDEPENDIENTES']) and value['TERMINOS_INDEPENDIENTES'] !=None:
                     continue
                 self.window.select_table_combobox.addItem(key.split('MATRICES.')[1])
-                self.window.select_table_combobox.setItemData(i+1,key)
-                
         except Exception as e:
             warning_box(f'Error al cargar algunas matrices: {e}')
+
+    def load_equations_config(self,equations:list):
+
+        try:
+            for equation in equations:
+                self.window.select_equation_combobox.addItem(equation.split('ECUACIONES.')[1])
+        except Exception as e:
+            warning_box(f'Erro al cargar algunas funciones: {e}')
+    def load_equation_methods_config(self,methods:dict):
+        try:
+            bisection = methods['BISECTION']
+            bisection = {key: (str(value) if value is not None else '') for key, value in bisection.items()}
+            self.window.bisection_interval_a_line_edit.setText(bisection['INTERVAL_A'])
+            self.window.bisection_interval_b_line_edit.setText(bisection['INTERVAL_B'])
+            self.window.bisection_tolerance_line_edit.setText(bisection['TOLERANCE'])
+        except Exception as e:
+            warning_box(f'Error al cargar valores de método de Bisección: {e}')
+        try:
+            newton = methods['NEWTON']
+            newton = {key: (str(value) if value is not None else '') for key, value in newton.items()}
+            self.window.newton_x_value_line_edit.setText(newton['X_VALUE'])
+            self.window.newton_max_iter_line_edit.setText(newton['MAX_ITER'])
+            self.window.newton_tolerance_line_edit.setText(newton['TOLERANCE'])
+        except Exception as e:
+            warning_box(f'Error al cargar valores de método de Newton Raphson: {e}')
         
+        try:
+            false_position = methods['FALSA POSICION']
+            false_position = {key: (str(value) if value is not None else '') for key, value in false_position.items()}
+            self.window.false_interval_a_line_edit.setText(false_position['INTERVAL_XL'])
+            self.window.false_interval_b_line_edit.setText(false_position['INTERVAL_XI'])
+            self.window.false_tolerance_line_edit.setText(false_position['TOLERANCE'])
+
+        except Exception as e:
+            warning_box(f'Error al cargar valores de método de Falsa posición: {e}')
+
+        try:
+            secant = methods['SECANTE']
+            secant = {key: (str(value) if value is not None else '') for key, value in secant.items()}
+            self.window.secant_x0_line_edit.setText(secant['X0'])
+            self.window.secant_xi_line_edit.setText(secant['XI'])
+            self.window.secant_max_iter_line_edit.setText(secant['MAX_ITER'])
+            self.window.secant_tolerance_line_edit.setText(secant['TOLERANCE'])
+        except Exception as e:
+            warning_box(f'Error al cargar valores de método de Secante: {e}')
+    

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowBNHmSr.ui'
+## Form generated from reading UI file 'main_windowLjROTb.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -108,17 +108,17 @@ class Ui_MainWindow(object):
 "height: 18px;\n"
 "}\n"
 "\n"
-" #table_buttons_frame QComboBox:dropdown{\n"
+" #table_buttons_frame QComboBox:dropdown, #equation_widget QComboBox:dropdown{\n"
 "border: 0px;\n"
 "}\n"
 "\n"
-"#table_buttons_frame QComboBox:down-arrow{\n"
+"#table_buttons_frame QComboBox:down-arrow, #equation_widget QComboBox:down-arrow{\n"
 "subcontrol-position: right;\n"
 "width: 18px;\n"
 "height: 18px;\n"
 "}\n"
 "\n"
-"#table_buttons_frame QComboBox QListView, #solution_widget QComboBox QListView{\n"
+"#table_buttons_frame QComboBox QListView, #solution_widget QComboBox QListView, #equation_widget QComboBox QListView{\n"
 "color: #fff;\n"
 "font-weight: 500;\n"
 "background-color: #2c313c;\n"
@@ -131,12 +131,12 @@ class Ui_MainWindow(object):
 "gridline-color:#fff;\n"
 "}\n"
 "\n"
-"#main_table_widget QHeaderView, #main_table_widget QHeaderView::section, #main_table_widget QTableCornerButton::section{\n"
+"#main_table_widget QHeaderView, #main_table_widget QHeaderView::"
+                        "section, #main_table_widget QTableCornerButton::section{\n"
 "background-color: #3e4555;\n"
 "}\n"
 "\n"
-"#main_table"
-                        "_widget QTableWidget::item:hover, #main_table_widget QTableWidget::item:selected{\n"
+"#main_table_widget QTableWidget::item:hover, #main_table_widget QTableWidget::item:selected{\n"
 "background-color: #e9eaef;\n"
 "font-weight: 700;\n"
 "color: #000\n"
@@ -174,13 +174,13 @@ class Ui_MainWindow(object):
 "background: #2c313c;\n"
 "}\n"
 "\n"
-"#method_equation_tab_widget QWidget{\n"
+"#method_equation_tab_widg"
+                        "et QWidget{\n"
 "background-color: #3e4555\n"
 "}\n"
 "\n"
 "#equations_page QTabWidget:pane{\n"
-"background-color: #2"
-                        "c313c\n"
+"background-color: #2c313c\n"
 "}\n"
 "\n"
 "QTabBar::tab{\n"
@@ -217,8 +217,8 @@ class Ui_MainWindow(object):
 "    background-color: #16191d;\n"
 "}\n"
 "\n"
-"#bisection_tab QPushButton::hover, #newton_tab QPushButton::hover, #false_position_tab QPushButton::hover, #secant_tab QPushBut"
-                        "ton::hover{\n"
+"#bisection_ta"
+                        "b QPushButton::hover, #newton_tab QPushButton::hover, #false_position_tab QPushButton::hover, #secant_tab QPushButton::hover{\n"
 "    background-color: #2a2e35;\n"
 "    border-color: #454a52;\n"
 "}\n"
@@ -968,11 +968,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QHBoxLayout(self.equation_widget)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(6, 0, 0, 0)
+        self.horizontalLayout_2.setContentsMargins(6, 0, 0, 3)
         self.equation_grid = QGridLayout()
         self.equation_grid.setObjectName(u"equation_grid")
         self.equation_grid.setVerticalSpacing(10)
-        self.equation_grid.setContentsMargins(-1, -1, 0, -1)
+        self.equation_grid.setContentsMargins(-1, -1, 0, 2)
         self.equation_derivative_text_label = QLabel(self.equation_widget)
         self.equation_derivative_text_label.setObjectName(u"equation_derivative_text_label")
         self.equation_derivative_text_label.setFont(font2)
@@ -995,6 +995,7 @@ class Ui_MainWindow(object):
         font6.setBold(True)
         self.equation_label.setFont(font6)
         self.equation_label.setStyleSheet(u"background: none")
+        self.equation_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.equation_grid.addWidget(self.equation_label, 0, 1, 1, 1)
 
@@ -1009,13 +1010,17 @@ class Ui_MainWindow(object):
 
         self.equation_derivative_label = QLabel(self.equation_widget)
         self.equation_derivative_label.setObjectName(u"equation_derivative_label")
+        self.equation_derivative_label.setFont(font6)
         self.equation_derivative_label.setStyleSheet(u"background: none")
+        self.equation_derivative_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.equation_grid.addWidget(self.equation_derivative_label, 1, 1, 1, 1)
 
         self.equation_integral_label = QLabel(self.equation_widget)
         self.equation_integral_label.setObjectName(u"equation_integral_label")
+        self.equation_integral_label.setFont(font6)
         self.equation_integral_label.setStyleSheet(u"background: none")
+        self.equation_integral_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.equation_grid.addWidget(self.equation_integral_label, 2, 1, 1, 1)
 
@@ -1029,12 +1034,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.comboBox = QComboBox(self.equation_options_widget)
-        self.comboBox.addItem("")
-        self.comboBox.setObjectName(u"comboBox")
-        self.comboBox.setFont(font1)
+        self.select_equation_combobox = QComboBox(self.equation_options_widget)
+        self.select_equation_combobox.addItem("")
+        self.select_equation_combobox.setObjectName(u"select_equation_combobox")
+        self.select_equation_combobox.setFont(font1)
 
-        self.gridLayout.addWidget(self.comboBox, 0, 0, 1, 2)
+        self.gridLayout.addWidget(self.select_equation_combobox, 0, 0, 1, 2)
 
         self.equation_save_button = QPushButton(self.equation_options_widget)
         self.equation_save_button.setObjectName(u"equation_save_button")
@@ -1084,6 +1089,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.method_equation_tab_widget = QTabWidget(self.method_equation_widget)
         self.method_equation_tab_widget.setObjectName(u"method_equation_tab_widget")
+        self.method_equation_tab_widget.setFont(font4)
         self.bisection_tab = QWidget()
         self.bisection_tab.setObjectName(u"bisection_tab")
         self.verticalLayout_10 = QVBoxLayout(self.bisection_tab)
@@ -1409,6 +1415,7 @@ class Ui_MainWindow(object):
         self.graphic_widget.setObjectName(u"graphic_widget")
         self.verticalLayout_9 = QVBoxLayout(self.graphic_widget)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.graphic_label = QLabel(self.graphic_widget)
         self.graphic_label.setObjectName(u"graphic_label")
         self.graphic_label.setFont(font4)
@@ -1605,7 +1612,7 @@ class Ui_MainWindow(object):
         self.equation_integral_text_label.setText(QCoreApplication.translate("MainWindow", u"Derivada", None))
         self.equation_derivative_label.setText("")
         self.equation_integral_label.setText("")
-        self.comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar ecuaci\u00f3n", None))
+        self.select_equation_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar ecuaci\u00f3n", None))
 
         self.equation_save_button.setText("")
         self.equation_load_button.setText("")
