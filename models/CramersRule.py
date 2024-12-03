@@ -33,7 +33,7 @@ class CramersRule(Matrix):
         sistema.gauss_method()
         determinante_sistema = sistema.det
         if determinante_sistema == 0:
-            self.config[f"\nNo hay solucion con el metodo cramer"] = (copy.deepcopy(sistema.matriz),0)
+            self.config[f"\nNo hay solución con el método Cramer"] = (copy.deepcopy(sistema.matriz),0)
             return False
         self.determinantes.append(determinante_sistema)
         self.config[f"\nDeterminante del sistema de ecuaciones\n"] = (copy.deepcopy(sistema.matriz), determinante_sistema) 
