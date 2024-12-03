@@ -1204,7 +1204,7 @@ margin: -5px;</string>
                <widget class="QWidget" name="table_extra_options_widget" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-                  <horstretch>10</horstretch>
+                  <horstretch>5</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>

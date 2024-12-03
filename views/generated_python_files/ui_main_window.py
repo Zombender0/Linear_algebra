@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowhallxC.ui'
+## Form generated from reading UI file 'main_windowzAKkSY.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -636,7 +636,8 @@ class Ui_MainWindow(object):
         self.logo_pix_map = QLabel(self.logo_widget)
         self.logo_pix_map.setObjectName(u"logo_pix_map")
         self.logo_pix_map.setMaximumSize(QSize(68, 68))
-        self.logo_pix_map.setStyleSheet(u"background: none;")
+        self.logo_pix_map.setStyleSheet(u"background: none;\n"
+"margin: -5px;")
         self.logo_pix_map.setPixmap(QPixmap(u":/icon/Images/algebrier.png"))
         self.logo_pix_map.setScaledContents(True)
         self.logo_pix_map.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -661,7 +662,7 @@ class Ui_MainWindow(object):
         self.table_extra_options_widget = QWidget(self.table_buttons_frame)
         self.table_extra_options_widget.setObjectName(u"table_extra_options_widget")
         sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Maximum)
-        sizePolicy6.setHorizontalStretch(10)
+        sizePolicy6.setHorizontalStretch(5)
         sizePolicy6.setVerticalStretch(0)
         sizePolicy6.setHeightForWidth(self.table_extra_options_widget.sizePolicy().hasHeightForWidth())
         self.table_extra_options_widget.setSizePolicy(sizePolicy6)
