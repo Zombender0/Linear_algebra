@@ -63,6 +63,7 @@ class MainController(QObject):
         #UI
         window.matrix_tab_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(0))
         window.equation_tab_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(1)) 
+        window.information_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(2))
         window.expand_button.clicked.connect(lambda: animate_side_bar(window.sub_side_bar,QSize(32,MAX_WIDTH),QSize(170,MAX_WIDTH)))
         #MATRIX
         window.import_button.clicked.connect(lambda: window.import_matrix_from_csv())

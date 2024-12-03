@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowzXVmfC.ui'
+## Form generated from reading UI file 'main_windowUCUUar.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModality.WindowModal)
-        MainWindow.resize(1012, 475)
+        MainWindow.resize(1022, 491)
         icon = QIcon()
         icon.addFile(u":/icon/Images/ico.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -171,12 +171,12 @@ class Ui_MainWindow(object):
 "border-radius: 10px;\n"
 "}\n"
 "\n"
-"#equations_page{\n"
+"#equations_page, #information_page{\n"
 "background: #2c313c;\n"
 "}\n"
 "\n"
-"#method_equation_tab_widg"
-                        "et QWidget{\n"
+"#metho"
+                        "d_equation_tab_widget QWidget{\n"
 "background-color: #3e4555\n"
 "}\n"
 "\n"
@@ -217,9 +217,9 @@ class Ui_MainWindow(object):
 "    border-radius: 10px;\n"
 "    background-color: #16191d;\n"
 "}\n"
-"\n"
-"#bisection_ta"
-                        "b QPushButton::hover, #newton_tab QPushButton::hover, #false_position_tab QPushButton::hover, #secant_tab QPushButton::hover{\n"
+""
+                        "\n"
+"#bisection_tab QPushButton::hover, #newton_tab QPushButton::hover, #false_position_tab QPushButton::hover, #secant_tab QPushButton::hover{\n"
 "    background-color: #2a2e35;\n"
 "    border-color: #454a52;\n"
 "}\n"
@@ -352,7 +352,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_21 = QVBoxLayout(self.exportation_importation_button_frame)
         self.verticalLayout_21.setSpacing(5)
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.verticalLayout_21.setContentsMargins(0, 0, 0, 11)
+        self.verticalLayout_21.setContentsMargins(0, 0, 0, 4)
         self.export_button = QPushButton(self.exportation_importation_button_frame)
         self.export_button.setObjectName(u"export_button")
         self.export_button.setFont(font1)
@@ -386,35 +386,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_20.setSpacing(5)
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
         self.verticalLayout_20.setContentsMargins(0, 0, 0, 5)
-        self.config_button = QPushButton(self.config_button_frame)
-        self.config_button.setObjectName(u"config_button")
-        self.config_button.setFont(font1)
-        icon6 = QIcon()
-        icon6.addFile(u":/icon/Images/settings.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.config_button.setIcon(icon6)
-        self.config_button.setIconSize(QSize(30, 30))
-
-        self.verticalLayout_20.addWidget(self.config_button)
-
         self.information_button = QPushButton(self.config_button_frame)
         self.information_button.setObjectName(u"information_button")
         self.information_button.setFont(font1)
-        icon7 = QIcon()
-        icon7.addFile(u":/icon/Images/info.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.information_button.setIcon(icon7)
+        icon6 = QIcon()
+        icon6.addFile(u":/icon/Images/info.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.information_button.setIcon(icon6)
         self.information_button.setIconSize(QSize(30, 30))
 
         self.verticalLayout_20.addWidget(self.information_button)
-
-        self.help_button = QPushButton(self.config_button_frame)
-        self.help_button.setObjectName(u"help_button")
-        self.help_button.setFont(font1)
-        icon8 = QIcon()
-        icon8.addFile(u":/icon/Images/help-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.help_button.setIcon(icon8)
-        self.help_button.setIconSize(QSize(30, 30))
-
-        self.verticalLayout_20.addWidget(self.help_button)
 
 
         self.verticalLayout_11.addWidget(self.config_button_frame, 0, Qt.AlignmentFlag.AlignBottom)
@@ -593,9 +573,9 @@ class Ui_MainWindow(object):
         font3 = QFont()
         font3.setPointSize(9)
         self.save_current_table_button.setFont(font3)
-        icon9 = QIcon()
-        icon9.addFile(u":/icon/Images/save.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.save_current_table_button.setIcon(icon9)
+        icon7 = QIcon()
+        icon7.addFile(u":/icon/Images/save.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.save_current_table_button.setIcon(icon7)
         self.save_current_table_button.setIconSize(QSize(26, 26))
 
         self.horizontalLayout_8.addWidget(self.save_current_table_button)
@@ -603,18 +583,18 @@ class Ui_MainWindow(object):
         self.change_current_table_button = QPushButton(self.select_matrix_options_widget)
         self.change_current_table_button.setObjectName(u"change_current_table_button")
         self.change_current_table_button.setFont(font3)
-        icon10 = QIcon()
-        icon10.addFile(u":/icon/Images/change.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.change_current_table_button.setIcon(icon10)
+        icon8 = QIcon()
+        icon8.addFile(u":/icon/Images/change.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.change_current_table_button.setIcon(icon8)
         self.change_current_table_button.setIconSize(QSize(26, 26))
 
         self.horizontalLayout_8.addWidget(self.change_current_table_button)
 
         self.delete_current_table_button = QPushButton(self.select_matrix_options_widget)
         self.delete_current_table_button.setObjectName(u"delete_current_table_button")
-        icon11 = QIcon()
-        icon11.addFile(u":/icon/Images/delete.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.delete_current_table_button.setIcon(icon11)
+        icon9 = QIcon()
+        icon9.addFile(u":/icon/Images/delete.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.delete_current_table_button.setIcon(icon9)
         self.delete_current_table_button.setIconSize(QSize(26, 26))
 
         self.horizontalLayout_8.addWidget(self.delete_current_table_button)
@@ -684,47 +664,49 @@ class Ui_MainWindow(object):
         self.table_select_solutions_combobox.addItem("")
         self.table_select_solutions_combobox.addItem("")
         self.table_select_solutions_combobox.setObjectName(u"table_select_solutions_combobox")
-        self.table_select_solutions_combobox.setMaximumSize(QSize(16777215, 16777215))
+        self.table_select_solutions_combobox.setMaximumSize(QSize(16777215, 26))
         self.table_select_solutions_combobox.setFont(font1)
 
         self.table_extra_options_grid.addWidget(self.table_select_solutions_combobox, 0, 2, 1, 1)
 
         self.table_solve_button = QPushButton(self.table_extra_options_widget)
         self.table_solve_button.setObjectName(u"table_solve_button")
-        self.table_solve_button.setMaximumSize(QSize(16777215, 16777215))
+        self.table_solve_button.setMaximumSize(QSize(16777215, 26))
         self.table_solve_button.setFont(font1)
 
         self.table_extra_options_grid.addWidget(self.table_solve_button, 2, 2, 1, 1)
 
         self.table_vector_button = QPushButton(self.table_extra_options_widget)
         self.table_vector_button.setObjectName(u"table_vector_button")
-        self.table_vector_button.setMaximumSize(QSize(16777215, 16777215))
+        self.table_vector_button.setMaximumSize(QSize(16777215, 26))
         self.table_vector_button.setFont(font1)
-        icon12 = QIcon()
-        icon12.addFile(u":/icon/Images/vector.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.table_vector_button.setIcon(icon12)
+        icon10 = QIcon()
+        icon10.addFile(u":/icon/Images/vector.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.table_vector_button.setIcon(icon10)
         self.table_vector_button.setIconSize(QSize(21, 21))
 
         self.table_extra_options_grid.addWidget(self.table_vector_button, 0, 4, 1, 1)
 
         self.table_invert_button = QPushButton(self.table_extra_options_widget)
         self.table_invert_button.setObjectName(u"table_invert_button")
+        self.table_invert_button.setMaximumSize(QSize(16777215, 26))
         self.table_invert_button.setFont(font1)
 
         self.table_extra_options_grid.addWidget(self.table_invert_button, 2, 3, 1, 1)
 
         self.table_transpose_button = QPushButton(self.table_extra_options_widget)
         self.table_transpose_button.setObjectName(u"table_transpose_button")
-        self.table_transpose_button.setMaximumSize(QSize(16777215, 16777215))
-        icon13 = QIcon()
-        icon13.addFile(u":/icon/Images/transpose.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.table_transpose_button.setIcon(icon13)
+        self.table_transpose_button.setMaximumSize(QSize(16777215, 26))
+        icon11 = QIcon()
+        icon11.addFile(u":/icon/Images/transpose.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.table_transpose_button.setIcon(icon11)
         self.table_transpose_button.setIconSize(QSize(24, 24))
 
         self.table_extra_options_grid.addWidget(self.table_transpose_button, 2, 4, 1, 1)
 
         self.table_determinant_button = QPushButton(self.table_extra_options_widget)
         self.table_determinant_button.setObjectName(u"table_determinant_button")
+        self.table_determinant_button.setMaximumSize(QSize(16777215, 26))
         self.table_determinant_button.setFont(font1)
         self.table_determinant_button.setIconSize(QSize(26, 26))
 
@@ -738,9 +720,9 @@ class Ui_MainWindow(object):
         sizePolicy7.setHeightForWidth(self.table_update_button.sizePolicy().hasHeightForWidth())
         self.table_update_button.setSizePolicy(sizePolicy7)
         self.table_update_button.setMaximumSize(QSize(38, 38))
-        icon14 = QIcon()
-        icon14.addFile(u":/icon/Images/refresh.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.table_update_button.setIcon(icon14)
+        icon12 = QIcon()
+        icon12.addFile(u":/icon/Images/refresh.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.table_update_button.setIcon(icon12)
         self.table_update_button.setIconSize(QSize(28, 28))
 
         self.table_extra_options_grid.addWidget(self.table_update_button, 0, 5, 3, 1)
@@ -804,9 +786,9 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.adjust_coeficient_matrix_button.sizePolicy().hasHeightForWidth())
         self.adjust_coeficient_matrix_button.setSizePolicy(sizePolicy3)
         self.adjust_coeficient_matrix_button.setMaximumSize(QSize(38, 34))
-        icon15 = QIcon()
-        icon15.addFile(u":/icon/Images/resize.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.adjust_coeficient_matrix_button.setIcon(icon15)
+        icon13 = QIcon()
+        icon13.addFile(u":/icon/Images/resize.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.adjust_coeficient_matrix_button.setIcon(icon13)
         self.adjust_coeficient_matrix_button.setIconSize(QSize(28, 28))
 
         self.coeficient_option_grid.addWidget(self.adjust_coeficient_matrix_button, 0, 3, 1, 1)
@@ -816,9 +798,9 @@ class Ui_MainWindow(object):
         self.random_matrix_button.setMaximumSize(QSize(38, 34))
         self.random_matrix_button.setFont(font1)
         self.random_matrix_button.setStyleSheet(u"")
-        icon16 = QIcon()
-        icon16.addFile(u":/icon/Images/random.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.random_matrix_button.setIcon(icon16)
+        icon14 = QIcon()
+        icon14.addFile(u":/icon/Images/random.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.random_matrix_button.setIcon(icon14)
         self.random_matrix_button.setIconSize(QSize(36, 36))
 
         self.coeficient_option_grid.addWidget(self.random_matrix_button, 0, 1, 1, 1)
@@ -828,9 +810,9 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.clean_coeficient_matrix_button.sizePolicy().hasHeightForWidth())
         self.clean_coeficient_matrix_button.setSizePolicy(sizePolicy3)
         self.clean_coeficient_matrix_button.setMaximumSize(QSize(38, 34))
-        icon17 = QIcon()
-        icon17.addFile(u":/icon/Images/clean.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.clean_coeficient_matrix_button.setIcon(icon17)
+        icon15 = QIcon()
+        icon15.addFile(u":/icon/Images/clean.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.clean_coeficient_matrix_button.setIcon(icon15)
         self.clean_coeficient_matrix_button.setIconSize(QSize(28, 28))
 
         self.coeficient_option_grid.addWidget(self.clean_coeficient_matrix_button, 0, 0, 1, 1)
@@ -840,9 +822,9 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.fill_0_coeficient_matrix_button.sizePolicy().hasHeightForWidth())
         self.fill_0_coeficient_matrix_button.setSizePolicy(sizePolicy3)
         self.fill_0_coeficient_matrix_button.setMaximumSize(QSize(38, 34))
-        icon18 = QIcon()
-        icon18.addFile(u":/icon/Images/zero.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.fill_0_coeficient_matrix_button.setIcon(icon18)
+        icon16 = QIcon()
+        icon16.addFile(u":/icon/Images/zero.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.fill_0_coeficient_matrix_button.setIcon(icon16)
         self.fill_0_coeficient_matrix_button.setIconSize(QSize(36, 36))
 
         self.coeficient_option_grid.addWidget(self.fill_0_coeficient_matrix_button, 0, 2, 1, 1)
@@ -918,7 +900,7 @@ class Ui_MainWindow(object):
         sizePolicy7.setHeightForWidth(self.clean_independent_matrix_button.sizePolicy().hasHeightForWidth())
         self.clean_independent_matrix_button.setSizePolicy(sizePolicy7)
         self.clean_independent_matrix_button.setMaximumSize(QSize(38, 38))
-        self.clean_independent_matrix_button.setIcon(icon17)
+        self.clean_independent_matrix_button.setIcon(icon15)
         self.clean_independent_matrix_button.setIconSize(QSize(28, 28))
 
         self.independent_option_grid.addWidget(self.clean_independent_matrix_button, 0, 0, 1, 1)
@@ -926,7 +908,7 @@ class Ui_MainWindow(object):
         self.random_independent_matrix_button = QPushButton(self.widget)
         self.random_independent_matrix_button.setObjectName(u"random_independent_matrix_button")
         self.random_independent_matrix_button.setMaximumSize(QSize(38, 38))
-        self.random_independent_matrix_button.setIcon(icon16)
+        self.random_independent_matrix_button.setIcon(icon14)
         self.random_independent_matrix_button.setIconSize(QSize(36, 36))
 
         self.independent_option_grid.addWidget(self.random_independent_matrix_button, 0, 1, 1, 1)
@@ -936,7 +918,7 @@ class Ui_MainWindow(object):
         sizePolicy7.setHeightForWidth(self.adjust_independent_matrix_button.sizePolicy().hasHeightForWidth())
         self.adjust_independent_matrix_button.setSizePolicy(sizePolicy7)
         self.adjust_independent_matrix_button.setMaximumSize(QSize(38, 38))
-        self.adjust_independent_matrix_button.setIcon(icon15)
+        self.adjust_independent_matrix_button.setIcon(icon13)
         self.adjust_independent_matrix_button.setIconSize(QSize(28, 28))
 
         self.independent_option_grid.addWidget(self.adjust_independent_matrix_button, 0, 3, 1, 1)
@@ -946,7 +928,7 @@ class Ui_MainWindow(object):
         sizePolicy7.setHeightForWidth(self.zero_independent_matrix_button.sizePolicy().hasHeightForWidth())
         self.zero_independent_matrix_button.setSizePolicy(sizePolicy7)
         self.zero_independent_matrix_button.setMaximumSize(QSize(38, 38))
-        self.zero_independent_matrix_button.setIcon(icon18)
+        self.zero_independent_matrix_button.setIcon(icon16)
         self.zero_independent_matrix_button.setIconSize(QSize(36, 36))
 
         self.independent_option_grid.addWidget(self.zero_independent_matrix_button, 0, 2, 1, 1)
@@ -1080,21 +1062,21 @@ class Ui_MainWindow(object):
 
         self.equation_save_button = QPushButton(self.equation_options_widget)
         self.equation_save_button.setObjectName(u"equation_save_button")
-        self.equation_save_button.setIcon(icon9)
+        self.equation_save_button.setIcon(icon7)
         self.equation_save_button.setIconSize(QSize(24, 24))
 
         self.gridLayout.addWidget(self.equation_save_button, 1, 0, 1, 1)
 
         self.equation_load_button = QPushButton(self.equation_options_widget)
         self.equation_load_button.setObjectName(u"equation_load_button")
-        self.equation_load_button.setIcon(icon10)
+        self.equation_load_button.setIcon(icon8)
         self.equation_load_button.setIconSize(QSize(24, 24))
 
         self.gridLayout.addWidget(self.equation_load_button, 2, 0, 1, 1)
 
         self.equation_delete_button = QPushButton(self.equation_options_widget)
         self.equation_delete_button.setObjectName(u"equation_delete_button")
-        self.equation_delete_button.setIcon(icon11)
+        self.equation_delete_button.setIcon(icon9)
         self.equation_delete_button.setIconSize(QSize(24, 24))
 
         self.gridLayout.addWidget(self.equation_delete_button, 2, 1, 1, 1)
@@ -1103,9 +1085,9 @@ class Ui_MainWindow(object):
         self.equation_edit_button.setObjectName(u"equation_edit_button")
         sizePolicy3.setHeightForWidth(self.equation_edit_button.sizePolicy().hasHeightForWidth())
         self.equation_edit_button.setSizePolicy(sizePolicy3)
-        icon19 = QIcon()
-        icon19.addFile(u":/icon/Images/edit.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.equation_edit_button.setIcon(icon19)
+        icon17 = QIcon()
+        icon17.addFile(u":/icon/Images/edit.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.equation_edit_button.setIcon(icon17)
         self.equation_edit_button.setIconSize(QSize(24, 24))
 
         self.gridLayout.addWidget(self.equation_edit_button, 1, 1, 1, 1)
@@ -1472,6 +1454,26 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setStretch(0, 10)
         self.verticalLayout_8.setStretch(1, 100)
         self.main_stacked_widget.addWidget(self.equations_page)
+        self.information_page = QWidget()
+        self.information_page.setObjectName(u"information_page")
+        self.verticalLayout_22 = QVBoxLayout(self.information_page)
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.information_label = QLabel(self.information_page)
+        self.information_label.setObjectName(u"information_label")
+        self.information_label.setTextFormat(Qt.TextFormat.RichText)
+        self.information_label.setWordWrap(True)
+
+        self.verticalLayout_22.addWidget(self.information_label, 0, Qt.AlignmentFlag.AlignTop)
+
+        self.compiled_label = QLabel(self.information_page)
+        self.compiled_label.setObjectName(u"compiled_label")
+        self.compiled_label.setMaximumSize(QSize(16777215, 32))
+        self.compiled_label.setFont(font7)
+        self.compiled_label.setScaledContents(True)
+
+        self.verticalLayout_22.addWidget(self.compiled_label, 0, Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignBottom)
+
+        self.main_stacked_widget.addWidget(self.information_page)
 
         self.horizontalLayout.addWidget(self.main_stacked_widget)
 
@@ -1503,23 +1505,15 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.export_button.setToolTip(QCoreApplication.translate("MainWindow", u"Exportar matriz actual", None))
 #endif // QT_CONFIG(tooltip)
-        self.export_button.setText(QCoreApplication.translate("MainWindow", u"Importar csv", None))
+        self.export_button.setText(QCoreApplication.translate("MainWindow", u"Exportar matriz", None))
 #if QT_CONFIG(tooltip)
         self.import_button.setToolTip(QCoreApplication.translate("MainWindow", u"Importar matriz en formato CSV", None))
 #endif // QT_CONFIG(tooltip)
         self.import_button.setText(QCoreApplication.translate("MainWindow", u"Importar matriz", None))
 #if QT_CONFIG(tooltip)
-        self.config_button.setToolTip(QCoreApplication.translate("MainWindow", u"Configuraci\u00f3n", None))
-#endif // QT_CONFIG(tooltip)
-        self.config_button.setText(QCoreApplication.translate("MainWindow", u"Configuraci\u00f3n", None))
-#if QT_CONFIG(tooltip)
         self.information_button.setToolTip(QCoreApplication.translate("MainWindow", u"Informaci\u00f3n", None))
 #endif // QT_CONFIG(tooltip)
         self.information_button.setText(QCoreApplication.translate("MainWindow", u"Informaci\u00f3n", None))
-#if QT_CONFIG(tooltip)
-        self.help_button.setToolTip(QCoreApplication.translate("MainWindow", u"Ayuda", None))
-#endif // QT_CONFIG(tooltip)
-        self.help_button.setText(QCoreApplication.translate("MainWindow", u"Ayuda", None))
 #if QT_CONFIG(tooltip)
         self.row_spinbox_label.setToolTip(QCoreApplication.translate("MainWindow", u"Filas de la matriz", None))
 #endif // QT_CONFIG(tooltip)
@@ -1703,5 +1697,34 @@ class Ui_MainWindow(object):
         self.secant_solution_button.setText(QCoreApplication.translate("MainWindow", u"Obtener ra\u00edz", None))
         self.method_equation_tab_widget.setTabText(self.method_equation_tab_widget.indexOf(self.secant_tab), QCoreApplication.translate("MainWindow", u"Secante", None))
         self.graphic_label.setText(QCoreApplication.translate("MainWindow", u"Gr\u00e1fica de ecuaci\u00f3n", None))
+        self.information_label.setText(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<h1 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:xx-large; font-weight:700;\">Calculadora de \u00e1lgebra lineal - Algebrier</span></h1>\n"
+"<h2 style=\" margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt; font-weight:700;\">Creadores</span></h2>\n"
+"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px"
+                        "; -qt-list-indent: 1;\">\n"
+"<li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Johan Enrique Reyes Rojas</span></li>\n"
+"<li style=\" font-size:12pt;\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Karen Mariza Rosa Yolanda Fonseca Vega</li>\n"
+"<li style=\" font-size:12pt;\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Oscar Enrrique Arnuero Ramos</li></ul>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:700;\">Prop\u00f3sito</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px"
+                        "; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Esta calculadora ha sido dise\u00f1ada para asistir en la </span><span style=\" font-size:12pt; font-weight:700;\">resoluci\u00f3n</span><span style=\" font-size:12pt;\"> de </span><span style=\" font-size:12pt; font-weight:700;\">problemas</span><span style=\" font-size:12pt;\"> relacionados con el </span><span style=\" font-size:12pt; font-weight:700;\">\u00e1lgebra</span><span style=\" font-size:12pt;\"> </span><span style=\" font-size:12pt; font-weight:700;\">lineal</span><span style=\" font-size:12pt;\">, facilitando c\u00e1lculos complejos de manera eficiente y precisa. Algunas de las funcionalidades clave incluyen:</span></p>\n"
+"<ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\">\n"
+"<li style=\" font-size:12pt;\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Resoluci"
+                        "\u00f3n de sistemas de ecuaciones</li>\n"
+"<li style=\" font-size:12pt;\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Operaciones con matrices</li>\n"
+"<li style=\" font-size:12pt;\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Ra\u00edces de ecuaciones</li>\n"
+"<li style=\" font-size:12pt;\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Graficadora de ecuaciones</li>\n"
+"<li style=\" font-size:12pt;\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">C\u00e1lculo de determinante y matriz inversa</li></ul>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom"
+                        ":0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Si necesitas ayuda, comun\u00edcate con nosotros con el siguiente correo: </span><a href=\"mailto:rrojas1enrique@gmail.com\"><span style=\" font-size:12pt; text-decoration: underline; color:#0078d7;\">rrojas1enrique@gmail.com</span></a><span style=\" font-size:12pt;\"> </span></p></body></html>", None))
+        self.compiled_label.setText(QCoreApplication.translate("MainWindow", u"Compilado el 2 de Diciembre de 2024", None))
     # retranslateUi
 

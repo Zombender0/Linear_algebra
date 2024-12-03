@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1012</width>
-    <height>475</height>
+    <width>1022</width>
+    <height>491</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -155,7 +155,7 @@ font-weight: 700;
 border-radius: 10px;
 }
 
-#equations_page{
+#equations_page, #information_page{
 background: #2c313c;
 }
 
@@ -493,7 +493,7 @@ margin-left:-1px;</string>
               <number>0</number>
              </property>
              <property name="bottomMargin">
-              <number>11</number>
+              <number>4</number>
              </property>
              <item>
               <widget class="QPushButton" name="export_button">
@@ -506,7 +506,7 @@ margin-left:-1px;</string>
                 <string>Exportar matriz actual</string>
                </property>
                <property name="text">
-                <string>Importar csv</string>
+                <string>Exportar matriz</string>
                </property>
                <property name="icon">
                 <iconset resource="qrc_files/resources.qrc">
@@ -581,31 +581,6 @@ margin-left:-1px;</string>
               <number>5</number>
              </property>
              <item>
-              <widget class="QPushButton" name="config_button">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>Configuración</string>
-               </property>
-               <property name="text">
-                <string>Configuración</string>
-               </property>
-               <property name="icon">
-                <iconset resource="qrc_files/resources.qrc">
-                 <normaloff>:/icon/Images/settings.svg</normaloff>:/icon/Images/settings.svg</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>30</width>
-                 <height>30</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QPushButton" name="information_button">
                <property name="font">
                 <font>
@@ -621,31 +596,6 @@ margin-left:-1px;</string>
                <property name="icon">
                 <iconset resource="qrc_files/resources.qrc">
                  <normaloff>:/icon/Images/info.svg</normaloff>:/icon/Images/info.svg</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>30</width>
-                 <height>30</height>
-                </size>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="help_button">
-               <property name="font">
-                <font>
-                 <pointsize>11</pointsize>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>Ayuda</string>
-               </property>
-               <property name="text">
-                <string>Ayuda</string>
-               </property>
-               <property name="icon">
-                <iconset resource="qrc_files/resources.qrc">
-                 <normaloff>:/icon/Images/help-circle.svg</normaloff>:/icon/Images/help-circle.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -1261,7 +1211,7 @@ margin: -5px;</string>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>16777215</height>
+                       <height>26</height>
                       </size>
                      </property>
                      <property name="font">
@@ -1294,7 +1244,7 @@ margin: -5px;</string>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>16777215</height>
+                       <height>26</height>
                       </size>
                      </property>
                      <property name="font">
@@ -1315,7 +1265,7 @@ margin: -5px;</string>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>16777215</height>
+                       <height>26</height>
                       </size>
                      </property>
                      <property name="font">
@@ -1343,6 +1293,12 @@ margin: -5px;</string>
                    </item>
                    <item row="2" column="3">
                     <widget class="QPushButton" name="table_invert_button">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>26</height>
+                      </size>
+                     </property>
                      <property name="font">
                       <font>
                        <pointsize>11</pointsize>
@@ -1361,7 +1317,7 @@ margin: -5px;</string>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>16777215</height>
+                       <height>26</height>
                       </size>
                      </property>
                      <property name="toolTip">
@@ -1384,6 +1340,12 @@ margin: -5px;</string>
                    </item>
                    <item row="0" column="3">
                     <widget class="QPushButton" name="table_determinant_button">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>26</height>
+                      </size>
+                     </property>
                      <property name="font">
                       <font>
                        <pointsize>11</pointsize>
@@ -3042,6 +3004,68 @@ margin: -5px;</string>
             </widget>
            </item>
           </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="information_page">
+       <layout class="QVBoxLayout" name="verticalLayout_22">
+        <item alignment="Qt::AlignmentFlag::AlignTop">
+         <widget class="QLabel" name="information_label">
+          <property name="text">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;h1 style=&quot; margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:xx-large; font-weight:700;&quot;&gt;Calculadora de álgebra lineal - Algebrier&lt;/span&gt;&lt;/h1&gt;
+&lt;h2 style=&quot; margin-top:16px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:700;&quot;&gt;Creadores&lt;/span&gt;&lt;/h2&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
+&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Johan Enrique Reyes Rojas&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Karen Mariza Rosa Yolanda Fonseca Vega&lt;/li&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Oscar Enrrique Arnuero Ramos&lt;/li&gt;&lt;/ul&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:700;&quot;&gt;Propósito&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Esta calculadora ha sido diseñada para asistir en la &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt;resolución&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; de &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt;problemas&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; relacionados con el &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt;álgebra&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:700;&quot;&gt;lineal&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;, facilitando cálculos complejos de manera eficiente y precisa. Algunas de las funcionalidades clave incluyen:&lt;/span&gt;&lt;/p&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Resolución de sistemas de ecuaciones&lt;/li&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Operaciones con matrices&lt;/li&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Raíces de ecuaciones&lt;/li&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Graficadora de ecuaciones&lt;/li&gt;
+&lt;li style=&quot; font-size:12pt;&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Cálculo de determinante y matriz inversa&lt;/li&gt;&lt;/ul&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Si necesitas ayuda, comunícate con nosotros con el siguiente correo: &lt;/span&gt;&lt;a href=&quot;mailto:rrojas1enrique@gmail.com&quot;&gt;&lt;span style=&quot; font-size:12pt; text-decoration: underline; color:#0078d7;&quot;&gt;rrojas1enrique@gmail.com&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::TextFormat::RichText</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignBottom">
+         <widget class="QLabel" name="compiled_label">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Compilado el 2 de Diciembre de 2024</string>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
        </layout>
