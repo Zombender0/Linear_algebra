@@ -68,8 +68,7 @@ def get_data_from_table(table:QTableWidget)->list[list]:
 def insert_data_to_table(table:QTableWidget,matrix:list[list]|list,editable=False,last_b=False,letter='X')->None:
     rows = len(matrix)
     columns = len(matrix[0])
-    if table.rowCount() != rows or table.columnCount() !=columns:
-        resize_table(table,rows,columns, last_b=last_b,letter=letter)
+    resize_table(table,rows,columns, last_b=last_b,letter=letter)
     for row in range(rows):
         for col in range(columns):
             item = table.item(row,col)

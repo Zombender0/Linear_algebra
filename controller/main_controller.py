@@ -444,9 +444,9 @@ class MainController(QObject):
         if original_matrix == None:
             return None
         transposed_matrix = get_transposed_matrix(original_matrix)
-        insert_data_to_table(self.main_window.coeficient_table,transposed_matrix,editable=True,last_b=False,letter='X')
         self.main_window.row_spinbox.setValue(len(transposed_matrix))
         self.main_window.column_spinbox.setValue(len(transposed_matrix[0]))
+        insert_data_to_table(self.main_window.coeficient_table,transposed_matrix,editable=True,last_b=False,letter='X')
         
     @Slot()
     def export_matrix_from_csv(self)->None:
