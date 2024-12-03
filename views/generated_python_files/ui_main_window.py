@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowzAKkSY.ui'
+## Form generated from reading UI file 'main_windowzXVmfC.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModality.WindowModal)
-        MainWindow.resize(907, 475)
+        MainWindow.resize(1012, 475)
         icon = QIcon()
         icon.addFile(u":/icon/Images/ico.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -490,7 +490,7 @@ class Ui_MainWindow(object):
 
         self.row_spinbox = QSpinBox(self.table_row_spinbox_widget)
         self.row_spinbox.setObjectName(u"row_spinbox")
-        self.row_spinbox.setMinimumSize(QSize(60, 30))
+        self.row_spinbox.setMinimumSize(QSize(70, 30))
         self.row_spinbox.setMaximumSize(QSize(16777215, 16777215))
         self.row_spinbox.setStyleSheet(u"border-color: rgb(0, 0, 0);")
         self.row_spinbox.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -517,7 +517,7 @@ class Ui_MainWindow(object):
 
         self.column_spinbox = QSpinBox(self.table_column_spinbox_widget)
         self.column_spinbox.setObjectName(u"column_spinbox")
-        self.column_spinbox.setMinimumSize(QSize(60, 30))
+        self.column_spinbox.setMinimumSize(QSize(70, 30))
         self.column_spinbox.setMaximumSize(QSize(16777215, 16777215))
         self.column_spinbox.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -564,7 +564,7 @@ class Ui_MainWindow(object):
         self.select_matrix_widget = QWidget(self.table_buttons_frame)
         self.select_matrix_widget.setObjectName(u"select_matrix_widget")
         sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred)
-        sizePolicy4.setHorizontalStretch(1)
+        sizePolicy4.setHorizontalStretch(4)
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.select_matrix_widget.sizePolicy().hasHeightForWidth())
         self.select_matrix_widget.setSizePolicy(sizePolicy4)
@@ -576,6 +576,7 @@ class Ui_MainWindow(object):
         self.select_table_combobox = QComboBox(self.select_matrix_widget)
         self.select_table_combobox.addItem("")
         self.select_table_combobox.setObjectName(u"select_table_combobox")
+        self.select_table_combobox.setMinimumSize(QSize(250, 0))
         self.select_table_combobox.setFont(font1)
         self.select_table_combobox.setFrame(True)
 
@@ -627,7 +628,7 @@ class Ui_MainWindow(object):
         self.logo_widget = QWidget(self.table_buttons_frame)
         self.logo_widget.setObjectName(u"logo_widget")
         sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
-        sizePolicy5.setHorizontalStretch(3)
+        sizePolicy5.setHorizontalStretch(6)
         sizePolicy5.setVerticalStretch(0)
         sizePolicy5.setHeightForWidth(self.logo_widget.sizePolicy().hasHeightForWidth())
         self.logo_widget.setSizePolicy(sizePolicy5)
@@ -662,7 +663,7 @@ class Ui_MainWindow(object):
         self.table_extra_options_widget = QWidget(self.table_buttons_frame)
         self.table_extra_options_widget.setObjectName(u"table_extra_options_widget")
         sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Maximum)
-        sizePolicy6.setHorizontalStretch(5)
+        sizePolicy6.setHorizontalStretch(15)
         sizePolicy6.setVerticalStretch(0)
         sizePolicy6.setHeightForWidth(self.table_extra_options_widget.sizePolicy().hasHeightForWidth())
         self.table_extra_options_widget.setSizePolicy(sizePolicy6)

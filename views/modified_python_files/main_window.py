@@ -34,8 +34,8 @@ class MainWindow(Generated_MainWindow):
 background: none;
 margin: -3px;
 ''')
+        
         MainWindow.showMaximized()
-
 
     def resize_aumented_matrix(self, rows:int,columns:int)->None:
         resize_table(self.coeficient_table,rows,columns,last_b=False,letter='X')
@@ -45,8 +45,7 @@ margin: -3px;
         rows = len(matrix)
         columns = len(matrix[0])
         coeficient_matrix = [row[:-1] for row in matrix]
-        independent_terms_matrix = [row[-1] for row in matrix]
-
+        independent_terms_matrix = [[row[-1]] for row in matrix]
         self.resize_aumented_matrix(rows,columns)
         insert_data_to_table(self.coeficient_table,coeficient_matrix,editable=True,last_b=False,letter='X')
         insert_data_to_table(self.independent_terms_table,independent_terms_matrix,editable=True,last_b=True,letter=' ')
@@ -101,8 +100,9 @@ margin: -3px;
         matrix = create_matrix_from_csv(file_path)
         if matrix is None:
             return
-        self.insert_data_to_aumented_matrix(matrix)
         rows = len(matrix)
-        columns = len(matrix[0])
+        columns = len(matrix[0])-1
         self.row_spinbox.setValue(rows)
         self.column_spinbox.setValue(columns)
+        self.insert_data_to_aumented_matrix(matrix)
+        

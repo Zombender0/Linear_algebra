@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>907</width>
+    <width>1012</width>
     <height>475</height>
    </rect>
   </property>
@@ -838,7 +838,7 @@ margin-left:-1px;</string>
                         <widget class="QSpinBox" name="row_spinbox">
                          <property name="minimumSize">
                           <size>
-                           <width>60</width>
+                           <width>70</width>
                            <height>30</height>
                           </size>
                          </property>
@@ -909,7 +909,7 @@ margin-left:-1px;</string>
                         <widget class="QSpinBox" name="column_spinbox">
                          <property name="minimumSize">
                           <size>
-                           <width>60</width>
+                           <width>70</width>
                            <height>30</height>
                           </size>
                          </property>
@@ -1008,7 +1008,7 @@ margin-left:-1px;</string>
                <widget class="QWidget" name="select_matrix_widget" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-                  <horstretch>1</horstretch>
+                  <horstretch>4</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
@@ -1033,6 +1033,12 @@ margin-left:-1px;</string>
                  </property>
                  <item>
                   <widget class="QComboBox" name="select_table_combobox">
+                   <property name="minimumSize">
+                    <size>
+                     <width>250</width>
+                     <height>0</height>
+                    </size>
+                   </property>
                    <property name="font">
                     <font>
                      <pointsize>11</pointsize>
@@ -1146,7 +1152,7 @@ margin-left:-1px;</string>
                <widget class="QWidget" name="logo_widget" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                  <horstretch>3</horstretch>
+                  <horstretch>6</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
@@ -1204,7 +1210,7 @@ margin: -5px;</string>
                <widget class="QWidget" name="table_extra_options_widget" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-                  <horstretch>5</horstretch>
+                  <horstretch>15</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
