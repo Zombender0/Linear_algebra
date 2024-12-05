@@ -47,9 +47,11 @@ class ConfigController():
 
         try:
             for equation in equations:
-                self.window.select_equation_combobox.addItem(equation.split('ECUACIONES.')[1])
+                equation_name:str = equation.split('ECUACIONES.')[1]
+                self.window.select_equation_combobox.addItem(f'{equation_name}')
         except Exception as e:
-            warning_box(f'Erro al cargar algunas funciones: {e}')
+            warning_box(f'Error al cargar algunas funciones: {e}')
+
     def load_equation_methods_config(self,methods:dict):
         try:
             bisection = methods['BISECTION']
@@ -77,7 +79,6 @@ class ConfigController():
 
         except Exception as e:
             warning_box(f'Error al cargar valores de método de Falsa posición: {e}')
-
         try:
             secant = methods['SECANTE']
             secant = {key: (str(value) if value is not None else '') for key, value in secant.items()}

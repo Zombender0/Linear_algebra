@@ -17,7 +17,7 @@ class ConfigBase():
         if not os.path.exists(self.CONFIG_FILE):
             self._create_default_config()
         else:
-            self.config.read(self.CONFIG_FILE)
+            self.config.read(self.CONFIG_FILE,encoding='utf-8')
 
     def _create_default_config(self):
         self.config['OPCIONES'] = {
@@ -60,15 +60,6 @@ class ConfigBase():
         if not self.config.has_section(section):
             self.config.add_section(section)
             self._save_config()
-
-    def section_checker(self,section:str):
-        def decorator(func):
-            @wraps(func)
-            def wrapper(self, *args, **kwargs):
-                self.check_section_exists(section) 
-                return func(self, *args, **kwargs)
-            return wrapper
-        return decorator
 
 if __name__ == '__main__':
     config = cp.ConfigParser()
