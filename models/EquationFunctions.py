@@ -3,8 +3,6 @@ import re
 from copy import deepcopy
 from symengine import diff,sympify, symbols
 from math import log
-from sympy import integrate as integral_
-from sympy import symbols as sym
 
 def EquationEvaluator(equation:str,x_value:int|float)->float|None:
     allowed_data_copy = deepcopy(ALLOWED_DATA)
@@ -33,17 +31,3 @@ def differencial(equation:str)->str:
     except Exception as e:
         return equation
     return str(differencial)
-
-def integrate(equation:str)->str:
-    sympified_function = sympify(equation)
-    try:
-        integral = integral_(sympified_function,sym('x'))
-    except Exception as e:
-        return (equation, e)
-    return str(integral)
-
-if __name__ == '__main__':
-    function = 'ln(x)'
-    function = EquationParser(function)
-    print(integrate(function))
-
