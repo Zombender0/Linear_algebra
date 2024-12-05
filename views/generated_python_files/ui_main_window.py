@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_windowUCUUar.ui'
+## Form generated from reading UI file 'main_windowYdpude.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -21,7 +21,6 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
     QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
     QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
     QWidget)
-
 from PySide6.QtSvg import QtSvg
 from views.qt_files.qrc_files import resources_rc
 
@@ -30,7 +29,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModality.WindowModal)
-        MainWindow.resize(1022, 491)
+        MainWindow.resize(716, 491)
         icon = QIcon()
         icon.addFile(u":/icon/Images/ico.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -56,23 +55,21 @@ class Ui_MainWindow(object):
 "background-color: #2c313c;\n"
 "}\n"
 "\n"
-"#table_buttons_frame QPushButton, #table_buttons_frame QComboBox,#solution_widget QComboBox, #equations_page QPushButton, #table_options_widget QPushButton, #table_options_widget QComboBox, #table_aumented_widget QPushButton, #equation_widget QComboBox{\n"
+"#table_buttons_frame QPushButton, #table_buttons_frame QComboBox,#solution_widget QComboBox, #equations_page QPushButton, #table_options_widget QPushButton, #table_options_widget QComboBox, #table_aumented_widget QPushButton, #equation_widget QComboBox, #main_home_widget QPushButton{\n"
 "    color: #ffffff;\n"
 "    text-align: center;\n"
 "	padding: 3px;\n"
 "    border-radius: 10px;\n"
-"    background-color: #16191d;\n"
+"    background-color: #16191d ;\n"
 "}\n"
-"\n"
-"#table_buttons_frame QPushButton::hover, #table_buttons_frame QComboBox::hover,#equations_page QPushButton::hover, #table_options_widget QPushButton::hover, #table_options_widget QComboBox::hover, #table_aumented_widget QPushButton::hover, #"
-                        "equation_widget QComboBox::hover{\n"
+"/*3c4b84*/\n"
+"#table_buttons_frame QPushButton::hover, #table_buttons_frame QComboBox::hover,#equations_page QPushButton::hover, #table_options_widget QPushButton::hover, #table_options_widget QComboBox::hover, #t"
+                        "able_aumented_widget QPushButton::hover, #equation_widget QComboBox::hover, #main_home_widget QPushButton::hover{\n"
 "    background-color: #2a2e35;\n"
 "    border-color: #454a52;\n"
 "}\n"
-"\n"
 "#table_buttons_frame QPushButton::pressed, #table_buttons_frame QComboBox::pressed,#equations_page QPushButton::pressed, #table_options_widget QPushButton::pressed, #table_options_widget QComboBox::pressed, #table_aumented_widget QPushButton::pressed, #equation_widget QComboBox::pressed{\n"
 "    background-color: #1d2127;\n"
-"	font-weight: 350;\n"
 "}\n"
 "\n"
 "#table_buttons_frame QSpinBox{\n"
@@ -94,9 +91,9 @@ class Ui_MainWindow(object):
 "font-weight: 700;\n"
 "}\n"
 "\n"
-"#table_column_spinbox_widget QSpinBox:up-button, #table_row_spinbox_widget QSpinBox:up-button{\n"
-"image:url(:/i"
-                        "con/Images/arrow_upwards.png);\n"
+"#table_column_spinbox_widget QSpinBox:up-button, #table_row_"
+                        "spinbox_widget QSpinBox:up-button{\n"
+"image:url(:/icon/Images/arrow_upwards.png);\n"
 "subcontrol-position: right;\n"
 "width: 18px;\n"
 "height: 18px;\n"
@@ -132,15 +129,15 @@ class Ui_MainWindow(object):
 "gridline-color:#fff;\n"
 "}\n"
 "\n"
-"#main_table_widget QHeaderView, #main_table_widget QHeaderView::"
-                        "section, #main_table_widget QTableCornerButton::section{\n"
+"#main_table_"
+                        "widget QHeaderView, #main_table_widget QHeaderView::section, #main_table_widget QTableCornerButton::section{\n"
 "background-color: #3e4555;\n"
 "}\n"
 "\n"
 "#main_table_widget QTableWidget::item:hover, #main_table_widget QTableWidget::item:selected{\n"
-"background-color: #e9eaef;\n"
+"background-color: #72809b;\n"
 "font-weight: 700;\n"
-"color: #000\n"
+"color: #6e86b1\n"
 "}\n"
 "\n"
 "#main_table_widget QTableWidget::item{\n"
@@ -150,7 +147,8 @@ class Ui_MainWindow(object):
 "\n"
 "/* Estilo para el editor de texto cuando se est\u00e1 editando una celda */\n"
 "QTableWidget::item QLineEdit{\n"
-"color: black;\n"
+"background-color:#8592a9;\n"
+"color: #000;\n"
 "}\n"
 "\n"
 "#side_bar{\n"
@@ -171,12 +169,12 @@ class Ui_MainWindow(object):
 "border-radius: 10px;\n"
 "}\n"
 "\n"
-"#equations_page, #information_page{\n"
+""
+                        "#equations_page, #information_page, #home_page{\n"
 "background: #2c313c;\n"
 "}\n"
 "\n"
-"#metho"
-                        "d_equation_tab_widget QWidget{\n"
+"#method_equation_tab_widget QWidget{\n"
 "background-color: #3e4555\n"
 "}\n"
 "\n"
@@ -212,13 +210,13 @@ class Ui_MainWindow(object):
 "\n"
 " #bisection_tab QPushButton, #newton_tab QPushButton, #false_position_tab QPushButton, #secant_tab QPushButton{\n"
 "color: #ffffff;\n"
-"    text-align: center;\n"
+"    text-align: center"
+                        ";\n"
 "	padding: 3px;\n"
 "    border-radius: 10px;\n"
 "    background-color: #16191d;\n"
 "}\n"
-""
-                        "\n"
+"\n"
 "#bisection_tab QPushButton::hover, #newton_tab QPushButton::hover, #false_position_tab QPushButton::hover, #secant_tab QPushButton::hover{\n"
 "    background-color: #2a2e35;\n"
 "    border-color: #454a52;\n"
@@ -229,10 +227,13 @@ class Ui_MainWindow(object):
 "font-weight: 350;\n"
 "}\n"
 "\n"
-"QCheckBox::unchecked{\n"
-"color: #8b7a78;\n"
+"QCheckBox::checked{\n"
+"color: #9ba6b9;\n"
 "}\n"
 "\n"
+"QCheckBox::unchecked{\n"
+"color: #72809b\n"
+"}\n"
 "#table_buttons_down_widget QPushButton{\n"
 "text-align:left;\n"
 "}\n"
@@ -243,6 +244,19 @@ class Ui_MainWindow(object):
 "\n"
 "#table_aumented_widget QLabel{\n"
 "background:none;\n"
+"}\n"
+"\n"
+"#main_table_widget QHeaderView::section, #main_table_widget QTableCornerButton::section{\n"
+"background-color: #3e4769;\n"
+"}\n"
+"\n"
+"#main_table_widget QHeaderView::"
+                        "section::hover, #main_table_widget QTableCornerButton::section::hover{\n"
+"background-color: #586596;\n"
+"}\n"
+"\n"
+"#method_equation_tab_widget QLabel{\n"
+"background-color: #3e4769;\n"
 "}")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -525,7 +539,10 @@ class Ui_MainWindow(object):
         self.table_resize_checkbox.setSizePolicy(sizePolicy3)
         self.table_resize_checkbox.setMinimumSize(QSize(0, 0))
         self.table_resize_checkbox.setMaximumSize(QSize(16777215, 16777215))
-        self.table_resize_checkbox.setFont(font1)
+        font3 = QFont()
+        font3.setPointSize(11)
+        font3.setBold(True)
+        self.table_resize_checkbox.setFont(font3)
         self.table_resize_checkbox.setContextMenuPolicy(Qt.ContextMenuPolicy.NoContextMenu)
         self.table_resize_checkbox.setStyleSheet(u"")
         self.table_resize_checkbox.setChecked(False)
@@ -543,8 +560,8 @@ class Ui_MainWindow(object):
 
         self.select_matrix_widget = QWidget(self.table_buttons_frame)
         self.select_matrix_widget.setObjectName(u"select_matrix_widget")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred)
-        sizePolicy4.setHorizontalStretch(4)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
+        sizePolicy4.setHorizontalStretch(2)
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.select_matrix_widget.sizePolicy().hasHeightForWidth())
         self.select_matrix_widget.setSizePolicy(sizePolicy4)
@@ -556,8 +573,11 @@ class Ui_MainWindow(object):
         self.select_table_combobox = QComboBox(self.select_matrix_widget)
         self.select_table_combobox.addItem("")
         self.select_table_combobox.setObjectName(u"select_table_combobox")
-        self.select_table_combobox.setMinimumSize(QSize(250, 0))
-        self.select_table_combobox.setFont(font1)
+        self.select_table_combobox.setMinimumSize(QSize(175, 0))
+        font4 = QFont()
+        font4.setPointSize(13)
+        font4.setBold(True)
+        self.select_table_combobox.setFont(font4)
         self.select_table_combobox.setFrame(True)
 
         self.verticalLayout_25.addWidget(self.select_table_combobox)
@@ -570,9 +590,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setContentsMargins(5, 0, 0, 0)
         self.save_current_table_button = QPushButton(self.select_matrix_options_widget)
         self.save_current_table_button.setObjectName(u"save_current_table_button")
-        font3 = QFont()
-        font3.setPointSize(9)
-        self.save_current_table_button.setFont(font3)
+        font5 = QFont()
+        font5.setPointSize(9)
+        self.save_current_table_button.setFont(font5)
         icon7 = QIcon()
         icon7.addFile(u":/icon/Images/save.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.save_current_table_button.setIcon(icon7)
@@ -582,7 +602,7 @@ class Ui_MainWindow(object):
 
         self.change_current_table_button = QPushButton(self.select_matrix_options_widget)
         self.change_current_table_button.setObjectName(u"change_current_table_button")
-        self.change_current_table_button.setFont(font3)
+        self.change_current_table_button.setFont(font5)
         icon8 = QIcon()
         icon8.addFile(u":/icon/Images/change.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.change_current_table_button.setIcon(icon8)
@@ -605,48 +625,13 @@ class Ui_MainWindow(object):
 
         self.table_buttons_horizontal_layout.addWidget(self.select_matrix_widget, 0, Qt.AlignmentFlag.AlignLeft)
 
-        self.logo_widget = QWidget(self.table_buttons_frame)
-        self.logo_widget.setObjectName(u"logo_widget")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
-        sizePolicy5.setHorizontalStretch(6)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.logo_widget.sizePolicy().hasHeightForWidth())
-        self.logo_widget.setSizePolicy(sizePolicy5)
-        self.horizontalLayout_12 = QHBoxLayout(self.logo_widget)
-        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.logo_pix_map = QLabel(self.logo_widget)
-        self.logo_pix_map.setObjectName(u"logo_pix_map")
-        self.logo_pix_map.setMaximumSize(QSize(68, 68))
-        self.logo_pix_map.setStyleSheet(u"background: none;\n"
-"margin: -5px;")
-        self.logo_pix_map.setPixmap(QPixmap(u":/icon/Images/algebrier.png"))
-        self.logo_pix_map.setScaledContents(True)
-        self.logo_pix_map.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.horizontalLayout_12.addWidget(self.logo_pix_map)
-
-        self.logo_label = QLabel(self.logo_widget)
-        self.logo_label.setObjectName(u"logo_label")
-        font4 = QFont()
-        font4.setPointSize(25)
-        font4.setBold(True)
-        font4.setItalic(True)
-        self.logo_label.setFont(font4)
-        self.logo_label.setStyleSheet(u"background: none")
-        self.logo_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.horizontalLayout_12.addWidget(self.logo_label)
-
-
-        self.table_buttons_horizontal_layout.addWidget(self.logo_widget, 0, Qt.AlignmentFlag.AlignLeft)
-
         self.table_extra_options_widget = QWidget(self.table_buttons_frame)
         self.table_extra_options_widget.setObjectName(u"table_extra_options_widget")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Maximum)
-        sizePolicy6.setHorizontalStretch(15)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.table_extra_options_widget.sizePolicy().hasHeightForWidth())
-        self.table_extra_options_widget.setSizePolicy(sizePolicy6)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Maximum)
+        sizePolicy5.setHorizontalStretch(3)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.table_extra_options_widget.sizePolicy().hasHeightForWidth())
+        self.table_extra_options_widget.setSizePolicy(sizePolicy5)
         self.table_extra_options_widget.setMinimumSize(QSize(0, 0))
         self.table_extra_options_widget.setSizeIncrement(QSize(0, 0))
         self.verticalLayout_26 = QVBoxLayout(self.table_extra_options_widget)
@@ -665,14 +650,26 @@ class Ui_MainWindow(object):
         self.table_select_solutions_combobox.addItem("")
         self.table_select_solutions_combobox.setObjectName(u"table_select_solutions_combobox")
         self.table_select_solutions_combobox.setMaximumSize(QSize(16777215, 26))
-        self.table_select_solutions_combobox.setFont(font1)
+        self.table_select_solutions_combobox.setFont(font3)
 
         self.table_extra_options_grid.addWidget(self.table_select_solutions_combobox, 0, 2, 1, 1)
 
         self.table_solve_button = QPushButton(self.table_extra_options_widget)
         self.table_solve_button.setObjectName(u"table_solve_button")
         self.table_solve_button.setMaximumSize(QSize(16777215, 26))
-        self.table_solve_button.setFont(font1)
+        self.table_solve_button.setFont(font3)
+        self.table_solve_button.setStyleSheet(u"QPushButton{\n"
+"background-color: #3c4b84\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: #47599d;\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: #4f63ae;\n"
+"}\n"
+"")
 
         self.table_extra_options_grid.addWidget(self.table_solve_button, 2, 2, 1, 1)
 
@@ -690,7 +687,7 @@ class Ui_MainWindow(object):
         self.table_invert_button = QPushButton(self.table_extra_options_widget)
         self.table_invert_button.setObjectName(u"table_invert_button")
         self.table_invert_button.setMaximumSize(QSize(16777215, 26))
-        self.table_invert_button.setFont(font1)
+        self.table_invert_button.setFont(font3)
 
         self.table_extra_options_grid.addWidget(self.table_invert_button, 2, 3, 1, 1)
 
@@ -707,18 +704,18 @@ class Ui_MainWindow(object):
         self.table_determinant_button = QPushButton(self.table_extra_options_widget)
         self.table_determinant_button.setObjectName(u"table_determinant_button")
         self.table_determinant_button.setMaximumSize(QSize(16777215, 26))
-        self.table_determinant_button.setFont(font1)
+        self.table_determinant_button.setFont(font3)
         self.table_determinant_button.setIconSize(QSize(26, 26))
 
         self.table_extra_options_grid.addWidget(self.table_determinant_button, 0, 3, 1, 1)
 
         self.table_update_button = QPushButton(self.table_extra_options_widget)
         self.table_update_button.setObjectName(u"table_update_button")
-        sizePolicy7 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
-        sizePolicy7.setHorizontalStretch(1)
-        sizePolicy7.setVerticalStretch(0)
-        sizePolicy7.setHeightForWidth(self.table_update_button.sizePolicy().hasHeightForWidth())
-        self.table_update_button.setSizePolicy(sizePolicy7)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        sizePolicy6.setHorizontalStretch(1)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.table_update_button.sizePolicy().hasHeightForWidth())
+        self.table_update_button.setSizePolicy(sizePolicy6)
         self.table_update_button.setMaximumSize(QSize(38, 38))
         icon12 = QIcon()
         icon12.addFile(u":/icon/Images/refresh.svg", QSize(), QIcon.Normal, QIcon.Off)
@@ -758,10 +755,7 @@ class Ui_MainWindow(object):
         self.coeficient_label.setObjectName(u"coeficient_label")
         sizePolicy2.setHeightForWidth(self.coeficient_label.sizePolicy().hasHeightForWidth())
         self.coeficient_label.setSizePolicy(sizePolicy2)
-        font5 = QFont()
-        font5.setPointSize(11)
-        font5.setBold(True)
-        self.coeficient_label.setFont(font5)
+        self.coeficient_label.setFont(font3)
         self.coeficient_label.setStyleSheet(u"margin-left: 10px;")
         self.coeficient_label.setWordWrap(False)
 
@@ -769,11 +763,11 @@ class Ui_MainWindow(object):
 
         self.coeficient_option_sub_widget = QWidget(self.coeficient_option_widget)
         self.coeficient_option_sub_widget.setObjectName(u"coeficient_option_sub_widget")
-        sizePolicy8 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy8.setHorizontalStretch(1)
-        sizePolicy8.setVerticalStretch(0)
-        sizePolicy8.setHeightForWidth(self.coeficient_option_sub_widget.sizePolicy().hasHeightForWidth())
-        self.coeficient_option_sub_widget.setSizePolicy(sizePolicy8)
+        sizePolicy7 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy7.setHorizontalStretch(1)
+        sizePolicy7.setVerticalStretch(0)
+        sizePolicy7.setHeightForWidth(self.coeficient_option_sub_widget.sizePolicy().hasHeightForWidth())
+        self.coeficient_option_sub_widget.setSizePolicy(sizePolicy7)
         self.verticalLayout_27 = QVBoxLayout(self.coeficient_option_sub_widget)
         self.verticalLayout_27.setObjectName(u"verticalLayout_27")
         self.verticalLayout_27.setContentsMargins(0, 0, 0, 0)
@@ -881,53 +875,53 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.independent_terms_label = QLabel(self.independent_options_widget)
         self.independent_terms_label.setObjectName(u"independent_terms_label")
-        self.independent_terms_label.setFont(font5)
+        self.independent_terms_label.setFont(font3)
         self.independent_terms_label.setStyleSheet(u"margin-left: -3px;")
         self.independent_terms_label.setWordWrap(False)
 
         self.horizontalLayout_9.addWidget(self.independent_terms_label)
 
-        self.widget = QWidget(self.independent_options_widget)
-        self.widget.setObjectName(u"widget")
-        self.horizontalLayout_4 = QHBoxLayout(self.widget)
+        self.independent_option_widget = QWidget(self.independent_options_widget)
+        self.independent_option_widget.setObjectName(u"independent_option_widget")
+        self.horizontalLayout_4 = QHBoxLayout(self.independent_option_widget)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.independent_option_grid = QGridLayout()
         self.independent_option_grid.setObjectName(u"independent_option_grid")
         self.independent_option_grid.setContentsMargins(-1, -1, -1, 0)
-        self.clean_independent_matrix_button = QPushButton(self.widget)
+        self.clean_independent_matrix_button = QPushButton(self.independent_option_widget)
         self.clean_independent_matrix_button.setObjectName(u"clean_independent_matrix_button")
-        sizePolicy7.setHeightForWidth(self.clean_independent_matrix_button.sizePolicy().hasHeightForWidth())
-        self.clean_independent_matrix_button.setSizePolicy(sizePolicy7)
-        self.clean_independent_matrix_button.setMaximumSize(QSize(38, 38))
+        sizePolicy6.setHeightForWidth(self.clean_independent_matrix_button.sizePolicy().hasHeightForWidth())
+        self.clean_independent_matrix_button.setSizePolicy(sizePolicy6)
+        self.clean_independent_matrix_button.setMaximumSize(QSize(38, 34))
         self.clean_independent_matrix_button.setIcon(icon15)
         self.clean_independent_matrix_button.setIconSize(QSize(28, 28))
 
         self.independent_option_grid.addWidget(self.clean_independent_matrix_button, 0, 0, 1, 1)
 
-        self.random_independent_matrix_button = QPushButton(self.widget)
+        self.random_independent_matrix_button = QPushButton(self.independent_option_widget)
         self.random_independent_matrix_button.setObjectName(u"random_independent_matrix_button")
-        self.random_independent_matrix_button.setMaximumSize(QSize(38, 38))
+        self.random_independent_matrix_button.setMaximumSize(QSize(38, 34))
         self.random_independent_matrix_button.setIcon(icon14)
         self.random_independent_matrix_button.setIconSize(QSize(36, 36))
 
         self.independent_option_grid.addWidget(self.random_independent_matrix_button, 0, 1, 1, 1)
 
-        self.adjust_independent_matrix_button = QPushButton(self.widget)
+        self.adjust_independent_matrix_button = QPushButton(self.independent_option_widget)
         self.adjust_independent_matrix_button.setObjectName(u"adjust_independent_matrix_button")
-        sizePolicy7.setHeightForWidth(self.adjust_independent_matrix_button.sizePolicy().hasHeightForWidth())
-        self.adjust_independent_matrix_button.setSizePolicy(sizePolicy7)
-        self.adjust_independent_matrix_button.setMaximumSize(QSize(38, 38))
+        sizePolicy6.setHeightForWidth(self.adjust_independent_matrix_button.sizePolicy().hasHeightForWidth())
+        self.adjust_independent_matrix_button.setSizePolicy(sizePolicy6)
+        self.adjust_independent_matrix_button.setMaximumSize(QSize(38, 34))
         self.adjust_independent_matrix_button.setIcon(icon13)
         self.adjust_independent_matrix_button.setIconSize(QSize(28, 28))
 
         self.independent_option_grid.addWidget(self.adjust_independent_matrix_button, 0, 3, 1, 1)
 
-        self.zero_independent_matrix_button = QPushButton(self.widget)
+        self.zero_independent_matrix_button = QPushButton(self.independent_option_widget)
         self.zero_independent_matrix_button.setObjectName(u"zero_independent_matrix_button")
-        sizePolicy7.setHeightForWidth(self.zero_independent_matrix_button.sizePolicy().hasHeightForWidth())
-        self.zero_independent_matrix_button.setSizePolicy(sizePolicy7)
-        self.zero_independent_matrix_button.setMaximumSize(QSize(38, 38))
+        sizePolicy6.setHeightForWidth(self.zero_independent_matrix_button.sizePolicy().hasHeightForWidth())
+        self.zero_independent_matrix_button.setSizePolicy(sizePolicy6)
+        self.zero_independent_matrix_button.setMaximumSize(QSize(38, 34))
         self.zero_independent_matrix_button.setIcon(icon16)
         self.zero_independent_matrix_button.setIconSize(QSize(36, 36))
 
@@ -937,7 +931,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addLayout(self.independent_option_grid)
 
 
-        self.horizontalLayout_9.addWidget(self.widget)
+        self.horizontalLayout_9.addWidget(self.independent_option_widget)
 
 
         self.verticalLayout_24.addWidget(self.independent_options_widget)
@@ -990,30 +984,33 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setContentsMargins(6, 0, 0, 3)
         self.equation_grid = QGridLayout()
         self.equation_grid.setObjectName(u"equation_grid")
-        self.equation_grid.setVerticalSpacing(10)
+        self.equation_grid.setHorizontalSpacing(7)
+        self.equation_grid.setVerticalSpacing(0)
         self.equation_grid.setContentsMargins(-1, -1, 0, 2)
-        self.equation_derivative_text_label = QLabel(self.equation_widget)
-        self.equation_derivative_text_label.setObjectName(u"equation_derivative_text_label")
-        self.equation_derivative_text_label.setFont(font2)
-        self.equation_derivative_text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.equation_derivative_label = QLabel(self.equation_widget)
+        self.equation_derivative_label.setObjectName(u"equation_derivative_label")
+        font7 = QFont()
+        font7.setPointSize(14)
+        font7.setBold(True)
+        self.equation_derivative_label.setFont(font7)
+        self.equation_derivative_label.setStyleSheet(u"background: none")
+        self.equation_derivative_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.equation_grid.addWidget(self.equation_derivative_text_label, 2, 0, 1, 1)
+        self.equation_grid.addWidget(self.equation_derivative_label, 1, 1, 1, 1)
 
         self.equation_text_label = QLabel(self.equation_widget)
         self.equation_text_label.setObjectName(u"equation_text_label")
         self.equation_text_label.setMaximumSize(QSize(140, 40))
         self.equation_text_label.setFont(font2)
+        self.equation_text_label.setStyleSheet(u"padding: 2px;")
         self.equation_text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.equation_grid.addWidget(self.equation_text_label, 0, 0, 1, 1)
+        self.equation_grid.addWidget(self.equation_text_label, 0, 0, 1, 1, Qt.AlignmentFlag.AlignVCenter)
 
         self.equation_label = QLabel(self.equation_widget)
         self.equation_label.setObjectName(u"equation_label")
-        font7 = QFont()
-        font7.setPointSize(14)
-        font7.setBold(True)
         self.equation_label.setFont(font7)
-        self.equation_label.setStyleSheet(u"background: none")
+        self.equation_label.setStyleSheet(u"background: none;")
         self.equation_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.equation_grid.addWidget(self.equation_label, 0, 1, 1, 1)
@@ -1021,27 +1018,12 @@ class Ui_MainWindow(object):
         self.equation_integral_text_label = QLabel(self.equation_widget)
         self.equation_integral_text_label.setObjectName(u"equation_integral_text_label")
         self.equation_integral_text_label.setFont(font2)
+        self.equation_integral_text_label.setStyleSheet(u"padding: 2px;")
         self.equation_integral_text_label.setTextFormat(Qt.TextFormat.AutoText)
         self.equation_integral_text_label.setScaledContents(False)
         self.equation_integral_text_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.equation_grid.addWidget(self.equation_integral_text_label, 1, 0, 1, 1)
-
-        self.equation_derivative_label = QLabel(self.equation_widget)
-        self.equation_derivative_label.setObjectName(u"equation_derivative_label")
-        self.equation_derivative_label.setFont(font7)
-        self.equation_derivative_label.setStyleSheet(u"background: none")
-        self.equation_derivative_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.equation_grid.addWidget(self.equation_derivative_label, 1, 1, 1, 1)
-
-        self.equation_integral_label = QLabel(self.equation_widget)
-        self.equation_integral_label.setObjectName(u"equation_integral_label")
-        self.equation_integral_label.setFont(font7)
-        self.equation_integral_label.setStyleSheet(u"background: none")
-        self.equation_integral_label.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.equation_grid.addWidget(self.equation_integral_label, 2, 1, 1, 1)
+        self.equation_grid.addWidget(self.equation_integral_text_label, 1, 0, 1, 1, Qt.AlignmentFlag.AlignVCenter)
 
 
         self.horizontalLayout_2.addLayout(self.equation_grid)
@@ -1051,35 +1033,39 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10 = QHBoxLayout(self.equation_options_widget)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout = QGridLayout()
-        self.gridLayout.setObjectName(u"gridLayout")
+        self.equation_options_grid_layout = QGridLayout()
+        self.equation_options_grid_layout.setObjectName(u"equation_options_grid_layout")
         self.select_equation_combobox = QComboBox(self.equation_options_widget)
         self.select_equation_combobox.addItem("")
         self.select_equation_combobox.setObjectName(u"select_equation_combobox")
-        self.select_equation_combobox.setFont(font1)
+        font8 = QFont()
+        font8.setPointSize(13)
+        font8.setBold(True)
+        font8.setUnderline(False)
+        self.select_equation_combobox.setFont(font8)
 
-        self.gridLayout.addWidget(self.select_equation_combobox, 0, 0, 1, 2)
+        self.equation_options_grid_layout.addWidget(self.select_equation_combobox, 0, 0, 1, 2)
 
         self.equation_save_button = QPushButton(self.equation_options_widget)
         self.equation_save_button.setObjectName(u"equation_save_button")
         self.equation_save_button.setIcon(icon7)
         self.equation_save_button.setIconSize(QSize(24, 24))
 
-        self.gridLayout.addWidget(self.equation_save_button, 1, 0, 1, 1)
+        self.equation_options_grid_layout.addWidget(self.equation_save_button, 1, 0, 1, 1)
 
         self.equation_load_button = QPushButton(self.equation_options_widget)
         self.equation_load_button.setObjectName(u"equation_load_button")
         self.equation_load_button.setIcon(icon8)
-        self.equation_load_button.setIconSize(QSize(24, 24))
+        self.equation_load_button.setIconSize(QSize(26, 26))
 
-        self.gridLayout.addWidget(self.equation_load_button, 2, 0, 1, 1)
+        self.equation_options_grid_layout.addWidget(self.equation_load_button, 2, 0, 1, 1)
 
         self.equation_delete_button = QPushButton(self.equation_options_widget)
         self.equation_delete_button.setObjectName(u"equation_delete_button")
         self.equation_delete_button.setIcon(icon9)
         self.equation_delete_button.setIconSize(QSize(24, 24))
 
-        self.gridLayout.addWidget(self.equation_delete_button, 2, 1, 1, 1)
+        self.equation_options_grid_layout.addWidget(self.equation_delete_button, 2, 1, 1, 1)
 
         self.equation_edit_button = QPushButton(self.equation_options_widget)
         self.equation_edit_button.setObjectName(u"equation_edit_button")
@@ -1090,10 +1076,10 @@ class Ui_MainWindow(object):
         self.equation_edit_button.setIcon(icon17)
         self.equation_edit_button.setIconSize(QSize(24, 24))
 
-        self.gridLayout.addWidget(self.equation_edit_button, 1, 1, 1, 1)
+        self.equation_options_grid_layout.addWidget(self.equation_edit_button, 1, 1, 1, 1)
 
 
-        self.horizontalLayout_10.addLayout(self.gridLayout)
+        self.horizontalLayout_10.addLayout(self.equation_options_grid_layout)
 
 
         self.horizontalLayout_2.addWidget(self.equation_options_widget)
@@ -1108,7 +1094,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.method_equation_tab_widget = QTabWidget(self.method_equation_widget)
         self.method_equation_tab_widget.setObjectName(u"method_equation_tab_widget")
-        self.method_equation_tab_widget.setFont(font5)
+        self.method_equation_tab_widget.setFont(font3)
         self.bisection_tab = QWidget()
         self.bisection_tab.setObjectName(u"bisection_tab")
         self.verticalLayout_10 = QVBoxLayout(self.bisection_tab)
@@ -1117,10 +1103,10 @@ class Ui_MainWindow(object):
         self.bisection_config_widget = QWidget(self.bisection_tab)
         self.bisection_config_widget.setObjectName(u"bisection_config_widget")
         self.bisection_config_widget.setMaximumSize(QSize(16777215, 16777215))
-        font8 = QFont()
-        font8.setPointSize(9)
-        font8.setKerning(True)
-        self.bisection_config_widget.setFont(font8)
+        font9 = QFont()
+        font9.setPointSize(9)
+        font9.setKerning(True)
+        self.bisection_config_widget.setFont(font9)
         self.verticalLayout_12 = QVBoxLayout(self.bisection_config_widget)
         self.verticalLayout_12.setSpacing(12)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
@@ -1150,23 +1136,23 @@ class Ui_MainWindow(object):
 
         self.bisection_interval_b_line_edit = QLineEdit(self.bisection_config_widget)
         self.bisection_interval_b_line_edit.setObjectName(u"bisection_interval_b_line_edit")
-        font9 = QFont()
-        font9.setPointSize(14)
-        self.bisection_interval_b_line_edit.setFont(font9)
+        font10 = QFont()
+        font10.setPointSize(14)
+        self.bisection_interval_b_line_edit.setFont(font10)
         self.bisection_interval_b_line_edit.setClearButtonEnabled(True)
 
         self.bisection_config_grid.addWidget(self.bisection_interval_b_line_edit, 1, 1, 1, 1)
 
         self.bisection_tolerance_line_edit = QLineEdit(self.bisection_config_widget)
         self.bisection_tolerance_line_edit.setObjectName(u"bisection_tolerance_line_edit")
-        self.bisection_tolerance_line_edit.setFont(font9)
+        self.bisection_tolerance_line_edit.setFont(font10)
         self.bisection_tolerance_line_edit.setClearButtonEnabled(True)
 
         self.bisection_config_grid.addWidget(self.bisection_tolerance_line_edit, 2, 1, 1, 1)
 
         self.bisection_interval_a_line_edit = QLineEdit(self.bisection_config_widget)
         self.bisection_interval_a_line_edit.setObjectName(u"bisection_interval_a_line_edit")
-        self.bisection_interval_a_line_edit.setFont(font9)
+        self.bisection_interval_a_line_edit.setFont(font10)
         self.bisection_interval_a_line_edit.setClearButtonEnabled(True)
 
         self.bisection_config_grid.addWidget(self.bisection_interval_a_line_edit, 0, 1, 1, 1)
@@ -1181,7 +1167,18 @@ class Ui_MainWindow(object):
 
         self.bisection_solution_button = QPushButton(self.bisection_tab)
         self.bisection_solution_button.setObjectName(u"bisection_solution_button")
-        self.bisection_solution_button.setFont(font9)
+        self.bisection_solution_button.setFont(font7)
+        self.bisection_solution_button.setStyleSheet(u"QPushButton{\n"
+"background-color: #3c4b84\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: #47599d;\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: #4f63ae;\n"
+"}")
 
         self.verticalLayout_10.addWidget(self.bisection_solution_button)
 
@@ -1197,7 +1194,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setContentsMargins(5, 0, 5, -1)
         self.newton_config_widget = QWidget(self.newton_tab)
         self.newton_config_widget.setObjectName(u"newton_config_widget")
-        self.newton_config_widget.setFont(font3)
+        self.newton_config_widget.setFont(font5)
         self.verticalLayout_14 = QVBoxLayout(self.newton_config_widget)
         self.verticalLayout_14.setSpacing(12)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
@@ -1212,7 +1209,7 @@ class Ui_MainWindow(object):
 
         self.newton_max_iter_line_edit = QLineEdit(self.newton_config_widget)
         self.newton_max_iter_line_edit.setObjectName(u"newton_max_iter_line_edit")
-        self.newton_max_iter_line_edit.setFont(font9)
+        self.newton_max_iter_line_edit.setFont(font10)
         self.newton_max_iter_line_edit.setClearButtonEnabled(True)
 
         self.newton_config_grid.addWidget(self.newton_max_iter_line_edit, 1, 1, 1, 1)
@@ -1226,7 +1223,7 @@ class Ui_MainWindow(object):
 
         self.newton_tolerance_line_edit = QLineEdit(self.newton_config_widget)
         self.newton_tolerance_line_edit.setObjectName(u"newton_tolerance_line_edit")
-        self.newton_tolerance_line_edit.setFont(font9)
+        self.newton_tolerance_line_edit.setFont(font10)
         self.newton_tolerance_line_edit.setClearButtonEnabled(True)
 
         self.newton_config_grid.addWidget(self.newton_tolerance_line_edit, 2, 1, 1, 1)
@@ -1240,7 +1237,7 @@ class Ui_MainWindow(object):
 
         self.newton_x_value_line_edit = QLineEdit(self.newton_config_widget)
         self.newton_x_value_line_edit.setObjectName(u"newton_x_value_line_edit")
-        self.newton_x_value_line_edit.setFont(font9)
+        self.newton_x_value_line_edit.setFont(font10)
         self.newton_x_value_line_edit.setClearButtonEnabled(True)
 
         self.newton_config_grid.addWidget(self.newton_x_value_line_edit, 0, 1, 1, 1)
@@ -1255,7 +1252,18 @@ class Ui_MainWindow(object):
 
         self.newton_solution_button = QPushButton(self.newton_tab)
         self.newton_solution_button.setObjectName(u"newton_solution_button")
-        self.newton_solution_button.setFont(font9)
+        self.newton_solution_button.setFont(font7)
+        self.newton_solution_button.setStyleSheet(u"QPushButton{\n"
+"background-color: #3c4b84\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: #47599d;\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: #4f63ae;\n"
+"}")
 
         self.verticalLayout_13.addWidget(self.newton_solution_button)
 
@@ -1272,7 +1280,7 @@ class Ui_MainWindow(object):
         self.false_position_config_widget = QWidget(self.false_position_tab)
         self.false_position_config_widget.setObjectName(u"false_position_config_widget")
         self.false_position_config_widget.setMaximumSize(QSize(16777215, 16777215))
-        self.false_position_config_widget.setFont(font8)
+        self.false_position_config_widget.setFont(font9)
         self.verticalLayout_15 = QVBoxLayout(self.false_position_config_widget)
         self.verticalLayout_15.setSpacing(12)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
@@ -1302,21 +1310,21 @@ class Ui_MainWindow(object):
 
         self.false_interval_b_line_edit = QLineEdit(self.false_position_config_widget)
         self.false_interval_b_line_edit.setObjectName(u"false_interval_b_line_edit")
-        self.false_interval_b_line_edit.setFont(font9)
+        self.false_interval_b_line_edit.setFont(font10)
         self.false_interval_b_line_edit.setClearButtonEnabled(True)
 
         self.false_position_config_grid.addWidget(self.false_interval_b_line_edit, 1, 1, 1, 1)
 
         self.false_tolerance_line_edit = QLineEdit(self.false_position_config_widget)
         self.false_tolerance_line_edit.setObjectName(u"false_tolerance_line_edit")
-        self.false_tolerance_line_edit.setFont(font9)
+        self.false_tolerance_line_edit.setFont(font10)
         self.false_tolerance_line_edit.setClearButtonEnabled(True)
 
         self.false_position_config_grid.addWidget(self.false_tolerance_line_edit, 2, 1, 1, 1)
 
         self.false_interval_a_line_edit = QLineEdit(self.false_position_config_widget)
         self.false_interval_a_line_edit.setObjectName(u"false_interval_a_line_edit")
-        self.false_interval_a_line_edit.setFont(font9)
+        self.false_interval_a_line_edit.setFont(font10)
         self.false_interval_a_line_edit.setClearButtonEnabled(True)
 
         self.false_position_config_grid.addWidget(self.false_interval_a_line_edit, 0, 1, 1, 1)
@@ -1331,7 +1339,18 @@ class Ui_MainWindow(object):
 
         self.false_solution_button = QPushButton(self.false_position_tab)
         self.false_solution_button.setObjectName(u"false_solution_button")
-        self.false_solution_button.setFont(font9)
+        self.false_solution_button.setFont(font7)
+        self.false_solution_button.setStyleSheet(u"QPushButton{\n"
+"background-color: #3c4b84\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: #47599d;\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: #4f63ae;\n"
+"}")
 
         self.verticalLayout_16.addWidget(self.false_solution_button)
 
@@ -1347,7 +1366,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_18.setContentsMargins(5, 0, 5, -1)
         self.secant_config_widget = QWidget(self.secant_tab)
         self.secant_config_widget.setObjectName(u"secant_config_widget")
-        self.secant_config_widget.setFont(font3)
+        self.secant_config_widget.setFont(font5)
         self.verticalLayout_17 = QVBoxLayout(self.secant_config_widget)
         self.verticalLayout_17.setSpacing(12)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
@@ -1363,20 +1382,20 @@ class Ui_MainWindow(object):
 
         self.secant_max_iter_line_edit = QLineEdit(self.secant_config_widget)
         self.secant_max_iter_line_edit.setObjectName(u"secant_max_iter_line_edit")
-        self.secant_max_iter_line_edit.setFont(font9)
+        self.secant_max_iter_line_edit.setFont(font10)
 
         self.secant_config_grid.addWidget(self.secant_max_iter_line_edit, 2, 1, 1, 2)
 
         self.secant_xi_line_edit = QLineEdit(self.secant_config_widget)
         self.secant_xi_line_edit.setObjectName(u"secant_xi_line_edit")
-        self.secant_xi_line_edit.setFont(font9)
+        self.secant_xi_line_edit.setFont(font10)
         self.secant_xi_line_edit.setClearButtonEnabled(True)
 
         self.secant_config_grid.addWidget(self.secant_xi_line_edit, 1, 1, 1, 2)
 
         self.secant_x0_line_edit = QLineEdit(self.secant_config_widget)
         self.secant_x0_line_edit.setObjectName(u"secant_x0_line_edit")
-        self.secant_x0_line_edit.setFont(font9)
+        self.secant_x0_line_edit.setFont(font10)
         self.secant_x0_line_edit.setClearButtonEnabled(True)
 
         self.secant_config_grid.addWidget(self.secant_x0_line_edit, 0, 1, 1, 2)
@@ -1404,7 +1423,7 @@ class Ui_MainWindow(object):
 
         self.secant_tolerance_line_edit = QLineEdit(self.secant_config_widget)
         self.secant_tolerance_line_edit.setObjectName(u"secant_tolerance_line_edit")
-        self.secant_tolerance_line_edit.setFont(font9)
+        self.secant_tolerance_line_edit.setFont(font10)
 
         self.secant_config_grid.addWidget(self.secant_tolerance_line_edit, 3, 1, 1, 2)
 
@@ -1418,7 +1437,18 @@ class Ui_MainWindow(object):
 
         self.secant_solution_button = QPushButton(self.secant_tab)
         self.secant_solution_button.setObjectName(u"secant_solution_button")
-        self.secant_solution_button.setFont(font9)
+        self.secant_solution_button.setFont(font7)
+        self.secant_solution_button.setStyleSheet(u"QPushButton{\n"
+"background-color: #3c4b84\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: #47599d;\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: #4f63ae;\n"
+"}")
 
         self.verticalLayout_18.addWidget(self.secant_solution_button)
 
@@ -1437,7 +1467,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.graphic_label = QLabel(self.graphic_widget)
         self.graphic_label.setObjectName(u"graphic_label")
-        self.graphic_label.setFont(font5)
+        self.graphic_label.setFont(font3)
         self.graphic_label.setStyleSheet(u"padding: 3px")
         self.graphic_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -1468,7 +1498,7 @@ class Ui_MainWindow(object):
         self.compiled_label = QLabel(self.information_page)
         self.compiled_label.setObjectName(u"compiled_label")
         self.compiled_label.setMaximumSize(QSize(16777215, 32))
-        self.compiled_label.setFont(font7)
+        self.compiled_label.setFont(font2)
         self.compiled_label.setScaledContents(True)
 
         self.verticalLayout_22.addWidget(self.compiled_label, 0, Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignBottom)
@@ -1540,8 +1570,6 @@ class Ui_MainWindow(object):
         self.delete_current_table_button.setToolTip(QCoreApplication.translate("MainWindow", u"Eliminar matriz", None))
 #endif // QT_CONFIG(tooltip)
         self.delete_current_table_button.setText("")
-        self.logo_pix_map.setText("")
-        self.logo_label.setText(QCoreApplication.translate("MainWindow", u"Algebrier", None))
         self.table_select_solutions_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Resolver por", None))
         self.table_select_solutions_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"Reducci\u00f3n", None))
         self.table_select_solutions_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"Cramer", None))
@@ -1639,10 +1667,7 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.independent_terms_table.setToolTip(QCoreApplication.translate("MainWindow", u"T\u00e9rminos independientes", None))
 #endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
-        self.equation_derivative_text_label.setToolTip(QCoreApplication.translate("MainWindow", u"Integral de la ecuaci\u00f3n actual", None))
-#endif // QT_CONFIG(tooltip)
-        self.equation_derivative_text_label.setText(QCoreApplication.translate("MainWindow", u"Integral", None))
+        self.equation_derivative_label.setText("")
 #if QT_CONFIG(tooltip)
         self.equation_text_label.setToolTip(QCoreApplication.translate("MainWindow", u"Ecuaci\u00f3n actual", None))
 #endif // QT_CONFIG(tooltip)
@@ -1652,8 +1677,6 @@ class Ui_MainWindow(object):
         self.equation_integral_text_label.setToolTip(QCoreApplication.translate("MainWindow", u"Derivada de la ecuaci\u00f3n actual", None))
 #endif // QT_CONFIG(tooltip)
         self.equation_integral_text_label.setText(QCoreApplication.translate("MainWindow", u"Derivada", None))
-        self.equation_derivative_label.setText("")
-        self.equation_integral_label.setText("")
         self.select_equation_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"Seleccionar ecuaci\u00f3n", None))
 
 #if QT_CONFIG(tooltip)
@@ -1725,6 +1748,6 @@ class Ui_MainWindow(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom"
                         ":0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Si necesitas ayuda, comun\u00edcate con nosotros con el siguiente correo: </span><a href=\"mailto:rrojas1enrique@gmail.com\"><span style=\" font-size:12pt; text-decoration: underline; color:#0078d7;\">rrojas1enrique@gmail.com</span></a><span style=\" font-size:12pt;\"> </span></p></body></html>", None))
-        self.compiled_label.setText(QCoreApplication.translate("MainWindow", u"Compilado el 2 de Diciembre de 2024", None))
+        self.compiled_label.setText(QCoreApplication.translate("MainWindow", u"Compilado el 4 de Diciembre de 2024", None))
     # retranslateUi
 

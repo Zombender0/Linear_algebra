@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1022</width>
+    <width>716</width>
     <height>491</height>
    </rect>
   </property>
@@ -43,22 +43,20 @@ background: #2c313c
 background-color: #2c313c;
 }
 
-#table_buttons_frame QPushButton, #table_buttons_frame QComboBox,#solution_widget QComboBox, #equations_page QPushButton, #table_options_widget QPushButton, #table_options_widget QComboBox, #table_aumented_widget QPushButton, #equation_widget QComboBox{
+#table_buttons_frame QPushButton, #table_buttons_frame QComboBox,#solution_widget QComboBox, #equations_page QPushButton, #table_options_widget QPushButton, #table_options_widget QComboBox, #table_aumented_widget QPushButton, #equation_widget QComboBox, #main_home_widget QPushButton{
     color: #ffffff;
     text-align: center;
 	padding: 3px;
     border-radius: 10px;
-    background-color: #16191d;
+    background-color: #16191d ;
 }
-
-#table_buttons_frame QPushButton::hover, #table_buttons_frame QComboBox::hover,#equations_page QPushButton::hover, #table_options_widget QPushButton::hover, #table_options_widget QComboBox::hover, #table_aumented_widget QPushButton::hover, #equation_widget QComboBox::hover{
+/*3c4b84*/
+#table_buttons_frame QPushButton::hover, #table_buttons_frame QComboBox::hover,#equations_page QPushButton::hover, #table_options_widget QPushButton::hover, #table_options_widget QComboBox::hover, #table_aumented_widget QPushButton::hover, #equation_widget QComboBox::hover, #main_home_widget QPushButton::hover{
     background-color: #2a2e35;
     border-color: #454a52;
 }
-
 #table_buttons_frame QPushButton::pressed, #table_buttons_frame QComboBox::pressed,#equations_page QPushButton::pressed, #table_options_widget QPushButton::pressed, #table_options_widget QComboBox::pressed, #table_aumented_widget QPushButton::pressed, #equation_widget QComboBox::pressed{
     background-color: #1d2127;
-	font-weight: 350;
 }
 
 #table_buttons_frame QSpinBox{
@@ -122,9 +120,9 @@ background-color: #3e4555;
 }
 
 #main_table_widget QTableWidget::item:hover, #main_table_widget QTableWidget::item:selected{
-background-color: #e9eaef;
+background-color: #72809b;
 font-weight: 700;
-color: #000
+color: #6e86b1
 }
 
 #main_table_widget QTableWidget::item{
@@ -134,7 +132,8 @@ selection-color: #000
 
 /* Estilo para el editor de texto cuando se está editando una celda */
 QTableWidget::item QLineEdit{
-color: black;
+background-color:#8592a9;
+color: #000;
 }
 
 #side_bar{
@@ -155,7 +154,7 @@ font-weight: 700;
 border-radius: 10px;
 }
 
-#equations_page, #information_page{
+#equations_page, #information_page, #home_page{
 background: #2c313c;
 }
 
@@ -211,10 +210,13 @@ background-color: #1d2127;
 font-weight: 350;
 }
 
-QCheckBox::unchecked{
-color: #8b7a78;
+QCheckBox::checked{
+color: #9ba6b9;
 }
 
+QCheckBox::unchecked{
+color: #72809b
+}
 #table_buttons_down_widget QPushButton{
 text-align:left;
 }
@@ -225,6 +227,18 @@ background: none;
 
 #table_aumented_widget QLabel{
 background:none;
+}
+
+#main_table_widget QHeaderView::section, #main_table_widget QTableCornerButton::section{
+background-color: #3e4769;
+}
+
+#main_table_widget QHeaderView::section::hover, #main_table_widget QTableCornerButton::section::hover{
+background-color: #586596;
+}
+
+#method_equation_tab_widget QLabel{
+background-color: #3e4769;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -674,7 +688,7 @@ margin-left:-1px;</string>
              <property name="frameShadow">
               <enum>QFrame::Shadow::Raised</enum>
              </property>
-             <layout class="QHBoxLayout" name="table_buttons_horizontal_layout" stretch="0,0,0,0">
+             <layout class="QHBoxLayout" name="table_buttons_horizontal_layout" stretch="0,0,0">
               <property name="spacing">
                <number>10</number>
               </property>
@@ -926,6 +940,7 @@ margin-left:-1px;</string>
                       <property name="font">
                        <font>
                         <pointsize>11</pointsize>
+                        <bold>true</bold>
                        </font>
                       </property>
                       <property name="contextMenuPolicy">
@@ -957,8 +972,8 @@ margin-left:-1px;</string>
               <item alignment="Qt::AlignmentFlag::AlignLeft">
                <widget class="QWidget" name="select_matrix_widget" native="true">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-                  <horstretch>4</horstretch>
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                  <horstretch>2</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
@@ -985,13 +1000,14 @@ margin-left:-1px;</string>
                   <widget class="QComboBox" name="select_table_combobox">
                    <property name="minimumSize">
                     <size>
-                     <width>250</width>
+                     <width>175</width>
                      <height>0</height>
                     </size>
                    </property>
                    <property name="font">
                     <font>
-                     <pointsize>11</pointsize>
+                     <pointsize>13</pointsize>
+                     <bold>true</bold>
                     </font>
                    </property>
                    <property name="frame">
@@ -1098,69 +1114,11 @@ margin-left:-1px;</string>
                 </layout>
                </widget>
               </item>
-              <item alignment="Qt::AlignmentFlag::AlignLeft">
-               <widget class="QWidget" name="logo_widget" native="true">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                  <horstretch>6</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_12">
-                 <item>
-                  <widget class="QLabel" name="logo_pix_map">
-                   <property name="maximumSize">
-                    <size>
-                     <width>68</width>
-                     <height>68</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background: none;
-margin: -5px;</string>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap resource="qrc_files/resources.qrc">:/icon/Images/algebrier.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="logo_label">
-                   <property name="font">
-                    <font>
-                     <pointsize>25</pointsize>
-                     <italic>true</italic>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">background: none</string>
-                   </property>
-                   <property name="text">
-                    <string>Algebrier</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
               <item>
                <widget class="QWidget" name="table_extra_options_widget" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-                  <horstretch>15</horstretch>
+                  <horstretch>3</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
@@ -1217,6 +1175,7 @@ margin: -5px;</string>
                      <property name="font">
                       <font>
                        <pointsize>11</pointsize>
+                       <bold>true</bold>
                       </font>
                      </property>
                      <property name="toolTip">
@@ -1250,10 +1209,25 @@ margin: -5px;</string>
                      <property name="font">
                       <font>
                        <pointsize>11</pointsize>
+                       <bold>true</bold>
                       </font>
                      </property>
                      <property name="toolTip">
                       <string>Solucionar matriz</string>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+background-color: #3c4b84
+}
+
+QPushButton::hover{
+background-color: #47599d;
+}
+
+QPushButton::pressed{
+background-color: #4f63ae;
+}
+</string>
                      </property>
                      <property name="text">
                       <string>Resolver</string>
@@ -1302,6 +1276,7 @@ margin: -5px;</string>
                      <property name="font">
                       <font>
                        <pointsize>11</pointsize>
+                       <bold>true</bold>
                       </font>
                      </property>
                      <property name="toolTip">
@@ -1349,6 +1324,7 @@ margin: -5px;</string>
                      <property name="font">
                       <font>
                        <pointsize>11</pointsize>
+                       <bold>true</bold>
                       </font>
                      </property>
                      <property name="toolTip">
@@ -1767,7 +1743,7 @@ margin: -5px;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QWidget" name="widget" native="true">
+                     <widget class="QWidget" name="independent_option_widget" native="true">
                       <layout class="QHBoxLayout" name="horizontalLayout_4">
                        <property name="leftMargin">
                         <number>0</number>
@@ -1797,7 +1773,7 @@ margin: -5px;</string>
                            <property name="maximumSize">
                             <size>
                              <width>38</width>
-                             <height>38</height>
+                             <height>34</height>
                             </size>
                            </property>
                            <property name="toolTip">
@@ -1823,7 +1799,7 @@ margin: -5px;</string>
                            <property name="maximumSize">
                             <size>
                              <width>38</width>
-                             <height>38</height>
+                             <height>34</height>
                             </size>
                            </property>
                            <property name="toolTip">
@@ -1855,7 +1831,7 @@ margin: -5px;</string>
                            <property name="maximumSize">
                             <size>
                              <width>38</width>
-                             <height>38</height>
+                             <height>34</height>
                             </size>
                            </property>
                            <property name="toolTip">
@@ -1887,7 +1863,7 @@ margin: -5px;</string>
                            <property name="maximumSize">
                             <size>
                              <width>38</width>
-                             <height>38</height>
+                             <height>34</height>
                             </size>
                            </property>
                            <property name="toolTip">
@@ -2010,97 +1986,12 @@ margin: -5px;</string>
              <property name="bottomMargin">
               <number>2</number>
              </property>
-             <property name="verticalSpacing">
-              <number>10</number>
+             <property name="horizontalSpacing">
+              <number>7</number>
              </property>
-             <item row="2" column="0">
-              <widget class="QLabel" name="equation_derivative_text_label">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>Integral de la ecuación actual</string>
-               </property>
-               <property name="text">
-                <string>Integral</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="equation_text_label">
-               <property name="maximumSize">
-                <size>
-                 <width>140</width>
-                 <height>40</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>Ecuación actual</string>
-               </property>
-               <property name="text">
-                <string>Ecuacion</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="equation_label">
-               <property name="font">
-                <font>
-                 <pointsize>14</pointsize>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">background: none</string>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="equation_integral_text_label">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="toolTip">
-                <string>Derivada de la ecuación actual</string>
-               </property>
-               <property name="text">
-                <string>Derivada</string>
-               </property>
-               <property name="textFormat">
-                <enum>Qt::TextFormat::AutoText</enum>
-               </property>
-               <property name="scaledContents">
-                <bool>false</bool>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
+             <property name="verticalSpacing">
+              <number>0</number>
+             </property>
              <item row="1" column="1">
               <widget class="QLabel" name="equation_derivative_label">
                <property name="font">
@@ -2120,8 +2011,36 @@ margin: -5px;</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="1">
-              <widget class="QLabel" name="equation_integral_label">
+             <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignVCenter">
+              <widget class="QLabel" name="equation_text_label">
+               <property name="maximumSize">
+                <size>
+                 <width>140</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>Ecuación actual</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">padding: 2px;</string>
+               </property>
+               <property name="text">
+                <string>Ecuacion</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="equation_label">
                <property name="font">
                 <font>
                  <pointsize>14</pointsize>
@@ -2129,13 +2048,41 @@ margin: -5px;</string>
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">background: none</string>
+                <string notr="true">background: none;</string>
                </property>
                <property name="text">
                 <string/>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignVCenter">
+              <widget class="QLabel" name="equation_integral_text_label">
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="toolTip">
+                <string>Derivada de la ecuación actual</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">padding: 2px;</string>
+               </property>
+               <property name="text">
+                <string>Derivada</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::TextFormat::AutoText</enum>
+               </property>
+               <property name="scaledContents">
+                <bool>false</bool>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
                </property>
               </widget>
              </item>
@@ -2157,12 +2104,14 @@ margin: -5px;</string>
                <number>0</number>
               </property>
               <item>
-               <layout class="QGridLayout" name="gridLayout">
+               <layout class="QGridLayout" name="equation_options_grid_layout">
                 <item row="0" column="0" colspan="2">
                  <widget class="QComboBox" name="select_equation_combobox">
                   <property name="font">
                    <font>
-                    <pointsize>11</pointsize>
+                    <pointsize>13</pointsize>
+                    <bold>true</bold>
+                    <underline>false</underline>
                    </font>
                   </property>
                   <property name="toolTip">
@@ -2209,8 +2158,8 @@ margin: -5px;</string>
                   </property>
                   <property name="iconSize">
                    <size>
-                    <width>24</width>
-                    <height>24</height>
+                    <width>26</width>
+                    <height>26</height>
                    </size>
                   </property>
                  </widget>
@@ -2441,7 +2390,21 @@ margin: -5px;</string>
                  <property name="font">
                   <font>
                    <pointsize>14</pointsize>
+                   <bold>true</bold>
                   </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton{
+background-color: #3c4b84
+}
+
+QPushButton::hover{
+background-color: #47599d;
+}
+
+QPushButton::pressed{
+background-color: #4f63ae;
+}</string>
                  </property>
                  <property name="text">
                   <string>Obtener raíz</string>
@@ -2596,7 +2559,21 @@ margin: -5px;</string>
                  <property name="font">
                   <font>
                    <pointsize>14</pointsize>
+                   <bold>true</bold>
                   </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton{
+background-color: #3c4b84
+}
+
+QPushButton::hover{
+background-color: #47599d;
+}
+
+QPushButton::pressed{
+background-color: #4f63ae;
+}</string>
                  </property>
                  <property name="text">
                   <string>Obtener raíz</string>
@@ -2761,7 +2738,21 @@ margin: -5px;</string>
                  <property name="font">
                   <font>
                    <pointsize>14</pointsize>
+                   <bold>true</bold>
                   </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton{
+background-color: #3c4b84
+}
+
+QPushButton::hover{
+background-color: #47599d;
+}
+
+QPushButton::pressed{
+background-color: #4f63ae;
+}</string>
                  </property>
                  <property name="text">
                   <string>Obtener raíz</string>
@@ -2942,7 +2933,21 @@ margin: -5px;</string>
                  <property name="font">
                   <font>
                    <pointsize>14</pointsize>
+                   <bold>true</bold>
                   </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton{
+background-color: #3c4b84
+}
+
+QPushButton::hover{
+background-color: #47599d;
+}
+
+QPushButton::pressed{
+background-color: #4f63ae;
+}</string>
                  </property>
                  <property name="text">
                   <string>Obtener raíz</string>
@@ -3056,12 +3061,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
           </property>
           <property name="font">
            <font>
-            <pointsize>14</pointsize>
+            <pointsize>12</pointsize>
             <bold>true</bold>
            </font>
           </property>
           <property name="text">
-           <string>Compilado el 2 de Diciembre de 2024</string>
+           <string>Compilado el 4 de Diciembre de 2024</string>
           </property>
           <property name="scaledContents">
            <bool>true</bool>

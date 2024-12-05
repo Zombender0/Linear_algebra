@@ -30,10 +30,6 @@ class MainWindow(Generated_MainWindow):
         self.method_equation_tab_widget.setCurrentIndex(0)
         self.graph = PyQtGraphWidget(self.graphic_widget)
         self.verticalLayout_9.addWidget(self.graph)
-        self.logo_pix_map.setStyleSheet('''
-background: none;
-margin: -3px;
-''')
         
         MainWindow.showMaximized()
 
