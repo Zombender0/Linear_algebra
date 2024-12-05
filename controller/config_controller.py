@@ -2,7 +2,7 @@ from views.modified_python_files.main_window import MainWindow
 from config.config_loader import ConfigLoader
 from config.config_writer import ConfigWriter
 from configparser import ConfigParser
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt,QThreadPool
 from helpers.box_helper import warning_box
 class ConfigController():
     def __init__(self,config:ConfigParser,window:MainWindow):
@@ -10,7 +10,6 @@ class ConfigController():
         self.window = window
         self.config_loader = ConfigLoader(self.config)
         self.config_writer = ConfigWriter(self.config)
-        self.load_config_to_interface()
         
     def load_config_to_interface(self):
         parsed_config = self.config_loader.parsed_config()

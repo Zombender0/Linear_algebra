@@ -47,6 +47,7 @@ class MainController(QObject):
         self.vector_controller = VectorController()
         self.equation_controller = EquationController(self.thread_pool)
         self.config_controller = ConfigController(self.config,self.main_window)
+        self.run_async_task(self.config_controller.load_config_to_interface)
         self.save_controller = SaveController(self.config)
         self.save_controller.name_matrix_signal.connect(self.save_matrix_in_config)
         self.save_controller.name_equation_signal.connect(self.save_equation_in_config)
