@@ -2,7 +2,7 @@ from views.modified_python_files.equation_selecter_window import EquationSelecte
 from PySide6.QtCore import QThreadPool,Signal,QObject
 from utils.runnable import TaskRunnable
 from utils.equation_utils import equation_to_rich_text
-from models.EquationFunctions import EquationEvaluator,EquationParser,differencial,integrate
+from models.EquationFunctions import EquationEvaluator,EquationParser,differencial
 from helpers.box_helper import warning_box
 
 class EquationController(QObject):

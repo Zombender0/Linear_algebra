@@ -34,7 +34,7 @@ from models.BisectionMethod import BisectionMethod
 from models.NewtonRaphson import NewthonRaphson
 from models.FalsePositionMethod import FalsePositionMethod
 from models.SecantMethod import SecantMethod
-from models.EquationFunctions import EquationParser,differencial,integrate,EquationEvaluator
+from models.EquationFunctions import EquationParser,differencial,EquationEvaluator
 
 class MainController(QObject):
     def __init__(self,window:QMainWindow):
@@ -94,7 +94,6 @@ class MainController(QObject):
         window.secant_solution_button.clicked.connect(lambda: self.get_root_secant_method())
         self.equation_controller.equation_accepted_signal.connect(self.change_equation)
         self.derivate_signal.connect(self.change_derivative)
-        self.integral_signal.connect(self.change_integral)
         #CONFIG
         window.table_select_solutions_combobox.currentIndexChanged.connect(lambda: self.config_controller.config_writer.save_option(
             {'MATRIX_SOLVE_METHOD': window.table_select_solutions_combobox.currentIndex()}
@@ -403,30 +402,19 @@ class MainController(QObject):
     def change_equation(self,rich_text_equation:str):
         self.main_window.equation_label.setText(rich_text_equation)
         self.run_async_task(self.calculate_derivative,self.equation_controller.equation)
-        self.run_async_task(self.calculate_integral,self.equation_controller.equation)
         self.paint_graphic(self.equation_controller.equation)
 
     @Slot(str)
     def change_derivative(self,rich_text_derivative:str):
         self.main_window.equation_derivative_label.setText(rich_text_derivative)
     
-    @Slot(str)
-    def change_integral(self,rich_text_integral:str):
-        self.main_window.equation_integral_label.setText(rich_text_integral)
-
     derivate_signal = Signal(str)
-    integral_signal = Signal(str)
     graph_signal = Signal(str)
 
     def calculate_derivative(self,equation:str):
         derivated_equation = differencial(equation)
         derivated_equation = equation_to_rich_text(derivated_equation)
         self.derivate_signal.emit(derivated_equation)
-
-    def calculate_integral(self,equation:str):
-        integrated_equation = integrate(equation)
-        integrated_equation = equation_to_rich_text(integrated_equation)
-        self.integral_signal.emit(integrated_equation)
 
     def paint_graphic(self,equation:str):
         self.main_window.graph.paint_equation(equation)
@@ -538,7 +526,6 @@ class MainController(QObject):
         insert_data_to_table(self.main_window.coeficient_table,coeficient_table,editable=True,last_b=False,)
         insert_data_to_table(self.main_window.independent_terms_table,independent_terms_table,editable=True,last_b=True)
         information_box('Matriz cargada con éxito')
-
     @Slot()
     def delete_matrix_from_combobox(self):
         if self.main_window.select_table_combobox.currentIndex() == 0:
