@@ -61,10 +61,14 @@ class MainController(QObject):
     def connect_main_window_buttons(self):
 
         window = self.main_window
+        #HOME
+        window.home_matrix_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(0))
+        window.home_equation_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(2))
         #UI
         window.matrix_tab_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(0))
-        window.equation_tab_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(1)) 
-        window.information_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(2))
+        window.equation_tab_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(2)) 
+        window.information_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(3))
+        window.home_tab_button.clicked.connect(lambda: window.main_stacked_widget.setCurrentIndex(1))
         window.expand_button.clicked.connect(lambda: animate_side_bar(window.sub_side_bar,QSize(32,MAX_WIDTH),QSize(170,MAX_WIDTH)))
         #MATRIX
         window.import_button.clicked.connect(lambda: window.import_matrix_from_csv())

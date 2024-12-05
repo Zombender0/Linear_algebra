@@ -26,7 +26,7 @@ class MainWindow(Generated_MainWindow):
         self.table_select_solutions_combobox.setItemData(0,"index")
         self.table_select_solutions_combobox.setItemData(1,"reduccion")
         self.table_select_solutions_combobox.setItemData(2,"cramer")
-        self.main_stacked_widget.setCurrentIndex(0)
+        self.main_stacked_widget.setCurrentIndex(3)
         self.method_equation_tab_widget.setCurrentIndex(0)
         self.graph = PyQtGraphWidget(self.graphic_widget)
         self.verticalLayout_9.addWidget(self.graph)

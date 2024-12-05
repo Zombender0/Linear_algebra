@@ -24,7 +24,7 @@ class ConfigBase():
             'MATRIX_SOLVE_METHOD':'0',
             'ROWS': '3',
             'COLUMNS': '3',
-            'CURRENT_MAIN_TAB': '0',
+            'CURRENT_MAIN_TAB': '1',
             'CURRENT_EQUATION_TAB': '0',
             'CHECK_AUTOSCALE': 'False',
             'EQUATION': 'None'
