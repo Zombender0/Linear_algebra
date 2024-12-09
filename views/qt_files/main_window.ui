@@ -2082,7 +2082,7 @@ background-color: #4f63ae;
               </font>
              </property>
              <property name="text">
-              <string>Compilado el 5 de Diciembre de 2024</string>
+              <string>Compilado el 9 de Diciembre de 2024</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -3217,7 +3217,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
            </font>
           </property>
           <property name="text">
-           <string>Compilado el 4 de Diciembre de 2024</string>
+           <string>Compilado el 9 de Diciembre de 2024</string>
           </property>
           <property name="scaledContents">
            <bool>true</bool>

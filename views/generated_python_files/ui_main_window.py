@@ -1768,7 +1768,7 @@ class Ui_MainWindow(object):
         self.logo_text_label.setText(QCoreApplication.translate("MainWindow", u"Algebrier", None))
         self.home_equation_button.setText(QCoreApplication.translate("MainWindow", u"Ra\u00edz de ecuaciones", None))
         self.home_matrix_button.setText(QCoreApplication.translate("MainWindow", u"Matrices", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Compilado el 5 de Diciembre de 2024", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Compilado el 9 de Diciembre de 2024", None))
         self.equation_derivative_label.setText("")
 #if QT_CONFIG(tooltip)
         self.equation_text_label.setToolTip(QCoreApplication.translate("MainWindow", u"Ecuaci\u00f3n actual", None))
@@ -1850,6 +1850,6 @@ class Ui_MainWindow(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom"
                         ":0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Si necesitas ayuda, comun\u00edcate con nosotros con el siguiente correo: </span><a href=\"mailto:rrojas1enrique@gmail.com\"><span style=\" font-size:12pt; text-decoration: underline; color:#0078d7;\">rrojas1enrique@gmail.com</span></a><span style=\" font-size:12pt;\"> </span></p></body></html>", None))
-        self.compiled_label.setText(QCoreApplication.translate("MainWindow", u"Compilado el 4 de Diciembre de 2024", None))
+        self.compiled_label.setText(QCoreApplication.translate("MainWindow", u"Compilado el 9 de Diciembre de 2024", None))
     # retranslateUi
 
