@@ -33,12 +33,11 @@ class FalsePositionMethod():
             fxr = EquationEvaluator(self.funcion, self.xr)
 
             if xr_anterior is not None:
-                error_porcentual = abs(((self.xr - xr_anterior)/self.xr)*100)
-                str_error_porcentual = str(round(error_porcentual, 4)) + "%"
-                if error_porcentual/100 <= self.tolerancia:
-                    self.datos_por_iteracion.append([self.xl, self.xu, self.xr, fxl, fxu, fxr, fxl*fxr, str_error_porcentual])
+                error_absoluto = abs(self.xr - xr_anterior)
+                if error_absoluto <= self.tolerancia:
+                    self.datos_por_iteracion.append([self.xl, self.xu, self.xr, fxl, fxu, fxr, fxl*fxr, error_absoluto])
                     #self.print_iterations()
-                    solucion = f"La raíz aproximada es {self.xr} con un error porcentual de {error_porcentual}%\nNúmero de iteraciones: {self.n_iter}"
+                    solucion = f"La raíz aproximada es {self.xr} con un error absoluto de {error_absoluto}.\nNúmero de iteraciones: {self.n_iter}"
 
                     self.config[f"ITERACIÓN {self.n_iter}"] = (copy.deepcopy(self.datos_por_iteracion), solucion)
 
@@ -46,13 +45,13 @@ class FalsePositionMethod():
                     #print(f"Número de iteraciones: {self.n_iter}\n")
                     break
             else:
-                str_error_porcentual = "-"
+                error_absoluto = "-"
             
-            self.datos_por_iteracion.append([self.xl, self.xu, self.xr, fxl, fxu, fxr, fxl*fxr, str_error_porcentual])
+            self.datos_por_iteracion.append([self.xl, self.xu, self.xr, fxl, fxu, fxr, fxl*fxr, error_absoluto])
             #self.print_iterations()
 
             if fxl*fxr == 0:
-                solucion = f"La raíz aproximada es {self.xr} con un error porcentual de {error_porcentual}%"
+                solucion = f"La raíz aproximada es {self.xr} con un error absoluto de {error_absoluto}."
                 + f"\nNúmero de iteraciones: {self.n_iter}"
                 self.config[f"ITERACIÓN {self.n_iter}"] = (copy.deepcopy(self.datos_por_iteracion), solucion)
 
