@@ -26,14 +26,13 @@ class SecantMethod():
                 return 'Error de dominio matemático'
             x_siguiente = self.xi - (fxi*(self.x0 - self.xi))/(fx0 - fxi)
 
-            error_porcentual = abs((x_siguiente - self.xi)/x_siguiente)*100
-            str_error_porcentual = str(round(error_porcentual, 4)) + "%"
+            error_absoluto = abs(x_siguiente - self.xi)
 
-            self.datos_por_iteracion.append([str_n_iteraciones, self.x0, self.xi, x_siguiente, fx0, fxi, str_error_porcentual])
+            self.datos_por_iteracion.append([str_n_iteraciones, self.x0, self.xi, x_siguiente, fx0, fxi, error_absoluto])
             #self.print_iterations()
 
-            if error_porcentual/100 <= self.tolerancia:
-                solucion = f"La raíz aproximada es x = {x_siguiente} con un error porcentual de {error_porcentual}%.\nNúmero de iteraciones: {self.n_iter}"
+            if error_absoluto <= self.tolerancia:
+                solucion = f"La raíz aproximada es x = {x_siguiente} con un error absoluto de {error_absoluto}.\nNúmero de iteraciones: {self.n_iter}"
                 #print(solucion)
                 self.config["Solución Aproximada"] = (copy.deepcopy(self.datos_por_iteracion), solucion)
                 return self.config
